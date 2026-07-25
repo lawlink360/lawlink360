@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "485819938990",
+    "project_id": "lawlink-360",
+    "storage_bucket": "lawlink-360.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485819938990:android:a134b869e2ae8fd6c4153f",
+        "android_client_info": {
+          "package_name": "com.lawlink360.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485819938990-h2m6ansmj297o6cl273t7hdkchlr3hoj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lawlink360.app",
+            "certificate_hash": "4558a6e2ca06d57efb05e5d417edf079e15cfe54"
+          }
+        },
+        {
+          "client_id": "485819938990-1r27iklds7s8qtsck1hhd7envfe83cj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCcO4kKtF_ahoeYBeQX1EOlRfzisx3v2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485819938990-1r27iklds7s8qtsck1hhd7envfe83cj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
