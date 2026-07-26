@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 import 'package:lawlink360/core/features/client/screens/client_dashboard_screen.dart';
+import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
+import 'package:lawlink360/core/features/client/screens/chat_screen.dart';
 
 class ClientNavigationController extends StatefulWidget {
   const ClientNavigationController({super.key});
@@ -17,10 +18,20 @@ class _ClientNavigationControllerState
 
   final List<Widget> screens = const [
     ClientDashboardScreen(),
+    FindLawyerScreen(),
+    ChatScreen(),
+
     Scaffold(
-      body: Center(child: Text("Find Lawyer")),
+      body: Center(
+        child: Text("Documents - Coming Soon"),
+      ),
     ),
 
+    Scaffold(
+      body: Center(
+        child: Text("Profile - Coming Soon"),
+      ),
+    ),
   ];
 
   @override
@@ -47,14 +58,14 @@ class _ClientNavigationControllerState
             label: "Lawyers",
           ),
           NavigationDestination(
-            icon: Icon(Icons.folder_outlined),
-            selectedIcon: Icon(Icons.folder),
-            label: "Cases",
+            icon: Icon(Icons.chat_bubble_outline),
+            selectedIcon: Icon(Icons.chat_bubble),
+            label: "Chat",
           ),
           NavigationDestination(
-            icon: Icon(Icons.notifications_outlined),
-            selectedIcon: Icon(Icons.notifications),
-            label: "Activity",
+            icon: Icon(Icons.description_outlined),
+            selectedIcon: Icon(Icons.description),
+            label: "Documents",
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),

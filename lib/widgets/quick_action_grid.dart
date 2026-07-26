@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'quick_action_card.dart';
 import 'package:lawlink360/core/features/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
+import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
+import 'package:lawlink360/core/features/translation/screens/image_translation_screen.dart';
 
 class QuickActionsGrid extends StatelessWidget {
   const QuickActionsGrid({super.key});
@@ -39,7 +41,25 @@ class QuickActionsGrid extends StatelessWidget {
             icon: Icons.translate_rounded,
             title: "Translation",
             subtitle: "Translate documents",
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const TranslationScreen()),
+              );
+            },
+          ),
+          QuickActionCard(
+            icon: Icons.document_scanner,
+            title: "Image Translation",
+            subtitle: "Scan and translate documents",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ImageTranslationScreen(),
+                ),
+              );
+            },
           ),
           QuickActionCard(
             icon: Icons.document_scanner_rounded,

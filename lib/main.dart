@@ -5,7 +5,6 @@ import 'package:lawlink360/core/theme/app_theme.dart';
 import 'package:lawlink360/core/features/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:lawlink360/core/providers/theme_provider.dart';
-import 'package:camera/camera.dart';
 import 'package:lawlink360/core/features/scanner/services/camera_service.dart';
 
 Future<void> main() async {

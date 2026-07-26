@@ -2,6 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lawlink360/auth/screens/login_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
+import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
+import 'package:lawlink360/core/features/scanner/screens/smart_camera_screen.dart';
+import 'package:lawlink360/core/features/scanner/models/scanner_mode.dart';
+import 'package:lawlink360/core/features/translation/screens/image_translation_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -76,15 +80,15 @@ class AppDrawer extends StatelessWidget {
                     leading: const Icon(Icons.search_rounded),
                     title: const Text("Find Lawyer"),
                     onTap: () {
-  Navigator.pop(context);
+                      Navigator.pop(context);
 
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => const FindLawyerScreen(),
-    ),
-  );
-},
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const FindLawyerScreen(),
+                        ),
+                      );
+                    },
                   ),
 
                   const Divider(),
@@ -141,15 +145,50 @@ class AppDrawer extends StatelessWidget {
                   ListTile(
                     leading: const Icon(Icons.document_scanner_outlined),
                     title: const Text("Document Scanner"),
-                    onTap: () {},
+                    subtitle: const Text("Scan legal documents"),
+                    onTap: () {
+                      Navigator.pop(context); // Close the drawer
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const SmartCameraScreen(
+                            initialMode: ScannerMode.document,
+                          ),
+                        ),
+                      );
+                    },
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.translate_outlined),
+                    leading: const Icon(Icons.translate_rounded),
                     title: const Text("Translation"),
-                    onTap: () {},
+                    subtitle: const Text("Translate documents"),
+                    onTap: () {
+                      Navigator.pop(context); // Close the drawer
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const TranslationScreen(),
+                        ),
+                      );
+                    },
                   ),
                   const Divider(),
+
+                  ListTile(
+                    leading: const Icon(Icons.image),
+                    title: const Text("Image Translation"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ImageTranslationScreen(),
+                        ),
+                      );
+                    },
+                  ),
 
                   ListTile(
                     leading: const Icon(Icons.settings_outlined),

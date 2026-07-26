@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lawlink360/widgets/bottom_nav_bar.dart';
-import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
 
 import '../../../../widgets/home_header.dart';
 import '../../../../widgets/ai_search_bar.dart';
@@ -10,7 +8,6 @@ import 'package:lawlink360/core/features/client/cases/my_cases_section.dart';
 import 'package:lawlink360/core/features/client/services/popular_services_section.dart';
 import 'package:lawlink360/core/features/client/activity/recent_activity_section.dart';
 import 'package:lawlink360/core/features/client/widgets/app_drawer.dart';
-import 'package:lawlink360/core/features/client/screens/chat_screen.dart';
 
 class ClientDashboardScreen extends StatelessWidget {
   const ClientDashboardScreen({super.key});
@@ -52,19 +49,15 @@ class ClientDashboardScreen extends StatelessWidget {
               const SizedBox(height: 24),
               const UpcomingAppointmentCard(),
               const SizedBox(height: 24),
-              const SizedBox(height: 24),
               const MyCasesSection(),
-              const SizedBox(height: 24),
               const SizedBox(height: 24),
               const PopularServicesSection(),
               const SizedBox(height: 24),
-              const SizedBox(height: 24),
               const RecentActivitySection(),
               const SizedBox(height: 40),
-              const SizedBox(height: 30),
               Center(
                 child: Column(
-                  children: [
+                  children: const [
                     Text(
                       "LawLink360",
                       style: TextStyle(
@@ -76,12 +69,18 @@ class ClientDashboardScreen extends StatelessWidget {
                     SizedBox(height: 6),
                     Text(
                       "Your Trusted Digital Legal Partner",
-                      style: TextStyle(fontSize: 13, color: Colors.grey),
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey,
+                      ),
                     ),
                     SizedBox(height: 12),
                     Text(
                       "Version 1.0.0 • © 2026 LawLink360",
-                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
                     ),
                     SizedBox(height: 40),
                   ],
@@ -90,46 +89,6 @@ class ClientDashboardScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavBar(
-        currentIndex: 0,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              // Already on Dashboard
-              break;
-
-            case 1:
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const FindLawyerScreen(),
-                ),
-              );
-              break;
-
-            case 2:
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-      builder: (_) => const ChatScreen(),
-    ),
-  );
-  break;
-
-            case 3:
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Documents - Coming Soon")),
-              );
-              break;
-
-            case 4:
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("Profile - Coming Soon")),
-              );
-              break;
-          }
-        },
       ),
     );
   }
