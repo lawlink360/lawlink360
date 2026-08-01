@@ -2,10 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lawlink360/auth/screens/login_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
-import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
+import 'package:lawlink360/core/features/laws/screens/law_home_screen.dart';
 import 'package:lawlink360/core/features/scanner/screens/smart_camera_screen.dart';
 import 'package:lawlink360/core/features/scanner/models/scanner_mode.dart';
-import 'package:lawlink360/core/features/translation/screens/image_translation_screen.dart';
+import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
+import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/application/screens/application_screen.dart';
+
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -116,36 +119,51 @@ class AppDrawer extends StatelessWidget {
                     title: const Text("Documents"),
                     onTap: () {},
                   ),
+
                   const Divider(),
 
+                   ListTile(
+                    leading: const Icon(Icons.assignment_outlined),
+                    title: const Text("Application"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ApplicationScreen(),
+                        ),
+                      );
+                    },
+                  ),
+
                   ListTile(
-                    leading: const Icon(Icons.person_outline_rounded),
-                    title: const Text("My Profile"),
-                    onTap: () {},
+                    leading: const Icon(Icons.image),
+                    title: const Text("Translation"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TranslationScreen(),
+                        ),
+                      );
+                    },
                   ),
 
                   ListTile(
                     leading: const Icon(Icons.verified_user_outlined),
                     title: const Text("Verification Hub"),
-                    onTap: () {},
-                  ),
-
-                  ListTile(
-                    leading: const Icon(Icons.gavel_outlined),
-                    title: const Text("Pakistani Laws"),
-                    onTap: () {},
-                  ),
-
-                  ListTile(
-                    leading: const Icon(Icons.smart_toy_outlined),
-                    title: const Text("AI Legal Assistant"),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const VerificationScreen(),
+                        ),
+                      );
+                    },
                   ),
 
                   ListTile(
                     leading: const Icon(Icons.document_scanner_outlined),
-                    title: const Text("Document Scanner"),
-                    subtitle: const Text("Scan legal documents"),
+                    title: const Text("Doc Scanner"),
                     onTap: () {
                       Navigator.pop(context); // Close the drawer
 
@@ -161,33 +179,24 @@ class AppDrawer extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.translate_rounded),
-                    title: const Text("Translation"),
-                    subtitle: const Text("Translate documents"),
+                    leading: const Icon(Icons.gavel_outlined),
+                    title: const Text("Pakistani Laws"),
                     onTap: () {
-                      Navigator.pop(context); // Close the drawer
-
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const TranslationScreen(),
+                          builder: (context) => const LawHomeScreen(),
                         ),
                       );
                     },
                   ),
+
                   const Divider(),
 
                   ListTile(
-                    leading: const Icon(Icons.image),
-                    title: const Text("Image Translation"),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ImageTranslationScreen(),
-                        ),
-                      );
-                    },
+                    leading: const Icon(Icons.person_outline_rounded),
+                    title: const Text("My Profile"),
+                    onTap: () {},
                   ),
 
                   ListTile(

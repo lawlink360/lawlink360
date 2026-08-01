@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lawlink360/core/features/laws/screens/law_home_screen.dart';
 import 'quick_action_card.dart';
 import 'package:lawlink360/core/features/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
+
 import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
-import 'package:lawlink360/core/features/translation/screens/image_translation_screen.dart';
+import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/application/screens/application_screen.dart';
 
 class QuickActionsGrid extends StatelessWidget {
   const QuickActionsGrid({super.key});
@@ -27,7 +30,8 @@ class QuickActionsGrid extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const FindLawyerScreen()),
+                MaterialPageRoute(builder: (_) => const FindLawyerScreen(),
+                ),
               );
             },
           ),
@@ -35,28 +39,24 @@ class QuickActionsGrid extends StatelessWidget {
             icon: Icons.description_rounded,
             title: "Applications",
             subtitle: "Draft legal applications",
-            onTap: () {},
-          ),
-          QuickActionCard(
-            icon: Icons.translate_rounded,
-            title: "Translation",
-            subtitle: "Translate documents",
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const TranslationScreen()),
+                MaterialPageRoute(builder: (_) => const ApplicationScreen(),
+                ),
               );
             },
           ),
+
           QuickActionCard(
             icon: Icons.document_scanner,
-            title: "Image Translation",
+            title: "Translation",
             subtitle: "Scan and translate documents",
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ImageTranslationScreen(),
+                  builder: (context) => const TranslationScreen(),
                 ),
               );
             },
@@ -74,17 +74,33 @@ class QuickActionsGrid extends StatelessWidget {
               );
             },
           ),
+
           QuickActionCard(
             icon: Icons.verified_user_rounded,
-            title: "Verification",
-            subtitle: "verify credentials",
-            onTap: () {},
+            title: 'Verification Hub',
+            subtitle: 'Government & Court Services',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const VerificationScreen(),
+                  ),
+              );
+            },
           ),
+
           QuickActionCard(
             icon: Icons.menu_book_rounded,
             title: "Pak Laws",
             subtitle: "Browse Pakistani laws",
-            onTap: () {},
+            onTap: () {
+ Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const LawHomeScreen(),
+                  ),
+              );
+            },
           ),
         ],
       ),

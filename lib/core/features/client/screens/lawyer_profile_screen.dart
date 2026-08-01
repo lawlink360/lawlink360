@@ -8,7 +8,7 @@ import 'package:lawlink360/widgets/lawyer_practice_chip.dart';
 import 'package:lawlink360/widgets/lawyer_education_card.dart';
 import 'package:lawlink360/widgets/lawyer_review_card.dart';
 import 'package:lawlink360/widgets/lawyer_bottom_action_bar.dart';
-import 'package:lawlink360/core/features/client/screens/book_appointment_screen.dart';
+
 
 
 class LawyerProfileScreen extends StatelessWidget {

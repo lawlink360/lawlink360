@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:lawlink360/widgets/bottom_nav_bar.dart';
-import 'package:lawlink360/core/features/client/screens/client_dashboard_screen.dart';
-
 
 import '../widgets/hero_section.dart';
 import '../widgets/practice_area_card.dart';
@@ -197,34 +194,6 @@ class FindLawyerScreen extends StatelessWidget {
         ),
       ),
 
-      bottomNavigationBar: BottomNavBar(
-        currentIndex: 1,
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const ClientDashboardScreen(),
-                ),
-              );
-              break;
-
-            case 1:
-              break;
-
-            case 2:
-            case 3:
-            case 4:
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Coming Soon"),
-                ),
-              );
-              break;
-          }
-        },
-      ),
     );
   }
 }

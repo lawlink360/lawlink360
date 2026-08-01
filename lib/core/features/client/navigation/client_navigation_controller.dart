@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:lawlink360/core/features/client/screens/client_dashboard_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
-import 'package:lawlink360/core/features/client/screens/chat_screen.dart';
+import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/application/screens/application_screen.dart';
+import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
 
 class ClientNavigationController extends StatefulWidget {
   const ClientNavigationController({super.key});
@@ -19,19 +21,9 @@ class _ClientNavigationControllerState
   final List<Widget> screens = const [
     ClientDashboardScreen(),
     FindLawyerScreen(),
-    ChatScreen(),
-
-    Scaffold(
-      body: Center(
-        child: Text("Documents - Coming Soon"),
-      ),
-    ),
-
-    Scaffold(
-      body: Center(
-        child: Text("Profile - Coming Soon"),
-      ),
-    ),
+    VerificationScreen(),
+    ApplicationScreen(),
+    TranslationScreen(),
   ];
 
   @override
@@ -41,36 +33,42 @@ class _ClientNavigationControllerState
 
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
+
         onDestinationSelected: (index) {
           setState(() {
             currentIndex = index;
           });
         },
+
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: "Home",
           ),
+
           NavigationDestination(
             icon: Icon(Icons.gavel_outlined),
             selectedIcon: Icon(Icons.gavel),
-            label: "Lawyers",
+            label: "Lawyer",
           ),
+
           NavigationDestination(
-            icon: Icon(Icons.chat_bubble_outline),
-            selectedIcon: Icon(Icons.chat_bubble),
-            label: "Chat",
+            icon: Icon(Icons.verified_outlined),
+            selectedIcon: Icon(Icons.verified),
+            label: "Verification",
           ),
+
           NavigationDestination(
-            icon: Icon(Icons.description_outlined),
-            selectedIcon: Icon(Icons.description),
-            label: "Documents",
+            icon: Icon(Icons.assignment_outlined),
+            selectedIcon: Icon(Icons.assignment),
+            label: "Application",
           ),
+
           NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: "Profile",
+            icon: Icon(Icons.translate_outlined),
+            selectedIcon: Icon(Icons.translate),
+            label: "Translation",
           ),
         ],
       ),

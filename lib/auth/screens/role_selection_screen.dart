@@ -5,7 +5,7 @@ import 'package:lawlink360/core/features/client/navigation/client_navigation_con
 import 'package:lawlink360/widgets/theme_toggle_button.dart';
 import 'package:lawlink360/auth/widgets/role_card.dart';
 import 'package:lawlink360/widgets/buttons/primary_button.dart';
-import 'package:lawlink360/core/features/lawyer/screens/lawyer_dashboard_screen.dart';
+import 'package:lawlink360/core/features/find%20lawyer/screens/lawyer_dashboard_screen.dart';
 
 class RoleSelectionScreen extends StatefulWidget {
   const RoleSelectionScreen({super.key});
