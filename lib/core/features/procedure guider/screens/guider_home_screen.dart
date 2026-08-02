@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LawHomeScreen extends StatelessWidget {
-  const LawHomeScreen({super.key});
+class GuiderHomeScreen extends StatelessWidget {
+  const GuiderHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class LawHomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                "Pakistan Laws",
+                "Procedure Guider",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

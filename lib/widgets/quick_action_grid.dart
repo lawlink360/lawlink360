@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lawlink360/core/features/laws/screens/law_home_screen.dart';
+import 'package:lawlink360/core/features/procedure%20guider/screens/guider_home_screen.dart';
 import 'quick_action_card.dart';
 import 'package:lawlink360/core/features/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
@@ -97,7 +97,7 @@ class QuickActionsGrid extends StatelessWidget {
  Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => const LawHomeScreen(),
+                  builder: (_) => const GuiderHomeScreen(),
                   ),
               );
             },

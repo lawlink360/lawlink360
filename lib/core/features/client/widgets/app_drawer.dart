@@ -2,13 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lawlink360/auth/screens/login_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
-import 'package:lawlink360/core/features/laws/screens/law_home_screen.dart';
+import 'package:lawlink360/core/features/procedure%20guider/screens/guider_home_screen.dart';
 import 'package:lawlink360/core/features/scanner/screens/smart_camera_screen.dart';
 import 'package:lawlink360/core/features/scanner/models/scanner_mode.dart';
 import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/application/screens/application_screen.dart';
-
+import 'package:lawlink360/core/features/profile/screens/profile_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -122,7 +122,7 @@ class AppDrawer extends StatelessWidget {
 
                   const Divider(),
 
-                   ListTile(
+                  ListTile(
                     leading: const Icon(Icons.assignment_outlined),
                     title: const Text("Application"),
                     onTap: () {
@@ -180,12 +180,12 @@ class AppDrawer extends StatelessWidget {
 
                   ListTile(
                     leading: const Icon(Icons.gavel_outlined),
-                    title: const Text("Pakistani Laws"),
+                    title: const Text("Procedure Guider"),
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LawHomeScreen(),
+                          builder: (context) => const GuiderHomeScreen(),
                         ),
                       );
                     },
@@ -196,7 +196,16 @@ class AppDrawer extends StatelessWidget {
                   ListTile(
                     leading: const Icon(Icons.person_outline_rounded),
                     title: const Text("My Profile"),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const ProfileScreen(),
+                        ),
+                      );
+                    },
                   ),
 
                   ListTile(

@@ -6,7 +6,7 @@ import 'package:lawlink360/core/features/translation/services/ocr_service.dart';
 import 'package:lawlink360/core/features/translation/services/translation_service.dart';
 import 'package:lawlink360/core/features/translation/services/document_service.dart';
 import 'package:lawlink360/core/features/translation/services/download_service.dart';
-import 'package:lawlink360/core/features/translation/services/share_service.dart';
+import 'package:lawlink360/core/services/share_service.dart';
 
 class TranslationScreen extends StatefulWidget {
   const TranslationScreen({super.key});

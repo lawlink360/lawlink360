@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lawlink360/core/features/client/screens/client_dashboard_screen.dart';
 import 'package:lawlink360/core/features/client/screens/find_lawyer_screen.dart';
 import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
-import 'package:lawlink360/core/features/application/screens/application_screen.dart';
+import 'package:lawlink360/core/features/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
 
 class ClientNavigationController extends StatefulWidget {
@@ -22,7 +22,7 @@ class _ClientNavigationControllerState
     ClientDashboardScreen(),
     FindLawyerScreen(),
     VerificationScreen(),
-    ApplicationScreen(),
+    ApplicationHomeScreen(),
     TranslationScreen(),
   ];
 
