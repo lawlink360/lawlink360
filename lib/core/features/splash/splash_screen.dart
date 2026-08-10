@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import '../../../auth/screens/login_screen.dart';
+import 'package:lawlink360/auth/screens/auth_wrapper.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -54,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen>
   Navigator.pushReplacement(
     context,
     MaterialPageRoute(
-      builder: (_) => LoginScreen(),
+      builder: (_) => const AuthWrapper(),
     ),
   );
 });

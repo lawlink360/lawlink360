@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:lawlink360/widgets/theme_toggle_button.dart';
+import 'package:lawlink360/widgets/buttons/theme_toggle_button.dart';
 import 'package:lawlink360/widgets/cards/glass_card.dart';
 import 'package:lawlink360/widgets/buttons/biometric_button.dart';
 
@@ -9,7 +9,6 @@ import 'package:lawlink360/auth/widgets/animated_text_field.dart';
 import 'package:lawlink360/auth/widgets/login_button.dart';
 import 'package:lawlink360/auth/widgets/social_login_button.dart';
 
-import 'package:lawlink360/auth/services/auth_service.dart';
 import 'package:lawlink360/core/services/dialog_service.dart';
 import 'package:lawlink360/core/services/biometric_service.dart';
 
@@ -18,24 +17,26 @@ import 'package:lawlink360/auth/screens/forgot_password_screen.dart';
 import 'package:lawlink360/auth/screens/role_selection_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lawlink360/auth/providers/auth_state_provider.dart';
+import 'package:lawlink360/auth/models/auth_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen>
+class _LoginScreenState extends ConsumerState<LoginScreen>
     with SingleTickerProviderStateMixin {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  final AuthService _authService = AuthService();
   final BiometricService _biometricService = BiometricService();
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
-  bool _isLoginLoading = false;
   bool _isGoogleLoading = false;
   bool _rememberMe = false;
   bool _showBiometricButton = false;
@@ -106,22 +107,51 @@ class _LoginScreenState extends State<LoginScreen>
 
     if (enabled != "true") return;
 
+    // Firebase session must exist before biometric login
+    // can be used as a local authentication step.
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+
+    debugPrint("AUTO BIOMETRIC: Firebase user = ${firebaseUser?.uid}");
+
+    if (firebaseUser == null) {
+      return;
+    }
+
     await Future.delayed(const Duration(milliseconds: 700));
 
     if (!mounted) return;
 
-    biometricLogin();
+    await biometricLogin();
   }
 
   Future<void> login() async {
     try {
-      setState(() => _isLoginLoading = true);
+      await ref
+          .read(authStateProvider.notifier)
+          .login(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
 
-      await _authService.signIn(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+      if (!mounted) return;
 
+      // IMPORTANT:
+      // AuthNotifier catches Firebase errors internally.
+      // Therefore we must check the authentication state here.
+      final authState = ref.read(authStateProvider);
+
+      if (authState.status != AuthStatus.authenticated) {
+        await DialogService.showError(
+          context: context,
+          title: "Login Failed",
+          message: _getFriendlyErrorMessage(
+            authState.errorMessage ?? "Login failed",
+          ),
+        );
+        return;
+      }
+
+      // Firebase login was successful.
       final prefs = await SharedPreferences.getInstance();
 
       await prefs.setBool('remember_me', _rememberMe);
@@ -132,6 +162,7 @@ class _LoginScreenState extends State<LoginScreen>
         await prefs.remove('saved_email');
       }
 
+      // Ask for biometric ONLY after successful Firebase login.
       final biometricEnabled = await _secureStorage.read(
         key: "biometric_enabled",
       );
@@ -142,22 +173,13 @@ class _LoginScreenState extends State<LoginScreen>
 
       if (!mounted) return;
 
-      setState(() => _isLoginLoading = false);
-
-      if (_rememberMe) {
-        await _askEnableBiometric();
-      }
-
-      if (!mounted) return;
-
+      // Go to Role Selection ONLY after successful authentication.
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
       );
     } catch (e) {
       if (!mounted) return;
-
-      setState(() => _isLoginLoading = false);
 
       await DialogService.showError(
         context: context,
@@ -171,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen>
     try {
       setState(() => _isGoogleLoading = true);
 
-      await _authService.signInWithGoogle();
+      await ref.read(authStateProvider.notifier).signInWithGoogle();
 
       if (!mounted) return;
 
@@ -213,23 +235,58 @@ class _LoginScreenState extends State<LoginScreen>
 
     if (!mounted) return;
 
-    if (authenticated) {
-      await DialogService.showSuccess(
-        context: context,
-        title: "Authentication Successful",
-        message: "Welcome back!",
-      );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
-      );
-    } else {
+    if (!authenticated) {
       await DialogService.showError(
         context: context,
         title: "Authentication Failed",
         message: "Fingerprint authentication was cancelled or failed.",
       );
+      return;
     }
+
+    // -----------------------------------------
+    // BIOMETRIC SUCCESSFUL
+    // -----------------------------------------
+
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+
+    debugPrint("BIOMETRIC: Firebase user = ${firebaseUser?.uid}");
+
+    // Firebase session still exists
+    if (firebaseUser != null) {
+      await DialogService.showSuccess(
+        context: context,
+        title: "Authentication Successful",
+        message: "Welcome back!",
+      );
+
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
+      );
+
+      return;
+    }
+
+    // -----------------------------------------
+    // BIOMETRIC SUCCESSFUL BUT FIREBASE NULL
+    // -----------------------------------------
+
+    await DialogService.showError(
+      context: context,
+      title: "Session Expired",
+      message:
+          "Your fingerprint was verified, but your Firebase login session has expired. Please log in with your email and password again.",
+    );
+
+    if (!mounted) return;
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
+    );
   }
 
   Future<void> _askEnableBiometric() async {
@@ -293,6 +350,15 @@ class _LoginScreenState extends State<LoginScreen>
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
+    final authState = ref.watch(authStateProvider);
+
+    ref.listen(authStateProvider, (previous, next) {
+      if (next.status == AuthStatus.error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.errorMessage ?? 'Login failed')),
+        );
+      }
+    });
 
     return Scaffold(
       backgroundColor: isDark ? Colors.black : Colors.grey[50],
@@ -378,8 +444,10 @@ class _LoginScreenState extends State<LoginScreen>
                                     const SizedBox(height: 12),
 
                                     LoginButton(
+                                      isLoading:
+                                          authState.status ==
+                                          AuthStatus.loading,
                                       onPressed: login,
-                                      isLoading: _isLoginLoading,
                                     ),
 
                                     const SizedBox(height: 16),

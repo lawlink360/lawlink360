@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:lawlink360/auth/services/auth_service.dart';
-import 'package:lawlink360/widgets/theme_toggle_button.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lawlink360/auth/providers/auth_state_provider.dart';
+import 'package:lawlink360/auth/models/auth_state.dart';
+import 'package:lawlink360/widgets/buttons/theme_toggle_button.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
+class ForgotPasswordScreen extends ConsumerStatefulWidget {
   const ForgotPasswordScreen({super.key});
 
   @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+  ConsumerState<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   final TextEditingController emailController = TextEditingController();
-  final AuthService _authService = AuthService();
-
-  bool isLoading = false;
 
   @override
   void dispose() {
@@ -24,6 +23,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final authState = ref.watch(authStateProvider);
     final isDark = theme.brightness == Brightness.dark;
     
     // Set colors based on theme
@@ -182,7 +182,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 width: double.infinity,
                                 height: 58,
                                 child: ElevatedButton(
-                                  onPressed: isLoading
+                                  onPressed: authState.status == AuthStatus.loading
                                       ? null
                                       : () async {
                                           if (emailController.text.trim().isEmpty) {
@@ -197,11 +197,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                             );
                                             return;
                                           }
-                                          setState(() {
-                                            isLoading = true;
-                                          });
                                           try {
-                                            await _authService.resetPassword(
+                                            await ref.read(authStateProvider.notifier).resetPassword(
                                               emailController.text.trim(),
                                             );
                                             if (!mounted) return;
@@ -238,11 +235,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                               SnackBar(content: Text(e.toString())),
                                             );
                                           }
-                                          if (mounted) {
-                                            setState(() {
-                                              isLoading = false;
-                                            });
-                                          }
                                         },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xFFD4AF37),
@@ -251,7 +243,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                       borderRadius: BorderRadius.circular(18),
                                     ),
                                   ),
-                                  child: isLoading
+                                  child: authState.status == AuthStatus.loading
                                       ? const Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [

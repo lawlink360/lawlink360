@@ -10,6 +10,13 @@ class AuthService {
   // Current logged-in user
   User? get currentUser => _auth.currentUser;
 
+  bool get isLoggedIn => _auth.currentUser != null;
+
+  // Auth state changes stream
+  Stream<User?> get authStateChanges {
+    return _auth.authStateChanges();
+  }
+
   // ==========================
   // Create Account
   // ==========================
@@ -54,45 +61,45 @@ class AuthService {
     );
   }
 
-Future<UserCredential?> signInWithGoogle() async {
-  try {
-    await _googleSignIn.initialize();
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      await _googleSignIn.initialize();
 
-    final GoogleSignInAccount googleUser =
-        await _googleSignIn.authenticate();
+      final GoogleSignInAccount googleUser =
+          await _googleSignIn.authenticate();
 
-    final GoogleSignInAuthentication googleAuth =
-        googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          googleUser.authentication;
 
-    final credential = GoogleAuthProvider.credential(
-      idToken: googleAuth.idToken,
-    );
+      final credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+      );
 
-    final userCredential =
-        await _auth.signInWithCredential(credential);
+      final userCredential =
+          await _auth.signInWithCredential(credential);
 
-    final user = userCredential.user!;
+      final user = userCredential.user!;
 
-    final doc =
-        _firestore.collection('users').doc(user.uid);
+      final doc =
+          _firestore.collection('users').doc(user.uid);
 
-    if (!(await doc.get()).exists) {
-      await doc.set({
-        'uid': user.uid,
-        'fullName': user.displayName ?? '',
-        'email': user.email ?? '',
-        'phone': user.phoneNumber ?? '',
-        'role': '',
-        'profileCompleted': false,
-        'createdAt': FieldValue.serverTimestamp(),
-      });
+      if (!(await doc.get()).exists) {
+        await doc.set({
+          'uid': user.uid,
+          'fullName': user.displayName ?? '',
+          'email': user.email ?? '',
+          'phone': user.phoneNumber ?? '',
+          'role': '',
+          'profileCompleted': false,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+      }
+
+      return userCredential;
+    } catch (e) {
+      throw Exception(e.toString());
     }
-
-    return userCredential;
-  } catch (e) {
-    throw Exception(e.toString());
   }
-}
 
   // ==========================
   // Forgot Password
@@ -108,5 +115,32 @@ Future<UserCredential?> signInWithGoogle() async {
   // ==========================
   Future<void> signOut() async {
     await _auth.signOut();
+  }
+
+  // ==========================
+  // Save Role
+  // ==========================
+  Future<void> saveRole(String role) async {
+    final user = _auth.currentUser;
+
+    if (user == null) {
+      throw Exception("User not logged in.");
+    }
+
+    await _firestore.collection('users').doc(user.uid).update({
+      'role': role,
+    });
+  }
+
+  // ==========================
+  // Get User Role
+  // ==========================
+  Future<String?> getUserRole(String uid) async {
+    final doc =
+        await _firestore.collection('users').doc(uid).get();
+
+    if (!doc.exists) return null;
+
+    return doc.data()?['role'];
   }
 }

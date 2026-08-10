@@ -1,41 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/theme/app_theme.dart';
 import 'package:lawlink360/core/features/splash/splash_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:lawlink360/core/providers/theme_provider.dart';
 import 'package:lawlink360/core/features/scanner/services/camera_service.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-await CameraService.initialize();
+  await CameraService.initialize();
 
-await Firebase.initializeApp();
+  await Firebase.initializeApp();
 
-runApp(
-  ChangeNotifierProvider(
-    create: (_) => ThemeProvider(),
-    child: const MyApp(),
-  ),
-);
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LawLink360',
-theme: AppTheme.lightTheme,
-darkTheme: AppTheme.darkTheme,
 
-themeMode: context.watch<ThemeProvider>().themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
 
-home: const SplashScreen(),
+      themeMode: ref.watch(themeProvider),
+
+      home: const SplashScreen(),
     );
   }
 }

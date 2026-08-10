@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lawlink360/widgets/theme_toggle_button.dart';
+import 'package:lawlink360/widgets/buttons/theme_toggle_button.dart';
 import 'package:lawlink360/auth/widgets/signup_header.dart';
 import 'package:lawlink360/widgets/cards/glass_card.dart';
 import 'package:lawlink360/auth/widgets/animated_text_field.dart';
@@ -7,20 +7,21 @@ import 'package:lawlink360/auth/widgets/social_login_button.dart';
 import 'package:lawlink360/auth/widgets/create_account_button.dart';
 import 'package:lawlink360/auth/widgets/terms_checkbox.dart';
 import 'package:lawlink360/auth/screens/role_selection_screen.dart';
-import 'package:lawlink360/auth/services/auth_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lawlink360/auth/providers/auth_state_provider.dart';
+import 'package:lawlink360/auth/models/auth_state.dart';
 
-class CreateAccountScreen extends StatefulWidget {
+class CreateAccountScreen extends ConsumerStatefulWidget {
   const CreateAccountScreen({super.key});
 
   @override
-  State<CreateAccountScreen> createState() => _CreateAccountScreenState();
+  ConsumerState<CreateAccountScreen> createState() =>
+      _CreateAccountScreenState();
 }
 
-class _CreateAccountScreenState extends State<CreateAccountScreen>
+class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen>
     with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
-
-  final AuthService _authService = AuthService();
 
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -30,7 +31,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
       TextEditingController();
 
   bool agreeTerms = false;
-  bool isLoading = false;
 
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
@@ -73,14 +73,16 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    
+
     final textColor = isDark ? Colors.white : Colors.black;
     final subtitleColor = isDark ? Colors.white70 : Colors.black54;
     final backButtonColor = isDark ? Colors.white : Colors.black;
     final dividerColor = isDark ? Colors.white24 : Colors.black12;
-    final overlayColor = isDark 
-        ? Colors.black.withOpacity(0.45) 
+    final overlayColor = isDark
+        ? Colors.black.withOpacity(0.45)
         : Colors.white.withOpacity(0.3);
+
+    final authState = ref.watch(authStateProvider);
 
     return Scaffold(
       backgroundColor: isDark ? Colors.black : Colors.grey[50],
@@ -96,9 +98,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
             ),
           ),
           // Overlay
-          Positioned.fill(
-            child: Container(color: overlayColor),
-          ),
+          Positioned.fill(child: Container(color: overlayColor)),
           // Main Content - Scrollable
           SafeArea(
             child: SingleChildScrollView(
@@ -164,7 +164,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
                                   const SizedBox(height: 18),
                                   CreateAccountButton(
                                     onPressed: registerUser,
-                                    isLoading: isLoading,
+                                    isLoading:
+                                        authState.status == AuthStatus.loading,
                                   ),
                                   const SizedBox(height: 18),
                                   // OR Divider
@@ -177,11 +178,15 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                        ),
                                         child: Text(
                                           "OR",
                                           style: TextStyle(
-                                            color: isDark ? Colors.white54 : Colors.black54,
+                                            color: isDark
+                                                ? Colors.white54
+                                                : Colors.black54,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 13,
                                           ),
@@ -286,18 +291,28 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
       return;
     }
 
-    setState(() {
-      isLoading = true;
-    });
-
     try {
-      await _authService.signUp(
-        fullName: fullNameController.text.trim(),
-        email: emailController.text.trim(),
-        phone: phoneController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+      await ref
+          .read(authStateProvider.notifier)
+          .register(
+            fullName: fullNameController.text.trim(),
+            email: emailController.text.trim(),
+            phone: phoneController.text.trim(),
+            password: passwordController.text.trim(),
+          );
 
+      final authState = ref.read(authStateProvider);
+
+      if (authState.status == AuthStatus.error) {
+        if (!mounted) return;
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(authState.errorMessage ?? "Registration failed"),
+          ),
+        );
+        return;
+      }
       if (!mounted) return;
 
       showDialog(
@@ -358,12 +373,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen>
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(e.toString())));
-    } finally {
-      if (mounted) {
-        setState(() {
-          isLoading = false;
-        });
-      }
-    }
+    } finally {}
   }
 }

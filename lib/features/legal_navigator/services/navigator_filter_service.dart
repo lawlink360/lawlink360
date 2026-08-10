@@ -1,0 +1,5 @@
+class NavigatorFilterService {
+
+  const NavigatorFilterService();
+
+}

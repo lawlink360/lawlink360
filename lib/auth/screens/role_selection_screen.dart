@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:lawlink360/auth/services/auth_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lawlink360/auth/providers/auth_state_provider.dart';
 import 'package:lawlink360/auth/screens/login_screen.dart';
-import 'package:lawlink360/core/features/client/navigation/client_navigation_controller.dart';
-import 'package:lawlink360/widgets/theme_toggle_button.dart';
+import 'package:lawlink360/core/features/client_module/navigation/client_navigation_controller.dart';
+import 'package:lawlink360/widgets/buttons/theme_toggle_button.dart';
 import 'package:lawlink360/auth/widgets/role_card.dart';
 import 'package:lawlink360/widgets/buttons/primary_button.dart';
-import 'package:lawlink360/core/features/find%20lawyer/screens/lawyer_dashboard_screen.dart';
+import 'package:lawlink360/profile/providers/user_profile_provider.dart';
 
-class RoleSelectionScreen extends StatefulWidget {
+import 'package:lawlink360/core/features/lawyer_module/home/screens/lawyer_home_screen.dart';
+
+class RoleSelectionScreen extends ConsumerStatefulWidget {
   const RoleSelectionScreen({super.key});
 
   @override
-  State<RoleSelectionScreen> createState() => _RoleSelectionScreenState();
+  ConsumerState<RoleSelectionScreen> createState() =>
+      _RoleSelectionScreenState();
 }
 
-class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
+class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
   String? selectedRole;
 
   @override
@@ -126,49 +130,43 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                     text: "",
                     onPressed: selectedRole == null
                         ? null
-                        : () {
-                            if (selectedRole == "client") {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const ClientNavigationController(),
-                                ),
-                              );
-                            } else if (selectedRole == "lawyer") {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const LawyerDashboardScreen(),
+                        : () async {
+                            try {
+                              await ref
+                                  .read(userProfileProvider.notifier)
+                                  .updateRole(selectedRole!);
+
+                              if (!mounted) return;
+
+                              if (selectedRole == "client") {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        const ClientNavigationController(),
+                                  ),
+                                );
+                              } else if (selectedRole == "lawyer") {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => const LawyerHomeScreen(),
+                                  ),
+                                );
+                              }
+                            } catch (e) {
+                              if (!mounted) return;
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("Unable to save your role: $e"),
                                 ),
                               );
                             }
                           },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/logos/lawlink360_transparent_logo.png",
-                          height: 34,
-                        ),
-                        const SizedBox(width: 14),
-                        Text(
-                          "CONTINUE",
-                          style: TextStyle(
-                            color: isDark ? Colors.white : Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Icon(
-                          Icons.arrow_forward_rounded,
-                          color: isDark ? Colors.white : Colors.black,
-                        ),
-                      ],
-                    ),
                   ),
                   const SizedBox(height: 14),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -209,7 +207,7 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                       onPressed: () async {
-                        await AuthService().signOut();
+                        await ref.read(authStateProvider.notifier).logout();
 
                         if (!mounted) return;
 
