@@ -7,6 +7,11 @@ import 'package:lawlink360/core/features/lawyer_module/lawyer_messages/screens/l
 import 'package:lawlink360/core/features/lawyer_module/lawyer_settings/screens/lawyer_settings_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_help_support/screens/lawyer_help_support_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_drawer_dashboard/screens/lawyer_dashboard_screen.dart';
+import 'package:lawlink360/core/features/procedure_guide/screens/guider_home_screen.dart';
+import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_profile/screens/lawyer_profile_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/client_queries/screens/client_queries_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_documents/screens/lawyer_documents_screen.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lawlink360/auth/providers/auth_state_provider.dart';
@@ -119,6 +124,22 @@ class LawyerAppDrawer extends ConsumerWidget {
                       );
                     },
                   ),
+
+                  _DrawerItem(
+                    icon: Icons.question_answer_outlined,
+                    title: 'Client Queries',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const ClientQueriesScreen(),
+                        ),
+                      );
+                    },
+                  ),
+
                   _DrawerItem(
                     icon: Icons.people_outline,
                     title: 'My Clients',
@@ -159,6 +180,26 @@ class LawyerAppDrawer extends ConsumerWidget {
                   ),
 
                   _DrawerItem(
+                    icon: Icons.folder_copy_outlined,
+                    title: 'My Documents',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const MyDocumentsScreen(),
+                        ),
+                      );
+                    },
+                  ),
+
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    child: Divider(),
+                  ),
+
+                  _DrawerItem(
                     icon: Icons.edit_document,
                     title: 'Drafting',
                     onTap: () {
@@ -185,19 +226,32 @@ class LawyerAppDrawer extends ConsumerWidget {
                     },
                   ),
 
-                  ListTile(
-                    leading: const Icon(
-                      Icons.translate_rounded,
-                      color: Color(0xFFD4AF37),
-                    ),
-                    title: const Text('Translation'),
-                    onTap: () {
-                      Navigator.pop(context);
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    child: Divider(),
+                  ),
 
+                  ListTile(
+                    leading: const Icon(Icons.assignment_outlined),
+                    title: const Text("Application"),
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const TranslationScreen(),
+                          builder: (context) => const ApplicationHomeScreen(),
+                        ),
+                      );
+                    },
+                  ),
+
+                  ListTile(
+                    leading: const Icon(Icons.gavel_outlined),
+                    title: const Text("Procedure Guide"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GuiderHomeScreen(),
                         ),
                       );
                     },
@@ -221,6 +275,11 @@ class LawyerAppDrawer extends ConsumerWidget {
                     },
                   ),
 
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                    child: Divider(),
+                  ),
+
                   ListTile(
                     leading: const Icon(
                       Icons.document_scanner_outlined,
@@ -239,9 +298,42 @@ class LawyerAppDrawer extends ConsumerWidget {
                     },
                   ),
 
+                  ListTile(
+                    leading: const Icon(
+                      Icons.translate_rounded,
+                      color: Color(0xFFD4AF37),
+                    ),
+                    title: const Text('Translation'),
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const TranslationScreen(),
+                        ),
+                      );
+                    },
+                  ),
+
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     child: Divider(),
+                  ),
+
+                  _DrawerItem(
+                    icon: Icons.person_outline,
+                    title: 'My Profile',
+                    onTap: () {
+                      Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const LawyerProfileScreen(),
+                        ),
+                      );
+                    },
                   ),
 
                   _DrawerItem(

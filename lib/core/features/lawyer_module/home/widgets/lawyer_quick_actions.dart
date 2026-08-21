@@ -4,6 +4,10 @@ import 'package:lawlink360/widgets/cards/quick_action_card.dart';
 import 'package:lawlink360/core/features/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/procedure_guide/screens/guider_home_screen.dart';
+import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/digital_clerk/screens/digital_clerk_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_clients/screens/lawyer_clients_screen.dart';
 
 class LawyerQuickActions extends StatelessWidget {
   const LawyerQuickActions({super.key});
@@ -24,14 +28,24 @@ class LawyerQuickActions extends StatelessWidget {
             icon: Icons.people_alt_rounded,
             title: 'Clients',
             subtitle: 'Manage your clients',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const LawyerClientsScreen()),
+              );
+            },
           ),
 
           QuickActionCard(
             icon: Icons.assignment_ind_rounded,
             title: 'Digital Clerk',
             subtitle: 'Manage your legal work',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const DigitalClerkScreen()),
+              );
+            },
           ),
 
           QuickActionCard(
@@ -60,13 +74,11 @@ class LawyerQuickActions extends StatelessWidget {
             title: 'Verification Hub',
             subtitle: 'Verify legal services',
             onTap: () {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => const VerificationScreen(),
-    ),
-  );
-},
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const VerificationScreen()),
+              );
+            },
           ),
 
           QuickActionCard(
@@ -75,11 +87,9 @@ class LawyerQuickActions extends StatelessWidget {
             subtitle: 'Translate legal documents',
             onTap: () {
               Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (_) => const TranslationScreen(),
-  ),
-);
+                context,
+                MaterialPageRoute(builder: (_) => const TranslationScreen()),
+              );
             },
           ),
 
@@ -101,7 +111,26 @@ class LawyerQuickActions extends StatelessWidget {
             icon: Icons.description_rounded,
             title: 'Applications',
             subtitle: 'Prepare legal applications',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ApplicationHomeScreen(),
+                ),
+              );
+            },
+          ),
+
+          QuickActionCard(
+            icon: Icons.menu_book_rounded,
+            title: "Procedure Guider",
+            subtitle: "Legal process guidance",
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const GuiderHomeScreen()),
+              );
+            },
           ),
         ],
       ),

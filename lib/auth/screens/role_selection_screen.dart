@@ -8,7 +8,7 @@ import 'package:lawlink360/auth/widgets/role_card.dart';
 import 'package:lawlink360/widgets/buttons/primary_button.dart';
 import 'package:lawlink360/profile/providers/user_profile_provider.dart';
 
-import 'package:lawlink360/core/features/lawyer_module/home/screens/lawyer_home_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_onboarding/screens/lawyer_onboarding_welcome_screen.dart';
 
 class RoleSelectionScreen extends ConsumerStatefulWidget {
   const RoleSelectionScreen({super.key});
@@ -150,7 +150,8 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => const LawyerHomeScreen(),
+                                    builder: (_) =>
+                                        const LawyerOnboardingWelcomeScreen(),
                                   ),
                                 );
                               }

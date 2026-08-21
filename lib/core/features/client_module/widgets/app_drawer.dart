@@ -216,7 +216,7 @@ class AppDrawer extends StatelessWidget {
 
                   ListTile(
                     leading: const Icon(Icons.document_scanner_outlined),
-                    title: const Text("Doc Scanner"),
+                    title: const Text("Scanner"),
                     onTap: () {
                       Navigator.pop(context); // Close the drawer
 
@@ -233,7 +233,7 @@ class AppDrawer extends StatelessWidget {
 
                   ListTile(
                     leading: const Icon(Icons.gavel_outlined),
-                    title: const Text("Procedure Guider"),
+                    title: const Text("Procedure Guide"),
                     onTap: () {
                       Navigator.push(
                         context,

@@ -6,6 +6,7 @@ import 'package:lawlink360/core/theme/app_theme.dart';
 import 'package:lawlink360/core/features/splash/splash_screen.dart';
 import 'package:lawlink360/core/providers/theme_provider.dart';
 import 'package:lawlink360/core/features/scanner/services/camera_service.dart';
+import 'package:lawlink360/core/services/notification_service.dart';
 
 
 Future<void> main() async {
@@ -14,6 +15,10 @@ Future<void> main() async {
   await CameraService.initialize();
 
   await Firebase.initializeApp();
+
+  await NotificationService.instance.initialize();
+
+  await NotificationService.instance.requestPermission();
 
   runApp(
     const ProviderScope(
