@@ -8,6 +8,11 @@ import 'package:lawlink360/core/features/procedure_guide/screens/guider_home_scr
 import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/digital_clerk/screens/digital_clerk_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_clients/screens/lawyer_clients_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_drafting/screens/drafting_dashboard_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_law/navigation/law_navigation.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_judgments/navigation/judgment_navigation.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_law/screens/law_dashboard_screen.dart';
+import 'package:lawlink360/core/features/lawyer_module/lawyer_judgments/screens/judgment_home_screen.dart';
 
 class LawyerQuickActions extends StatelessWidget {
   const LawyerQuickActions({super.key});
@@ -52,21 +57,38 @@ class LawyerQuickActions extends StatelessWidget {
             icon: Icons.menu_book_rounded,
             title: 'Laws',
             subtitle: 'Access legal resources',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const LawDashboardScreen()),
+              );
+            },
           ),
 
           QuickActionCard(
             icon: Icons.edit_document,
             title: 'Drafting',
             subtitle: 'Prepare legal documents',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const DraftingDashboardScreen(),
+                ),
+              );
+            },
           ),
 
           QuickActionCard(
             icon: Icons.gavel_rounded,
             title: 'Judgments',
             subtitle: 'Browse legal judgments',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const JudgmentHomeScreen()),
+              );
+            },
           ),
 
           QuickActionCard(

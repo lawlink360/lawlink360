@@ -1,8 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../navigation/drafting_navigation.dart';
 
 import '../providers/draft_providers.dart';
+import 'create_draft_screen.dart';
+import 'my_drafts_screen.dart';
+import 'draft_preview_screen.dart';
 
 class DraftingDashboardScreen extends ConsumerWidget {
   const DraftingDashboardScreen({super.key});
@@ -21,10 +24,7 @@ class DraftingDashboardScreen extends ConsumerWidget {
         centerTitle: true,
         title: const Text(
           'Drafting',
-          style: TextStyle(
-            fontSize: 19,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
         ),
       ),
 
@@ -32,7 +32,7 @@ class DraftingDashboardScreen extends ConsumerWidget {
         backgroundColor: const Color(0xFF13294B),
         foregroundColor: Colors.white,
         onPressed: () {
-          // Create Draft will be connected here later.
+          DraftingNavigation.openCategories(context);
         },
         child: const Icon(Icons.add),
       ),
@@ -43,7 +43,6 @@ class DraftingDashboardScreen extends ConsumerWidget {
           // ====================================================
           // HEADER
           // ====================================================
-
           const Text(
             'Drafting Dashboard',
             style: TextStyle(
@@ -57,10 +56,7 @@ class DraftingDashboardScreen extends ConsumerWidget {
 
           const Text(
             'Create, manage and organize your legal drafts.',
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey,
-            ),
+            style: TextStyle(fontSize: 12, color: Colors.grey),
           ),
 
           const SizedBox(height: 20),
@@ -68,15 +64,19 @@ class DraftingDashboardScreen extends ConsumerWidget {
           // ====================================================
           // QUICK ACTIONS
           // ====================================================
-
           Row(
             children: [
               Expanded(
                 child: _ActionCard(
-                  icon: Icons.add_document,
+                  icon: Icons.note_add_outlined,
                   title: 'Create Draft',
                   onTap: () {
-                    // Connect Create Draft screen later.
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const CreateDraftScreen(),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -86,7 +86,10 @@ class DraftingDashboardScreen extends ConsumerWidget {
                   icon: Icons.folder_open_outlined,
                   title: 'My Drafts',
                   onTap: () {
-                    // Connect My Drafts screen later.
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const MyDraftsScreen()),
+                    );
                   },
                 ),
               ),
@@ -98,7 +101,6 @@ class DraftingDashboardScreen extends ConsumerWidget {
           // ====================================================
           // RECENT DRAFTS
           // ====================================================
-
           Row(
             children: [
               const Expanded(
@@ -128,15 +130,26 @@ class DraftingDashboardScreen extends ConsumerWidget {
           if (drafts.isEmpty)
             const _EmptyDraftState()
           else
-            ...drafts.take(5).map(
-              (draft) => _DraftCard(
-                title: draft.title,
-                category: draft.category,
-                clientName: draft.clientName,
-                status: draft.status,
-                updatedAt: draft.updatedAt,
-              ),
-            ),
+            ...drafts
+                .take(5)
+                .map(
+                  (draft) => _DraftCard(
+                    title: draft.title,
+                    category: draft.category,
+                    clientName: draft.clientName,
+                    status: draft.status,
+                    updatedAt: draft.updatedAt,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const DraftPreviewScreen(),
+                          settings: RouteSettings(arguments: draft.id),
+                        ),
+                      );
+                    },
+                  ),
+                ),
         ],
       ),
     );
@@ -170,9 +183,7 @@ class _ActionCard extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: const Color(0xFFE5E7EB),
-            ),
+            border: Border.all(color: const Color(0xFFE5E7EB)),
           ),
           child: Column(
             children: [
@@ -180,8 +191,7 @@ class _ActionCard extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFD4AF37)
-                      .withValues(alpha: 0.12),
+                  color: const Color(0xFFD4AF37).withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(
@@ -220,6 +230,7 @@ class _DraftCard extends StatelessWidget {
     required this.clientName,
     required this.status,
     required this.updatedAt,
+    required this.onTap,
   });
 
   final String title;
@@ -227,116 +238,113 @@ class _DraftCard extends StatelessWidget {
   final String? clientName;
   final String status;
   final DateTime updatedAt;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: const Color(0xFFE5E7EB),
-        ),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
       ),
-      child: Row(
-        children: [
-          Container(
-            width: 42,
-            height: 42,
-            decoration: BoxDecoration(
-              color: const Color(0xFF13294B)
-                  .withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(11),
-            ),
-            child: const Icon(
-              Icons.description_outlined,
-              color: Color(0xFF13294B),
-              size: 21,
-            ),
-          ),
-
-          const SizedBox(width: 11),
-
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF13294B),
-                  ),
-                ),
-
-                const SizedBox(height: 4),
-
-                Text(
-                  clientName ?? category,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 11,
-                    color: Colors.grey,
-                  ),
-                ),
-
-                const SizedBox(height: 5),
-
-                Text(
-                  category,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFFD4AF37),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          const SizedBox(width: 8),
-
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Row(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 4,
-                ),
+                width: 42,
+                height: 42,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF13294B)
-                      .withValues(alpha: 0.08),
-                  borderRadius: BorderRadius.circular(10),
+                  color: const Color(0xFF13294B).withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(11),
                 ),
-                child: Text(
-                  status,
-                  style: const TextStyle(
-                    fontSize: 9,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF13294B),
-                  ),
+                child: const Icon(
+                  Icons.description_outlined,
+                  color: Color(0xFF13294B),
+                  size: 21,
                 ),
               ),
 
-              const SizedBox(height: 6),
+              const SizedBox(width: 11),
 
-              Text(
-                _formatDate(updatedAt),
-                style: const TextStyle(
-                  fontSize: 9,
-                  color: Colors.grey,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF13294B),
+                      ),
+                    ),
+
+                    const SizedBox(height: 4),
+
+                    Text(
+                      clientName ?? category,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 11, color: Colors.grey),
+                    ),
+
+                    const SizedBox(height: 5),
+
+                    Text(
+                      category,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: Color(0xFFD4AF37),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+
+              const SizedBox(width: 8),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF13294B).withValues(alpha: 0.08),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      status,
+                      style: const TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF13294B),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 6),
+
+                  Text(
+                    _formatDate(updatedAt),
+                    style: const TextStyle(fontSize: 9, color: Colors.grey),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -362,17 +370,11 @@ class _EmptyDraftState extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: const Color(0xFFE5E7EB),
-        ),
+        border: Border.all(color: const Color(0xFFE5E7EB)),
       ),
       child: const Column(
         children: [
-          Icon(
-            Icons.description_outlined,
-            size: 42,
-            color: Colors.grey,
-          ),
+          Icon(Icons.description_outlined, size: 42, color: Colors.grey),
           SizedBox(height: 10),
           Text(
             'No drafts yet',
@@ -385,10 +387,7 @@ class _EmptyDraftState extends StatelessWidget {
           SizedBox(height: 4),
           Text(
             'Create your first legal draft.',
-            style: TextStyle(
-              fontSize: 11,
-              color: Colors.grey,
-            ),
+            style: TextStyle(fontSize: 11, color: Colors.grey),
           ),
         ],
       ),

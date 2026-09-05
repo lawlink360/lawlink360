@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/draft_model.dart';
 import '../providers/draft_providers.dart';
+import '../services/drafting_service.dart';
 
 class CreateDraftScreen extends ConsumerStatefulWidget {
   const CreateDraftScreen({super.key});
@@ -38,35 +38,31 @@ class _CreateDraftScreenState
   }
 
   void _saveDraft() {
-    if (_titleController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter draft title'),
-        ),
-      );
-      return;
-    }
-
-    final now = DateTime.now();
-
-    final draft = DraftModel(
-      id: 'draft_${now.millisecondsSinceEpoch}',
-      title: _titleController.text.trim(),
-      category: _category,
-      clientId: null,
-      clientName: null,
-      caseId: null,
-      caseTitle: null,
-      content: _contentController.text.trim(),
-      status: 'Draft',
-      createdAt: now,
-      updatedAt: now,
+  if (_titleController.text.trim().isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Please enter draft title'),
+      ),
     );
-
-    ref.read(draftProvider.notifier).addDraft(draft);
-
-    Navigator.pop(context);
+    return;
   }
+
+  final draft = DraftingService.createDraft(
+    title: _titleController.text.trim(),
+    category: _category,
+    content: _contentController.text.trim(),
+  );
+
+  ref.read(draftProvider.notifier).addDraft(draft);
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('Draft saved successfully'),
+    ),
+  );
+
+  Navigator.pop(context);
+}
 
   @override
   Widget build(BuildContext context) {
