@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class AppointmentFilterTabs extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int>? onChanged;
@@ -12,32 +16,53 @@ class AppointmentFilterTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     const tabs = [
-      "All",
-      "Today",
-      "Upcoming",
-      "Completed",
-      "Cancelled",
+      'All',
+      'Today',
+      'Upcoming',
+      'Completed',
+      'Cancelled',
     ];
 
     return SizedBox(
-      height: 42,
+      height: 44,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 1),
         itemCount: tabs.length,
-        separatorBuilder: (_, _) => const SizedBox(width: 8),
+        separatorBuilder: (_, _) =>
+            const SizedBox(width: AppSpacing.xs),
         itemBuilder: (context, index) {
           final selected = selectedIndex == index;
 
           return ChoiceChip(
             label: Text(tabs[index]),
             selected: selected,
-            selectedColor: const Color(0xFF0F172A),
-            labelStyle: TextStyle(
-              color: selected ? Colors.white : Colors.black87,
-              fontWeight: FontWeight.w600,
-            ),
             onSelected: (_) => onChanged?.call(index),
+            showCheckmark: false,
+            side: BorderSide(
+              color: selected
+                  ? colorScheme.primary
+                  : colorScheme.outlineVariant.withValues(alpha: 0.7),
+            ),
+            backgroundColor: colorScheme.surface,
+            selectedColor: colorScheme.primary,
+            labelStyle: AppTextStyles.bodySmall.copyWith(
+              color: selected
+                  ? colorScheme.onPrimary
+                  : colorScheme.onSurface.withValues(alpha: 0.78),
+              fontWeight: FontWeight.w700,
+            ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.sm,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppRadius.pill),
+            ),
+            elevation: 0,
           );
         },
       ),
