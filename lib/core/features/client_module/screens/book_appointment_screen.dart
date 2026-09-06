@@ -1,4 +1,9 @@
+
 import 'package:flutter/material.dart';
+
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 import '../widgets/book_lawyer_profile_header.dart';
 import '../widgets/book_consultation_type.dart';
@@ -13,46 +18,42 @@ class BookAppointmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF5F7FB),
-
+      backgroundColor: AppColors.background,
       appBar: AppBar(
+        backgroundColor: AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
-        backgroundColor: Colors.white,
-        title: const Text(
-          "Book Appointment",
-          style: TextStyle(
-            color: Color(0xff0D1B2A),
-            fontWeight: FontWeight.bold,
+        scrolledUnderElevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Book Appointment',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.w700,
           ),
         ),
-        centerTitle: true,
       ),
-
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(20),
-children: const [
-
-  LawyerProfileHeader(),
-
-  SizedBox(height: 20),
-
-  BookConsultationType(),
-
-  SizedBox(height: 20),
-
-  BookDateCard(),
-
-  SizedBox(height: 20),
-
-  BookTimeSlot(),
-
-  SizedBox(height: 20),
-
-  BookSummaryCard(),
-
-  SizedBox(height: 100),
-],
+          padding: const EdgeInsets.fromLTRB(
+            AppSpacing.lg,
+            AppSpacing.lg,
+            AppSpacing.lg,
+            AppSpacing.xl,
+          ),
+          physics: const BouncingScrollPhysics(),
+          children: const [
+            LawyerProfileHeader(),
+            SizedBox(height: AppSpacing.lg),
+            BookConsultationType(),
+            SizedBox(height: AppSpacing.lg),
+            BookDateCard(),
+            SizedBox(height: AppSpacing.lg),
+            BookTimeSlot(),
+            SizedBox(height: AppSpacing.lg),
+            BookSummaryCard(),
+            SizedBox(height: AppSpacing.xxl),
+          ],
         ),
       ),
       bottomNavigationBar: const BookPaymentCard(),

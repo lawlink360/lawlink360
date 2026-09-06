@@ -1,4 +1,8 @@
+
 import 'package:flutter/material.dart';
+
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
 
 import '../widgets/chat_header.dart';
 import '../widgets/chat_secure_chat_card.dart';
@@ -15,47 +19,37 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF7F8FC),
-
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Column(
           children: [
-
             const ChatHeader(),
-
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg,
+                  AppSpacing.lg,
+                  AppSpacing.lg,
+                  AppSpacing.sm,
+                ),
+                physics: const BouncingScrollPhysics(),
                 children: const [
-
                   ChatSecureChatCard(),
-
-                  SizedBox(height: 20),
-
+                  SizedBox(height: AppSpacing.lg),
                   ChatDateDivider(),
-
-                  SizedBox(height: 20),
-
+                  SizedBox(height: AppSpacing.lg),
                   ChatLawyerMessage(),
-
                   ChatClientMessage(),
-
                   ChatLawyerMessage(),
-
                   ChatClientMessage(),
-
                   ChatDocumentMessage(),
-
                   ChatClientMessage(),
-
-                  SizedBox(height: 20),
+                  SizedBox(height: AppSpacing.md),
                 ],
               ),
             ),
-
-            ChatQuickActionBar(),
-
-            ChatMessageInputBar(),
+            const ChatQuickActionBar(),
+            const ChatMessageInputBar(),
           ],
         ),
       ),
