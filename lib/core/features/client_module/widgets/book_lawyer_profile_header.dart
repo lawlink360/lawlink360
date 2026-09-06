@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class LawyerProfileHeader extends StatelessWidget {
   const LawyerProfileHeader({super.key});
 
@@ -7,54 +12,72 @@ class LawyerProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 165,
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
         gradient: const LinearGradient(
           colors: [
-            Color(0xff0D1B2A),
-            Color(0xff1B263B),
+            AppColors.primary,
+            Color(0xFF1B263B),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.primary.withValues(alpha: 0.16),
+            blurRadius: 16,
+            offset: const Offset(0, 7),
+          ),
+        ],
       ),
-
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Stack(
             children: [
-
               Container(
                 width: 88,
                 height: 88,
                 decoration: BoxDecoration(
+                  shape: BoxShape.circle,
                   border: Border.all(
-                    color: const Color(0xffD4AF37),
+                    color: AppColors.accent,
                     width: 2,
                   ),
-                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.accent.withValues(alpha: 0.18),
+                      blurRadius: 10,
+                      spreadRadius: 1,
+                    ),
+                  ],
                 ),
                 child: const CircleAvatar(
                   backgroundColor: Colors.white,
                   child: Icon(
-                    Icons.person,
+                    Icons.person_rounded,
                     size: 45,
-                    color: Color(0xff0D1B2A),
+                    color: AppColors.primary,
                   ),
                 ),
               ),
-
-              const Positioned(
+              Positioned(
                 bottom: 2,
                 right: 2,
-                child: CircleAvatar(
-                  radius: 12,
-                  backgroundColor: Colors.green,
-                  child: Icon(
-                    Icons.check,
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  decoration: BoxDecoration(
+                    color: AppColors.success,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: AppColors.primary,
+                      width: 2,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.check_rounded,
                     size: 14,
                     color: Colors.white,
                   ),
@@ -62,102 +85,89 @@ class LawyerProfileHeader extends StatelessWidget {
               ),
             ],
           ),
-
-          const SizedBox(width: 18),
-
+          const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
-                const Text(
-                  "Adv. Ahmed Khan",
-                  style: TextStyle(
+                Text(
+                  'Adv. Ahmed Khan',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.title.copyWith(
                     color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-
-                const SizedBox(height: 6),
-
-                const Text(
-                  "Criminal Lawyer",
-                  style: TextStyle(
-                    color: Color(0xffD4AF37),
-                    fontSize: 15,
+                const SizedBox(height: AppSpacing.xs),
+                Text(
+                  'Criminal Lawyer',
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: AppColors.accent,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-
-                const SizedBox(height: 10),
-
+                const SizedBox(height: AppSpacing.sm),
                 Row(
-                  children: const [
-
-                    Icon(
-                      Icons.star,
-                      color: Color(0xffD4AF37),
+                  children: [
+                    const Icon(
+                      Icons.star_rounded,
+                      color: AppColors.accent,
                       size: 18,
                     ),
-
-                    SizedBox(width: 4),
-
+                    const SizedBox(width: AppSpacing.xs),
                     Text(
-                      "4.9 (124 Reviews)",
-                      style: TextStyle(
+                      '4.9 (124 Reviews)',
+                      style: AppTextStyles.bodySmall.copyWith(
                         color: Colors.white,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
                 ),
-
-                const SizedBox(height: 10),
-
+                const SizedBox(height: AppSpacing.sm),
                 Row(
-                  children: const [
-
-                    Icon(
+                  children: [
+                    const Icon(
                       Icons.location_on_outlined,
                       color: Colors.white70,
                       size: 18,
                     ),
-
-                    SizedBox(width: 5),
-
+                    const SizedBox(width: AppSpacing.xs),
                     Expanded(
                       child: Text(
-                        "Islamabad, Pakistan",
-                        style: TextStyle(
+                        'Islamabad, Pakistan',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.caption.copyWith(
                           color: Colors.white70,
                         ),
                       ),
                     ),
                   ],
                 ),
-
-                const SizedBox(height: 12),
-
+                const SizedBox(height: AppSpacing.sm),
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 7,
+                    horizontal: AppSpacing.sm,
+                    vertical: AppSpacing.xs,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha:.12),
-                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.white.withValues(alpha: 0.10),
+                    borderRadius: BorderRadius.circular(AppRadius.pill),
                     border: Border.all(
-                      color: Colors.white24,
+                      color: Colors.white.withValues(alpha: 0.18),
                     ),
                   ),
-                  child: const Text(
-                    "10+ Years Experience",
-                    style: TextStyle(
+                  child: Text(
+                    '10+ Years Experience',
+                    style: AppTextStyles.caption.copyWith(
                       color: Colors.white,
-                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
