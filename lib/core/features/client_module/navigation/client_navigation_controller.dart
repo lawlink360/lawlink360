@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/screens/client_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/screens/find_lawyer_screen.dart';
-import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
-import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
+import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
 
 class ClientNavigationController extends StatefulWidget {
   const ClientNavigationController({super.key});
@@ -28,47 +29,81 @@ class _ClientNavigationControllerState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
+    final colorScheme = Theme.of(context).colorScheme;
 
+    return Scaffold(
+      body: IndexedStack(
+        index: currentIndex,
+        children: screens,
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: currentIndex,
-
         onDestinationSelected: (index) {
           setState(() {
             currentIndex = index;
           });
         },
-
-        destinations: const [
+        height: 80,
+        backgroundColor: colorScheme.surface,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        indicatorColor: AppColors.accent.withValues(alpha: 0.16),
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: "Home",
+            icon: Icon(
+              Icons.home_outlined,
+              color: colorScheme.onSurfaceVariant,
+            ),
+            selectedIcon: const Icon(
+              Icons.home_rounded,
+              color: AppColors.accent,
+            ),
+            label: 'Home',
           ),
-
           NavigationDestination(
-            icon: Icon(Icons.gavel_outlined),
-            selectedIcon: Icon(Icons.gavel),
-            label: "Lawyer",
+            icon: Icon(
+              Icons.gavel_outlined,
+              color: colorScheme.onSurfaceVariant,
+            ),
+            selectedIcon: const Icon(
+              Icons.gavel_rounded,
+              color: AppColors.accent,
+            ),
+            label: 'Lawyer',
           ),
-
           NavigationDestination(
-            icon: Icon(Icons.verified_outlined),
-            selectedIcon: Icon(Icons.verified),
-            label: "Verification",
+            icon: Icon(
+              Icons.verified_outlined,
+              color: colorScheme.onSurfaceVariant,
+            ),
+            selectedIcon: const Icon(
+              Icons.verified_rounded,
+              color: AppColors.accent,
+            ),
+            label: 'Verification',
           ),
-
           NavigationDestination(
-            icon: Icon(Icons.assignment_outlined),
-            selectedIcon: Icon(Icons.assignment),
-            label: "Application",
+            icon: Icon(
+              Icons.assignment_outlined,
+              color: colorScheme.onSurfaceVariant,
+            ),
+            selectedIcon: const Icon(
+              Icons.assignment_rounded,
+              color: AppColors.accent,
+            ),
+            label: 'Application',
           ),
-
           NavigationDestination(
-            icon: Icon(Icons.translate_outlined),
-            selectedIcon: Icon(Icons.translate),
-            label: "Translation",
+            icon: Icon(
+              Icons.translate_outlined,
+              color: colorScheme.onSurfaceVariant,
+            ),
+            selectedIcon: const Icon(
+              Icons.translate_rounded,
+              color: AppColors.accent,
+            ),
+            label: 'Translation',
           ),
         ],
       ),
