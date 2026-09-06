@@ -29,7 +29,7 @@ class SubCategoryCard extends StatelessWidget {
               CircleAvatar(
                 radius: 26,
                 backgroundColor:
-                    subCategory.color.withOpacity(0.12),
+                    subCategory.color.withValues(alpha:0.12),
                 child: Icon(
                   subCategory.icon,
                   color: subCategory.color,

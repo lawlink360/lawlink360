@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : resource_count_badge.dart
-/// Purpose : Displays the number of related resources.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 
 class ResourceCountBadge extends StatelessWidget {
@@ -23,7 +16,7 @@ class ResourceCountBadge extends StatelessWidget {
         vertical: 4,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withOpacity(0.1),
+        color: Theme.of(context).primaryColor.withValues(alpha:0.1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(

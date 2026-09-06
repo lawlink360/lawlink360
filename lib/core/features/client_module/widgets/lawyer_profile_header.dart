@@ -13,7 +13,7 @@ class LawyerProfileHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(.06),
+            color: Colors.black.withValues(alpha:.06),
             blurRadius: 18,
             offset: const Offset(0, 8),
           ),
@@ -60,7 +60,7 @@ class LawyerProfileHeader extends StatelessWidget {
               vertical: 8,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFFD4AF37).withOpacity(.12),
+              color: const Color(0xFFD4AF37).withValues(alpha:.12),
               borderRadius: BorderRadius.circular(30),
             ),
             child: const Row(

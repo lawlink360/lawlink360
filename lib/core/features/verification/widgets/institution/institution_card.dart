@@ -32,7 +32,7 @@ class InstitutionCard extends StatelessWidget {
               CircleAvatar(
                 radius: 24,
                 backgroundColor:
-                    institution.color.withOpacity(0.15),
+                    institution.color.withValues(alpha:0.15),
                 child: Icon(
                   institution.icon,
                   color: institution.color,

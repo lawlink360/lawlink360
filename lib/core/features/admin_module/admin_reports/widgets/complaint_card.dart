@@ -358,7 +358,7 @@ class _ComplaintActionMenu extends StatelessWidget {
                 Icons.delete_outline_rounded,
                 size: 19,
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10),
               Text('Delete'),
             ],
           ),

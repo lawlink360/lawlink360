@@ -27,7 +27,7 @@ class LawyerClientPostCard extends ConsumerWidget {
         borderRadius: BorderRadius.circular(22),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.045),
+            color: Colors.black.withValues(alpha:0.045),
             blurRadius: 14,
             offset: const Offset(0, 5),
           ),
@@ -219,7 +219,7 @@ class _PostCard extends StatelessWidget {
         color: const Color(0xFFFAFBFD),
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: Colors.black.withOpacity(0.045),
+          color: Colors.black.withValues(alpha:0.045),
         ),
       ),
       child: Column(
@@ -262,7 +262,7 @@ class _PostCard extends StatelessWidget {
                   vertical: 5,
                 ),
                 decoration: BoxDecoration(
-                  color: typeColor.withOpacity(0.10),
+                  color: typeColor.withValues(alpha:0.10),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(

@@ -8,7 +8,6 @@ import 'package:lawlink360/core/providers/theme_provider.dart';
 import 'package:lawlink360/core/features/scanner/services/camera_service.dart';
 import 'package:lawlink360/core/services/notification_service.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_drafting/navigation/drafting_navigation.dart';
-import 'package:lawlink360/core/features/admin_module/admin_auth/screens/admin_login_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

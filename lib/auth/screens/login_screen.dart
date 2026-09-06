@@ -376,8 +376,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           Positioned.fill(
             child: Container(
               color: isDark
-                  ? Colors.black.withOpacity(0.45)
-                  : Colors.white.withOpacity(0.3),
+                  ? Colors.black.withValues(alpha:0.45)
+                  : Colors.white.withValues(alpha:0.3),
             ),
           ),
           SafeArea(
@@ -520,7 +520,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                             "Forgot Password?",
                             style: TextStyle(
                               color: isDark
-                                  ? colors.onSurface.withOpacity(0.70)
+                                  ? colors.onSurface.withValues(alpha:0.70)
                                   : Colors.black87,
                             ),
                           ),

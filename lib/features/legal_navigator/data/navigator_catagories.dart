@@ -1,9 +1,4 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_categories.dart
-/// Purpose : Defines all Legal Navigator category titles.
-/// ------------------------------------------------------------
+
 
 class NavigatorCategories {
   static const String laws = 'Relevant Laws';

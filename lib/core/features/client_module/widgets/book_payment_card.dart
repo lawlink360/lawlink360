@@ -45,7 +45,6 @@ class BookPaymentCard extends StatelessWidget {
                   height: 52,
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      print("🟡🟡🟡 PAYMENT CONFIRM BUTTON PRESSED 🟡🟡🟡");
                       
                       // Navigate to Payment Screen
                       Navigator.push(

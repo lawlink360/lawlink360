@@ -58,7 +58,7 @@ class LawSearchBar extends StatelessWidget {
                 icon: Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color: gold.withOpacity(0.10),
+                    color: gold.withValues(alpha:0.10),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Icon(

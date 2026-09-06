@@ -69,7 +69,7 @@ class RecentLawCard extends StatelessWidget {
       width: 38,
       height: 38,
       decoration: BoxDecoration(
-        color: gold.withOpacity(0.11),
+        color: gold.withValues(alpha:0.11),
         borderRadius: BorderRadius.circular(10),
       ),
       child: const Icon(

@@ -15,7 +15,7 @@ class VoiceCallAvatar extends StatelessWidget {
           height: 260,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xFFD4AF37).withOpacity(0.08),
+            color: const Color(0xFFD4AF37).withValues(alpha:0.08),
           ),
         ),
 
@@ -25,7 +25,7 @@ class VoiceCallAvatar extends StatelessWidget {
           height: 210,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xFFD4AF37).withOpacity(0.15),
+            color: const Color(0xFFD4AF37).withValues(alpha:0.15),
           ),
         ),
 

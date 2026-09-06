@@ -42,10 +42,7 @@ class AdminUserFilterSheet extends StatelessWidget {
             children: [
               const Text(
                 'Filter Users',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
 
               const SizedBox(height: 8),
@@ -56,55 +53,49 @@ class AdminUserFilterSheet extends StatelessWidget {
 
               const Text(
                 'Status',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
 
               const SizedBox(height: 8),
 
-              RadioListTile<String?>(
-                value: null,
+              RadioGroup<String?>(
                 groupValue: selectedStatus,
                 onChanged: onStatusChanged,
-                title: const Text('All Users'),
-                contentPadding: EdgeInsets.zero,
-              ),
+                child: Column(
+                  children: [
+                    RadioListTile<String?>(
+                      value: null,
+                      title: const Text('All Users'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
 
-              RadioListTile<String?>(
-                value: 'active',
-                groupValue: selectedStatus,
-                onChanged: onStatusChanged,
-                title: const Text('Active'),
-                contentPadding: EdgeInsets.zero,
-              ),
+                    RadioListTile<String?>(
+                      value: 'active',
+                      title: const Text('Active'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
 
-              RadioListTile<String?>(
-                value: 'inactive',
-                groupValue: selectedStatus,
-                onChanged: onStatusChanged,
-                title: const Text('Inactive'),
-                contentPadding: EdgeInsets.zero,
-              ),
+                    RadioListTile<String?>(
+                      value: 'inactive',
+                      title: const Text('Inactive'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
 
-              RadioListTile<String?>(
-                value: 'suspended',
-                groupValue: selectedStatus,
-                onChanged: onStatusChanged,
-                title: const Text('Suspended'),
-                contentPadding: EdgeInsets.zero,
+                    RadioListTile<String?>(
+                      value: 'suspended',
+                      title: const Text('Suspended'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
               ),
-
               const SizedBox(height: 12),
 
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: onClear,
-                  child: const Text(
-                    'Clear Filters',
-                  ),
+                  child: const Text('Clear Filters'),
                 ),
               ),
 

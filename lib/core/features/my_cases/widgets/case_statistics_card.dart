@@ -31,7 +31,7 @@ class CaseStatisticsCards extends StatelessWidget {
           child: Column(
             children: [
               CircleAvatar(
-                backgroundColor: color.withOpacity(.12),
+                backgroundColor: color.withValues(alpha:.12),
                 child: Icon(
                   icon,
                   color: color,

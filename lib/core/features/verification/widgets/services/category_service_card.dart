@@ -35,7 +35,7 @@ class CategoryServiceCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 24,
-                    backgroundColor: const Color(0xFFD4AF37).withOpacity(0.15),
+                    backgroundColor: const Color(0xFFD4AF37).withValues(alpha:0.15),
                     child: const Icon(
                       Icons.verified_user_rounded,
                       color: Color(0xFFD4AF37),

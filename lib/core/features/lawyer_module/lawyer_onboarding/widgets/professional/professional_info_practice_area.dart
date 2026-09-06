@@ -45,7 +45,7 @@ class ProfessionalInfoPracticeArea extends ConsumerWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha:0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -98,7 +98,7 @@ class ProfessionalInfoPracticeArea extends ConsumerWidget {
 
                   notifier.updatePracticeAreas(updatedAreas);
                 },
-                selectedColor: const Color(0xFFD4AF37).withOpacity(0.20),
+                selectedColor: const Color(0xFFD4AF37).withValues(alpha:0.20),
                 checkmarkColor: const Color(0xFF0D1B2A),
                 labelStyle: TextStyle(
                   color: isSelected

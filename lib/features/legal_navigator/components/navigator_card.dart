@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_card.dart
-/// Purpose : Card containing all Legal Navigator resources.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 
 import '../models/navigator_item_model.dart';
@@ -32,7 +25,7 @@ class NavigatorCard extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: items.length,
-        separatorBuilder: (_, __) => const SectionDivider(),
+        separatorBuilder: (_, _) => const SectionDivider(),
         itemBuilder: (context, index) {
           final item = items[index];
 

@@ -46,7 +46,7 @@ class RecentServices extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: recentServices.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            separatorBuilder: (_, _) => const SizedBox(height: 12),
             itemBuilder: (context, index) {
               final service = recentServices[index];
 
@@ -60,7 +60,7 @@ class RecentServices extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha:0.05),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -71,7 +71,7 @@ class RecentServices extends StatelessWidget {
                     CircleAvatar(
                       radius: 24,
                       backgroundColor:
-                          (service['color'] as Color).withOpacity(0.12),
+                          (service['color'] as Color).withValues(alpha:0.12),
                       child: Icon(
                         service['icon'] as IconData,
                         color: service['color'] as Color,

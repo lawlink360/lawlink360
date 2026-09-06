@@ -33,7 +33,7 @@ class ScannerFeatureCard extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFD4AF37).withOpacity(.30),
+                    color: const Color(0xFFD4AF37).withValues(alpha:.30),
                     blurRadius: 12,
                     offset: const Offset(0, 5),
                   ),

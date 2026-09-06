@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_tile.dart
-/// Purpose : Individual clickable resource tile.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 
 import '../models/navigator_item_model.dart';

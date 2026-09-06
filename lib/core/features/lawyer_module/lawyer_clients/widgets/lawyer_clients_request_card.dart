@@ -36,7 +36,7 @@ class LawyerClientsRequestCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha:0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -59,7 +59,7 @@ class LawyerClientsRequestCard extends StatelessWidget {
                   color: const Color(0xFFF5F7FB),
                   border: Border.all(
                     color:
-                        const Color(0xFFD4AF37).withOpacity(0.35),
+                        const Color(0xFFD4AF37).withValues(alpha:0.35),
                   ),
                 ),
                 child: ClipOval(

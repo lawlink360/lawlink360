@@ -12,7 +12,6 @@ class BasicInfoGenderSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const gold = Color(0xFFD4AF37);
     const navy = Color(0xFF13294B);
 
     return Column(
@@ -77,7 +76,7 @@ class _GenderOption extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: selected ? gold.withOpacity(0.12) : Colors.white,
+          color: selected ? gold.withValues(alpha:0.12) : Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: selected ? gold : Colors.transparent,

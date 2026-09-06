@@ -201,7 +201,7 @@ class ProfileHeader extends StatelessWidget {
         vertical: 10,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(.08),
+        color: Colors.white.withValues(alpha:.08),
         borderRadius: BorderRadius.circular(30),
         border: Border.all(
           color: Colors.white24,

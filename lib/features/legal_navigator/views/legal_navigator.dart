@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : legal_navigator.dart
-/// Purpose : Master widget for displaying related legal resources.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 
 import '../components/empty_widget.dart';

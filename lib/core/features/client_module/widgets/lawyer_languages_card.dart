@@ -36,7 +36,7 @@ class LawyerLanguagesCard extends StatelessWidget {
             runSpacing: 10,
             children: languages.map((e) {
               return Chip(
-                backgroundColor: const Color(0xFFD4AF37).withOpacity(.15),
+                backgroundColor: const Color(0xFFD4AF37).withValues(alpha:.15),
                 label: Text(e),
               );
             }).toList(),

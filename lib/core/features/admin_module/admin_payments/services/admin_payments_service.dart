@@ -7,23 +7,21 @@ import '../models/transaction_model.dart';
 class AdminPaymentsService {
   AdminPaymentsService._();
 
-  static final AdminPaymentsService instance =
-      AdminPaymentsService._();
+  static final AdminPaymentsService instance = AdminPaymentsService._();
 
   List<AdminPaymentModel> _payments = List<AdminPaymentModel>.from(
     AdminPaymentsMockData.payments,
   );
 
-  List<CommissionModel> _commissions = List<CommissionModel>.from(
+  final List<CommissionModel> _commissions = List<CommissionModel>.from(
     AdminPaymentsMockData.commissions,
   );
 
-  List<RefundModel> _refunds = List<RefundModel>.from(
+  final List<RefundModel> _refunds = List<RefundModel>.from(
     AdminPaymentsMockData.refunds,
   );
 
-  List<TransactionModel> _transactions =
-      List<TransactionModel>.from(
+  final List<TransactionModel> _transactions = List<TransactionModel>.from(
     AdminPaymentsMockData.transactions,
   );
 
@@ -39,9 +37,7 @@ class AdminPaymentsService {
   Future<List<AdminPaymentModel>> refreshPayments() async {
     await Future<void>.delayed(const Duration(milliseconds: 200));
 
-    _payments = List<AdminPaymentModel>.from(
-      AdminPaymentsMockData.payments,
-    );
+    _payments = List<AdminPaymentModel>.from(AdminPaymentsMockData.payments);
 
     return List<AdminPaymentModel>.from(_payments);
   }
@@ -58,9 +54,7 @@ class AdminPaymentsService {
     return null;
   }
 
-  Future<List<AdminPaymentModel>> searchPayments(
-    String query,
-  ) async {
+  Future<List<AdminPaymentModel>> searchPayments(String query) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     final normalizedQuery = query.trim().toLowerCase();
@@ -71,34 +65,20 @@ class AdminPaymentsService {
 
     return _payments.where((payment) {
       return payment.id.toLowerCase().contains(normalizedQuery) ||
-          payment.transactionId
-              .toLowerCase()
-              .contains(normalizedQuery) ||
-          payment.clientName
-              .toLowerCase()
-              .contains(normalizedQuery) ||
-          payment.clientEmail
-              .toLowerCase()
-              .contains(normalizedQuery) ||
-          payment.lawyerName
-              .toLowerCase()
-              .contains(normalizedQuery) ||
-          payment.description
-              .toLowerCase()
-              .contains(normalizedQuery);
+          payment.transactionId.toLowerCase().contains(normalizedQuery) ||
+          payment.clientName.toLowerCase().contains(normalizedQuery) ||
+          payment.clientEmail.toLowerCase().contains(normalizedQuery) ||
+          payment.lawyerName.toLowerCase().contains(normalizedQuery) ||
+          payment.description.toLowerCase().contains(normalizedQuery);
     }).toList();
   }
 
-  Future<List<AdminPaymentModel>> filterByStatus(
-    String status,
-  ) async {
+  Future<List<AdminPaymentModel>> filterByStatus(String status) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     return _payments
         .where(
-          (payment) =>
-              payment.status.toLowerCase() ==
-              status.toLowerCase(),
+          (payment) => payment.status.toLowerCase() == status.toLowerCase(),
         )
         .toList();
   }
@@ -117,29 +97,21 @@ class AdminPaymentsService {
         .toList();
   }
 
-  Future<List<AdminPaymentModel>> filterByPaymentGateway(
-    String gateway,
-  ) async {
+  Future<List<AdminPaymentModel>> filterByPaymentGateway(String gateway) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     return _payments
         .where(
           (payment) =>
-              payment.paymentGateway.toLowerCase() ==
-              gateway.toLowerCase(),
+              payment.paymentGateway.toLowerCase() == gateway.toLowerCase(),
         )
         .toList();
   }
 
-  Future<bool> updatePaymentStatus(
-    String paymentId,
-    String status,
-  ) async {
+  Future<bool> updatePaymentStatus(String paymentId, String status) async {
     await Future<void>.delayed(const Duration(milliseconds: 150));
 
-    final index = _payments.indexWhere(
-      (payment) => payment.id == paymentId,
-    );
+    final index = _payments.indexWhere((payment) => payment.id == paymentId);
 
     if (index == -1) {
       return false;
@@ -153,24 +125,16 @@ class AdminPaymentsService {
     return true;
   }
 
-  Future<List<AdminPaymentModel>> getPaymentsByClient(
-    String clientId,
-  ) async {
+  Future<List<AdminPaymentModel>> getPaymentsByClient(String clientId) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
-    return _payments
-        .where((payment) => payment.clientId == clientId)
-        .toList();
+    return _payments.where((payment) => payment.clientId == clientId).toList();
   }
 
-  Future<List<AdminPaymentModel>> getPaymentsByLawyer(
-    String lawyerId,
-  ) async {
+  Future<List<AdminPaymentModel>> getPaymentsByLawyer(String lawyerId) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
-    return _payments
-        .where((payment) => payment.lawyerId == lawyerId)
-        .toList();
+    return _payments.where((payment) => payment.lawyerId == lawyerId).toList();
   }
 
   // ---------------------------------------------------------------------------
@@ -183,9 +147,7 @@ class AdminPaymentsService {
     return List<CommissionModel>.from(_commissions);
   }
 
-  Future<List<CommissionModel>> getCommissionsByLawyer(
-    String lawyerId,
-  ) async {
+  Future<List<CommissionModel>> getCommissionsByLawyer(String lawyerId) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     return _commissions
@@ -223,9 +185,7 @@ class AdminPaymentsService {
   }) async {
     await Future<void>.delayed(const Duration(milliseconds: 150));
 
-    final index = _refunds.indexWhere(
-      (refund) => refund.id == refundId,
-    );
+    final index = _refunds.indexWhere((refund) => refund.id == refundId);
 
     if (index == -1) {
       return false;
@@ -238,9 +198,7 @@ class AdminPaymentsService {
       status: status,
       processedBy: processedBy ?? refund.processedBy,
       notes: notes ?? refund.notes,
-      processedAt: status.toLowerCase() == 'pending'
-          ? refund.processedAt
-          : now,
+      processedAt: status.toLowerCase() == 'pending' ? refund.processedAt : now,
       updatedAt: now,
     );
 
@@ -256,8 +214,7 @@ class AdminPaymentsService {
         _payments[paymentIndex] = payment.copyWith(
           status: 'Refunded',
           refundId: refund.id,
-          refundedAmount:
-              payment.refundedAmount + refund.refundAmount,
+          refundedAmount: payment.refundedAmount + refund.refundAmount,
           updatedAt: now,
         );
       }
@@ -276,9 +233,7 @@ class AdminPaymentsService {
     return List<TransactionModel>.from(_transactions);
   }
 
-  Future<TransactionModel?> getTransactionById(
-    String transactionId,
-  ) async {
+  Future<TransactionModel?> getTransactionById(String transactionId) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     for (final transaction in _transactions) {
@@ -291,9 +246,7 @@ class AdminPaymentsService {
     return null;
   }
 
-  Future<List<TransactionModel>> searchTransactions(
-    String query,
-  ) async {
+  Future<List<TransactionModel>> searchTransactions(String query) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     final normalizedQuery = query.trim().toLowerCase();
@@ -303,28 +256,14 @@ class AdminPaymentsService {
     }
 
     return _transactions.where((transaction) {
-      return transaction.id.toLowerCase().contains(
-            normalizedQuery,
-          ) ||
-          transaction.transactionId.toLowerCase().contains(
-                normalizedQuery,
-              ) ||
-          transaction.userName.toLowerCase().contains(
-                normalizedQuery,
-              ) ||
-          transaction.userEmail.toLowerCase().contains(
-                normalizedQuery,
-              ) ||
-          (transaction.lawyerName?.toLowerCase().contains(
-                normalizedQuery,
-              ) ??
+      return transaction.id.toLowerCase().contains(normalizedQuery) ||
+          transaction.transactionId.toLowerCase().contains(normalizedQuery) ||
+          transaction.userName.toLowerCase().contains(normalizedQuery) ||
+          transaction.userEmail.toLowerCase().contains(normalizedQuery) ||
+          (transaction.lawyerName?.toLowerCase().contains(normalizedQuery) ??
               false) ||
-          transaction.description.toLowerCase().contains(
-                normalizedQuery,
-              ) ||
-          (transaction.reference?.toLowerCase().contains(
-                normalizedQuery,
-              ) ??
+          transaction.description.toLowerCase().contains(normalizedQuery) ||
+          (transaction.reference?.toLowerCase().contains(normalizedQuery) ??
               false);
     }).toList();
   }
@@ -337,28 +276,22 @@ class AdminPaymentsService {
     return _transactions
         .where(
           (transaction) =>
-              transaction.status.toLowerCase() ==
-              status.toLowerCase(),
+              transaction.status.toLowerCase() == status.toLowerCase(),
         )
         .toList();
   }
 
-  Future<List<TransactionModel>> filterTransactionsByType(
-    String type,
-  ) async {
+  Future<List<TransactionModel>> filterTransactionsByType(String type) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     return _transactions
         .where(
-          (transaction) =>
-              transaction.type.toLowerCase() ==
-              type.toLowerCase(),
+          (transaction) => transaction.type.toLowerCase() == type.toLowerCase(),
         )
         .toList();
   }
 
-  Future<List<TransactionModel>>
-      filterTransactionsByPaymentMethod(
+  Future<List<TransactionModel>> filterTransactionsByPaymentMethod(
     String paymentMethod,
   ) async {
     await Future<void>.delayed(const Duration(milliseconds: 100));

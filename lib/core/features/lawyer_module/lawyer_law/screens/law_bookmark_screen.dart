@@ -122,7 +122,7 @@ class LawBookmarkScreen extends StatelessWidget {
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: gold.withOpacity(0.14),
+              color: gold.withValues(alpha:0.14),
               borderRadius: BorderRadius.circular(12),
             ),
             child: const Icon(
@@ -150,7 +150,7 @@ class LawBookmarkScreen extends StatelessWidget {
                   '${bookmarkedLaws.length == 1 ? 'law' : 'laws'} '
                   'saved for quick access.',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.65),
+                    color: Colors.white.withValues(alpha:0.65),
                     fontSize: 11,
                   ),
                 ),
@@ -173,7 +173,7 @@ class LawBookmarkScreen extends StatelessWidget {
               width: 82,
               height: 82,
               decoration: BoxDecoration(
-                color: gold.withOpacity(0.12),
+                color: gold.withValues(alpha:0.12),
                 shape: BoxShape.circle,
               ),
               child: const Icon(

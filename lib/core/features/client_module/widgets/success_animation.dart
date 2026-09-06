@@ -15,7 +15,7 @@ class SuccessAnimation extends StatelessWidget {
             height: 180,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: const Color(0xFFD4AF37).withOpacity(0.08),
+              color: const Color(0xFFD4AF37).withValues(alpha:0.08),
             ),
           ),
 
@@ -24,7 +24,7 @@ class SuccessAnimation extends StatelessWidget {
             height: 140,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: const Color(0xFFD4AF37).withOpacity(0.18),
+              color: const Color(0xFFD4AF37).withValues(alpha:0.18),
             ),
           ),
 

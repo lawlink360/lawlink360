@@ -24,7 +24,7 @@ class ChatSecureChatCard extends StatelessWidget {
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: const Color(0xFFD4AF37).withOpacity(.12),
+              color: const Color(0xFFD4AF37).withValues(alpha:.12),
               borderRadius: BorderRadius.circular(16),
             ),
             child: const Icon(

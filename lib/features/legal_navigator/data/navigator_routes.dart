@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_routes.dart
-/// Purpose : Route names used by Legal Navigator.
-/// ------------------------------------------------------------
-
 class NavigatorRoutes {
   static const String laws = '/laws';
 

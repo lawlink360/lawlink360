@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : related_resource_model.dart
-/// Purpose : Represents a related legal resource.
-/// ------------------------------------------------------------
-
 import '../enums/content_type.dart';
 
 class RelatedResourceModel {

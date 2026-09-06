@@ -46,7 +46,7 @@ class ApplicationTemplateHeader extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 28,
-                  backgroundColor: Colors.white.withOpacity(0.15),
+                  backgroundColor: Colors.white.withValues(alpha:0.15),
                   child: Icon(
                     category.icon,
                     color: Colors.white,

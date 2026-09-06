@@ -17,7 +17,6 @@ class TermsCheckbox extends StatelessWidget {
     
     // Set colors based on theme
     final textColor = isDark ? Colors.white70 : Colors.black54;
-    final linkColor = const Color(0xFFD4AF37);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,

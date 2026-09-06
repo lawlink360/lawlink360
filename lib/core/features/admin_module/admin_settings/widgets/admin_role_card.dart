@@ -127,7 +127,6 @@ class _StatusChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const navy = Color(0xFF17233C);
 
     return Container(
       padding: const EdgeInsets.symmetric(

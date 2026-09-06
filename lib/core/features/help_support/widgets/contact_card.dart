@@ -21,7 +21,7 @@ class ContactCard extends StatelessWidget {
     return ListTile(
       leading: CircleAvatar(
         radius: 22,
-        backgroundColor: iconColor.withOpacity(.12),
+        backgroundColor: iconColor.withValues(alpha:.12),
         child: Icon(
           icon,
           color: iconColor,

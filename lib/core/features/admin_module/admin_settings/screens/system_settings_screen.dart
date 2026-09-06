@@ -13,8 +13,7 @@ class SystemSettingsScreen extends ConsumerStatefulWidget {
       _SystemSettingsScreenState();
 }
 
-class _SystemSettingsScreenState
-    extends ConsumerState<SystemSettingsScreen> {
+class _SystemSettingsScreenState extends ConsumerState<SystemSettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(systemSettingsProvider);
@@ -32,9 +31,7 @@ class _SystemSettingsScreenState
         },
       ),
       body: state.when(
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) => Center(
           child: Padding(
             padding: const EdgeInsets.all(24),
@@ -49,22 +46,14 @@ class _SystemSettingsScreenState
                 const SizedBox(height: 12),
                 const Text(
                   'Unable to load system settings',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  error.toString(),
-                  textAlign: TextAlign.center,
-                ),
+                Text(error.toString(), textAlign: TextAlign.center),
                 const SizedBox(height: 20),
                 ElevatedButton.icon(
                   onPressed: () {
-                    ref
-                        .read(systemSettingsProvider.notifier)
-                        .refresh();
+                    ref.read(systemSettingsProvider.notifier).refresh();
                   },
                   icon: const Icon(Icons.refresh),
                   label: const Text('Retry'),
@@ -76,9 +65,7 @@ class _SystemSettingsScreenState
         data: (settings) {
           return RefreshIndicator(
             onRefresh: () {
-              return ref
-                  .read(systemSettingsProvider.notifier)
-                  .refresh();
+              return ref.read(systemSettingsProvider.notifier).refresh();
             },
             child: ListView(
               physics: const AlwaysScrollableScrollPhysics(),
@@ -90,8 +77,7 @@ class _SystemSettingsScreenState
                   children: [
                     _switchTile(
                       title: 'Maintenance Mode',
-                      subtitle:
-                          'Temporarily restrict access to the platform.',
+                      subtitle: 'Temporarily restrict access to the platform.',
                       value: settings.maintenanceMode,
                       onChanged: (value) {
                         ref
@@ -101,8 +87,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Debug Mode',
-                      subtitle:
-                          'Enable additional diagnostic information.',
+                      subtitle: 'Enable additional diagnostic information.',
                       value: settings.debugMode,
                       onChanged: (value) {
                         ref
@@ -127,14 +112,13 @@ class _SystemSettingsScreenState
                             // message through copyWith. This update
                             // will be wired to persistence in the
                             // service/Firebase phase.
-                            final current =
-                                ref.read(systemSettingsProvider).value;
+                            final current = ref
+                                .read(systemSettingsProvider)
+                                .value;
 
                             if (current != null) {
                               ref
-                                  .read(
-                                    systemSettingsProvider.notifier,
-                                  )
+                                  .read(systemSettingsProvider.notifier)
                                   .updateSettings(
                                     current.copyWith(
                                       maintenanceMessage: value,
@@ -156,8 +140,7 @@ class _SystemSettingsScreenState
                       title: 'Two-Factor Authentication',
                       subtitle:
                           'Require an additional authentication factor for administrators.',
-                      value:
-                          settings.enableTwoFactorAuthentication,
+                      value: settings.enableTwoFactorAuthentication,
                       onChanged: (value) {
                         ref
                             .read(systemSettingsProvider.notifier)
@@ -166,8 +149,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Strong Passwords',
-                      subtitle:
-                          'Enforce strong password requirements.',
+                      subtitle: 'Enforce strong password requirements.',
                       value: settings.enforceStrongPasswords,
                       onChanged: (value) {
                         ref
@@ -177,20 +159,16 @@ class _SystemSettingsScreenState
                     ),
                     _valueTile(
                       title: 'Session Timeout',
-                      value:
-                          '${settings.sessionTimeoutMinutes} minutes',
+                      value: '${settings.sessionTimeoutMinutes} minutes',
                       icon: Icons.timer_outlined,
                       onTap: () {
                         _editInteger(
                           context,
                           title: 'Session Timeout',
-                          initialValue:
-                              settings.sessionTimeoutMinutes,
+                          initialValue: settings.sessionTimeoutMinutes,
                           onSave: (value) {
                             ref
-                                .read(
-                                  systemSettingsProvider.notifier,
-                                )
+                                .read(systemSettingsProvider.notifier)
                                 .updateSessionTimeout(value);
                           },
                         );
@@ -198,20 +176,16 @@ class _SystemSettingsScreenState
                     ),
                     _valueTile(
                       title: 'Maximum Login Attempts',
-                      value:
-                          '${settings.maxLoginAttempts} attempts',
+                      value: '${settings.maxLoginAttempts} attempts',
                       icon: Icons.login_outlined,
                       onTap: () {
                         _editInteger(
                           context,
                           title: 'Maximum Login Attempts',
-                          initialValue:
-                              settings.maxLoginAttempts,
+                          initialValue: settings.maxLoginAttempts,
                           onSave: (value) {
                             ref
-                                .read(
-                                  systemSettingsProvider.notifier,
-                                )
+                                .read(systemSettingsProvider.notifier)
                                 .updateMaxLoginAttempts(value);
                           },
                         );
@@ -225,8 +199,7 @@ class _SystemSettingsScreenState
                   children: [
                     _switchTile(
                       title: 'Appointments',
-                      subtitle:
-                          'Enable appointment booking and management.',
+                      subtitle: 'Enable appointment booking and management.',
                       value: settings.enableAppointments,
                       onChanged: (value) {
                         ref
@@ -236,8 +209,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Cases',
-                      subtitle:
-                          'Enable case management features.',
+                      subtitle: 'Enable case management features.',
                       value: settings.enableCases,
                       onChanged: (value) {
                         ref
@@ -247,8 +219,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Chat',
-                      subtitle:
-                          'Enable in-app user and lawyer chat.',
+                      subtitle: 'Enable in-app user and lawyer chat.',
                       value: settings.enableChat,
                       onChanged: (value) {
                         ref
@@ -258,8 +229,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Voice Calls',
-                      subtitle:
-                          'Enable voice consultation features.',
+                      subtitle: 'Enable voice consultation features.',
                       value: settings.enableVoiceCalls,
                       onChanged: (value) {
                         ref
@@ -269,8 +239,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Video Calls',
-                      subtitle:
-                          'Enable video consultation features.',
+                      subtitle: 'Enable video consultation features.',
                       value: settings.enableVideoCalls,
                       onChanged: (value) {
                         ref
@@ -280,8 +249,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Payments',
-                      subtitle:
-                          'Enable payment processing.',
+                      subtitle: 'Enable payment processing.',
                       value: settings.enablePayments,
                       onChanged: (value) {
                         ref
@@ -291,8 +259,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Document Uploads',
-                      subtitle:
-                          'Allow users to upload documents.',
+                      subtitle: 'Allow users to upload documents.',
                       value: settings.enableDocumentUploads,
                       onChanged: (value) {
                         ref
@@ -308,8 +275,7 @@ class _SystemSettingsScreenState
                   children: [
                     _switchTile(
                       title: 'Push Notifications',
-                      subtitle:
-                          'Enable push notifications.',
+                      subtitle: 'Enable push notifications.',
                       value: settings.enablePushNotifications,
                       onChanged: (value) {
                         ref
@@ -319,8 +285,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'Email Notifications',
-                      subtitle:
-                          'Enable email notifications.',
+                      subtitle: 'Enable email notifications.',
                       value: settings.enableEmailNotifications,
                       onChanged: (value) {
                         ref
@@ -330,8 +295,7 @@ class _SystemSettingsScreenState
                     ),
                     _switchTile(
                       title: 'SMS Notifications',
-                      subtitle:
-                          'Enable SMS notifications.',
+                      subtitle: 'Enable SMS notifications.',
                       value: settings.enableSmsNotifications,
                       onChanged: (value) {
                         ref
@@ -356,9 +320,7 @@ class _SystemSettingsScreenState
                           initialValue: settings.maxFileSizeMb,
                           onSave: (value) {
                             ref
-                                .read(
-                                  systemSettingsProvider.notifier,
-                                )
+                                .read(systemSettingsProvider.notifier)
                                 .updateMaxFileSize(value);
                           },
                         );
@@ -366,20 +328,16 @@ class _SystemSettingsScreenState
                     ),
                     _valueTile(
                       title: 'Documents Per User',
-                      value:
-                          '${settings.maxDocumentsPerUser} documents',
+                      value: '${settings.maxDocumentsPerUser} documents',
                       icon: Icons.folder_copy_outlined,
                       onTap: () {
                         _editInteger(
                           context,
                           title: 'Documents Per User',
-                          initialValue:
-                              settings.maxDocumentsPerUser,
+                          initialValue: settings.maxDocumentsPerUser,
                           onSave: (value) {
                             ref
-                                .read(
-                                  systemSettingsProvider.notifier,
-                                )
+                                .read(systemSettingsProvider.notifier)
                                 .updateMaxDocumentsPerUser(value);
                           },
                         );
@@ -396,10 +354,7 @@ class _SystemSettingsScreenState
                       value: settings.apiEnvironment,
                       icon: Icons.api_outlined,
                       onTap: () {
-                        _selectEnvironment(
-                          context,
-                          settings.apiEnvironment,
-                        );
+                        _selectEnvironment(context, settings.apiEnvironment);
                       },
                     ),
                     _valueTile(
@@ -407,10 +362,7 @@ class _SystemSettingsScreenState
                       value: settings.defaultLanguage,
                       icon: Icons.translate_outlined,
                       onTap: () {
-                        _selectLanguage(
-                          context,
-                          settings.defaultLanguage,
-                        );
+                        _selectLanguage(context, settings.defaultLanguage);
                       },
                     ),
                     _valueTile(
@@ -418,11 +370,7 @@ class _SystemSettingsScreenState
                       value: settings.defaultCountry,
                       icon: Icons.public_outlined,
                       onTap: () {
-                        _showInfo(
-                          context,
-                          'Default Country',
-                          'Pakistan',
-                        );
+                        _showInfo(context, 'Default Country', 'Pakistan');
                       },
                     ),
                     _valueTile(
@@ -430,10 +378,7 @@ class _SystemSettingsScreenState
                       value: settings.timezone,
                       icon: Icons.schedule_outlined,
                       onTap: () {
-                        _selectTimezone(
-                          context,
-                          settings.timezone,
-                        );
+                        _selectTimezone(context, settings.timezone);
                       },
                     ),
                   ],
@@ -463,22 +408,13 @@ class _SystemSettingsScreenState
       activeTrackColor: gold.withValues(alpha: 0.35),
       title: Text(
         title,
-        style: const TextStyle(
-          color: navy,
-          fontWeight: FontWeight.w600,
-        ),
+        style: const TextStyle(color: navy, fontWeight: FontWeight.w600),
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(
-          color: navy.withValues(alpha: 0.60),
-          fontSize: 12,
-        ),
+        style: TextStyle(color: navy.withValues(alpha: 0.60), fontSize: 12),
       ),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 2,
-      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
     );
   }
 
@@ -493,10 +429,7 @@ class _SystemSettingsScreenState
 
     return ListTile(
       onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 2,
-      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       leading: Container(
         width: 38,
         height: 38,
@@ -504,32 +437,19 @@ class _SystemSettingsScreenState
           color: gold.withValues(alpha: 0.10),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Icon(
-          icon,
-          color: gold,
-          size: 20,
-        ),
+        child: Icon(icon, color: gold, size: 20),
       ),
       title: Text(
         title,
-        style: const TextStyle(
-          color: navy,
-          fontWeight: FontWeight.w600,
-        ),
+        style: const TextStyle(color: navy, fontWeight: FontWeight.w600),
       ),
       subtitle: Text(
         value,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          color: navy.withValues(alpha: 0.58),
-          fontSize: 12,
-        ),
+        style: TextStyle(color: navy.withValues(alpha: 0.58), fontSize: 12),
       ),
-      trailing: const Icon(
-        Icons.chevron_right,
-        color: navy,
-      ),
+      trailing: const Icon(Icons.chevron_right, color: navy),
     );
   }
 
@@ -539,9 +459,7 @@ class _SystemSettingsScreenState
     required int initialValue,
     required ValueChanged<int> onSave,
   }) {
-    final controller = TextEditingController(
-      text: initialValue.toString(),
-    );
+    final controller = TextEditingController(text: initialValue.toString());
 
     showDialog<void>(
       context: context,
@@ -551,9 +469,7 @@ class _SystemSettingsScreenState
           content: TextField(
             controller: controller,
             keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-            ),
+            decoration: const InputDecoration(border: OutlineInputBorder()),
           ),
           actions: [
             TextButton(
@@ -564,8 +480,7 @@ class _SystemSettingsScreenState
             ),
             ElevatedButton(
               onPressed: () {
-                final value =
-                    int.tryParse(controller.text.trim());
+                final value = int.tryParse(controller.text.trim());
 
                 if (value == null || value <= 0) {
                   return;
@@ -589,9 +504,7 @@ class _SystemSettingsScreenState
     required int maxLines,
     required ValueChanged<String> onSave,
   }) {
-    final controller = TextEditingController(
-      text: initialValue,
-    );
+    final controller = TextEditingController(text: initialValue);
 
     showDialog<void>(
       context: context,
@@ -601,9 +514,7 @@ class _SystemSettingsScreenState
           content: TextField(
             controller: controller,
             maxLines: maxLines,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-            ),
+            decoration: const InputDecoration(border: OutlineInputBorder()),
           ),
           actions: [
             TextButton(
@@ -625,64 +536,38 @@ class _SystemSettingsScreenState
     );
   }
 
-  void _selectEnvironment(
-    BuildContext context,
-    String current,
-  ) {
+  void _selectEnvironment(BuildContext context, String current) {
     _showSelection(
       context,
       title: 'API Environment',
       currentValue: current,
-      options: const [
-        'development',
-        'staging',
-        'production',
-      ],
+      options: const ['development', 'staging', 'production'],
       onSelected: (value) {
-        ref
-            .read(systemSettingsProvider.notifier)
-            .updateApiEnvironment(value);
+        ref.read(systemSettingsProvider.notifier).updateApiEnvironment(value);
       },
     );
   }
 
-  void _selectLanguage(
-    BuildContext context,
-    String current,
-  ) {
+  void _selectLanguage(BuildContext context, String current) {
     _showSelection(
       context,
       title: 'Default Language',
       currentValue: current,
-      options: const [
-        'English',
-        'Urdu',
-      ],
+      options: const ['English', 'Urdu'],
       onSelected: (value) {
-        ref
-            .read(systemSettingsProvider.notifier)
-            .updateDefaultLanguage(value);
+        ref.read(systemSettingsProvider.notifier).updateDefaultLanguage(value);
       },
     );
   }
 
-  void _selectTimezone(
-    BuildContext context,
-    String current,
-  ) {
+  void _selectTimezone(BuildContext context, String current) {
     _showSelection(
       context,
       title: 'Timezone',
       currentValue: current,
-      options: const [
-        'Asia/Karachi',
-        'UTC',
-        'Asia/Dubai',
-      ],
+      options: const ['Asia/Karachi', 'UTC', 'Asia/Dubai'],
       onSelected: (value) {
-        ref
-            .read(systemSettingsProvider.notifier)
-            .updateTimezone(value);
+        ref.read(systemSettingsProvider.notifier).updateTimezone(value);
       },
     );
   }
@@ -704,12 +589,7 @@ class _SystemSettingsScreenState
             padding: const EdgeInsets.only(bottom: 20),
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  20,
-                  4,
-                  20,
-                  12,
-                ),
+                padding: const EdgeInsets.fromLTRB(20, 4, 20, 12),
                 child: Text(
                   title,
                   style: const TextStyle(
@@ -718,19 +598,25 @@ class _SystemSettingsScreenState
                   ),
                 ),
               ),
-              ...options.map(
-                (option) => RadioListTile<String>(
-                  value: option,
-                  groupValue: currentValue,
-                  title: Text(option),
-                  onChanged: (value) {
-                    if (value == null) {
-                      return;
-                    }
+              RadioGroup<String>(
+                groupValue: currentValue,
+                onChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
 
-                    onSelected(value);
-                    Navigator.pop(sheetContext);
-                  },
+                  onSelected(value);
+                  Navigator.pop(sheetContext);
+                },
+                child: Column(
+                  children: [
+                    ...options.map(
+                      (option) => RadioListTile<String>(
+                        value: option,
+                        title: Text(option),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -740,11 +626,7 @@ class _SystemSettingsScreenState
     );
   }
 
-  void _showInfo(
-    BuildContext context,
-    String title,
-    String message,
-  ) {
+  void _showInfo(BuildContext context, String title, String message) {
     showDialog<void>(
       context: context,
       builder: (dialogContext) {
@@ -786,9 +668,7 @@ class _Section extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: navy.withValues(alpha: 0.08),
-        ),
+        border: Border.all(color: navy.withValues(alpha: 0.08)),
       ),
       child: Column(
         children: [
@@ -796,11 +676,7 @@ class _Section extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
             child: Row(
               children: [
-                Icon(
-                  icon,
-                  color: gold,
-                  size: 21,
-                ),
+                Icon(icon, color: gold, size: 21),
                 const SizedBox(width: 10),
                 Text(
                   title,

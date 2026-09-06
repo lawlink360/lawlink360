@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,12 +8,10 @@ class CreateDraftScreen extends ConsumerStatefulWidget {
   const CreateDraftScreen({super.key});
 
   @override
-  ConsumerState<CreateDraftScreen> createState() =>
-      _CreateDraftScreenState();
+  ConsumerState<CreateDraftScreen> createState() => _CreateDraftScreenState();
 }
 
-class _CreateDraftScreenState
-    extends ConsumerState<CreateDraftScreen> {
+class _CreateDraftScreenState extends ConsumerState<CreateDraftScreen> {
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
 
@@ -38,31 +35,27 @@ class _CreateDraftScreenState
   }
 
   void _saveDraft() {
-  if (_titleController.text.trim().isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Please enter draft title'),
-      ),
+    if (_titleController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Please enter draft title')));
+      return;
+    }
+
+    final draft = DraftingService.createDraft(
+      title: _titleController.text.trim(),
+      category: _category,
+      content: _contentController.text.trim(),
     );
-    return;
+
+    ref.read(draftProvider.notifier).addDraft(draft);
+
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('Draft saved successfully')));
+
+    Navigator.pop(context);
   }
-
-  final draft = DraftingService.createDraft(
-    title: _titleController.text.trim(),
-    category: _category,
-    content: _contentController.text.trim(),
-  );
-
-  ref.read(draftProvider.notifier).addDraft(draft);
-
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(
-      content: Text('Draft saved successfully'),
-    ),
-  );
-
-  Navigator.pop(context);
-}
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +84,7 @@ class _CreateDraftScreenState
 
           TextField(
             controller: _titleController,
-            decoration: _inputDecoration(
-              'Enter draft title',
-            ),
+            decoration: _inputDecoration('Enter draft title'),
           ),
 
           const SizedBox(height: 18),
@@ -110,14 +101,13 @@ class _CreateDraftScreenState
           const SizedBox(height: 7),
 
           DropdownButtonFormField<String>(
-            value: _category,
+            initialValue: _category,
+
             decoration: _inputDecoration('Select category'),
             items: _categories
                 .map(
-                  (category) => DropdownMenuItem(
-                    value: category,
-                    child: Text(category),
-                  ),
+                  (category) =>
+                      DropdownMenuItem(value: category, child: Text(category)),
                 )
                 .toList(),
             onChanged: (value) {
@@ -145,9 +135,7 @@ class _CreateDraftScreenState
           TextField(
             controller: _contentController,
             maxLines: 12,
-            decoration: _inputDecoration(
-              'Write your draft here...',
-            ),
+            decoration: _inputDecoration('Write your draft here...'),
           ),
 
           const SizedBox(height: 24),
@@ -179,15 +167,11 @@ class _CreateDraftScreenState
       fillColor: Colors.white,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14),
-        borderSide: const BorderSide(
-          color: Color(0xFFE5E7EB),
-        ),
+        borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14),
-        borderSide: const BorderSide(
-          color: Color(0xFFE5E7EB),
-        ),
+        borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
       ),
     );
   }

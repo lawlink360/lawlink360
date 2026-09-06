@@ -41,8 +41,8 @@ class _DocumentCropScreenState extends State<DocumentCropScreen> {
         controller: _cropController,
         image: _imageData,
         baseColor: Colors.black,
-        maskColor: Colors.black.withOpacity(0.55),
-        cornerDotBuilder: (_, __) {
+        maskColor: Colors.black.withValues(alpha: 0.55),
+        cornerDotBuilder: (_, _) {
           return Container(
             width: 22,
             height: 22,
@@ -53,6 +53,9 @@ class _DocumentCropScreenState extends State<DocumentCropScreen> {
           );
         },
         onCropped: (result) async {
+          final navigator = Navigator.of(context);
+          final messenger = ScaffoldMessenger.of(context);
+
           switch (result) {
             case CropSuccess():
               final file = File(widget.imagePath);
@@ -61,20 +64,21 @@ class _DocumentCropScreenState extends State<DocumentCropScreen> {
 
               if (!mounted) return;
 
-              Navigator.pushReplacement(
-                context,
+              navigator.pushReplacement(
                 MaterialPageRoute(
                   builder: (_) => DocumentEditorScreen(imagePath: file.path),
                 ),
               );
+
               break;
 
             case CropFailure():
               if (!mounted) return;
 
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(result.cause.toString())));
+              messenger.showSnackBar(
+                SnackBar(content: Text(result.cause.toString())),
+              );
+
               break;
           }
         },

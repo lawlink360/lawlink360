@@ -19,7 +19,7 @@ class VoiceCallAppBar extends StatelessWidget {
               width: 42,
               height: 42,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(.12),
+                color: Colors.white.withValues(alpha:.12),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: const Icon(
@@ -38,7 +38,7 @@ class VoiceCallAppBar extends StatelessWidget {
               vertical: 8,
             ),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(.30),
+              color: Colors.black.withValues(alpha:.30),
               borderRadius: BorderRadius.circular(25),
             ),
             child: const Row(
@@ -69,7 +69,7 @@ class VoiceCallAppBar extends StatelessWidget {
             width: 42,
             height: 42,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(.12),
+              color: Colors.white.withValues(alpha:.12),
               borderRadius: BorderRadius.circular(14),
             ),
             child: const Icon(

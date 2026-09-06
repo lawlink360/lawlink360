@@ -33,30 +33,30 @@ class LawyerDetailsReviewsScreen extends StatelessWidget {
         ),
       ),
       body: const SingleChildScrollView(
-  child: Column(
-    children: [
-      LawyerProfileHeader(),
-      LawyerAboutCard(),
-      LawyerPracticeAreasCard(),
-      const LawyerRatingSummaryCard(),
-      const LawyerReviewsCard(),
-      const LawyerEducationCard(),
+        child: Column(
+          children: [
+            LawyerProfileHeader(),
+            LawyerAboutCard(),
+            LawyerPracticeAreasCard(),
+            LawyerRatingSummaryCard(),
+            LawyerReviewsCard(),
+            LawyerEducationCard(),
 
-const LawyerExperienceCard(),
+            LawyerExperienceCard(),
 
-const LawyerCertificatesCard(),
+            LawyerCertificatesCard(),
 
-const LawyerLanguagesCard(),
+            LawyerLanguagesCard(),
 
-const LawyerEnrollmentCard(),
+            LawyerEnrollmentCard(),
 
-const LawyerConsultationCard(),
+            LawyerConsultationCard(),
 
-const SizedBox(height:120),
-    ],
-  ),
-),
-bottomNavigationBar: const LawyerBookingButton(),
+            SizedBox(height: 120),
+          ],
+        ),
+      ),
+      bottomNavigationBar: const LawyerBookingButton(),
     );
   }
 }

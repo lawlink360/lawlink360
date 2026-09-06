@@ -189,11 +189,11 @@ class _CaseCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: Colors.black.withOpacity(0.04),
+          color: Colors.black.withValues(alpha:0.04),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.035),
+            color: Colors.black.withValues(alpha:0.035),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -209,7 +209,7 @@ class _CaseCard extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: gold.withOpacity(0.12),
+                  color: gold.withValues(alpha:0.12),
                   borderRadius: BorderRadius.circular(13),
                 ),
                 child: const Icon(
@@ -436,7 +436,7 @@ class _StatusBadge extends StatelessWidget {
         vertical: 5,
       ),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.10),
+        color: color.withValues(alpha:0.10),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
@@ -486,7 +486,7 @@ class _ClientAvatar extends StatelessWidget {
             ? Image.network(
                 imageUrl!,
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) {
+                errorBuilder: (_, _, _) {
                   return _fallbackAvatar();
                 },
               )
@@ -534,7 +534,7 @@ class _EmptyCasesState extends StatelessWidget {
               width: 82,
               height: 82,
               decoration: BoxDecoration(
-                color: const Color(0xFFD4AF37).withOpacity(0.12),
+                color: const Color(0xFFD4AF37).withValues(alpha:0.12),
                 shape: BoxShape.circle,
               ),
               child: const Icon(

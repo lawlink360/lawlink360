@@ -33,7 +33,7 @@ class ApplicationSubCategoryCard extends StatelessWidget {
               CircleAvatar(
                 radius: 24,
                 backgroundColor:
-                    subCategory.color.withOpacity(0.15),
+                    subCategory.color.withValues(alpha:0.15),
                 child: Icon(
                   subCategory.icon,
                   color: subCategory.color,

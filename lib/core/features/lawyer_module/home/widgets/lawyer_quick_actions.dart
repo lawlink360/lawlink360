@@ -9,8 +9,6 @@ import 'package:lawlink360/core/features/client_module/application/screens/appli
 import 'package:lawlink360/core/features/lawyer_module/digital_clerk/screens/digital_clerk_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_clients/screens/lawyer_clients_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_drafting/screens/drafting_dashboard_screen.dart';
-import 'package:lawlink360/core/features/lawyer_module/lawyer_law/navigation/law_navigation.dart';
-import 'package:lawlink360/core/features/lawyer_module/lawyer_judgments/navigation/judgment_navigation.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_law/screens/law_dashboard_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_judgments/screens/judgment_home_screen.dart';
 

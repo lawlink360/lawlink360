@@ -146,7 +146,7 @@ class LawSectionCard extends StatelessWidget {
             vertical: 4,
           ),
           decoration: BoxDecoration(
-            color: gold.withOpacity(0.09),
+            color: gold.withValues(alpha:0.09),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Text(

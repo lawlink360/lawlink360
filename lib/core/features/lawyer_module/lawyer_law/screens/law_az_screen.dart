@@ -201,7 +201,7 @@ class _LawAzScreenState extends State<LawAzScreen> {
             vertical: 6,
           ),
           decoration: BoxDecoration(
-            color: gold.withOpacity(0.12),
+            color: gold.withValues(alpha:0.12),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Text(

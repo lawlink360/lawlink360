@@ -51,7 +51,7 @@ class LawCategoryCard extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.035),
+                color: Colors.black.withValues(alpha:0.035),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -79,7 +79,7 @@ class LawCategoryCard extends StatelessWidget {
       width: 42,
       height: 42,
       decoration: BoxDecoration(
-        color: gold.withOpacity(0.12),
+        color: gold.withValues(alpha:0.12),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Icon(

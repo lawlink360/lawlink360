@@ -22,7 +22,7 @@ class VerificationIntroCard extends StatelessWidget {
                 width: 46,
                 height: 46,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFD4AF37).withOpacity(0.18),
+                  color: const Color(0xFFD4AF37).withValues(alpha:0.18),
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: const Icon(
@@ -84,7 +84,7 @@ class VerificationIntroCard extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.08),
+              color: Colors.white.withValues(alpha:0.08),
               borderRadius: BorderRadius.circular(14),
             ),
             child: const Row(

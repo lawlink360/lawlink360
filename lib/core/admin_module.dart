@@ -17,5 +17,5 @@
 /// - System Settings
 library;
 
-export 'navigation/admin_navigation.dart';
-export 'navigation/admin_routes.dart';
+export 'features/admin_module/navigation/admin_navigation.dart';
+export 'features/admin_module/navigation/admin_routes.dart';

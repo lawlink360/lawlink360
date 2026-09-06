@@ -46,7 +46,7 @@ class ApplicationRecentDocuments extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: recentDocuments.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            separatorBuilder: (_, _) => const SizedBox(height: 12),
             itemBuilder: (context, index) {
               final document = recentDocuments[index];
 
@@ -60,7 +60,7 @@ class ApplicationRecentDocuments extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha:0.05),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -71,7 +71,7 @@ class ApplicationRecentDocuments extends StatelessWidget {
                     CircleAvatar(
                       radius: 24,
                       backgroundColor:
-                          (document['color'] as Color).withOpacity(0.12),
+                          (document['color'] as Color).withValues(alpha:0.12),
                       child: Icon(
                         document['icon'] as IconData,
                         color: document['color'] as Color,

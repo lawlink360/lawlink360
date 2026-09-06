@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_item_model.dart
-/// Purpose : Represents a single Legal Navigator resource card.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 import '../enums/navigator_item_type.dart';
 

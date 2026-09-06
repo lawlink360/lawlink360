@@ -133,7 +133,7 @@ class _LawDetailScreenState extends State<LawDetailScreen> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.035),
+            color: Colors.black.withValues(alpha:0.035),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -149,7 +149,7 @@ class _LawDetailScreenState extends State<LawDetailScreen> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: gold.withOpacity(0.12),
+                  color: gold.withValues(alpha:0.12),
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: const Icon(

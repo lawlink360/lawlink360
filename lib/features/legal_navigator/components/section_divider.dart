@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : section_divider.dart
-/// Purpose : Divider used between navigator items.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 
 class SectionDivider extends StatelessWidget {

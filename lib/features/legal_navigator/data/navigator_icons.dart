@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_icons.dart
-/// Purpose : Centralized icons for Legal Navigator.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 
 class NavigatorIcons {

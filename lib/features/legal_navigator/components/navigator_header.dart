@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_header.dart
-/// Purpose : Header for the Legal Navigator section.
-/// ------------------------------------------------------------
-
 import 'package:flutter/material.dart';
 
 class NavigatorHeader extends StatelessWidget {

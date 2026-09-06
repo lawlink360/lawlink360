@@ -1771,34 +1771,34 @@ class _FeeStructureScreenState
     );
   }
 
-  Widget _addFeeButton({
-    required VoidCallback onPressed,
-  }) {
-    return TextButton.icon(
-      onPressed: onPressed,
-      icon: const Icon(
-        Icons.add,
-        size: 17,
-      ),
-      label: const Text(
-        'Add Fee',
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight:
-              FontWeight.w600,
-        ),
-      ),
-      style: TextButton.styleFrom(
-        foregroundColor:
-            const Color(0xFF13294B),
-        padding:
-            const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 6,
-        ),
-      ),
-    );
-  }
+  // Widget _addFeeButton({
+  //   required VoidCallback onPressed,
+  // }) {
+  //   return TextButton.icon(
+  //     onPressed: onPressed,
+  //     icon: const Icon(
+  //       Icons.add,
+  //       size: 17,
+  //     ),
+  //     label: const Text(
+  //       'Add Fee',
+  //       style: TextStyle(
+  //         fontSize: 12,
+  //         fontWeight:
+  //             FontWeight.w600,
+  //       ),
+  //     ),
+  //     style: TextButton.styleFrom(
+  //       foregroundColor:
+  //           const Color(0xFF13294B),
+  //       padding:
+  //           const EdgeInsets.symmetric(
+  //         horizontal: 10,
+  //         vertical: 6,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   // ============================================================
   // PDF CONTENT

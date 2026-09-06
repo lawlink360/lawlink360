@@ -31,7 +31,7 @@ class ServiceCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(18),
-        splashColor: color.withOpacity(0.10),
+        splashColor: color.withValues(alpha:0.10),
         highlightColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.all(18),
@@ -40,7 +40,7 @@ class ServiceCard extends StatelessWidget {
               /// Icon
               CircleAvatar(
                 radius: 24,
-                backgroundColor: color.withOpacity(0.15),
+                backgroundColor: color.withValues(alpha:0.15),
                 child: Icon(
                   icon,
                   color: color,

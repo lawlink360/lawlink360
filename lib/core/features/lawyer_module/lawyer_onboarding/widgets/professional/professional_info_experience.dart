@@ -24,7 +24,7 @@ class ProfessionalInfoExperience extends ConsumerWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha:0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -55,7 +55,7 @@ class ProfessionalInfoExperience extends ConsumerWidget {
           const SizedBox(height: 18),
 
           DropdownButtonFormField<int>(
-            value: years,
+            initialValue: years,
             decoration: InputDecoration(
               labelText: 'Years of Experience',
               prefixIcon: const Icon(

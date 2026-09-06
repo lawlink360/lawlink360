@@ -13,7 +13,7 @@ class LawyerClientsOverviewCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(22),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha:0.08),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -105,7 +105,7 @@ class LawyerClientsOverviewCard extends StatelessWidget {
     return Container(
       width: 1,
       height: 58,
-      color: Colors.white.withOpacity(0.15),
+      color: Colors.white.withValues(alpha:0.15),
     );
   }
 }
@@ -135,7 +135,7 @@ class _OverviewItem extends StatelessWidget {
             width: 38,
             height: 38,
             decoration: BoxDecoration(
-              color: const Color(0xFFD4AF37).withOpacity(0.14),
+              color: const Color(0xFFD4AF37).withValues(alpha:0.14),
               shape: BoxShape.circle,
             ),
             child: Icon(

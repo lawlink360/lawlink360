@@ -27,7 +27,7 @@ class MyCaseFolderCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(22),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(.05),
+              color: Colors.black.withValues(alpha:.05),
               blurRadius: 12,
               offset: const Offset(0, 6),
             ),
@@ -40,7 +40,7 @@ class MyCaseFolderCard extends StatelessWidget {
               width: 68,
               height: 68,
               decoration: BoxDecoration(
-                color: const Color(0xFFD4AF37).withOpacity(.12),
+                color: const Color(0xFFD4AF37).withValues(alpha:.12),
                 borderRadius: BorderRadius.circular(18),
               ),
               child: const Icon(

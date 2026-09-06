@@ -48,7 +48,7 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                   borderRadius: BorderRadius.circular(18),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(.05),
+                      color: Colors.black.withValues(alpha:.05),
                       blurRadius: 12,
                     ),
                   ],
@@ -143,9 +143,6 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                                     title: const Text("Download as PDF"),
                                     onTap: () {
                                       Navigator.pop(context);
-
-                                      // TODO:
-                                      // Generate PDF here
                                     },
                                   ),
 

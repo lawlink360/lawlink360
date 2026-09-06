@@ -44,7 +44,7 @@ class CategoryServiceHeader extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.12),
+                      color: Colors.white.withValues(alpha:0.12),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Icon(
@@ -59,7 +59,7 @@ class CategoryServiceHeader extends StatelessWidget {
 
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.12),
+                    color: Colors.white.withValues(alpha:0.12),
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
@@ -88,7 +88,7 @@ class CategoryServiceHeader extends StatelessWidget {
 
             CircleAvatar(
               radius: 28,
-              backgroundColor: Colors.white.withOpacity(0.15),
+              backgroundColor: Colors.white.withValues(alpha:0.15),
               child: Icon(
                 category.icon,
                 color: const Color(0xFFD4AF37),
@@ -125,7 +125,7 @@ class CategoryServiceHeader extends StatelessWidget {
                 vertical: 12,
               ),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.10),
+                color: Colors.white.withValues(alpha:0.10),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: const Color(0xFFD4AF37),

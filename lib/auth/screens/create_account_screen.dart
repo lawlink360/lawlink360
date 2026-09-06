@@ -74,13 +74,12 @@ class _CreateAccountScreenState extends ConsumerState<CreateAccountScreen>
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    final textColor = isDark ? Colors.white : Colors.black;
     final subtitleColor = isDark ? Colors.white70 : Colors.black54;
     final backButtonColor = isDark ? Colors.white : Colors.black;
     final dividerColor = isDark ? Colors.white24 : Colors.black12;
     final overlayColor = isDark
-        ? Colors.black.withOpacity(0.45)
-        : Colors.white.withOpacity(0.3);
+        ? Colors.black.withValues(alpha:0.45)
+        : Colors.white.withValues(alpha:0.3);
 
     final authState = ref.watch(authStateProvider);
 

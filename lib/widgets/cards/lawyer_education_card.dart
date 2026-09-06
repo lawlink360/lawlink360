@@ -72,7 +72,7 @@ class LawyerEducationCard extends StatelessWidget {
           width: 52,
           height: 52,
           decoration: BoxDecoration(
-            color: const Color(0xFFD4AF37).withOpacity(.15),
+            color: const Color(0xFFD4AF37).withValues(alpha:.15),
             borderRadius: BorderRadius.circular(14),
           ),
           child: Icon(

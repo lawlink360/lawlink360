@@ -28,7 +28,7 @@ class ApplicationTemplateCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 24,
-                backgroundColor: template.color.withOpacity(0.15),
+                backgroundColor: template.color.withValues(alpha:0.15),
                 child: Icon(template.icon, color: template.color),
               ),
 

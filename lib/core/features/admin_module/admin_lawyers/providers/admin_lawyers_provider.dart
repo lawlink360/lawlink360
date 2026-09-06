@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:lawlink360/core/features/admin_module/admin_lawyers/data/mock/admin_lawyer_mock_data.dart';
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/models/admin_lawyer_model.dart';
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/services/admin_lawyers_service.dart';
 

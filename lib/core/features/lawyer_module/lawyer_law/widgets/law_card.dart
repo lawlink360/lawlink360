@@ -36,7 +36,7 @@ class LawCard extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.035),
+                color: Colors.black.withValues(alpha:0.035),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -66,7 +66,7 @@ class LawCard extends StatelessWidget {
           width: 42,
           height: 42,
           decoration: BoxDecoration(
-            color: gold.withOpacity(0.12),
+            color: gold.withValues(alpha:0.12),
             borderRadius: BorderRadius.circular(12),
           ),
           child: const Icon(
@@ -115,8 +115,8 @@ class LawCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: text == 'New'
-            ? navy.withOpacity(0.08)
-            : gold.withOpacity(0.12),
+            ? navy.withValues(alpha:0.08)
+            : gold.withValues(alpha:0.12),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(

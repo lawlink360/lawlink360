@@ -24,7 +24,6 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colors = theme.colorScheme;
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
@@ -44,8 +43,8 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
           Positioned.fill(
             child: Container(
               color: isDark
-                  ? Colors.black.withOpacity(0.45)
-                  : Colors.white.withOpacity(0.3),
+                  ? Colors.black.withValues(alpha: 0.45)
+                  : Colors.white.withValues(alpha: 0.3),
             ),
           ),
           // Scrollable Content
@@ -66,7 +65,9 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFD4AF37).withOpacity(0.35),
+                              color: const Color(
+                                0xFFD4AF37,
+                              ).withValues(alpha: 0.35),
                               blurRadius: 40,
                               spreadRadius: 6,
                             ),
@@ -131,6 +132,9 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                     onPressed: selectedRole == null
                         ? null
                         : () async {
+                            final navigator = Navigator.of(context);
+                            final messenger = ScaffoldMessenger.of(context);
+
                             try {
                               await ref
                                   .read(userProfileProvider.notifier)
@@ -139,16 +143,14 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                               if (!mounted) return;
 
                               if (selectedRole == "client") {
-                                Navigator.pushReplacement(
-                                  context,
+                                navigator.pushReplacement(
                                   MaterialPageRoute(
                                     builder: (_) =>
                                         const ClientNavigationController(),
                                   ),
                                 );
                               } else if (selectedRole == "lawyer") {
-                                Navigator.pushReplacement(
-                                  context,
+                                navigator.pushReplacement(
                                   MaterialPageRoute(
                                     builder: (_) =>
                                         const LawyerOnboardingWelcomeScreen(),
@@ -158,7 +160,7 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                             } catch (e) {
                               if (!mounted) return;
 
-                              ScaffoldMessenger.of(context).showSnackBar(
+                              messenger.showSnackBar(
                                 SnackBar(
                                   content: Text("Unable to save your role: $e"),
                                 ),
@@ -208,12 +210,13 @@ class _RoleSelectionScreenState extends ConsumerState<RoleSelectionScreen> {
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
                       onPressed: () async {
+                        final navigator = Navigator.of(context);
+
                         await ref.read(authStateProvider.notifier).logout();
 
                         if (!mounted) return;
 
-                        Navigator.pushAndRemoveUntil(
-                          context,
+                        navigator.pushAndRemoveUntil(
                           MaterialPageRoute(
                             builder: (_) => const LoginScreen(),
                           ),

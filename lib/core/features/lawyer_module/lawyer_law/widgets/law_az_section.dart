@@ -94,7 +94,7 @@ class LawAzSection extends StatelessWidget {
             vertical: 5,
           ),
           decoration: BoxDecoration(
-            color: gold.withOpacity(0.12),
+            color: gold.withValues(alpha:0.12),
             borderRadius: BorderRadius.circular(20),
           ),
           child: const Icon(

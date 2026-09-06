@@ -160,7 +160,7 @@ class _LawCategoryLawsScreenState
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              color: gold.withOpacity(0.15),
+              color: gold.withValues(alpha:0.15),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Icon(
@@ -188,7 +188,7 @@ class _LawCategoryLawsScreenState
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.68),
+                    color: Colors.white.withValues(alpha:0.68),
                     fontSize: 11.5,
                     height: 1.35,
                   ),

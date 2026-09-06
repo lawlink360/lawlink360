@@ -129,7 +129,7 @@ class _LawSectionScreenState extends State<LawSectionScreen> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: gold.withOpacity(0.15),
+              color: gold.withValues(alpha:0.15),
               borderRadius: BorderRadius.circular(11),
             ),
             child: const Icon(
@@ -159,7 +159,7 @@ class _LawSectionScreenState extends State<LawSectionScreen> {
                 Text(
                   '${widget.law.year} • ${widget.law.jurisdiction}',
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.65),
+                    color: Colors.white.withValues(alpha:0.65),
                     fontSize: 10.5,
                   ),
                 ),
@@ -191,7 +191,7 @@ class _LawSectionScreenState extends State<LawSectionScreen> {
               vertical: 6,
             ),
             decoration: BoxDecoration(
-              color: gold.withOpacity(0.12),
+              color: gold.withValues(alpha:0.12),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
@@ -268,7 +268,7 @@ class _LawSectionScreenState extends State<LawSectionScreen> {
                 vertical: 6,
               ),
               decoration: BoxDecoration(
-                color: gold.withOpacity(0.10),
+                color: gold.withValues(alpha:0.10),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(

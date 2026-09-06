@@ -24,11 +24,11 @@ class VerificationStatusCard extends ConsumerWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: statusData.color.withOpacity(0.25),
+          color: statusData.color.withValues(alpha:0.25),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha:0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -41,7 +41,7 @@ class VerificationStatusCard extends ConsumerWidget {
             width: 46,
             height: 46,
             decoration: BoxDecoration(
-              color: statusData.color.withOpacity(0.12),
+              color: statusData.color.withValues(alpha:0.12),
               shape: BoxShape.circle,
             ),
             child: Icon(

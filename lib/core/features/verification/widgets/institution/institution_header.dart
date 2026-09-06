@@ -44,7 +44,7 @@ class InstitutionHeader extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.12),
+                      color: Colors.white.withValues(alpha:0.12),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Icon(
@@ -72,7 +72,7 @@ class InstitutionHeader extends StatelessWidget {
 
             CircleAvatar(
               radius: 30,
-              backgroundColor: Colors.white.withOpacity(0.15),
+              backgroundColor: Colors.white.withValues(alpha:0.15),
               child: Icon(
                 institution.icon,
                 color: const Color(0xFFD4AF37),
@@ -109,7 +109,7 @@ class InstitutionHeader extends StatelessWidget {
                 vertical: 12,
               ),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.10),
+                color: Colors.white.withValues(alpha:0.10),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: const Color(0xFFD4AF37),

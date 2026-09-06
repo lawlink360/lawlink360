@@ -158,7 +158,6 @@ class _VerificationIdCardState
     // IMPORTANT:
     // watch the provider so this widget rebuilds immediately
     // when the ID card paths are updated.
-    final onboarding = ref.watch(lawyerOnboardingProvider);
 
     final verification =
         ref.read(lawyerOnboardingProvider.notifier).verificationInfo;
@@ -171,7 +170,7 @@ class _VerificationIdCardState
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha:0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -369,7 +368,7 @@ class _DocumentImageBox extends StatelessWidget {
                             vertical: 7,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.55),
+                            color: Colors.black.withValues(alpha:0.55),
                             borderRadius: const BorderRadius.vertical(
                               bottom: Radius.circular(15),
                             ),

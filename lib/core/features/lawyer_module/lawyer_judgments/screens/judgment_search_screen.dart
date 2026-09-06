@@ -32,7 +32,6 @@ class _JudgmentSearchScreenState
   String? _selectedLawReport;
 
   static const Color navy = Color(0xFF13294B);
-  static const Color gold = Color(0xFFD4AF37);
 
   @override
   void initState() {
@@ -361,11 +360,11 @@ class _JudgmentSearchScreenState
   }
 
   Widget _buildActiveFilters() {
-    final filters = <String>[
-      if (_selectedCourt != null) _selectedCourt!,
-      if (_selectedCategory != null) _selectedCategory!,
-      if (_selectedLawReport != null) _selectedLawReport!,
-    ];
+  final filters = <String>[
+    ?_selectedCourt,
+    ?_selectedCategory,
+    ?_selectedLawReport,
+  ];
 
     return SizedBox(
       height: 46,

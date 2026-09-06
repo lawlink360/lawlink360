@@ -239,7 +239,7 @@ class _LawSearchScreenState extends State<LawSearchScreen> {
               width: 72,
               height: 72,
               decoration: BoxDecoration(
-                color: gold.withOpacity(0.12),
+                color: gold.withValues(alpha:0.12),
                 shape: BoxShape.circle,
               ),
               child: const Icon(

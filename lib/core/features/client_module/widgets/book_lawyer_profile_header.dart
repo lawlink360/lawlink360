@@ -143,7 +143,7 @@ class LawyerProfileHeader extends StatelessWidget {
                     vertical: 7,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(.12),
+                    color: Colors.white.withValues(alpha:.12),
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
                       color: Colors.white24,

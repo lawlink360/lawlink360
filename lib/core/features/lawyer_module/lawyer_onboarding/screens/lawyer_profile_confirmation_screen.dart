@@ -228,7 +228,7 @@ class LawyerProfileConfirmationScreen extends ConsumerWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(
-                    color: const Color(0xFFD4AF37).withOpacity(0.35),
+                    color: const Color(0xFFD4AF37).withValues(alpha:0.35),
                   ),
                 ),
                 child: const Row(
@@ -442,7 +442,7 @@ class _ProfilePreviewCard extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: const Color(0xFFD4AF37)
-                            .withOpacity(0.15),
+                            .withValues(alpha:0.15),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -536,7 +536,7 @@ class _SectionCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha:0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -636,8 +636,8 @@ class _VerificationSummaryCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: submitted
-              ? Colors.orange.withOpacity(0.3)
-              : Colors.grey.withOpacity(0.2),
+              ? Colors.orange.withValues(alpha:0.3)
+              : Colors.grey.withValues(alpha:0.2),
         ),
       ),
       child: Row(

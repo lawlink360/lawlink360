@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : navigator_helper.dart
-/// Purpose : Helper methods for Legal Navigator.
-/// ------------------------------------------------------------
-
 import '../enums/content_type.dart';
 import '../models/navigator_item_model.dart';
 import '../enums/navigator_item_type.dart';

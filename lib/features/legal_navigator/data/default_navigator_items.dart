@@ -1,10 +1,3 @@
-/// ------------------------------------------------------------
-/// LawLink360
-/// Feature : Legal Navigator
-/// File    : default_navigator_items.dart
-/// Purpose : Default cards displayed in Legal Navigator.
-/// ------------------------------------------------------------
-
 import '../enums/navigator_item_type.dart';
 import '../models/navigator_item_model.dart';
 import 'navigator_icons.dart';

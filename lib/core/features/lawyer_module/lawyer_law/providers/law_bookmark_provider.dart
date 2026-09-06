@@ -15,21 +15,19 @@ final lawBookmarkProvider = StateNotifierProvider<
   final lawState = ref.watch(lawProvider);
 
   return LawBookmarkNotifier(
-    service: service,
-    allLaws: lawState.laws,
-  );
+  service,
+  lawState.laws,
+);
 });
 
 class LawBookmarkNotifier
     extends StateNotifier<LawBookmarkState> {
-  LawBookmarkNotifier({
-    required LawBookmarkService service,
-    required List<LawModel> allLaws,
-  })  : _service = service,
-        _allLaws = allLaws,
-        super(const LawBookmarkState()) {
-    _loadBookmarks();
-  }
+  LawBookmarkNotifier(
+  this._service,
+  this._allLaws,
+) : super(const LawBookmarkState()) {
+  _loadBookmarks();
+}
 
   final LawBookmarkService _service;
 

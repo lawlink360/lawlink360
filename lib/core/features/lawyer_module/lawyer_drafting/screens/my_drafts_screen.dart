@@ -295,7 +295,7 @@ class _MyDraftsScreenState
         ),
         scrollDirection: Axis.horizontal,
         itemCount: _filters.length,
-        separatorBuilder: (_, __) =>
+        separatorBuilder: (_, _) =>
             const SizedBox(width: 8),
         itemBuilder: (context, index) {
           final filter = _filters[index];

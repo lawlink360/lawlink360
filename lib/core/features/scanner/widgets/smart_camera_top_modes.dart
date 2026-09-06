@@ -30,7 +30,7 @@ class _SmartCameraTopModesState extends State<SmartCameraTopModes> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         scrollDirection: Axis.horizontal,
         itemCount: modes.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 24),
+        separatorBuilder: (_, _) => const SizedBox(width: 24),
         itemBuilder: (context, index) {
           final bool selected = index == selectedIndex;
 

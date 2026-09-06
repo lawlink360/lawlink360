@@ -146,7 +146,7 @@ class LawDashboardScreen extends StatelessWidget {
             width: 54,
             height: 54,
             decoration: BoxDecoration(
-              color: gold.withOpacity(0.14),
+              color: gold.withValues(alpha:0.14),
               borderRadius: BorderRadius.circular(15),
             ),
             child: const Icon(
@@ -220,7 +220,7 @@ class LawDashboardScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: gold.withOpacity(0.10),
+                color: gold.withValues(alpha:0.10),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(
@@ -283,7 +283,7 @@ class LawDashboardScreen extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: gold.withOpacity(0.10),
+                color: gold.withValues(alpha:0.10),
                 borderRadius: BorderRadius.circular(11),
               ),
               child: Icon(

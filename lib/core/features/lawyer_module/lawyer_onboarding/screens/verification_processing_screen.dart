@@ -86,7 +86,7 @@ class _VerificationProcessingScreenState
                     height: 110,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: const Color(0xFFD4AF37).withOpacity(0.12),
+                      color: const Color(0xFFD4AF37).withValues(alpha:0.12),
                     ),
                     child: const Center(
                       child: SizedBox(
@@ -145,7 +145,7 @@ class _VerificationProcessingScreenState
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
+                          color: Colors.black.withValues(alpha:0.04),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),

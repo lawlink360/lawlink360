@@ -102,7 +102,6 @@ class AdminUserDetailsScreen extends ConsumerWidget {
     WidgetRef ref,
     dynamic user,
   ) {
-    final theme = Theme.of(context);
 
     return RefreshIndicator(
       onRefresh: () {
@@ -309,7 +308,6 @@ class AdminUserDetailsScreen extends ConsumerWidget {
     BuildContext context,
     dynamic user,
   ) {
-    final theme = Theme.of(context);
 
     return _SectionCard(
       title: 'Account Information',

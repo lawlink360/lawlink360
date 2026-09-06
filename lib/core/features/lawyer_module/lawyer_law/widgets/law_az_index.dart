@@ -51,7 +51,6 @@ class _LetterButton extends StatelessWidget {
   final VoidCallback? onTap;
 
   static const Color navy = Color(0xFF13294B);
-  static const Color gold = Color(0xFFD4AF37);
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +78,7 @@ class _LetterButton extends StatelessWidget {
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: navy.withOpacity(0.15),
+                    color: navy.withValues(alpha:0.15),
                     blurRadius: 8,
                     offset: const Offset(0, 3),
                   ),

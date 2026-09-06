@@ -50,7 +50,7 @@ class PremiumHeader extends StatelessWidget {
 
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.12),
+                    color: Colors.white.withValues(alpha:0.12),
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
@@ -119,7 +119,7 @@ class PremiumHeader extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.10),
+                color: Colors.white.withValues(alpha:0.10),
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(
                   color: const Color(0xFFD4AF37),

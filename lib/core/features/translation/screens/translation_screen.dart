@@ -254,7 +254,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
               children: [
                 Expanded(
                   child: DropdownButtonFormField<String>(
-                    value: fromLanguage,
+                    initialValue: fromLanguage,
                     decoration: InputDecoration(
                       labelText: "From",
                       border: OutlineInputBorder(
@@ -292,7 +292,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
 
                 Expanded(
                   child: DropdownButtonFormField<String>(
-                    value: toLanguage,
+                    initialValue: toLanguage,
                     decoration: InputDecoration(
                       labelText: "To",
                       border: OutlineInputBorder(

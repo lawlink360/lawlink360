@@ -31,7 +31,7 @@ class VerificationSuccessScreen extends StatelessWidget {
                     height: 120,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.green.withOpacity(0.12),
+                      color: Colors.green.withValues(alpha:0.12),
                     ),
                     child: Container(
                       margin: const EdgeInsets.all(18),
@@ -101,11 +101,11 @@ class VerificationSuccessScreen extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: const Color(0xFFD4AF37).withOpacity(0.35),
+                        color: const Color(0xFFD4AF37).withValues(alpha:0.35),
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
+                          color: Colors.black.withValues(alpha:0.04),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),

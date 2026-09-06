@@ -13,7 +13,7 @@ class VideoBottomTools extends StatelessWidget {
           width: 56,
           height: 56,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(.10),
+            color: Colors.white.withValues(alpha:.10),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Icon(

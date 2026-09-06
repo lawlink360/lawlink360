@@ -10,7 +10,7 @@ class SignupHeader extends StatelessWidget {
     
     // Set colors based on theme
     final subtitleColor = isDark ? Colors.white70 : Colors.black54;
-    final shadowColor = const Color(0xFFD4AF37).withOpacity(0.35);
+    final shadowColor = const Color(0xFFD4AF37).withValues(alpha:0.35);
 
     return Column(
       children: [

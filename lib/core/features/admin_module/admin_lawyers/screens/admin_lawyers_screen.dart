@@ -8,7 +8,7 @@ import 'package:lawlink360/core/features/admin_module/admin_lawyers/widgets/admi
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/widgets/admin_lawyer_filter_sheet.dart';
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/widgets/admin_lawyer_search_bar.dart';
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/widgets/admin_lawyer_stats_card.dart';
-import 'package:lawlink360/core/features/admin_module/admin_module.dart';
+import 'package:lawlink360/core/admin_module.dart';
 import 'package:lawlink360/core/features/admin_module/widgets/admin_drawer.dart';
 
 class AdminLawyersScreen extends ConsumerStatefulWidget {

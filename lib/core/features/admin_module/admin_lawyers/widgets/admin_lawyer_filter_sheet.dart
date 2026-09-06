@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:lawlink360/core/features/admin_module/admin_lawyers/models/lawyer_status_model.dart';
-
 class AdminLawyerFilterSheet extends StatelessWidget {
   final String? selectedStatus;
   final String? selectedSpecialization;
@@ -37,9 +35,7 @@ class AdminLawyerFilterSheet extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
         return AdminLawyerFilterSheet(
@@ -92,10 +88,7 @@ class AdminLawyerFilterSheet extends StatelessWidget {
             children: [
               const Text(
                 'Filter Lawyers',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
 
               const SizedBox(height: 8),
@@ -106,62 +99,53 @@ class AdminLawyerFilterSheet extends StatelessWidget {
 
               const Text(
                 'Status',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
 
               const SizedBox(height: 8),
 
-              RadioListTile<String?>(
-                value: null,
+              RadioGroup<String?>(
                 groupValue: selectedStatus,
                 onChanged: onStatusChanged,
-                title: const Text('All Lawyers'),
-                contentPadding: EdgeInsets.zero,
-              ),
+                child: Column(
+                  children: [
+                    RadioListTile<String?>(
+                      value: null,
+                      title: const Text('All Lawyers'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
 
-              RadioListTile<String?>(
-                value: 'active',
-                groupValue: selectedStatus,
-                onChanged: onStatusChanged,
-                title: const Text('Active'),
-                contentPadding: EdgeInsets.zero,
-              ),
+                    RadioListTile<String?>(
+                      value: 'active',
+                      title: const Text('Active'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
 
-              RadioListTile<String?>(
-                value: 'inactive',
-                groupValue: selectedStatus,
-                onChanged: onStatusChanged,
-                title: const Text('Inactive'),
-                contentPadding: EdgeInsets.zero,
-              ),
+                    RadioListTile<String?>(
+                      value: 'inactive',
+                      title: const Text('Inactive'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
 
-              RadioListTile<String?>(
-                value: 'suspended',
-                groupValue: selectedStatus,
-                onChanged: onStatusChanged,
-                title: const Text('Suspended'),
-                contentPadding: EdgeInsets.zero,
-              ),
+                    RadioListTile<String?>(
+                      value: 'suspended',
+                      title: const Text('Suspended'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
 
-              RadioListTile<String?>(
-                value: 'pending',
-                groupValue: selectedStatus,
-                onChanged: onStatusChanged,
-                title: const Text('Pending'),
-                contentPadding: EdgeInsets.zero,
+                    RadioListTile<String?>(
+                      value: 'pending',
+                      title: const Text('Pending'),
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                  ],
+                ),
               ),
-
               const SizedBox(height: 12),
 
               const Text(
                 'Specialization',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
 
               const SizedBox(height: 8),
@@ -172,14 +156,12 @@ class AdminLawyerFilterSheet extends StatelessWidget {
                   labelText: 'Select specialization',
                   border: OutlineInputBorder(),
                 ),
-                items: specializations.map(
-                  (specialization) {
-                    return DropdownMenuItem<String>(
-                      value: specialization,
-                      child: Text(specialization),
-                    );
-                  },
-                ).toList(),
+                items: specializations.map((specialization) {
+                  return DropdownMenuItem<String>(
+                    value: specialization,
+                    child: Text(specialization),
+                  );
+                }).toList(),
                 onChanged: onSpecializationChanged,
               ),
 
@@ -187,10 +169,7 @@ class AdminLawyerFilterSheet extends StatelessWidget {
 
               const Text(
                 'City',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
 
               const SizedBox(height: 8),
@@ -201,14 +180,12 @@ class AdminLawyerFilterSheet extends StatelessWidget {
                   labelText: 'Select city',
                   border: OutlineInputBorder(),
                 ),
-                items: cities.map(
-                  (city) {
-                    return DropdownMenuItem<String>(
-                      value: city,
-                      child: Text(city),
-                    );
-                  },
-                ).toList(),
+                items: cities.map((city) {
+                  return DropdownMenuItem<String>(
+                    value: city,
+                    child: Text(city),
+                  );
+                }).toList(),
                 onChanged: onCityChanged,
               ),
 
@@ -218,9 +195,7 @@ class AdminLawyerFilterSheet extends StatelessWidget {
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: onClear,
-                  child: const Text(
-                    'Clear Filters',
-                  ),
+                  child: const Text('Clear Filters'),
                 ),
               ),
 

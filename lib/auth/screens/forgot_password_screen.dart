@@ -8,7 +8,8 @@ class ForgotPasswordScreen extends ConsumerStatefulWidget {
   const ForgotPasswordScreen({super.key});
 
   @override
-  ConsumerState<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+  ConsumerState<ForgotPasswordScreen> createState() =>
+      _ForgotPasswordScreenState();
 }
 
 class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
@@ -25,22 +26,18 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
     final theme = Theme.of(context);
     final authState = ref.watch(authStateProvider);
     final isDark = theme.brightness == Brightness.dark;
-    
+
     // Set colors based on theme
     final textColor = isDark ? Colors.white : Colors.black;
     final subtitleColor = isDark ? Colors.white70 : Colors.black54;
-    final cardBgColor = isDark 
-        ? Colors.white.withOpacity(0.08) 
-        : Colors.white.withOpacity(0.7);
-    final cardBorderColor = isDark 
-        ? Colors.white24 
-        : Colors.black12;
-    final inputFillColor = isDark 
-        ? Colors.white.withOpacity(0.05) 
-        : Colors.black.withOpacity(0.03);
-    final inputBorderColor = isDark 
-        ? Colors.white24 
-        : Colors.black12;
+    final cardBgColor = isDark
+        ? Colors.white.withValues(alpha: 0.08)
+        : Colors.white.withValues(alpha: 0.7);
+    final cardBorderColor = isDark ? Colors.white24 : Colors.black12;
+    final inputFillColor = isDark
+        ? Colors.white.withValues(alpha: 0.05)
+        : Colors.black.withValues(alpha: 0.03);
+    final inputBorderColor = isDark ? Colors.white24 : Colors.black12;
     final backButtonColor = isDark ? Colors.white : Colors.black;
 
     return Scaffold(
@@ -60,8 +57,8 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
           Positioned.fill(
             child: Container(
               color: isDark
-                  ? Colors.black.withOpacity(0.45)
-                  : Colors.white.withOpacity(0.3),
+                  ? Colors.black.withValues(alpha: 0.45)
+                  : Colors.white.withValues(alpha: 0.3),
             ),
           ),
           // Content
@@ -69,7 +66,10 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 18,
+                  ),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: constraints.maxHeight,
@@ -102,7 +102,9 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFD4AF37).withOpacity(0.35),
+                                    color: const Color(
+                                      0xFFD4AF37,
+                                    ).withValues(alpha: 0.35),
                                     blurRadius: 40,
                                     spreadRadius: 8,
                                   ),
@@ -141,7 +143,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                             color: cardBgColor,
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
-                              color: cardBorderColor, 
+                              color: cardBorderColor,
                               width: 1,
                             ),
                           ),
@@ -154,7 +156,9 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                                 decoration: InputDecoration(
                                   hintText: "Enter your email",
                                   hintStyle: TextStyle(
-                                    color: isDark ? Colors.white54 : Colors.black54,
+                                    color: isDark
+                                        ? Colors.white54
+                                        : Colors.black54,
                                   ),
                                   prefixIcon: const Icon(
                                     Icons.email_outlined,
@@ -182,10 +186,13 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                                 width: double.infinity,
                                 height: 58,
                                 child: ElevatedButton(
-                                  onPressed: authState.status == AuthStatus.loading
+                                  onPressed:
+                                      authState.status == AuthStatus.loading
                                       ? null
                                       : () async {
-                                          if (emailController.text.trim().isEmpty) {
+                                          if (emailController.text
+                                              .trim()
+                                              .isEmpty) {
                                             ScaffoldMessenger.of(
                                               context,
                                             ).showSnackBar(
@@ -197,42 +204,58 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                                             );
                                             return;
                                           }
+
                                           try {
-                                            await ref.read(authStateProvider.notifier).resetPassword(
-                                              emailController.text.trim(),
-                                            );
-                                            if (!mounted) return;
+                                            await ref
+                                                .read(
+                                                  authStateProvider.notifier,
+                                                )
+                                                .resetPassword(
+                                                  emailController.text.trim(),
+                                                );
+
+                                            if (!context.mounted) return;
+
                                             showDialog(
                                               context: context,
                                               builder: (_) => AlertDialog(
                                                 shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(
-                                                    20,
-                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
                                                 ),
                                                 title: const Text(
                                                   "✅ Reset Link Sent",
                                                 ),
                                                 content: const Text(
-                                                  "We've sent a password reset link to your email.\n\nPlease check your inbox and spam folder.",
+                                                  "We've sent a password reset link to your email.\n\n"
+                                                  "Please check your inbox and spam folder.",
                                                 ),
                                                 actions: [
                                                   ElevatedButton(
                                                     onPressed: () {
-                                                      Navigator.pop(context);
-                                                      Navigator.pop(context);
+                                                      Navigator.of(
+                                                        context,
+                                                      ).pop();
+                                                      Navigator.of(
+                                                        context,
+                                                      ).pop();
                                                     },
-                                                    child: const Text("Continue"),
+                                                    child: const Text(
+                                                      "Continue",
+                                                    ),
                                                   ),
                                                 ],
                                               ),
                                             );
                                           } catch (e) {
-                                            if (!mounted) return;
+                                            if (!context.mounted) return;
+
                                             ScaffoldMessenger.of(
                                               context,
                                             ).showSnackBar(
-                                              SnackBar(content: Text(e.toString())),
+                                              SnackBar(
+                                                content: Text(e.toString()),
+                                              ),
                                             );
                                           }
                                         },
@@ -245,7 +268,8 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                                   ),
                                   child: authState.status == AuthStatus.loading
                                       ? const Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             SizedBox(
                                               width: 22,

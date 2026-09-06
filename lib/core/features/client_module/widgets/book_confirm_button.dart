@@ -22,7 +22,6 @@ class BookConfirmButton extends StatelessWidget {
           child: ElevatedButton.icon(
             onPressed: () {
               // Debug print
-              print("🔵🔵🔵 CONFIRM BOOKING BUTTON PRESSED 🔵🔵🔵");
               
               // Show snackbar for visual feedback
               ScaffoldMessenger.of(context).showSnackBar(

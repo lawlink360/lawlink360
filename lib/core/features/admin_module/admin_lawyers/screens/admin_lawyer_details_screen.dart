@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/providers/admin_lawyer_details_provider.dart';
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/widgets/admin_lawyer_status_chip.dart';
 import 'package:lawlink360/core/features/admin_module/admin_lawyers/screens/admin_lawyer_performance_screen.dart';
-import 'package:lawlink360/core/features/admin_module/admin_module.dart';
+import 'package:lawlink360/core/admin_module.dart';
 
 class AdminLawyerDetailsScreen
     extends ConsumerWidget {

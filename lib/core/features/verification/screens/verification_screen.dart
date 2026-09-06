@@ -24,7 +24,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
   }
 
   void _onSearchChanged(String value) {
-    // TODO: Implement search functionality
   }
 
   @override

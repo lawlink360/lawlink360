@@ -66,22 +66,6 @@ class _BasicInfoCityFieldState extends State<BasicInfoCityField> {
     super.dispose();
   }
 
-  void _filterCities(String query) {
-    final search = query.trim().toLowerCase();
-
-    setState(() {
-      if (search.isEmpty) {
-        _filteredCities = BasicInfoCityField.cities;
-      } else {
-        _filteredCities = BasicInfoCityField.cities
-            .where(
-              (city) => city.toLowerCase().contains(search),
-            )
-            .toList();
-      }
-    });
-  }
-
   void _openCitySelector() {
     _searchController.clear();
     _filteredCities = BasicInfoCityField.cities;

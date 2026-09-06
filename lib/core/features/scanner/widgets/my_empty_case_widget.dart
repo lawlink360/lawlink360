@@ -16,7 +16,7 @@ class MyEmptyCaseWidget extends StatelessWidget {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
-                color: const Color(0xFFD4AF37).withOpacity(.10),
+                color: const Color(0xFFD4AF37).withValues(alpha:.10),
                 shape: BoxShape.circle,
               ),
               child: const Icon(
