@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class RecentActivityCard extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -14,25 +18,43 @@ class RecentActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        border: Border.all(
+          color: colorScheme.outlineVariant.withValues(alpha: 0.55),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: colorScheme.shadow.withValues(alpha: 0.05),
+            blurRadius: 12,
+            offset: const Offset(0, 5),
+          ),
+        ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            radius: 24,
-            backgroundColor: Color(0xFFEEF2FF),
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: colorScheme.primary.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(AppRadius.md),
+            ),
             child: Icon(
-              Icons.notifications_none,
-              color: Color(0xFF0F172A),
+              Icons.notifications_none_rounded,
+              color: colorScheme.primary,
+              size: 23,
             ),
           ),
 
-          const SizedBox(width: 14),
+          const SizedBox(width: AppSpacing.sm),
 
           Expanded(
             child: Column(
@@ -40,29 +62,35 @@ class RecentActivityCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: colorScheme.onSurface,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
 
-                const SizedBox(height: 4),
+                const SizedBox(height: AppSpacing.xs),
 
                 Text(
                   subtitle,
-                  style: const TextStyle(
-                    color: Colors.grey,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.caption.copyWith(
+                    color: colorScheme.onSurface.withValues(alpha: 0.65),
+                    height: 1.35,
                   ),
                 ),
               ],
             ),
           ),
 
+          const SizedBox(width: AppSpacing.sm),
+
           Text(
             time,
-            style: const TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
+            style: AppTextStyles.caption.copyWith(
+              color: colorScheme.onSurface.withValues(alpha: 0.52),
             ),
           ),
         ],
