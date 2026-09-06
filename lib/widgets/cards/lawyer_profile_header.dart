@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
+
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
 
@@ -7,159 +12,152 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(20, 50, 20, 24),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        50,
+        AppSpacing.lg,
+        AppSpacing.lg,
+      ),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xFF0D1B2A),
+            AppColors.primary,
             Color(0xFF1B263B),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+          bottomLeft: Radius.circular(AppRadius.xl + AppSpacing.sm),
+          bottomRight: Radius.circular(AppRadius.xl + AppSpacing.sm),
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          /// Top Bar
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-
-              Icon(
-                Icons.arrow_back_ios_new,
-                color: Colors.white,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.maybePop(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: Colors.white,
+                ),
+                tooltip: 'Back',
               ),
-
-              Icon(
-                Icons.more_vert,
-                color: Colors.white,
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.more_vert_rounded,
+                  color: Colors.white,
+                ),
+                tooltip: 'More options',
               ),
             ],
           ),
-
-          const SizedBox(height: 25),
-
-          /// Profile Info
+          const SizedBox(height: AppSpacing.lg),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Stack(
                 children: [
-
                   Container(
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Color(0xFFD4AF37),
+                        color: AppColors.accent,
                         width: 3,
                       ),
                     ),
                     child: const CircleAvatar(
                       backgroundColor: Colors.white,
                       child: Icon(
-                        Icons.person,
+                        Icons.person_rounded,
                         size: 55,
-                        color: Color(0xFF0D1B2A),
+                        color: AppColors.primary,
                       ),
                     ),
                   ),
-
                   Positioned(
                     right: 0,
                     bottom: 0,
                     child: Container(
+                      padding: const EdgeInsets.all(4),
                       decoration: const BoxDecoration(
-                        color: Colors.green,
+                        color: AppColors.success,
                         shape: BoxShape.circle,
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Icon(
-                          Icons.check,
-                          size: 18,
-                          color: Colors.white,
-                        ),
+                      child: const Icon(
+                        Icons.check_rounded,
+                        size: 18,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                 ],
               ),
-
-              const SizedBox(width: 18),
-
+              const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-                    const Text(
-                      "Adv. Ahmed Khan",
-                      style: TextStyle(
+                    Text(
+                      'Adv. Ahmed Khan',
+                      style: AppTextStyles.headline.copyWith(
                         color: Colors.white,
                         fontSize: 24,
-                        fontWeight: FontWeight.bold,
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
-
-                    const SizedBox(height: 6),
-
+                    const SizedBox(height: AppSpacing.xs),
                     Row(
-                      children: const [
-
-                        Icon(
-                          Icons.star,
-                          color: Color(0xFFD4AF37),
+                      children: [
+                        const Icon(
+                          Icons.star_rounded,
+                          color: AppColors.accent,
                           size: 18,
                         ),
-
-                        SizedBox(width: 4),
-
-                        Text(
-                          "4.9 (124 Reviews)",
-                          style: TextStyle(
-                            color: Colors.white70,
+                        const SizedBox(width: AppSpacing.xs),
+                        Expanded(
+                          child: Text(
+                            '4.9 (124 Reviews)',
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: Colors.white70,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
                     ),
-
-                    const SizedBox(height: 8),
-
-                    const Text(
-                      "Criminal Lawyer",
-                      style: TextStyle(
-                        color: Color(0xFFD4AF37),
-                        fontSize: 16,
+                    const SizedBox(height: AppSpacing.sm),
+                    Text(
+                      'Criminal Lawyer',
+                      style: AppTextStyles.body.copyWith(
+                        color: AppColors.accent,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-
-                    const SizedBox(height: 8),
-
+                    const SizedBox(height: AppSpacing.xs),
                     Row(
-                      children: const [
-
-                        Icon(
-                          Icons.location_on,
+                      children: [
+                        const Icon(
+                          Icons.location_on_rounded,
                           color: Colors.white70,
                           size: 18,
                         ),
-
-                        SizedBox(width: 5),
-
-                        Text(
-                          "Islamabad, Pakistan",
-                          style: TextStyle(
-                            color: Colors.white70,
+                        const SizedBox(width: AppSpacing.xs),
+                        Expanded(
+                          child: Text(
+                            'Islamabad, Pakistan',
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: Colors.white70,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
@@ -169,23 +167,18 @@ class ProfileHeader extends StatelessWidget {
               ),
             ],
           ),
-
-          const SizedBox(height: 22),
-
-          /// Chips
+          const SizedBox(height: AppSpacing.lg),
           Wrap(
-            spacing: 12,
-            runSpacing: 10,
+            spacing: AppSpacing.sm,
+            runSpacing: AppSpacing.xs,
             children: [
-
               _chip(
-                Icons.verified_user,
-                "Verified Lawyer",
+                Icons.verified_user_rounded,
+                'Verified Lawyer',
               ),
-
               _chip(
-                Icons.workspace_premium,
-                "10+ Years Experience",
+                Icons.workspace_premium_rounded,
+                '10+ Years Experience',
               ),
             ],
           ),
@@ -197,12 +190,12 @@ class ProfileHeader extends StatelessWidget {
   static Widget _chip(IconData icon, String text) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 14,
-        vertical: 10,
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha:.08),
-        borderRadius: BorderRadius.circular(30),
+        color: Colors.white.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(AppRadius.pill),
         border: Border.all(
           color: Colors.white24,
         ),
@@ -210,18 +203,15 @@ class ProfileHeader extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-
           Icon(
             icon,
-            color: const Color(0xFFD4AF37),
+            color: AppColors.accent,
             size: 18,
           ),
-
-          const SizedBox(width: 8),
-
+          const SizedBox(width: AppSpacing.xs),
           Text(
             text,
-            style: const TextStyle(
+            style: AppTextStyles.caption.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.w600,
             ),

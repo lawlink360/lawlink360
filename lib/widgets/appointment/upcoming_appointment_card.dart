@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
+
 class UpcomingAppointmentCard extends StatelessWidget {
   const UpcomingAppointmentCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+      ),
       child: Container(
-        padding: const EdgeInsets.all(18),
+        padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
-          color: const Color(0xff102542),
-          borderRadius: BorderRadius.circular(22),
+          color: colorScheme.primary,
+          borderRadius: BorderRadius.circular(AppRadius.xl),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.08),
+              color: Colors.black.withValues(
+                alpha: 0.10,
+              ),
               blurRadius: 20,
               offset: const Offset(0, 8),
             ),
@@ -23,58 +34,60 @@ class UpcomingAppointmentCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Upcoming Appointment",
-              style: TextStyle(
+            Text(
+              'Upcoming Appointment',
+              style: AppTextStyles.title.copyWith(
                 color: Colors.white,
                 fontSize: 17,
-                fontWeight: FontWeight.bold,
               ),
             ),
-
-            const SizedBox(height: 18),
-
+            const SizedBox(height: AppSpacing.md),
             Row(
               children: [
                 Container(
                   height: 52,
                   width: 52,
                   decoration: BoxDecoration(
-                    color: const Color(0xffD4AF37),
-                    borderRadius: BorderRadius.circular(14),
+                    color: AppColors.accent,
+                    borderRadius: BorderRadius.circular(
+                      AppRadius.md,
+                    ),
                   ),
-                  child: const Icon(Icons.calendar_today, color: Colors.white),
+                  child: const Icon(
+                    Icons.calendar_today_rounded,
+                    color: Colors.white,
+                  ),
                 ),
-
-                const SizedBox(width: 15),
-
+                const SizedBox(width: AppSpacing.sm),
                 const Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Adv. Ahmed Khan",
+                        'Adv. Ahmed Khan',
                         style: TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
                           fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
+                        overflow: TextOverflow.ellipsis,
                       ),
-
-                      SizedBox(height: 4),
-
+                      SizedBox(height: AppSpacing.xs),
                       Text(
-                        "Civil Suit Consultation",
-                        style: TextStyle(color: Colors.white70),
-                      ),
-
-                      SizedBox(height: 6),
-
-                      Text(
-                        "Today • 3:30 PM",
+                        'Civil Suit Consultation',
                         style: TextStyle(
-                          color: Color(0xffD4AF37),
+                          color: Colors.white70,
+                          fontSize: 14,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(height: AppSpacing.xs),
+                      Text(
+                        'Today • 3:30 PM',
+                        style: TextStyle(
+                          color: AppColors.accent,
                           fontWeight: FontWeight.w600,
+                          fontSize: 14,
                         ),
                       ),
                     ],
@@ -82,44 +95,62 @@ class UpcomingAppointmentCard extends StatelessWidget {
                 ),
               ],
             ),
-
-            const SizedBox(height: 22),
-
+            const SizedBox(height: AppSpacing.lg),
             Row(
               children: [
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFD4AF37),
+                      backgroundColor: AppColors.accent,
                       foregroundColor: Colors.white,
                       elevation: 0,
-                      minimumSize: const Size(double.infinity, 48),
+                      minimumSize: const Size(
+                        double.infinity,
+                        AppSpacing.buttonHeight,
+                      ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(
+                          AppRadius.md,
+                        ),
                       ),
                     ),
-                    child: const Text("Join Meeting"),
+                    child: Text(
+                      'Join Meeting',
+                      style: AppTextStyles.button.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-
-                const SizedBox(width: 12),
-
+                const SizedBox(width: AppSpacing.sm),
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: const Color(0xFF13294B),
-                      side: const BorderSide(
-                        color: Color(0xFF13294B),
+                      foregroundColor: Colors.white,
+                      side: BorderSide(
+                        color: Colors.white.withValues(
+                          alpha: 0.70,
+                        ),
                         width: 1.2,
                       ),
-                      minimumSize: const Size(double.infinity, 48),
+                      minimumSize: const Size(
+                        double.infinity,
+                        AppSpacing.buttonHeight,
+                      ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(
+                          AppRadius.md,
+                        ),
                       ),
                     ),
-                    child: const Text("Details"),
+                    child: Text(
+                      'Details',
+                      style: AppTextStyles.button.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ],
