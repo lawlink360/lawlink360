@@ -1,54 +1,58 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_radius.dart';
+
 class VoiceCallAvatar extends StatelessWidget {
   const VoiceCallAvatar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Stack(
       alignment: Alignment.center,
       children: [
-
-        // Outer Ring
         Container(
           width: 260,
           height: 260,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xFFD4AF37).withValues(alpha:0.08),
+            color: AppColors.accent.withValues(alpha: 0.07),
           ),
         ),
-
-        // Middle Ring
         Container(
           width: 210,
           height: 210,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xFFD4AF37).withValues(alpha:0.15),
+            color: AppColors.accent.withValues(alpha: 0.14),
           ),
         ),
-
-        // Main Avatar
         Container(
           width: 160,
           height: 160,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white,
+            color: colorScheme.surface,
             border: Border.all(
-              color: const Color(0xFFD4AF37),
-              width: 4,
+              color: AppColors.accent,
+              width: 3,
             ),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.accent.withValues(alpha: 0.18),
+                blurRadius: 24,
+                spreadRadius: 2,
+              ),
+            ],
           ),
-          child: const Icon(
-            Icons.person,
-            size: 90,
-            color: Color(0xFF0D1B2A),
+          child: Icon(
+            Icons.person_rounded,
+            size: 86,
+            color: colorScheme.primary,
           ),
         ),
-
-        // Online Indicator
         Positioned(
           right: 58,
           bottom: 58,
@@ -56,12 +60,13 @@ class VoiceCallAvatar extends StatelessWidget {
             width: 26,
             height: 26,
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: AppColors.success,
               shape: BoxShape.circle,
               border: Border.all(
-                color: Colors.white,
+                color: colorScheme.surface,
                 width: 3,
               ),
+              borderRadius: BorderRadius.circular(AppRadius.pill),
             ),
           ),
         ),

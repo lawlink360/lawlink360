@@ -1,60 +1,66 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+
 class VoiceCallAppBar extends StatelessWidget {
   const VoiceCallAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 18,
-        vertical: 10,
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.sm,
       ),
       child: Row(
         children: [
-
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha:.12),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: const Icon(
-                Icons.arrow_back_ios_new,
-                color: Colors.white,
-                size: 18,
+          Material(
+            color: colorScheme.onSurface.withValues(alpha: 0.10),
+            borderRadius: BorderRadius.circular(AppRadius.md),
+            child: InkWell(
+              onTap: () => Navigator.pop(context),
+              borderRadius: BorderRadius.circular(AppRadius.md),
+              child: SizedBox(
+                width: 42,
+                height: 42,
+                child: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: colorScheme.onSurface,
+                  size: 18,
+                ),
               ),
             ),
           ),
-
           const Spacer(),
-
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 14,
-              vertical: 8,
+              horizontal: AppSpacing.sm,
+              vertical: AppSpacing.xs,
             ),
             decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha:.30),
-              borderRadius: BorderRadius.circular(25),
+              color: Colors.black.withValues(alpha: 0.28),
+              borderRadius: BorderRadius.circular(AppRadius.pill),
+              border: Border.all(
+                color: Colors.white.withValues(alpha: 0.08),
+              ),
             ),
-            child: const Row(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-
                 Icon(
-                  Icons.call,
-                  color: Colors.greenAccent,
+                  Icons.call_rounded,
+                  color: AppColors.success,
                   size: 16,
                 ),
-
-                SizedBox(width: 6),
-
+                const SizedBox(width: AppSpacing.xs),
                 Text(
-                  "00:00",
-                  style: TextStyle(
+                  '00:00',
+                  style: AppTextStyles.bodySmall.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
@@ -62,19 +68,21 @@ class VoiceCallAppBar extends StatelessWidget {
               ],
             ),
           ),
-
           const Spacer(),
-
-          Container(
-            width: 42,
-            height: 42,
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha:.12),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: const Icon(
-              Icons.more_vert,
-              color: Colors.white,
+          Material(
+            color: colorScheme.onSurface.withValues(alpha: 0.10),
+            borderRadius: BorderRadius.circular(AppRadius.md),
+            child: InkWell(
+              onTap: () {},
+              borderRadius: BorderRadius.circular(AppRadius.md),
+              child: SizedBox(
+                width: 42,
+                height: 42,
+                child: Icon(
+                  Icons.more_vert_rounded,
+                  color: colorScheme.onSurface,
+                ),
+              ),
             ),
           ),
         ],
