@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+
 class ActivityCard extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
@@ -18,25 +22,35 @@ class ActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(14),
+      margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        border: Border.all(
+          color: colorScheme.outlineVariant.withValues(alpha: 0.55),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 12,
+            color: colorScheme.shadow.withValues(alpha: 0.06),
+            blurRadius: 14,
             offset: const Offset(0, 5),
           ),
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 22,
-            backgroundColor: iconColor.withValues(alpha: 0.12),
+          Container(
+            width: 46,
+            height: 46,
+            decoration: BoxDecoration(
+              color: iconColor.withValues(alpha: 0.11),
+              borderRadius: BorderRadius.circular(AppRadius.md),
+            ),
             child: Icon(
               icon,
               color: iconColor,
@@ -44,7 +58,7 @@ class ActivityCard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(width: 16),
+          const SizedBox(width: AppSpacing.md),
 
           Expanded(
             child: Column(
@@ -52,40 +66,39 @@ class ActivityCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.body.copyWith(
+                    color: colorScheme.onSurface,
                     fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                    color: Color(0xFF13294B),
                   ),
                 ),
 
-                const SizedBox(height: 4),
+                const SizedBox(height: AppSpacing.xs),
 
                 Text(
                   subtitle,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey.shade600,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: colorScheme.onSurface.withValues(alpha: 0.68),
                   ),
                 ),
 
-                const SizedBox(height: 8),
+                const SizedBox(height: AppSpacing.sm),
 
                 Row(
                   children: [
-                    const Icon(
-                      Icons.access_time,
-                      size: 16,
-                      color: Colors.grey,
+                    Icon(
+                      Icons.access_time_rounded,
+                      size: 15,
+                      color: colorScheme.onSurface.withValues(alpha: 0.50),
                     ),
-
                     const SizedBox(width: 5),
-
                     Text(
                       time,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
+                      style: AppTextStyles.caption.copyWith(
+                        color: colorScheme.onSurface.withValues(alpha: 0.58),
                       ),
                     ),
                   ],
