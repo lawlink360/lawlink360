@@ -1,68 +1,96 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class PaymentMethodCard extends StatelessWidget {
   const PaymentMethodCard({super.key});
 
   Widget paymentTile({
+    required BuildContext context,
     required IconData icon,
     required String title,
     required String subtitle,
     bool selected = false,
   }) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      margin: const EdgeInsets.only(bottom: 14),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
+        color: selected
+            ? AppColors.accent.withValues(alpha: 0.06)
+            : colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(
           color: selected
-              ? const Color(0xFFD4AF37)
-              : Colors.grey.shade300,
-          width: selected ? 2 : 1,
+              ? AppColors.accent
+              : colorScheme.outline.withValues(alpha: 0.22),
+          width: selected ? 1.5 : 1,
         ),
+        boxShadow: selected
+            ? [
+                BoxShadow(
+                  color: AppColors.accent.withValues(alpha: 0.10),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ]
+            : null,
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 24,
-            backgroundColor: const Color(0xFFFFF8E1),
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: AppColors.accent.withValues(alpha: 0.10),
+              shape: BoxShape.circle,
+            ),
             child: Icon(
               icon,
-              color: const Color(0xFFD4AF37),
+              color: AppColors.accent,
+              size: 23,
             ),
           ),
-
-          const SizedBox(width: 16),
-
+          const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.body.copyWith(
+                    color: colorScheme.onSurface,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: AppSpacing.xs),
                 Text(
                   subtitle,
-                  style: TextStyle(
-                    color: Colors.grey.shade600,
-                    fontSize: 13,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.caption.copyWith(
+                    color: colorScheme.onSurfaceVariant,
                   ),
                 ),
               ],
             ),
           ),
-
+          const SizedBox(width: AppSpacing.sm),
           Icon(
             selected
-                ? Icons.radio_button_checked
-                : Icons.radio_button_off,
-            color: const Color(0xFFD4AF37),
+                ? Icons.radio_button_checked_rounded
+                : Icons.radio_button_off_rounded,
+            color: selected
+                ? AppColors.accent
+                : colorScheme.onSurfaceVariant,
+            size: 23,
           ),
         ],
       ),
@@ -71,44 +99,43 @@ class PaymentMethodCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
-        const Text(
-          "Payment Method",
-          style: TextStyle(
+        Text(
+          'Payment Method',
+          style: AppTextStyles.title.copyWith(
+            color: colorScheme.onSurface,
             fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF0D1B2A),
           ),
         ),
-
-        const SizedBox(height: 18),
-
+        const SizedBox(height: AppSpacing.md),
         paymentTile(
-          icon: Icons.credit_card,
-          title: "Credit / Debit Card",
-          subtitle: "Visa • Mastercard • UnionPay",
+          context: context,
+          icon: Icons.credit_card_rounded,
+          title: 'Credit / Debit Card',
+          subtitle: 'Visa • Mastercard • UnionPay',
           selected: true,
         ),
-
         paymentTile(
-          icon: Icons.account_balance_wallet,
-          title: "JazzCash",
-          subtitle: "Pay using JazzCash Wallet",
+          context: context,
+          icon: Icons.account_balance_wallet_rounded,
+          title: 'JazzCash',
+          subtitle: 'Pay using JazzCash Wallet',
         ),
-
         paymentTile(
-          icon: Icons.phone_android,
-          title: "EasyPaisa",
-          subtitle: "Pay using EasyPaisa Wallet",
+          context: context,
+          icon: Icons.phone_android_rounded,
+          title: 'EasyPaisa',
+          subtitle: 'Pay using EasyPaisa Wallet',
         ),
-
         paymentTile(
-          icon: Icons.account_balance,
-          title: "Bank Transfer",
-          subtitle: "Online Bank Payment",
+          context: context,
+          icon: Icons.account_balance_rounded,
+          title: 'Bank Transfer',
+          subtitle: 'Online Bank Payment',
         ),
       ],
     );
