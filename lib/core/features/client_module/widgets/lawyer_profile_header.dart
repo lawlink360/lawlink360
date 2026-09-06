@@ -1,96 +1,176 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class LawyerProfileHeader extends StatelessWidget {
   const LawyerProfileHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
-      margin: const EdgeInsets.all(20),
-      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+      ),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: colorScheme.outline.withValues(alpha: 0.45),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha:.06),
-            blurRadius: 18,
+            color: Colors.black.withValues(
+              alpha: isDark ? 0.22 : 0.07,
+            ),
+            blurRadius: 20,
             offset: const Offset(0, 8),
           ),
         ],
       ),
       child: Column(
         children: [
-          const CircleAvatar(
-            radius: 48,
-            backgroundColor: Color(0xFFD4AF37),
-            child: Icon(
-              Icons.person,
+          Container(
+            width: 104,
+            height: 104,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.accent.withValues(
+                alpha: isDark ? 0.18 : 0.10,
+              ),
+              border: Border.all(
+                color: AppColors.accent,
+                width: 3,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.accent.withValues(
+                    alpha: 0.18,
+                  ),
+                  blurRadius: 16,
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+            child: const Icon(
+              Icons.person_rounded,
               size: 55,
-              color: Colors.white,
+              color: AppColors.accent,
             ),
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: AppSpacing.md),
 
-          const Text(
-            "Adv. Ahmed Khan",
-            style: TextStyle(
+          Text(
+            'Adv. Ahmed Khan',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.headline.copyWith(
+              color: colorScheme.onSurface,
               fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0D1B2A),
             ),
           ),
 
-          const SizedBox(height: 6),
+          const SizedBox(height: AppSpacing.xs),
 
-          const Text(
-            "Criminal & Civil Lawyer",
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 16,
+          Text(
+            'Criminal & Civil Lawyer',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.body.copyWith(
+              color: colorScheme.onSurfaceVariant,
             ),
           ),
 
-          const SizedBox(height: 14),
+          const SizedBox(height: AppSpacing.md),
 
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 14,
-              vertical: 8,
+              horizontal: AppSpacing.md,
+              vertical: AppSpacing.xs,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFFD4AF37).withValues(alpha:.12),
-              borderRadius: BorderRadius.circular(30),
+              color: AppColors.accent.withValues(
+                alpha: 0.10,
+              ),
+              borderRadius: BorderRadius.circular(
+                AppRadius.pill,
+              ),
+              border: Border.all(
+                color: AppColors.accent.withValues(
+                  alpha: 0.35,
+                ),
+              ),
             ),
             child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  Icons.verified,
-                  color: Color(0xFFD4AF37),
+                  Icons.verified_rounded,
+                  color: AppColors.accent,
                   size: 18,
                 ),
-                SizedBox(width: 6),
+                SizedBox(width: AppSpacing.xs),
                 Text(
-                  "Verified Lawyer",
+                  'Verified Lawyer',
                   style: TextStyle(
-                    color: Color(0xFFD4AF37),
-                    fontWeight: FontWeight.bold,
+                    color: AppColors.accent,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
             ),
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: AppSpacing.lg),
 
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Divider(
+            color: colorScheme.outline.withValues(
+              alpha: 0.45,
+            ),
+            height: 1,
+          ),
+
+          const SizedBox(height: AppSpacing.lg),
+
+          Row(
             children: [
-              _StatItem("4.9", "Rating"),
-              _StatItem("12+", "Years"),
-              _StatItem("560+", "Cases"),
+              const Expanded(
+                child: _StatItem(
+                  value: '4.9',
+                  label: 'Rating',
+                  icon: Icons.star_rounded,
+                ),
+              ),
+              _VerticalDivider(
+                color: colorScheme.outline.withValues(
+                  alpha: 0.45,
+                ),
+              ),
+              const Expanded(
+                child: _StatItem(
+                  value: '12+',
+                  label: 'Years',
+                  icon: Icons.workspace_premium_rounded,
+                ),
+              ),
+              _VerticalDivider(
+                color: colorScheme.outline.withValues(
+                  alpha: 0.45,
+                ),
+              ),
+              const Expanded(
+                child: _StatItem(
+                  value: '560+',
+                  label: 'Cases',
+                  icon: Icons.gavel_rounded,
+                ),
+              ),
             ],
           ),
         ],
@@ -99,29 +179,59 @@ class LawyerProfileHeader extends StatelessWidget {
   }
 }
 
-class _StatItem extends StatelessWidget {
-  final String value;
-  final String label;
+class _VerticalDivider extends StatelessWidget {
+  final Color color;
 
-  const _StatItem(this.value, this.label);
+  const _VerticalDivider({
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
+    return Container(
+      width: 1,
+      height: 46,
+      color: color,
+    );
+  }
+}
+
+class _StatItem extends StatelessWidget {
+  final String value;
+  final String label;
+  final IconData icon;
+
+  const _StatItem({
+    required this.value,
+    required this.label,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
+        Icon(
+          icon,
+          color: AppColors.accent,
+          size: 19,
+        ),
+        const SizedBox(height: AppSpacing.xs),
         Text(
           value,
-          style: const TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF0D1B2A),
+          style: AppTextStyles.title.copyWith(
+            color: colorScheme.onSurface,
+            fontSize: 20,
           ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: AppSpacing.xs),
         Text(
           label,
-          style: const TextStyle(
-            color: Colors.grey,
+          style: AppTextStyles.caption.copyWith(
+            color: colorScheme.onSurfaceVariant,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ],
