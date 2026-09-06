@@ -1,71 +1,78 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
+
 class AboutLawyerCard extends StatelessWidget {
   const AboutLawyerCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+      ),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(22),
-        boxShadow: const [
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: colorScheme.outline.withValues(alpha: 0.5),
+        ),
+        boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 12,
-            offset: Offset(0, 5),
+            color: Colors.black.withValues(
+              alpha: Theme.of(context).brightness == Brightness.dark
+                  ? 0.20
+                  : 0.06,
+            ),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          const Text(
-            "About Lawyer",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0D1B2A),
+          Text(
+            'About Lawyer',
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
             ),
           ),
-
-          const SizedBox(height: 14),
-
-          const Text(
-            "Adv. Ahmed Khan is a highly experienced Criminal Lawyer with over 10 years of professional practice. He specializes in criminal trials, bail matters, FIRs, white-collar crimes, appeals and constitutional petitions. His dedication, integrity and successful case history have earned the trust of hundreds of clients across Pakistan.",
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.black87,
+          const SizedBox(height: AppSpacing.sm),
+          Text(
+            'Adv. Ahmed Khan is a highly experienced Criminal Lawyer with over 10 years of professional practice. He specializes in criminal trials, bail matters, FIRs, white-collar crimes, appeals and constitutional petitions. His dedication, integrity and successful case history have earned the trust of hundreds of clients across Pakistan.',
+            style: AppTextStyles.bodySmall.copyWith(
+              color: colorScheme.onSurfaceVariant,
               height: 1.6,
             ),
           ),
-
-          const SizedBox(height: 18),
-
-          const Divider(),
-
-          const SizedBox(height: 14),
-
+          const SizedBox(height: AppSpacing.md),
+          Divider(
+            color: colorScheme.outline.withValues(alpha: 0.5),
+          ),
+          const SizedBox(height: AppSpacing.sm),
           _infoRow(
+            context,
             Icons.badge_outlined,
-            "Pakistan Bar Council",
+            'Pakistan Bar Council',
           ),
-
-          const SizedBox(height: 12),
-
+          const SizedBox(height: AppSpacing.sm),
           _infoRow(
+            context,
             Icons.location_on_outlined,
-            "Islamabad High Court",
+            'Islamabad High Court',
           ),
-
-          const SizedBox(height: 12),
-
+          const SizedBox(height: AppSpacing.sm),
           _infoRow(
+            context,
             Icons.schedule_outlined,
-            "Mon - Sat • 9:00 AM - 7:00 PM",
+            'Mon - Sat • 9:00 AM - 7:00 PM',
           ),
         ],
       ),
@@ -73,24 +80,26 @@ class AboutLawyerCard extends StatelessWidget {
   }
 
   static Widget _infoRow(
+    BuildContext context,
     IconData icon,
     String text,
   ) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       children: [
-
         Icon(
           icon,
-          color: Color(0xFFD4AF37),
+          color: AppColors.accent,
+          size: 21,
         ),
-
-        const SizedBox(width: 12),
-
+        const SizedBox(width: AppSpacing.sm),
         Expanded(
           child: Text(
             text,
-            style: const TextStyle(
-              fontWeight: FontWeight.w500,
+            style: AppTextStyles.bodySmall.copyWith(
+              color: colorScheme.onSurface,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),

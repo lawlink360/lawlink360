@@ -1,59 +1,73 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
+
 class LawyerEducationCard extends StatelessWidget {
   const LawyerEducationCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+      ),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(22),
-        boxShadow: const [
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: colorScheme.outline.withValues(alpha: 0.5),
+        ),
+        boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10,
-            offset: Offset(0, 4),
+            color: Colors.black.withValues(
+              alpha: Theme.of(context).brightness == Brightness.dark
+                  ? 0.20
+                  : 0.06,
+            ),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          const Text(
-            "Education & Certifications",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0D1B2A),
+          Text(
+            'Education & Certifications',
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
             ),
           ),
-
-          const SizedBox(height: 20),
-
+          const SizedBox(height: AppSpacing.lg),
           _item(
-            Icons.school,
-            "LL.B",
-            "University of Punjab",
+            context,
+            Icons.school_rounded,
+            'LL.B',
+            'University of Punjab',
           ),
-
-          const Divider(height: 30),
-
-          _item(
-            Icons.workspace_premium,
-            "LL.M (Criminal Law)",
-            "International Islamic University",
+          const Divider(
+            height: AppSpacing.xxl,
           ),
-
-          const Divider(height: 30),
-
           _item(
-            Icons.verified,
-            "Pakistan Bar Council",
-            "Licensed Advocate",
+            context,
+            Icons.workspace_premium_rounded,
+            'LL.M (Criminal Law)',
+            'International Islamic University',
+          ),
+          const Divider(
+            height: AppSpacing.xxl,
+          ),
+          _item(
+            context,
+            Icons.verified_rounded,
+            'Pakistan Bar Council',
+            'Licensed Advocate',
           ),
         ],
       ),
@@ -61,47 +75,44 @@ class LawyerEducationCard extends StatelessWidget {
   }
 
   static Widget _item(
-      IconData icon,
-      String title,
-      String subtitle,
-      ) {
+    BuildContext context,
+    IconData icon,
+    String title,
+    String subtitle,
+  ) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       children: [
-
         Container(
           width: 52,
           height: 52,
           decoration: BoxDecoration(
-            color: const Color(0xFFD4AF37).withValues(alpha:.15),
-            borderRadius: BorderRadius.circular(14),
+            color: AppColors.accent.withValues(alpha: 0.15),
+            borderRadius: BorderRadius.circular(AppRadius.md),
           ),
-          child: Icon(
-            icon,
-            color: const Color(0xFFD4AF37),
+          child: const Icon(
+            Icons.school_rounded,
+            color: AppColors.accent,
           ),
         ),
-
-        const SizedBox(width: 15),
-
+        const SizedBox(width: AppSpacing.sm),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Text(
                 title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                style: AppTextStyles.body.copyWith(
+                  color: colorScheme.onSurface,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-
-              const SizedBox(height: 4),
-
+              const SizedBox(height: AppSpacing.xs),
               Text(
                 subtitle,
-                style: const TextStyle(
-                  color: Colors.grey,
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: colorScheme.onSurfaceVariant,
                 ),
               ),
             ],
