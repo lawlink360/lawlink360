@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class UnreadBadge extends StatelessWidget {
   final int count;
 
@@ -15,20 +20,29 @@ class UnreadBadge extends StatelessWidget {
     }
 
     return Container(
+      constraints: const BoxConstraints(
+        minWidth: 24,
+        minHeight: 24,
+      ),
       padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 4,
+        horizontal: AppSpacing.xs,
+        vertical: AppSpacing.xs / 2,
       ),
-      decoration: const BoxDecoration(
-        color: Colors.red,
-        shape: BoxShape.circle,
+      decoration: BoxDecoration(
+        color: AppColors.error,
+        borderRadius: BorderRadius.circular(
+          AppRadius.pill,
+        ),
       ),
+      alignment: Alignment.center,
       child: Text(
-        "$count",
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+        count > 99 ? '99+' : '$count',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: AppTextStyles.caption.copyWith(
+          color: AppColors.textLight,
           fontSize: 11,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );

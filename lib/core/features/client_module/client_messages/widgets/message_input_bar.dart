@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class MessageInputBar extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback? onSend;
@@ -12,36 +17,79 @@ class MessageInputBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.md,
+          AppSpacing.sm,
+          AppSpacing.md,
+          AppSpacing.md,
+        ),
         child: Row(
           children: [
             Expanded(
               child: TextField(
                 controller: controller,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.textPrimary,
+                ),
                 decoration: InputDecoration(
-                  hintText: "Type your message...",
+                  hintText: 'Type your message...',
+                  hintStyle: AppTextStyles.bodySmall.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: colorScheme.surface,
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.md,
+                    vertical: AppSpacing.sm,
+                  ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(
+                      AppRadius.pill,
+                    ),
+                    borderSide: BorderSide(
+                      color: AppColors.border,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                      AppRadius.pill,
+                    ),
+                    borderSide: BorderSide(
+                      color: AppColors.border,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                      AppRadius.pill,
+                    ),
+                    borderSide: const BorderSide(
+                      color: AppColors.primary,
+                    ),
                   ),
                 ),
               ),
             ),
-
-            const SizedBox(width: 10),
-
-            CircleAvatar(
-              radius: 26,
-              backgroundColor: const Color(0xFF0F172A),
-              child: IconButton(
-                onPressed: onSend,
-                icon: const Icon(
-                  Icons.send,
-                  color: Colors.white,
+            const SizedBox(
+              width: AppSpacing.sm,
+            ),
+            Material(
+              color: AppColors.primary,
+              shape: const CircleBorder(),
+              child: InkWell(
+                onTap: onSend,
+                customBorder: const CircleBorder(),
+                child: const SizedBox(
+                  width: 52,
+                  height: 52,
+                  child: Icon(
+                    Icons.send_rounded,
+                    color: AppColors.textLight,
+                    size: 21,
+                  ),
                 ),
               ),
             ),

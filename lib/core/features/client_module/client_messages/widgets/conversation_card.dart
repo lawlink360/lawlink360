@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../models/conversation_model.dart';
 import 'unread_badge.dart';
 
@@ -15,76 +20,103 @@ class ConversationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      color: Colors.white,
-      margin: const EdgeInsets.only(bottom: 12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Container(
+      margin: const EdgeInsets.only(
+        bottom: AppSpacing.sm,
       ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(18),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 28,
-                backgroundImage: AssetImage(
-                  conversation.lawyerImage,
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(
+          AppRadius.lg,
+        ),
+        border: Border.all(
+          color: AppColors.border,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: colorScheme.shadow.withValues(alpha: 0.05),
+            blurRadius: 14,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(
+            AppRadius.lg,
+          ),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(
+              AppSpacing.md,
+            ),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 28,
+                  backgroundColor:
+                      AppColors.primary.withValues(alpha: 0.08),
+                  backgroundImage: AssetImage(
+                    conversation.lawyerImage,
+                  ),
                 ),
-              ),
-
-              const SizedBox(width: 14),
-
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                const SizedBox(
+                  width: AppSpacing.md,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment:
+                        CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        conversation.lawyerName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.body.copyWith(
+                          color: AppColors.textPrimary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: AppSpacing.xs,
+                      ),
+                      Text(
+                        conversation.lastMessage,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: AppSpacing.sm,
+                ),
+                Column(
+                  crossAxisAlignment:
+                      CrossAxisAlignment.end,
                   children: [
                     Text(
-                      conversation.lawyerName,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                      '${conversation.lastMessageTime.hour.toString().padLeft(2, '0')}:${conversation.lastMessageTime.minute.toString().padLeft(2, '0')}',
+                      style: AppTextStyles.caption.copyWith(
+                        color: AppColors.textSecondary,
                       ),
                     ),
-
-                    const SizedBox(height: 4),
-
-                    Text(
-                      conversation.lastMessage,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.grey,
-                      ),
+                    const SizedBox(
+                      height: AppSpacing.sm,
+                    ),
+                    UnreadBadge(
+                      count: conversation.unreadCount,
                     ),
                   ],
                 ),
-              ),
-
-              const SizedBox(width: 10),
-
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    "${conversation.lastMessageTime.hour.toString().padLeft(2, '0')}:${conversation.lastMessageTime.minute.toString().padLeft(2, '0')}",
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12,
-                    ),
-                  ),
-
-                  const SizedBox(height: 8),
-
-                  UnreadBadge(
-                    count: conversation.unreadCount,
-                  ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
