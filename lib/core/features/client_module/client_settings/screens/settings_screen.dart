@@ -1,4 +1,9 @@
+
 import 'package:flutter/material.dart';
+
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 import '../data/settings_data.dart';
 import '../widgets/about_card.dart';
@@ -12,21 +17,32 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text("Settings"),
-        centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
+        scrolledUnderElevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Settings',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
-
       body: ListView(
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg,
+          AppSpacing.lg,
+          AppSpacing.lg,
+          AppSpacing.xl,
+        ),
+        physics: const BouncingScrollPhysics(),
         children: [
-
-          /// General
           SettingsSection(
-            title: "General",
+            title: 'General',
             children: SettingsData.general.map((item) {
               if (item.isSwitch) {
                 return SwitchSettingTile(
@@ -48,10 +64,9 @@ class SettingsScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-
-          /// Security
+          const SizedBox(height: AppSpacing.md),
           SettingsSection(
-            title: "Security",
+            title: 'Security',
             children: SettingsData.security.map((item) {
               if (item.isSwitch) {
                 return SwitchSettingTile(
@@ -73,10 +88,9 @@ class SettingsScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-
-          /// Application
+          const SizedBox(height: AppSpacing.md),
           SettingsSection(
-            title: "Application",
+            title: 'Application',
             children: SettingsData.application.map((item) {
               return SettingsTile(
                 icon: item.icon,
@@ -87,10 +101,9 @@ class SettingsScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-
-          /// Support
+          const SizedBox(height: AppSpacing.md),
           SettingsSection(
-            title: "Support",
+            title: 'Support',
             children: SettingsData.support.map((item) {
               return SettingsTile(
                 icon: item.icon,
@@ -101,14 +114,13 @@ class SettingsScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-
+          const SizedBox(height: AppSpacing.lg),
           AboutCard(
-            version: "1.0.0",
+            version: '1.0.0',
             onPrivacyPolicy: () {},
             onTermsConditions: () {},
           ),
-
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.lg),
         ],
       ),
     );

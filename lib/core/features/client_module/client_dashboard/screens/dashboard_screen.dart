@@ -1,7 +1,11 @@
+
 import 'package:flutter/material.dart';
 
-import '../data/dashboard_data.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
+import '../data/dashboard_data.dart';
 import '../widgets/dashboard_header.dart';
 import '../widgets/dashboard_statistics.dart';
 import '../widgets/quick_actions_card.dart';
@@ -18,160 +22,150 @@ class DashboardScreen extends StatelessWidget {
     final activities = DashboardData.activities;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text("Dashboard"),
-        centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
+        scrolledUnderElevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Dashboard',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
-
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg,
+          AppSpacing.lg,
+          AppSpacing.lg,
+          AppSpacing.xl,
+        ),
+        physics: const BouncingScrollPhysics(),
         children: [
           const DashboardHeader(
-            name: "LawLink User",
+            name: 'LawLink User',
           ),
-
-          const SizedBox(height: 20),
-
+          const SizedBox(height: AppSpacing.lg),
           Row(
             children: [
-              DashboardStatistics(
-                icon: stats[0].icon,
-                color: stats[0].color,
-                title: stats[0].title,
-                value: stats[0].value,
+              Expanded(
+                child: DashboardStatistics(
+                  icon: stats[0].icon,
+                  color: stats[0].color,
+                  title: stats[0].title,
+                  value: stats[0].value,
+                ),
               ),
-
-              const SizedBox(width: 12),
-
-              DashboardStatistics(
-                icon: stats[1].icon,
-                color: stats[1].color,
-                title: stats[1].title,
-                value: stats[1].value,
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: DashboardStatistics(
+                  icon: stats[1].icon,
+                  color: stats[1].color,
+                  title: stats[1].title,
+                  value: stats[1].value,
+                ),
               ),
             ],
           ),
-
-          const SizedBox(height: 12),
-
+          const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
-              DashboardStatistics(
-                icon: stats[2].icon,
-                color: stats[2].color,
-                title: stats[2].title,
-                value: stats[2].value,
+              Expanded(
+                child: DashboardStatistics(
+                  icon: stats[2].icon,
+                  color: stats[2].color,
+                  title: stats[2].title,
+                  value: stats[2].value,
+                ),
               ),
-
-              const SizedBox(width: 12),
-
-              DashboardStatistics(
-                icon: stats[3].icon,
-                color: stats[3].color,
-                title: stats[3].title,
-                value: stats[3].value,
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: DashboardStatistics(
+                  icon: stats[3].icon,
+                  color: stats[3].color,
+                  title: stats[3].title,
+                  value: stats[3].value,
+                ),
               ),
             ],
           ),
-
-          const SizedBox(height: 24),
-
-          const Text(
-            "Quick Actions",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          const SizedBox(height: 12),
-
+          const SizedBox(height: AppSpacing.xl),
+          _SectionTitle(title: 'Quick Actions'),
+          const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
               Expanded(
                 child: QuickActionsCard(
-                  icon: Icons.search,
-                  title: "Find Lawyer",
+                  icon: Icons.search_rounded,
+                  title: 'Find Lawyer',
                   onTap: () {},
                 ),
               ),
-
-              const SizedBox(width: 12),
-
+              const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: QuickActionsCard(
-                  icon: Icons.document_scanner,
-                  title: "Scanner",
+                  icon: Icons.document_scanner_outlined,
+                  title: 'Scanner',
                   onTap: () {},
                 ),
               ),
-
-              const SizedBox(width: 12),
-
+              const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: QuickActionsCard(
-                  icon: Icons.translate,
-                  title: "Translate",
+                  icon: Icons.translate_rounded,
+                  title: 'Translate',
                   onTap: () {},
                 ),
               ),
             ],
           ),
-
-          const SizedBox(height: 24),
-
-          const Text(
-            "Recent Activity",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          const SizedBox(height: 12),
-
+          const SizedBox(height: AppSpacing.xl),
+          _SectionTitle(title: 'Recent Activity'),
+          const SizedBox(height: AppSpacing.sm),
           ...activities.map(
-            (activity) => RecentActivityCard(
-              title: activity.title,
-              subtitle: activity.subtitle,
-              time: activity.time,
+            (activity) => Padding(
+              padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+              child: RecentActivityCard(
+                title: activity.title,
+                subtitle: activity.subtitle,
+                time: activity.time,
+              ),
             ),
           ),
-
-          const SizedBox(height: 24),
-
-          const Text(
-            "Upcoming Appointment",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          const SizedBox(height: 12),
-
+          const SizedBox(height: AppSpacing.md),
+          _SectionTitle(title: 'Upcoming Appointment'),
+          const SizedBox(height: AppSpacing.sm),
           const UpcomingAppointmentsCard(),
-
-          const SizedBox(height: 24),
-
-          const Text(
-            "Recent Case",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          const SizedBox(height: 12),
-
+          const SizedBox(height: AppSpacing.xl),
+          _SectionTitle(title: 'Recent Case'),
+          const SizedBox(height: AppSpacing.sm),
           const RecentCaseCard(),
-
-          const SizedBox(height: 30),
+          const SizedBox(height: AppSpacing.lg),
         ],
+      ),
+    );
+  }
+}
+
+class _SectionTitle extends StatelessWidget {
+  final String title;
+
+  const _SectionTitle({
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: AppTextStyles.title.copyWith(
+        color: AppColors.textPrimary,
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
       ),
     );
   }
