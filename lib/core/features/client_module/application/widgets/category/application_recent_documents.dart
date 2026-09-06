@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class ApplicationRecentDocuments extends StatelessWidget {
   const ApplicationRecentDocuments({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     final recentDocuments = [
       {
         'title': 'Leave Application',
@@ -27,91 +33,119 @@ class ApplicationRecentDocuments extends StatelessWidget {
     ];
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.lg,
+        AppSpacing.md,
+        AppSpacing.sm,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Recent Documents',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0F172A),
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
+              fontSize: 20,
             ),
           ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: AppSpacing.md),
 
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: recentDocuments.length,
-            separatorBuilder: (_, _) => const SizedBox(height: 12),
+            separatorBuilder: (_, _) =>
+                const SizedBox(height: AppSpacing.sm),
             itemBuilder: (context, index) {
               final document = recentDocuments[index];
+              final documentColor = document['color'] as Color;
 
-              return Container(
-                padding: const EdgeInsets.all(14),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
-                  border: Border.all(
-                    color: Colors.grey.shade200,
+              return Material(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(AppRadius.lg),
+                child: InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
+                  child: Ink(
+                    padding: const EdgeInsets.all(AppSpacing.md),
+                    decoration: BoxDecoration(
+                      color: colorScheme.surface,
+                      borderRadius: BorderRadius.circular(AppRadius.lg),
+                      border: Border.all(
+                        color: colorScheme.outlineVariant
+                            .withValues(alpha: 0.55),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: colorScheme.shadow.withValues(alpha: 0.05),
+                          blurRadius: 12,
+                          offset: const Offset(0, 5),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 48,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color: documentColor.withValues(alpha: 0.10),
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: documentColor.withValues(alpha: 0.16),
+                            ),
+                          ),
+                          child: Icon(
+                            document['icon'] as IconData,
+                            color: documentColor,
+                            size: 23,
+                          ),
+                        ),
+
+                        const SizedBox(width: AppSpacing.sm),
+
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                document['title'] as String,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTextStyles.bodySmall.copyWith(
+                                  color: colorScheme.onSurface,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+
+                              const SizedBox(height: 4),
+
+                              Text(
+                                document['subtitle'] as String,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTextStyles.caption.copyWith(
+                                  color: colorScheme.onSurface
+                                      .withValues(alpha: 0.62),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        const SizedBox(width: AppSpacing.sm),
+
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 14,
+                          color: colorScheme.onSurface
+                              .withValues(alpha: 0.42),
+                        ),
+                      ],
+                    ),
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha:0.05),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor:
-                          (document['color'] as Color).withValues(alpha:0.12),
-                      child: Icon(
-                        document['icon'] as IconData,
-                        color: document['color'] as Color,
-                      ),
-                    ),
-
-                    const SizedBox(width: 16),
-
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            document['title'] as String,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Color(0xFF0F172A),
-                            ),
-                          ),
-
-                          const SizedBox(height: 4),
-
-                          Text(
-                            document['subtitle'] as String,
-                            style: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      size: 16,
-                      color: Colors.grey.shade500,
-                    ),
-                  ],
                 ),
               );
             },

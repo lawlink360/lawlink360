@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../models/document_category.dart';
-import '../../services/document_data_service.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
+import '../../models/document_category.dart';
 import '../../screens/application_category_screen.dart';
+import '../../services/document_data_service.dart';
 import 'application_category_card.dart';
 
 class ApplicationCategoryGrid extends StatelessWidget {
@@ -11,27 +14,27 @@ class ApplicationCategoryGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final List<DocumentCategory> categories =
         DocumentDataService.categories;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.sm,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Browse by Category',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0F172A),
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
+              fontSize: 20,
             ),
           ),
 
-          const SizedBox(height: 18),
+          const SizedBox(height: AppSpacing.md),
 
           GridView.builder(
             shrinkWrap: true,
@@ -40,9 +43,9 @@ class ApplicationCategoryGrid extends StatelessWidget {
             gridDelegate:
                 const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 14,
-              mainAxisSpacing: 14,
-              childAspectRatio: 0.75,
+              crossAxisSpacing: AppSpacing.sm,
+              mainAxisSpacing: AppSpacing.sm,
+              childAspectRatio: 0.76,
             ),
             itemBuilder: (context, index) {
               final category = categories[index];
@@ -67,6 +70,39 @@ class ApplicationCategoryGrid extends StatelessWidget {
                 },
               );
             },
+          ),
+
+          const SizedBox(height: AppSpacing.xs),
+
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(AppSpacing.sm),
+            decoration: BoxDecoration(
+              color: colorScheme.primary.withValues(alpha: 0.035),
+              borderRadius: BorderRadius.circular(AppRadius.md),
+              border: Border.all(
+                color: colorScheme.primary.withValues(alpha: 0.08),
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.info_outline_rounded,
+                  size: 17,
+                  color: colorScheme.primary,
+                ),
+                const SizedBox(width: AppSpacing.xs),
+                Expanded(
+                  child: Text(
+                    'Choose a category to explore available document templates.',
+                    style: AppTextStyles.caption.copyWith(
+                      color: colorScheme.onSurface.withValues(alpha: 0.62),
+                      height: 1.35,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

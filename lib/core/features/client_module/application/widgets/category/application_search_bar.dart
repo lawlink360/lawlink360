@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ApplicationSearchBar extends StatelessWidget {
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
+class ApplicationSearchBar extends StatefulWidget {
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
 
@@ -11,55 +16,100 @@ class ApplicationSearchBar extends StatelessWidget {
   });
 
   @override
+  State<ApplicationSearchBar> createState() =>
+      _ApplicationSearchBarState();
+}
+
+class _ApplicationSearchBarState extends State<ApplicationSearchBar> {
+  late final TextEditingController _internalController;
+
+  TextEditingController get _controller =>
+      widget.controller ?? _internalController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.controller == null) {
+      _internalController = TextEditingController();
+    }
+  }
+
+  @override
+  void dispose() {
+    if (widget.controller == null) {
+      _internalController.dispose();
+    }
+
+    super.dispose();
+  }
+
+  void _clearSearch() {
+    _controller.clear();
+    widget.onChanged?.call('');
+
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final TextEditingController searchController =
-        controller ?? TextEditingController();
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md,
+      ),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          color: colorScheme.surface,
+          borderRadius: BorderRadius.circular(AppRadius.lg),
           border: Border.all(
-            color: Colors.grey.shade300,
+            color: colorScheme.outlineVariant.withValues(alpha: 0.65),
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha:0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
+              color: colorScheme.shadow.withValues(alpha: 0.05),
+              blurRadius: 12,
+              offset: const Offset(0, 5),
             ),
           ],
         ),
         child: TextField(
-          controller: searchController,
-          onChanged: onChanged,
+          controller: _controller,
+          onChanged: (value) {
+            widget.onChanged?.call(value);
+            setState(() {});
+          },
           textInputAction: TextInputAction.search,
+          cursorColor: AppColors.accent,
+          style: AppTextStyles.bodySmall.copyWith(
+            color: colorScheme.onSurface,
+          ),
           decoration: InputDecoration(
             hintText: 'What document do you need today?',
-            hintStyle: TextStyle(
-              color: Colors.grey.shade500,
-              fontSize: 15,
+            hintStyle: AppTextStyles.bodySmall.copyWith(
+              color: colorScheme.onSurface.withValues(alpha: 0.48),
             ),
-            prefixIcon: const Icon(
+            prefixIcon: Icon(
               Icons.search_rounded,
-              color: Color(0xFF0F172A),
+              color: colorScheme.primary,
+              size: 23,
             ),
-            suffixIcon: IconButton(
-              onPressed: () {
-                searchController.clear();
-                onChanged?.call('');
-              },
-              icon: const Icon(
-                Icons.close_rounded,
-                color: Colors.grey,
-              ),
-            ),
+            suffixIcon: _controller.text.isNotEmpty
+                ? IconButton(
+                    onPressed: _clearSearch,
+                    tooltip: 'Clear search',
+                    icon: Icon(
+                      Icons.close_rounded,
+                      color: colorScheme.onSurface.withValues(alpha: 0.55),
+                    ),
+                  )
+                : null,
+            filled: false,
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 16,
+              horizontal: AppSpacing.sm,
+              vertical: AppSpacing.md,
             ),
           ),
         ),
