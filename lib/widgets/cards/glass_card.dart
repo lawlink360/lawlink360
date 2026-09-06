@@ -1,5 +1,10 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
 
 class GlassCard extends StatelessWidget {
   final Widget child;
@@ -11,32 +16,33 @@ class GlassCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    final surfaceColor =
+        isDark ? AppColors.darkSurface : AppColors.lightSurface;
+
+    final borderColor = isDark
+        ? AppColors.darkBorder.withValues(alpha: 0.55)
+        : AppColors.lightBorder.withValues(alpha: 0.65);
+
     return ClipRRect(
-      borderRadius: BorderRadius.circular(28),
+      borderRadius: BorderRadius.circular(AppRadius.xl),
       child: BackdropFilter(
         filter: ImageFilter.blur(
           sigmaX: 24,
           sigmaY: 24,
         ),
         child: Container(
-          padding: const EdgeInsets.all(18),
+          padding: const EdgeInsets.all(AppSpacing.md),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(28),
-
-            color: isDark
-                ? colors.surface.withValues(alpha: 0.35)
-                : Colors.white.withValues(alpha: 0.55),
-
+            borderRadius: BorderRadius.circular(AppRadius.xl),
+            color: surfaceColor.withValues(
+              alpha: isDark ? 0.35 : 0.55,
+            ),
             border: Border.all(
-              color: isDark
-                  ? Colors.white.withValues(alpha: 0.10)
-                  : Colors.black.withValues(alpha: 0.08),
+              color: borderColor,
               width: 1,
             ),
-
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(

@@ -1,5 +1,10 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
+
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
 
 class BiometricButton extends StatefulWidget {
   final VoidCallback onPressed;
@@ -22,13 +27,16 @@ class _BiometricButtonState extends State<BiometricButton> {
   void initState() {
     super.initState();
 
-    _timer = Timer.periodic(const Duration(seconds: 2), (_) {
-      if (mounted) {
-        setState(() {
-          _glow = !_glow;
-        });
-      }
-    });
+    _timer = Timer.periodic(
+      const Duration(seconds: 2),
+      (_) {
+        if (mounted) {
+          setState(() {
+            _glow = !_glow;
+          });
+        }
+      },
+    );
   }
 
   @override
@@ -39,28 +47,36 @@ class _BiometricButtonState extends State<BiometricButton> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    
-    // Set colors based on theme
-    final textColor = isDark ? Colors.white : Colors.black;
-    final subtitleColor = isDark ? Colors.white54 : Colors.black54;
-    final buttonBgColor = isDark 
-        ? Colors.white.withValues(alpha: 0.1) 
-        : Colors.black.withValues(alpha: 0.05);
-    final borderColor = const Color(0xFFD4AF37);
-    final shadowColor = const Color(0xFFD4AF37).withValues(alpha: 0.3);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final textColor =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+
+    final subtitleColor =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
+    final buttonBackground = isDark
+        ? AppColors.darkSurface.withValues(alpha: 0.65)
+        : AppColors.lightSurface.withValues(alpha: 0.85);
+
+    final glowAlpha = _glow ? 0.45 : 0.20;
 
     return GestureDetector(
       onTapDown: (_) {
-        setState(() => _pressed = true);
+        setState(() {
+          _pressed = true;
+        });
       },
       onTapUp: (_) {
-        setState(() => _pressed = false);
+        setState(() {
+          _pressed = false;
+        });
         widget.onPressed();
       },
       onTapCancel: () {
-        setState(() => _pressed = false);
+        setState(() {
+          _pressed = false;
+        });
       },
       child: AnimatedScale(
         duration: const Duration(milliseconds: 120),
@@ -68,45 +84,46 @@ class _BiometricButtonState extends State<BiometricButton> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
               width: 70,
               height: 70,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: buttonBgColor,
+                color: buttonBackground,
                 border: Border.all(
-                  color: borderColor,
+                  color: AppColors.accent,
                   width: 2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: shadowColor,
-                    blurRadius: 20,
-                    spreadRadius: 5,
+                    color: AppColors.accent.withValues(
+                      alpha: glowAlpha,
+                    ),
+                    blurRadius: _glow ? 24 : 14,
+                    spreadRadius: _glow ? 6 : 2,
                   ),
                 ],
               ),
               child: const Icon(
                 Icons.fingerprint,
                 size: 40,
-                color: Color(0xFFD4AF37),
+                color: AppColors.accent,
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: AppSpacing.sm),
             Text(
-              "Login with Fingerprint",
-              style: TextStyle(
+              'Login with Fingerprint',
+              style: AppTextStyles.bodySmall.copyWith(
                 color: textColor,
-                fontSize: 15,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: AppSpacing.xs),
             Text(
-              "Use your device biometrics",
-              style: TextStyle(
+              'Use your device biometrics',
+              style: AppTextStyles.caption.copyWith(
                 color: subtitleColor,
-                fontSize: 13,
               ),
             ),
           ],
