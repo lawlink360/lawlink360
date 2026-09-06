@@ -1,120 +1,132 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+
 class ChatDocumentMessage extends StatelessWidget {
   const ChatDocumentMessage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
-      padding: const EdgeInsets.only(bottom: 18),
+      padding: const EdgeInsets.only(bottom: AppSpacing.lg),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          const CircleAvatar(
+          CircleAvatar(
             radius: 18,
-            backgroundColor: Color(0xFFD4AF37),
+            backgroundColor: colorScheme.secondary,
             child: Icon(
-              Icons.person,
-              color: Colors.white,
+              Icons.person_rounded,
+              color: colorScheme.onSecondary,
               size: 18,
             ),
           ),
-
-          const SizedBox(width: 10),
-
+          const SizedBox(width: AppSpacing.sm),
           Flexible(
             child: Container(
-              padding: const EdgeInsets.all(14),
+              padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(18),
-                boxShadow: const [
+                color: colorScheme.surface,
+                borderRadius: BorderRadius.circular(AppRadius.lg),
+                border: Border.all(
+                  color: colorScheme.outline.withValues(alpha: 0.35),
+                ),
+                boxShadow: [
                   BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 6,
-                    offset: Offset(0, 3),
+                    color: Colors.black.withValues(
+                      alpha: Theme.of(context).brightness == Brightness.dark
+                          ? 0.18
+                          : 0.06,
+                    ),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                  const Text(
+                  Text(
                     "I've reviewed your document.",
-                    style: TextStyle(
-                      fontSize: 15,
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: colorScheme.onSurface,
                     ),
                   ),
-
-                  const SizedBox(height: 12),
-
+                  const SizedBox(height: AppSpacing.md),
                   Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(AppSpacing.sm),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF5F7FB),
-                      borderRadius: BorderRadius.circular(14),
+                      color: colorScheme.surfaceContainerHighest,
+                      borderRadius: BorderRadius.circular(AppRadius.md),
+                      border: Border.all(
+                        color: colorScheme.outline.withValues(alpha: 0.3),
+                      ),
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
-
-                        Icon(
-                          Icons.picture_as_pdf,
-                          color: Colors.red,
-                          size: 36,
+                        Container(
+                          width: 44,
+                          height: 44,
+                          decoration: BoxDecoration(
+                            color: AppColors.error.withValues(alpha: 0.1),
+                            borderRadius:
+                                BorderRadius.circular(AppRadius.sm),
+                          ),
+                          child: const Icon(
+                            Icons.picture_as_pdf_rounded,
+                            color: AppColors.error,
+                            size: 26,
+                          ),
                         ),
-
-                        SizedBox(width: 12),
-
+                        const SizedBox(width: AppSpacing.sm),
                         Expanded(
                           child: Column(
-                            crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
                               Text(
                                 "Case_Document.pdf",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTextStyles.bodySmall.copyWith(
+                                  color: colorScheme.onSurface,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
-
-                              SizedBox(height: 4),
-
+                              const SizedBox(height: AppSpacing.xs),
                               Text(
                                 "2.4 MB",
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
+                                style: AppTextStyles.caption.copyWith(
+                                  color: colorScheme.onSurfaceVariant,
                                 ),
                               ),
-
                             ],
                           ),
                         ),
-
-                        Icon(Icons.download),
-
+                        const SizedBox(width: AppSpacing.xs),
+                        Icon(
+                          Icons.download_rounded,
+                          color: colorScheme.primary,
+                          size: 22,
+                        ),
                       ],
                     ),
                   ),
-
-                  const SizedBox(height: 8),
-
-                  const Text(
+                  const SizedBox(height: AppSpacing.xs),
+                  Text(
                     "09:25 AM",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12,
+                    style: AppTextStyles.caption.copyWith(
+                      color: colorScheme.onSurfaceVariant,
                     ),
                   ),
-
                 ],
               ),
             ),
           ),
-
         ],
       ),
     );
