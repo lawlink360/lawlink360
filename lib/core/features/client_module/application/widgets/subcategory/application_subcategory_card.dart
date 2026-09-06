@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../../models/document_subcategory.dart';
 
 class ApplicationSubCategoryCard extends StatelessWidget {
@@ -14,85 +18,117 @@ class ApplicationSubCategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 8,
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.xs,
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(18),
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(18),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 24,
-                backgroundColor:
-                    subCategory.color.withValues(alpha:0.15),
-                child: Icon(
-                  subCategory.icon,
-                  color: subCategory.color,
-                ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          child: Ink(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            decoration: BoxDecoration(
+              color: colorScheme.surface,
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+              border: Border.all(
+                color: colorScheme.outlineVariant.withValues(alpha: 0.55),
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: colorScheme.shadow.withValues(alpha: 0.05),
+                  blurRadius: 12,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: subCategory.color.withValues(alpha: 0.11),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: subCategory.color.withValues(alpha: 0.16),
+                    ),
+                  ),
+                  child: Icon(
+                    subCategory.icon,
+                    color: subCategory.color,
+                    size: 24,
+                  ),
+                ),
 
-              const SizedBox(width: 16),
+                const SizedBox(width: AppSpacing.sm),
 
-              Expanded(
-                child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        subCategory.title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: colorScheme.onSurface,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+
+                      const SizedBox(height: 4),
+
+                      Text(
+                        subCategory.description,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.caption.copyWith(
+                          color: colorScheme.onSurface.withValues(alpha: 0.62),
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(width: AppSpacing.sm),
+
+                Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      subCategory.title,
-                      style: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
+                      '${subCategory.templateCount}',
+                      style: AppTextStyles.bodySmall.copyWith(
+                        color: subCategory.color,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
-
-                    const SizedBox(height: 4),
-
                     Text(
-                      subCategory.description,
-                      style: TextStyle(
-                        color: Colors.grey.shade700,
-                        height: 1.4,
+                      'Templates',
+                      style: AppTextStyles.caption.copyWith(
+                        color: colorScheme.onSurface.withValues(alpha: 0.52),
+                        fontSize: 10,
                       ),
                     ),
                   ],
                 ),
-              ),
 
-              Column(
-                children: [
-                  Text(
-                    "${subCategory.templateCount}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: subCategory.color,
-                    ),
-                  ),
+                const SizedBox(width: AppSpacing.sm),
 
-                  const Text(
-                    "Templates",
-                    style: TextStyle(fontSize: 11),
-                  ),
-                ],
-              ),
-
-              const SizedBox(width: 10),
-
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 18,
-                color: Colors.grey.shade500,
-              ),
-            ],
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 14,
+                  color: colorScheme.onSurface.withValues(alpha: 0.42),
+                ),
+              ],
+            ),
           ),
         ),
       ),
