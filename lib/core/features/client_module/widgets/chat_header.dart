@@ -1,98 +1,176 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class ChatHeader extends StatelessWidget {
   const ChatHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.xs,
+        AppSpacing.sm,
+        AppSpacing.xs,
+        AppSpacing.md,
+      ),
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        border: Border(
+          bottom: BorderSide(
+            color: colorScheme.outline.withValues(alpha: 0.14),
+          ),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
       child: Row(
         children: [
           IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back_ios_new),
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: colorScheme.onSurface,
+              size: 20,
+            ),
+            tooltip: 'Back',
           ),
-
-          const CircleAvatar(
-            radius: 26,
-            backgroundColor: Color(0xFFD4AF37),
-            child: Icon(
-              Icons.person,
+          Container(
+            width: 52,
+            height: 52,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.accent,
+              border: Border.all(
+                color: AppColors.accent.withValues(alpha: 0.35),
+                width: 2,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.accent.withValues(alpha: 0.16),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: const Icon(
+              Icons.person_rounded,
               color: Colors.white,
               size: 28,
             ),
           ),
-
-          const SizedBox(width: 12),
-
-          const Expanded(
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
-                    Text(
-                      "Adv. Ahmed Khan",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                    Flexible(
+                      child: Text(
+                        'Adv. Ahmed Khan',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.body.copyWith(
+                          color: colorScheme.onSurface,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 6),
-                    Icon(
-                      Icons.verified,
-                      color: Colors.green,
-                      size: 18,
+                    const SizedBox(width: AppSpacing.xs),
+                    const Icon(
+                      Icons.verified_rounded,
+                      color: AppColors.success,
+                      size: 17,
                     ),
                   ],
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 2),
                 Text(
-                  "Criminal Lawyer",
-                  style: TextStyle(
-                    color: Color(0xFFD4AF37),
+                  'Criminal Lawyer',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.caption.copyWith(
+                    color: AppColors.accent,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 4),
-                Text(
-                  "Online",
-                  style: TextStyle(
-                    color: Colors.green,
-                    fontWeight: FontWeight.w600,
-                  ),
+                const SizedBox(height: 2),
+                Row(
+                  children: [
+                    Container(
+                      width: 7,
+                      height: 7,
+                      decoration: const BoxDecoration(
+                        color: AppColors.success,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    const SizedBox(width: AppSpacing.xs),
+                    Text(
+                      'Online',
+                      style: AppTextStyles.caption.copyWith(
+                        color: AppColors.success,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
-
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.call_outlined),
+            icon: Icon(
+              Icons.call_outlined,
+              color: colorScheme.onSurface,
+              size: 21,
+            ),
+            tooltip: 'Call',
           ),
-
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.videocam_outlined),
+            icon: Icon(
+              Icons.videocam_outlined,
+              color: colorScheme.onSurface,
+              size: 22,
+            ),
+            tooltip: 'Video call',
           ),
-
-          PopupMenuButton(
-            itemBuilder: (context) => const [
-              PopupMenuItem(
+          PopupMenuButton<int>(
+            icon: Icon(
+              Icons.more_vert_rounded,
+              color: colorScheme.onSurface,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppRadius.md),
+            ),
+            elevation: 4,
+            onSelected: (_) {},
+            itemBuilder: (context) => [
+              const PopupMenuItem<int>(
                 value: 1,
-                child: Text("View Profile"),
+                child: Text('View Profile'),
               ),
-              PopupMenuItem(
+              const PopupMenuItem<int>(
                 value: 2,
-                child: Text("Block"),
+                child: Text('Block'),
               ),
-              PopupMenuItem(
+              const PopupMenuItem<int>(
                 value: 3,
-                child: Text("Report"),
+                child: Text('Report'),
               ),
             ],
           ),

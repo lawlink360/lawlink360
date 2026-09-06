@@ -1,72 +1,87 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class ChatSecureChatCard extends StatelessWidget {
   const ChatSecureChatCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: AppColors.success.withValues(alpha: 0.20),
+        ),
+        boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10,
-            offset: Offset(0, 5),
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 56,
-            height: 56,
+            width: 50,
+            height: 50,
             decoration: BoxDecoration(
-              color: const Color(0xFFD4AF37).withValues(alpha:.12),
-              borderRadius: BorderRadius.circular(16),
+              color: AppColors.success.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(AppRadius.md),
             ),
             child: const Icon(
-              Icons.security,
-              color: Color(0xFFD4AF37),
-              size: 32,
+              Icons.security_rounded,
+              color: AppColors.success,
+              size: 26,
             ),
           ),
-
-          const SizedBox(width: 16),
-
-          const Expanded(
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "This is a secure conversation",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                  'This is a secure conversation',
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: colorScheme.onSurface,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(height: 6),
+                const SizedBox(height: AppSpacing.xs),
                 Text(
-                  "Your messages and documents are end-to-end encrypted.",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    height: 1.4,
+                  'Your messages and documents are end-to-end encrypted.',
+                  style: AppTextStyles.caption.copyWith(
+                    color: colorScheme.onSurfaceVariant,
+                    height: 1.45,
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.xs),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    minimumSize: const Size(0, 32),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    alignment: Alignment.centerLeft,
+                  ),
+                  child: Text(
+                    'Learn More',
+                    style: AppTextStyles.caption.copyWith(
+                      color: AppColors.accent,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
-            ),
-          ),
-
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              "Learn More",
-              style: TextStyle(
-                color: Color(0xFFD4AF37),
-                fontWeight: FontWeight.bold,
-              ),
             ),
           ),
         ],
