@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
+
 class QuickActionCard extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -16,25 +21,37 @@ class QuickActionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final surfaceColor =
+        isDark ? AppColors.darkSurface : AppColors.lightSurface;
+
+    final titleColor =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+
+    final subtitleColor =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
-  splashColor: const Color(0xFFD4AF37).withValues(alpha: 0.15),
-  highlightColor: Colors.transparent,
-  borderRadius: BorderRadius.circular(20),
+        splashColor: AppColors.accent.withValues(alpha: 0.15),
+        highlightColor: Colors.transparent,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.symmetric(
-  horizontal: 16,
-  vertical: 14,
-),
-
+            horizontal: AppSpacing.md,
+            vertical: 14,
+          ),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
+            color: surfaceColor,
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.06),
+                color: Colors.black.withValues(
+                  alpha: isDark ? 0.18 : 0.06,
+                ),
                 blurRadius: 16,
                 offset: const Offset(0, 6),
               ),
@@ -43,61 +60,57 @@ class QuickActionCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-  Container(
-    width: 50,
-    height: 50,
-    decoration: const BoxDecoration(
-      color: Color(0xFFFFF8E1),
-      shape: BoxShape.circle,
-    ),
-    child: Icon(
-      icon,
-      size: 24,
-      color: Color(0xFFD4AF37),
-    ),
-  ),
-
-  const SizedBox(height: 10),
-
-  Text(
-    title,
-    textAlign: TextAlign.center,
-    style: const TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-      color: Color(0xFF1F2937),
-    ),
-  ),
-
-  const SizedBox(height: 6),
-
-  Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 12),
-    child: Text(
-      subtitle,
-      textAlign: TextAlign.center,
-      style: const TextStyle(
-        fontSize: 12,
-        color:  Color(0xFF6B7280),
-        height: 1.4,
-      ),
-    ),
-  ),
-
-  const SizedBox(height: 10),
-
-  const Align(
-    alignment: Alignment.centerRight,
-    child: Padding(
-      padding: EdgeInsets.only(right: 14),
-      child: Icon(
-        Icons.arrow_outward_rounded,
-        size: 18,
-        color: Color(0xFFD4AF37),
-      ),
-    ),
-  ),
-],
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: isDark
+                      ? AppColors.accent.withValues(alpha: 0.12)
+                      : const Color(0xFFFFF8E1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  icon,
+                  size: 24,
+                  color: AppColors.accent,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.body.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: titleColor,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.xs),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                ),
+                child: Text(
+                  subtitle,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: subtitleColor,
+                    height: 1.4,
+                  ),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: AppSpacing.sm),
+                  child: Icon(
+                    Icons.arrow_outward_rounded,
+                    size: 18,
+                    color: AppColors.accent,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

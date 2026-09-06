@@ -18,14 +18,18 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     final card = Container(
       padding: padding ?? const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
         borderRadius: BorderRadius.circular(AppRadius.lg),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
+            color: Colors.black.withValues(
+              alpha: isDark ? 0.18 : 0.06,
+            ),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -34,12 +38,17 @@ class CustomCard extends StatelessWidget {
       child: child,
     );
 
-    if (onTap == null) return card;
+    if (onTap == null) {
+      return card;
+    }
 
-    return InkWell(
-      borderRadius: BorderRadius.circular(AppRadius.lg),
-      onTap: onTap,
-      child: card,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        onTap: onTap,
+        child: card,
+      ),
     );
   }
 }
