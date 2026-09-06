@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lawlink360/core/features/client_module/screens/lawyer_profile_screen.dart';
+
 import 'package:lawlink360/core/features/client_module/screens/lawyer_details_reviews_screen.dart';
+import 'package:lawlink360/core/features/client_module/screens/lawyer_profile_screen.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class LawyerCard extends StatelessWidget {
   final String name;
@@ -22,137 +27,277 @@ class LawyerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => const LawyerDetailsReviewsScreen(),
-          ),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 18),
-        padding: const EdgeInsets.all(18),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(22),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 12,
-              offset: Offset(0, 6),
-            ),
-          ],
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Container(
+      margin: const EdgeInsets.only(
+        bottom: AppSpacing.md,
+      ),
+      padding: const EdgeInsets.all(AppSpacing.lg),
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: colorScheme.outline.withValues(alpha: 0.45),
         ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                const CircleAvatar(
-                  radius: 34,
-                  backgroundColor: Color(0xFFD4AF37),
-                  child: Icon(Icons.person, color: Colors.white, size: 34),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        speciality,
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.location_on,
-                            size: 16,
-                            color: Colors.red,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(location),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                if (verified)
-                  const Icon(
-                    Icons.verified,
-                    color: Colors.green,
-                    size: 28,
-                  ),
-              ],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(
+              alpha: isDark ? 0.20 : 0.06,
             ),
-            const SizedBox(height: 18),
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
+            blurRadius: 16,
+            offset: const Offset(0, 7),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 68,
+                height: 68,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.accent.withValues(
+                    alpha: isDark ? 0.18 : 0.12,
                   ),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFF8E1),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    "$experience Years",
-                    style: const TextStyle(
-                      color: Color(0xFFD4AF37),
-                      fontWeight: FontWeight.bold,
+                  border: Border.all(
+                    color: AppColors.accent.withValues(
+                      alpha: 0.65,
                     ),
+                    width: 2,
                   ),
                 ),
-                const Spacer(),
-                const Icon(Icons.star, color: Color(0xFFD4AF37)),
-                const SizedBox(width: 4),
-                Text(
-                  rating.toString(),
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                child: const Icon(
+                  Icons.person_rounded,
+                  color: AppColors.accent,
+                  size: 34,
                 ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Expanded(
-                  child: FilledButton.icon(
+              ),
+              const SizedBox(width: AppSpacing.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            name,
+                            style: AppTextStyles.title.copyWith(
+                              color: colorScheme.onSurface,
+                              fontSize: 17,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        if (verified) ...[
+                          const SizedBox(width: AppSpacing.xs),
+                          const Icon(
+                            Icons.verified_rounded,
+                            color: AppColors.success,
+                            size: 21,
+                          ),
+                        ],
+                      ],
+                    ),
+                    const SizedBox(height: AppSpacing.xs),
+                    Text(
+                      speciality,
+                      style: AppTextStyles.bodySmall.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on_rounded,
+                          size: 17,
+                          color: colorScheme.onSurfaceVariant,
+                        ),
+                        const SizedBox(width: AppSpacing.xs),
+                        Expanded(
+                          child: Text(
+                            location,
+                            style: AppTextStyles.caption.copyWith(
+                              color: colorScheme.onSurfaceVariant,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: AppSpacing.md),
+
+          Divider(
+            color: colorScheme.outline.withValues(alpha: 0.45),
+            height: 1,
+          ),
+
+          const SizedBox(height: AppSpacing.md),
+
+          Row(
+            children: [
+              _InfoChip(
+                icon: Icons.workspace_premium_rounded,
+                label: '$experience Years',
+                colorScheme: colorScheme,
+              ),
+              const Spacer(),
+              const Icon(
+                Icons.star_rounded,
+                color: AppColors.accent,
+                size: 21,
+              ),
+              const SizedBox(width: AppSpacing.xs),
+              Text(
+                rating.toStringAsFixed(1),
+                style: AppTextStyles.body.copyWith(
+                  color: colorScheme.onSurface,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.xs),
+              Text(
+                'Rating',
+                style: AppTextStyles.caption.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: AppSpacing.lg),
+
+          Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  height: AppSpacing.buttonHeight,
+                  child: OutlinedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
+                          builder: (_) =>
                               const LawyerProfileScreen(),
                         ),
                       );
                     },
-                    icon: const Icon(Icons.person_outline),
-                    label: const Text("Profile"),
+                    icon: const Icon(
+                      Icons.person_outline_rounded,
+                      size: 19,
+                    ),
+                    label: const Text('Profile'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: colorScheme.primary,
+                      side: BorderSide(
+                        color: colorScheme.primary.withValues(
+                          alpha: 0.55,
+                        ),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          AppRadius.md,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.chat_bubble_outline),
-                    label: const Text("Chat"),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: SizedBox(
+                  height: AppSpacing.buttonHeight,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              const LawyerDetailsReviewsScreen(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.chat_bubble_outline_rounded,
+                      size: 19,
+                    ),
+                    label: const Text('Chat'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: colorScheme.primary,
+                      foregroundColor: colorScheme.onPrimary,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          AppRadius.md,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _InfoChip extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final ColorScheme colorScheme;
+
+  const _InfoChip({
+    required this.icon,
+    required this.label,
+    required this.colorScheme,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.accent.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        border: Border.all(
+          color: AppColors.accent.withValues(alpha: 0.35),
         ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.workspace_premium_rounded,
+            color: AppColors.accent,
+            size: 17,
+          ),
+          const SizedBox(width: AppSpacing.xs),
+          Text(
+            label,
+            style: AppTextStyles.caption.copyWith(
+              color: colorScheme.onSurface,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
       ),
     );
   }
