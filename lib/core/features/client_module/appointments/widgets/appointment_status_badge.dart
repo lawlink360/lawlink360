@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../models/appointment_status.dart';
 
 class AppointmentStatusBadge extends StatelessWidget {
@@ -13,39 +18,39 @@ class AppointmentStatusBadge extends StatelessWidget {
   Color get backgroundColor {
     switch (status) {
       case AppointmentStatus.today:
-        return Colors.red.shade100;
+        return AppColors.error.withValues(alpha: 0.12);
       case AppointmentStatus.upcoming:
-        return Colors.green.shade100;
+        return AppColors.success.withValues(alpha: 0.12);
       case AppointmentStatus.completed:
-        return Colors.blue.shade100;
+        return AppColors.info.withValues(alpha: 0.12);
       case AppointmentStatus.cancelled:
-        return Colors.grey.shade300;
+        return AppColors.lightTextSecondary.withValues(alpha: 0.14);
     }
   }
 
   Color get textColor {
     switch (status) {
       case AppointmentStatus.today:
-        return Colors.red.shade800;
+        return AppColors.error;
       case AppointmentStatus.upcoming:
-        return Colors.green.shade800;
+        return AppColors.success;
       case AppointmentStatus.completed:
-        return Colors.blue.shade800;
+        return AppColors.info;
       case AppointmentStatus.cancelled:
-        return Colors.grey.shade800;
+        return AppColors.lightTextSecondary;
     }
   }
 
   String get label {
     switch (status) {
       case AppointmentStatus.today:
-        return "Today";
+        return 'Today';
       case AppointmentStatus.upcoming:
-        return "Upcoming";
+        return 'Upcoming';
       case AppointmentStatus.completed:
-        return "Completed";
+        return 'Completed';
       case AppointmentStatus.cancelled:
-        return "Cancelled";
+        return 'Cancelled';
     }
   }
 
@@ -53,19 +58,21 @@ class AppointmentStatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 6,
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        border: Border.all(
+          color: textColor.withValues(alpha: 0.18),
+        ),
       ),
       child: Text(
         label,
-        style: TextStyle(
+        style: AppTextStyles.caption.copyWith(
           color: textColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );

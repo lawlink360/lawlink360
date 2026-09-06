@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class AppointmentStatisticsCards extends StatelessWidget {
   final String title;
   final String value;
@@ -16,46 +20,63 @@ class AppointmentStatisticsCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Expanded(
       child: Card(
         elevation: 0,
-        color: Colors.white,
+        color: colorScheme.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          side: BorderSide(
+            color: colorScheme.outlineVariant.withValues(alpha: 0.55),
+          ),
         ),
+        shadowColor: colorScheme.shadow.withValues(alpha: 0.08),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: 18,
-            horizontal: 10,
+            vertical: AppSpacing.md,
+            horizontal: AppSpacing.xs,
           ),
           child: Column(
             children: [
-              CircleAvatar(
-                backgroundColor: color.withValues(alpha:.12),
+              Container(
+                width: 46,
+                height: 46,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.11),
+                  shape: BoxShape.circle,
+                ),
                 child: Icon(
                   icon,
                   color: color,
+                  size: 22,
                 ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: AppSpacing.sm),
 
               Text(
                 value,
-                style: const TextStyle(
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.headline.copyWith(
+                  color: colorScheme.onSurface,
                   fontSize: 22,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
 
-              const SizedBox(height: 4),
+              const SizedBox(height: AppSpacing.xs),
 
               Text(
                 title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 13,
+                style: AppTextStyles.caption.copyWith(
+                  color: colorScheme.onSurface.withValues(alpha: 0.62),
+                  fontWeight: FontWeight.w600,
+                  height: 1.25,
                 ),
               ),
             ],
