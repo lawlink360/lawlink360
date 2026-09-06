@@ -1,11 +1,15 @@
+
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+
+import '../widgets/category/application_category_grid.dart';
 import '../widgets/category/application_header_section.dart';
+import '../widgets/category/application_important_notice.dart';
+import '../widgets/category/application_recent_documents.dart';
 import '../widgets/category/application_search_bar.dart';
 import '../widgets/category/application_statistics_cards.dart';
-import '../widgets/category/application_important_notice.dart';
-import '../widgets/category/application_category_grid.dart';
-import '../widgets/category/application_recent_documents.dart';
 
 class ApplicationHomeScreen extends StatelessWidget {
   const ApplicationHomeScreen({super.key});
@@ -13,42 +17,25 @@ class ApplicationHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: AppColors.lightBackground,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-
-              /// Header
-              ApplicationHeaderSection(),
-
-              SizedBox(height: 18),
-
-              /// Search
-              ApplicationSearchBar(),
-
-              SizedBox(height: 20),
-
-              /// Statistics
-              ApplicationStatisticsCards(),
-
-              SizedBox(height: 22),
-
-              /// Categories
-              ApplicationCategoryGrid(),
-
-              SizedBox(height: 24),
-
-              /// Recent Documents
-              ApplicationRecentDocuments(),
-
-              SizedBox(height: 30),
-
-              /// Important Notice
-              ApplicationImportantNotice(),
-
-              SizedBox(height: 24),
+            children: [
+              const ApplicationHeaderSection(),
+              const SizedBox(height: AppSpacing.md),
+              const ApplicationSearchBar(),
+              const SizedBox(height: AppSpacing.lg),
+              const ApplicationStatisticsCards(),
+              const SizedBox(height: AppSpacing.lg),
+              const ApplicationCategoryGrid(),
+              const SizedBox(height: AppSpacing.xl),
+              const ApplicationRecentDocuments(),
+              const SizedBox(height: AppSpacing.xl),
+              const ApplicationImportantNotice(),
+              const SizedBox(height: AppSpacing.lg),
             ],
           ),
         ),
