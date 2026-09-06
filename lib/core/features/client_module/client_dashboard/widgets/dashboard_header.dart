@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class DashboardHeader extends StatelessWidget {
   final String name;
 
@@ -10,46 +15,62 @@ class DashboardHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(22),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
           colors: [
-            Color(0xFF0F172A),
-            Color(0xFF1E3A8A),
+            colorScheme.primary,
+            colorScheme.primary.withValues(alpha: 0.88),
           ],
         ),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: AppColors.accent.withValues(alpha: 0.20),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: colorScheme.shadow.withValues(alpha: 0.10),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Welcome Back 👋",
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 16,
+          Text(
+            'Welcome Back 👋',
+            style: AppTextStyles.bodySmall.copyWith(
+              color: colorScheme.onPrimary.withValues(alpha: 0.72),
+              fontWeight: FontWeight.w500,
             ),
           ),
 
-          const SizedBox(height: 8),
+          const SizedBox(height: AppSpacing.xs),
 
           Text(
             name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.headline.copyWith(
+              color: colorScheme.onPrimary,
+              fontWeight: FontWeight.w700,
             ),
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: AppSpacing.sm),
 
-          const Text(
-            "Manage your legal matters from one place.",
-            style: TextStyle(
-              color: Colors.white70,
+          Text(
+            'Manage your legal matters from one place.',
+            style: AppTextStyles.bodySmall.copyWith(
+              color: colorScheme.onPrimary.withValues(alpha: 0.72),
+              height: 1.4,
             ),
           ),
         ],
