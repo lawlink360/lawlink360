@@ -1,49 +1,59 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class BookDateCard extends StatelessWidget {
   const BookDateCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
-        const Text(
-          "Select Date",
-          style: TextStyle(
+        Text(
+          'Select Date',
+          style: AppTextStyles.title.copyWith(
+            color: colorScheme.onSurface,
             fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff0D1B2A),
           ),
         ),
-
-        const SizedBox(height: 16),
-
+        const SizedBox(height: AppSpacing.md),
         SizedBox(
           height: 90,
           child: ListView(
             scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
             children: const [
-
-              DateCard(day: "Mon", date: "21", selected: true),
-
-              SizedBox(width: 12),
-
-              DateCard(day: "Tue", date: "22"),
-
-              SizedBox(width: 12),
-
-              DateCard(day: "Wed", date: "23"),
-
-              SizedBox(width: 12),
-
-              DateCard(day: "Thu", date: "24"),
-
-              SizedBox(width: 12),
-
-              DateCard(day: "Fri", date: "25"),
-
+              DateCard(
+                day: 'Mon',
+                date: '21',
+                selected: true,
+              ),
+              SizedBox(width: AppSpacing.sm),
+              DateCard(
+                day: 'Tue',
+                date: '22',
+              ),
+              SizedBox(width: AppSpacing.sm),
+              DateCard(
+                day: 'Wed',
+                date: '23',
+              ),
+              SizedBox(width: AppSpacing.sm),
+              DateCard(
+                day: 'Thu',
+                date: '24',
+              ),
+              SizedBox(width: AppSpacing.sm),
+              DateCard(
+                day: 'Fri',
+                date: '25',
+              ),
             ],
           ),
         ),
@@ -53,7 +63,6 @@ class BookDateCard extends StatelessWidget {
 }
 
 class DateCard extends StatelessWidget {
-
   final String day;
   final String date;
   final bool selected;
@@ -67,50 +76,63 @@ class DateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
 
-    return Container(
+    final backgroundColor = selected
+        ? AppColors.accent
+        : colorScheme.surface;
+
+    final borderColor = selected
+        ? AppColors.accent
+        : colorScheme.outline.withValues(alpha: 0.35);
+
+    final dayColor = selected
+        ? Colors.white
+        : colorScheme.onSurfaceVariant;
+
+    final dateColor = selected
+        ? Colors.white
+        : colorScheme.onSurface;
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       width: 70,
-
       decoration: BoxDecoration(
-        color: selected
-            ? const Color(0xffD4AF37)
-            : Colors.white,
-
-        borderRadius: BorderRadius.circular(18),
-
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(
-          color: selected
-              ? const Color(0xffD4AF37)
-              : Colors.grey.shade300,
+          color: borderColor,
+          width: selected ? 1.3 : 1,
         ),
+        boxShadow: selected
+            ? [
+                BoxShadow(
+                  color: AppColors.accent.withValues(alpha: 0.16),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ]
+            : null,
       ),
-
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
           Text(
             day,
-            style: TextStyle(
-              color: selected
-                  ? Colors.white
-                  : Colors.grey,
+            style: AppTextStyles.caption.copyWith(
+              color: dayColor,
+              fontWeight: FontWeight.w600,
             ),
           ),
-
-          const SizedBox(height: 8),
-
+          const SizedBox(height: AppSpacing.xs),
           Text(
             date,
-            style: TextStyle(
+            style: AppTextStyles.title.copyWith(
+              color: dateColor,
               fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: selected
-                  ? Colors.white
-                  : const Color(0xff0D1B2A),
+              fontWeight: FontWeight.w700,
             ),
           ),
-
         ],
       ),
     );
