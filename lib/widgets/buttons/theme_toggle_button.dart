@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers/theme_provider.dart';
+import '../../core/theme/app_colors.dart';
 
 class ThemeToggleButton extends ConsumerWidget {
   const ThemeToggleButton({super.key});
@@ -13,10 +14,6 @@ class ThemeToggleButton extends ConsumerWidget {
     return IconButton(
       onPressed: () {
         ref.read(themeProvider.notifier).toggleTheme();
-
-        debugPrint(
-          "Dark Mode: ${ref.read(themeProvider) == ThemeMode.dark}",
-        );
       },
       icon: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
@@ -25,7 +22,7 @@ class ThemeToggleButton extends ConsumerWidget {
               ? Icons.light_mode_rounded
               : Icons.dark_mode_rounded,
           key: ValueKey(themeMode),
-          color: const Color(0xFFD4AF37),
+          color: AppColors.accent,
           size: 28,
         ),
       ),

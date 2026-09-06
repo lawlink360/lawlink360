@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -19,15 +22,17 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return SizedBox(
       width: double.infinity,
-      height: 56,
+      height: AppSpacing.buttonHeight,
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          foregroundColor: Theme.of(context).colorScheme.onPrimary,
-          elevation: 2,
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.md),
           ),
@@ -38,7 +43,7 @@ class PrimaryButton extends StatelessWidget {
                 height: 22,
                 child: CircularProgressIndicator(
                   strokeWidth: 2.5,
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: colorScheme.onPrimary,
                 ),
               )
             : (child ??
@@ -47,13 +52,12 @@ class PrimaryButton extends StatelessWidget {
                   children: [
                     if (icon != null) ...[
                       Icon(icon, size: 20),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: AppSpacing.xs),
                     ],
                     Text(
                       text,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                      style: AppTextStyles.button.copyWith(
+                        color: colorScheme.onPrimary,
                       ),
                     ),
                   ],
