@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class CaseCard extends StatelessWidget {
   final String title;
   final String status;
@@ -18,18 +23,31 @@ class CaseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       width: 250,
-      margin: const EdgeInsets.only(right: 16),
-      padding: const EdgeInsets.all(18),
+      margin: const EdgeInsets.only(
+        right: AppSpacing.md,
+      ),
+      padding: const EdgeInsets.all(
+        AppSpacing.md,
+      ),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(22),
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(
+          AppRadius.lg,
+        ),
+        border: Border.all(
+          color: AppColors.border,
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.06),
-            blurRadius: 18,
-            offset: const Offset(0, 8),
+            color: colorScheme.shadow.withValues(
+              alpha: 0.06,
+            ),
+            blurRadius: 14,
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -40,82 +58,95 @@ class CaseCard extends StatelessWidget {
             title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
+            style: AppTextStyles.title.copyWith(
+              color: AppColors.textPrimary,
               fontSize: 17,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF10233F),
+              fontWeight: FontWeight.w700,
             ),
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: AppSpacing.sm),
 
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 4,
+              horizontal: AppSpacing.sm,
+              vertical: AppSpacing.xs,
             ),
             decoration: BoxDecoration(
-              color: const Color(0xFFD4AF37).withValues(alpha: 0.15),
-              borderRadius: BorderRadius.circular(20),
+              color: AppColors.accent.withValues(
+                alpha: 0.12,
+              ),
+              borderRadius: BorderRadius.circular(
+                AppRadius.pill,
+              ),
             ),
             child: Text(
               status,
-              style: const TextStyle(
-                color: Color(0xFFD4AF37),
-                fontWeight: FontWeight.w600,
-                fontSize: 12,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.caption.copyWith(
+                color: AppColors.accent,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
 
-          const SizedBox(height: 14),
+          const SizedBox(height: AppSpacing.md),
 
-          const Text(
-            "Next Hearing",
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
+          Text(
+            'Next Hearing',
+            style: AppTextStyles.caption.copyWith(
+              color: AppColors.textSecondary,
             ),
           ),
 
-          const SizedBox(height: 3),
+          const SizedBox(height: AppSpacing.xs),
 
           Text(
             hearingDate,
-            style: const TextStyle(
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.bodySmall.copyWith(
+              color: AppColors.textPrimary,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF10233F),
             ),
           ),
 
           const Spacer(),
 
           ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(
+              AppRadius.sm,
+            ),
             child: LinearProgressIndicator(
-              value: progress,
+              value: progress.clamp(0.0, 1.0),
               minHeight: 8,
-              backgroundColor: Colors.grey.shade200,
-              color: const Color(0xFFD4AF37),
+              backgroundColor: AppColors.border,
+              color: AppColors.accent,
             ),
           ),
 
-          const SizedBox(height: 14),
+          const SizedBox(height: AppSpacing.md),
 
           Align(
             alignment: Alignment.bottomRight,
-            child: CircleAvatar(
-              radius: 18,
-              backgroundColor:
-                  const Color(0xFFD4AF37).withValues(alpha: 0.15),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                icon: const Icon(
-                  Icons.arrow_forward_rounded,
-                  color: Color(0xFFD4AF37),
-                  size: 20,
+            child: Material(
+              color: AppColors.accent.withValues(
+                alpha: 0.12,
+              ),
+              shape: const CircleBorder(),
+              child: InkWell(
+                onTap: onTap,
+                customBorder: const CircleBorder(),
+                child: const SizedBox(
+                  width: 36,
+                  height: 36,
+                  child: Icon(
+                    Icons.arrow_forward_rounded,
+                    color: AppColors.accent,
+                    size: 20,
+                  ),
                 ),
-                onPressed: onTap,
               ),
             ),
           ),

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class SettingsTile extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
@@ -18,38 +23,49 @@ class SettingsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return ListTile(
-      leading: CircleAvatar(
-        radius: 22,
-        backgroundColor: iconColor.withValues(alpha:.12),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.xs,
+      ),
+      leading: Container(
+        width: 44,
+        height: 44,
+        decoration: BoxDecoration(
+          color: iconColor.withValues(alpha: 0.12),
+          borderRadius: BorderRadius.circular(
+            AppRadius.md,
+          ),
+        ),
         child: Icon(
           icon,
           color: iconColor,
+          size: 22,
         ),
       ),
-
       title: Text(
         title,
-        style: const TextStyle(
+        style: AppTextStyles.body.copyWith(
+          color: AppColors.textPrimary,
           fontWeight: FontWeight.w600,
-          fontSize: 16,
         ),
       ),
-
       subtitle: subtitle == null
           ? null
           : Text(
               subtitle!,
-              style: const TextStyle(
-                fontSize: 13,
+              style: AppTextStyles.caption.copyWith(
+                color: AppColors.textSecondary,
               ),
             ),
-
-      trailing: const Icon(
+      trailing: Icon(
         Icons.chevron_right_rounded,
-        color: Colors.grey,
+        color: colorScheme.onSurface.withValues(
+          alpha: 0.45,
+        ),
       ),
-
       onTap: onTap,
     );
   }
