@@ -1,53 +1,61 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_radius.dart';
+import '../../core/theme/app_spacing.dart';
+import '../../core/theme/app_text_styles.dart';
+
 class LawyerPracticeChip extends StatelessWidget {
   const LawyerPracticeChip({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+      ),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(22),
-        boxShadow: const [
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: colorScheme.outline.withValues(alpha: 0.5),
+        ),
+        boxShadow: [
           BoxShadow(
-            color: Colors.black12,
-            blurRadius: 10,
-            offset: Offset(0, 4),
+            color: Colors.black.withValues(
+              alpha: isDark ? 0.20 : 0.06,
+            ),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          const Text(
-            "Practice Areas",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0D1B2A),
+          Text(
+            'Practice Areas',
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
             ),
           ),
-
-          const SizedBox(height: 18),
-
+          const SizedBox(height: AppSpacing.md),
           Wrap(
-            spacing: 10,
-            runSpacing: 10,
+            spacing: AppSpacing.xs,
+            runSpacing: AppSpacing.xs,
             children: const [
-
-              _Chip("Criminal Law"),
-              _Chip("Bail Matters"),
-              _Chip("FIR & Quash"),
-              _Chip("Cyber Crime"),
-              _Chip("White Collar"),
-              _Chip("Appeals"),
-              _Chip("Constitutional"),
-              _Chip("Family Law"),
-
+              _Chip('Criminal Law'),
+              _Chip('Bail Matters'),
+              _Chip('FIR & Quash'),
+              _Chip('Cyber Crime'),
+              _Chip('White Collar'),
+              _Chip('Appeals'),
+              _Chip('Constitutional'),
+              _Chip('Family Law'),
             ],
           ),
         ],
@@ -63,19 +71,31 @@ class _Chip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Chip(
       avatar: const Icon(
-        Icons.gavel,
+        Icons.gavel_rounded,
         size: 18,
-        color: Color(0xFFD4AF37),
+        color: AppColors.accent,
       ),
-      label: Text(title),
-      backgroundColor: const Color(0xFFF8F8F8),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
-        side: const BorderSide(
-          color: Color(0xFFD4AF37),
+      label: Text(
+        title,
+        style: AppTextStyles.caption.copyWith(
+          color: colorScheme.onSurface,
+          fontWeight: FontWeight.w600,
         ),
+      ),
+      backgroundColor: AppColors.accent.withValues(alpha: 0.08),
+      side: BorderSide(
+        color: AppColors.accent.withValues(alpha: 0.55),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.xs,
+        vertical: 2,
       ),
     );
   }
