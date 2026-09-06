@@ -1,79 +1,70 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class BookConsultationType extends StatelessWidget {
   const BookConsultationType({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
-        const Text(
-          "Consultation Type",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xff0D1B2A),
+        Text(
+          'Consultation Type',
+          style: AppTextStyles.title.copyWith(
+            color: colorScheme.onSurface,
+            fontSize: 19,
           ),
         ),
-
-        const SizedBox(height: 16),
-
-        Row(
-          children: const [
-
+        const SizedBox(height: AppSpacing.md),
+        const Row(
+          children: [
             Expanded(
               child: ConsultationCard(
-                icon: Icons.person,
-                title: "In Person",
+                icon: Icons.person_outline_rounded,
+                title: 'In Person',
                 selected: true,
               ),
             ),
-
-            SizedBox(width: 12),
-
+            SizedBox(width: AppSpacing.sm),
             Expanded(
               child: ConsultationCard(
-                icon: Icons.call,
-                title: "Voice",
+                icon: Icons.call_outlined,
+                title: 'Voice',
               ),
             ),
-
           ],
         ),
-
-        const SizedBox(height: 12),
-
-        Row(
-          children: const [
-
+        const SizedBox(height: AppSpacing.sm),
+        const Row(
+          children: [
             Expanded(
               child: ConsultationCard(
-                icon: Icons.videocam,
-                title: "Video",
+                icon: Icons.videocam_outlined,
+                title: 'Video',
               ),
             ),
-
-            SizedBox(width: 12),
-
+            SizedBox(width: AppSpacing.sm),
             Expanded(
               child: ConsultationCard(
-                icon: Icons.chat,
-                title: "Chat",
+                icon: Icons.chat_bubble_outline_rounded,
+                title: 'Chat',
               ),
             ),
-
           ],
         ),
-
       ],
     );
   }
 }
 
 class ConsultationCard extends StatelessWidget {
-
   final IconData icon;
   final String title;
   final bool selected;
@@ -87,48 +78,60 @@ class ConsultationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
 
-    return Container(
+    final backgroundColor = selected
+        ? AppColors.accent
+        : colorScheme.surface;
+
+    final foregroundColor = selected
+        ? Colors.white
+        : colorScheme.onSurface;
+
+    final borderColor = selected
+        ? AppColors.accent
+        : colorScheme.outline.withValues(alpha: 0.45);
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       height: 92,
-
       decoration: BoxDecoration(
-        color: selected
-            ? const Color(0xffD4AF37)
-            : Colors.white,
-
-        borderRadius: BorderRadius.circular(18),
-
-        border: Border.all(
-          color: selected
-              ? const Color(0xffD4AF37)
-              : Colors.grey.shade300,
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(
+          AppRadius.lg,
         ),
+        border: Border.all(
+          color: borderColor,
+          width: selected ? 1.4 : 1,
+        ),
+        boxShadow: selected
+            ? [
+                BoxShadow(
+                  color: AppColors.accent.withValues(
+                    alpha: 0.16,
+                  ),
+                  blurRadius: 12,
+                  offset: const Offset(0, 5),
+                ),
+              ]
+            : null,
       ),
-
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
           Icon(
             icon,
-            size: 28,
-            color: selected
-                ? Colors.white
-                : const Color(0xff0D1B2A),
+            size: 27,
+            color: foregroundColor,
           ),
-
-          const SizedBox(height: 8),
-
+          const SizedBox(height: AppSpacing.xs),
           Text(
             title,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: selected
-                  ? Colors.white
-                  : const Color(0xff0D1B2A),
+            style: AppTextStyles.bodySmall.copyWith(
+              color: foregroundColor,
+              fontWeight: FontWeight.w700,
             ),
           ),
-
         ],
       ),
     );
