@@ -1,75 +1,92 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+
 class VideoLawyerInfo extends StatelessWidget {
   const VideoLawyerInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+      ),
       child: Row(
         children: [
-          const CircleAvatar(
-            radius: 28,
-            backgroundColor: Colors.white,
-            child: Icon(
-              Icons.person,
-              size: 32,
-              color: Color(0xFF0D1B2A),
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: AppColors.accent.withValues(alpha: 0.8),
+                width: 2,
+              ),
+            ),
+            child: const CircleAvatar(
+              radius: 27,
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.person_rounded,
+                size: 31,
+                color: AppColors.primary,
+              ),
             ),
           ),
-
-          const SizedBox(width: 14),
-
+          const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Row(
                   children: [
-                    Text(
-                      "Adv. Ahmed Khan",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold,
+                    Flexible(
+                      child: Text(
+                        "Adv. Ahmed Khan",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.title.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 6),
-                    Icon(
-                      Icons.verified,
-                      color: Color(0xFFD4AF37),
+                    const SizedBox(width: AppSpacing.xs),
+                    const Icon(
+                      Icons.verified_rounded,
+                      color: AppColors.accent,
                       size: 18,
                     ),
                   ],
                 ),
-
-                SizedBox(height: 5),
-
+                const SizedBox(height: AppSpacing.xs),
                 Text(
                   "Criminal Lawyer",
-                  style: TextStyle(
+                  style: AppTextStyles.bodySmall.copyWith(
                     color: Colors.white70,
-                    fontSize: 14,
                   ),
                 ),
-
-                SizedBox(height: 6),
-
+                const SizedBox(height: AppSpacing.xs),
                 Row(
                   children: [
-                    Icon(
-                      Icons.circle,
-                      color: Colors.green,
-                      size: 10,
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: const BoxDecoration(
+                        color: Colors.green,
+                        shape: BoxShape.circle,
+                      ),
                     ),
-                    SizedBox(width: 6),
-                    Text(
-                      "Connected • HD Video",
-                      style: TextStyle(
-                        color: Colors.greenAccent,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
+                    const SizedBox(width: AppSpacing.xs),
+                    Flexible(
+                      child: Text(
+                        "Connected • HD Video",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.caption.copyWith(
+                          color: Colors.greenAccent,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],

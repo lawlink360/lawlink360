@@ -13,11 +13,9 @@ class VideoConsultationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF0D1B2A),
-
       body: SafeArea(
         child: Column(
           children: const [
-
             VideoAppBar(),
 
             SizedBox(height: 12),

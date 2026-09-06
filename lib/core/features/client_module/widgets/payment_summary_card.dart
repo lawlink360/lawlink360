@@ -1,31 +1,50 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+
 class PaymentSummaryCard extends StatelessWidget {
   const PaymentSummaryCard({super.key});
 
-  Widget _row(String title, String value,
-      {bool isTotal = false, Color? color}) {
+  Widget _row(
+    BuildContext context,
+    String title,
+    String value, {
+    bool isTotal = false,
+    Color? color,
+  }) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
       child: Row(
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: isTotal ? 16 : 14,
-              fontWeight:
-                  isTotal ? FontWeight.bold : FontWeight.w500,
-              color: Colors.grey.shade700,
+          Expanded(
+            child: Text(
+              title,
+              style: (isTotal
+                      ? AppTextStyles.body
+                      : AppTextStyles.bodySmall)
+                  .copyWith(
+                fontWeight:
+                    isTotal ? FontWeight.w700 : FontWeight.w500,
+                color: colorScheme.onSurfaceVariant,
+              ),
             ),
           ),
-          const Spacer(),
+          const SizedBox(width: AppSpacing.md),
           Text(
             value,
-            style: TextStyle(
-              fontSize: isTotal ? 18 : 15,
+            textAlign: TextAlign.end,
+            style: (isTotal
+                    ? AppTextStyles.title
+                    : AppTextStyles.bodySmall)
+                .copyWith(
               fontWeight:
-                  isTotal ? FontWeight.bold : FontWeight.w600,
-              color: color ?? const Color(0xFF0D1B2A),
+                  isTotal ? FontWeight.w700 : FontWeight.w600,
+              color: color ?? colorScheme.onSurface,
             ),
           ),
         ],
@@ -35,68 +54,84 @@ class PaymentSummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
-      padding: const EdgeInsets.all(22),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(22),
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        border: Border.all(
+          color: colorScheme.outline.withValues(alpha: 0.3),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha:.05),
-            blurRadius: 14,
-            offset: const Offset(0, 6),
+            color: Colors.black.withValues(
+              alpha: Theme.of(context).brightness == Brightness.dark
+                  ? 0.16
+                  : 0.06,
+            ),
+            blurRadius: 12,
+            offset: const Offset(0, 5),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          const Text(
+          Text(
             "Appointment Summary",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0D1B2A),
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
+              fontWeight: FontWeight.w700,
             ),
           ),
-
-          const SizedBox(height: 18),
-
-          const ListTile(
+          const SizedBox(height: AppSpacing.md),
+          ListTile(
             contentPadding: EdgeInsets.zero,
             leading: CircleAvatar(
               radius: 26,
-              backgroundColor: Color(0xFFF4F4F4),
+              backgroundColor: colorScheme.surfaceContainerHighest,
               child: Icon(
-                Icons.person,
-                color: Color(0xFF0D1B2A),
+                Icons.person_rounded,
+                color: colorScheme.primary,
               ),
             ),
             title: Text(
               "Adv. Ahmed Khan",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+              style: AppTextStyles.body.copyWith(
+                color: colorScheme.onSurface,
+                fontWeight: FontWeight.w700,
               ),
             ),
-            subtitle: Text("Criminal Lawyer"),
+            subtitle: Text(
+              "Criminal Lawyer",
+              style: AppTextStyles.caption.copyWith(
+                color: colorScheme.onSurfaceVariant,
+              ),
+            ),
           ),
-
-          const Divider(height: 30),
-
-          _row("Consultation", "Video Call"),
-          _row("Date", "20 July 2026"),
-          _row("Time", "11:00 AM"),
-          _row("Consultation Fee", "PKR 2,300"),
-          _row("Service Charges", "PKR 200"),
-
-          const Divider(height: 30),
-
+          const SizedBox(height: AppSpacing.xs),
+          Divider(
+            height: AppSpacing.lg,
+            color: colorScheme.outline.withValues(alpha: 0.35),
+          ),
+          _row(context, "Consultation", "Video Call"),
+          _row(context, "Date", "20 July 2026"),
+          _row(context, "Time", "11:00 AM"),
+          _row(context, "Consultation Fee", "PKR 2,300"),
+          _row(context, "Service Charges", "PKR 200"),
+          const SizedBox(height: AppSpacing.xs),
+          Divider(
+            height: AppSpacing.lg,
+            color: colorScheme.outline.withValues(alpha: 0.35),
+          ),
           _row(
+            context,
             "Total",
             "PKR 2,500",
             isTotal: true,
-            color: const Color(0xFFD4AF37),
+            color: AppColors.accent,
           ),
         ],
       ),
