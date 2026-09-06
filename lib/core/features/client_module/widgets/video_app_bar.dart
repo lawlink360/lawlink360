@@ -1,4 +1,10 @@
+
 import 'package:flutter/material.dart';
+
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class VideoAppBar extends StatelessWidget {
   const VideoAppBar({super.key});
@@ -7,20 +13,19 @@ class VideoAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 18,
-        vertical: 10,
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.sm,
       ),
       child: Row(
         children: [
-
           GestureDetector(
             onTap: () => Navigator.pop(context),
             child: Container(
               width: 42,
               height: 42,
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha:.12),
-                borderRadius: BorderRadius.circular(14),
+                color: AppColors.surface.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(AppRadius.md),
               ),
               child: const Icon(
                 Icons.arrow_back_ios_new,
@@ -29,32 +34,27 @@ class VideoAppBar extends StatelessWidget {
               ),
             ),
           ),
-
           const Spacer(),
-
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 14,
-              vertical: 8,
+              horizontal: AppSpacing.sm,
+              vertical: AppSpacing.xs,
             ),
             decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha:.30),
-              borderRadius: BorderRadius.circular(25),
+              color: Colors.black.withValues(alpha: 0.30),
+              borderRadius: BorderRadius.circular(AppRadius.pill),
             ),
-            child: const Row(
+            child: Row(
               children: [
-
-                Icon(
+                const Icon(
                   Icons.access_time,
                   color: Colors.white,
                   size: 16,
                 ),
-
-                SizedBox(width: 6),
-
+                const SizedBox(width: AppSpacing.xs),
                 Text(
-                  "00:00",
-                  style: TextStyle(
+                  '00:00',
+                  style: AppTextStyles.bodySmall.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
@@ -62,15 +62,13 @@ class VideoAppBar extends StatelessWidget {
               ],
             ),
           ),
-
           const Spacer(),
-
           Container(
             width: 42,
             height: 42,
             decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha:.12),
-              borderRadius: BorderRadius.circular(14),
+              color: AppColors.surface.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(AppRadius.md),
             ),
             child: const Icon(
               Icons.more_vert,
