@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../data/procedure_data.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
+import '../data/procedure_data.dart';
 import '../widgets/guider_header.dart';
 import '../widgets/guider_search_bar.dart';
 import '../widgets/procedure_category_card.dart';
 import 'procedure_category_screen.dart';
-
 
 class GuiderHomeScreen extends StatefulWidget {
   const GuiderHomeScreen({super.key});
@@ -31,53 +33,62 @@ class _GuiderHomeScreenState extends State<GuiderHomeScreen> {
     final categories = ProcedureData.categories;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text("Procedure Guider"),
+        title: Text(
+          'Procedure Guider',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textPrimary,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
+        scrolledUnderElevation: 0,
       ),
-
       body: ListView(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(
+          bottom: AppSpacing.xl,
+        ),
         children: [
           const GuiderHeader(),
-
           GuiderSearchBar(
             controller: _searchController,
             onChanged: _onSearchChanged,
           ),
-
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+            ),
             child: Column(
               children: categories.map((category) {
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 14),
+                  padding: const EdgeInsets.only(
+                    bottom: AppSpacing.sm,
+                  ),
                   child: ProcedureCategoryCard(
                     icon: category.icon,
                     color: category.color,
                     title: category.title,
                     description: category.description,
                     onTap: () {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => ProcedureCategoryScreen(
-        categoryId: category.id,
-        title: category.title,
-      ),
-    ),
-  );
-},
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => ProcedureCategoryScreen(
+                            categoryId: category.id,
+                            title: category.title,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
               }).toList(),
             ),
           ),
-
-          const SizedBox(height: 24),
         ],
       ),
     );

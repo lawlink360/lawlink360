@@ -1,118 +1,134 @@
 import 'package:flutter/material.dart';
 
-import '../models/procedure_model.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
+import '../models/procedure_model.dart';
 import '../widgets/estimated_time_card.dart';
 import '../widgets/legal_notice_card.dart';
 import '../widgets/related_laws_card.dart';
 import '../widgets/required_documents_card.dart';
 import 'procedure_steps_screen.dart';
-import 'package:lawlink360/features/legal_navigator/views/legal_navigator.dart';
+
 import 'package:lawlink360/features/legal_navigator/enums/content_type.dart';
+import 'package:lawlink360/features/legal_navigator/views/legal_navigator.dart';
 
 class ProcedureDetailScreen extends StatelessWidget {
   final ProcedureModel procedure;
 
-  const ProcedureDetailScreen({super.key, required this.procedure});
+  const ProcedureDetailScreen({
+    super.key,
+    required this.procedure,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(procedure.title),
+        title: Text(
+          procedure.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textPrimary,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
+        scrolledUnderElevation: 0,
       ),
-
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(AppSpacing.md),
         children: [
-          /// Overview
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(18),
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+              border: Border.all(
+                color: AppColors.border,
+              ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Overview",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                Text(
+                  'Overview',
+                  style: AppTextStyles.title.copyWith(
+                    color: AppColors.textPrimary,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-
-                const SizedBox(height: 12),
-
+                const SizedBox(height: AppSpacing.sm),
                 Text(
                   procedure.overview,
-                  style: const TextStyle(height: 1.6, color: Colors.black87),
+                  style: AppTextStyles.body.copyWith(
+                    color: AppColors.textSecondary,
+                    height: 1.6,
+                  ),
                 ),
               ],
             ),
           ),
-
-          const SizedBox(height: 18),
-
-          RequiredDocumentsCard(documents: procedure.requiredDocuments),
-
-          const SizedBox(height: 18),
-
+          const SizedBox(height: AppSpacing.lg),
+          RequiredDocumentsCard(
+            documents: procedure.requiredDocuments,
+          ),
+          const SizedBox(height: AppSpacing.lg),
           EstimatedTimeCard(
             fee: procedure.estimatedFee,
             time: procedure.estimatedTime,
           ),
-
-          const SizedBox(height: 18),
-
-          RelatedLawsCard(laws: procedure.applicableLaws),
-
-          const SizedBox(height: 18),
-
+          const SizedBox(height: AppSpacing.lg),
+          RelatedLawsCard(
+            laws: procedure.applicableLaws,
+          ),
+          const SizedBox(height: AppSpacing.lg),
           const LegalNoticeCard(
             notice:
-                "Always verify the latest legal requirements from the relevant authority before submitting documents.",
+                'Always verify the latest legal requirements from the relevant authority before submitting documents.',
           ),
-
-          const SizedBox(height: 24),
-
+          const SizedBox(height: AppSpacing.xl),
           SizedBox(
-            height: 55,
+            height: AppSpacing.buttonHeight,
             child: ElevatedButton.icon(
               icon: const Icon(Icons.play_arrow),
-              label: const Text(
-                "Start Step-by-Step Guide",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              label: Text(
+                'Start Step-by-Step Guide',
+                style: AppTextStyles.button,
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF0F172A),
-                foregroundColor: Colors.white,
+                backgroundColor: AppColors.primary,
+                foregroundColor: AppColors.textLight,
+                elevation: 0,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(AppRadius.md),
                 ),
               ),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => ProcedureStepsScreen(procedure: procedure),
+                    builder: (_) => ProcedureStepsScreen(
+                      procedure: procedure,
+                    ),
                   ),
                 );
               },
             ),
           ),
-
-          const SizedBox(height: 30),
-
+          const SizedBox(height: AppSpacing.xl),
           LegalNavigator(
             contentType: ContentType.procedure,
-            contentId: procedure.title, // Temporary
+            contentId: procedure.title,
           ),
-
-          const SizedBox(height: 30),
+          const SizedBox(height: AppSpacing.xl),
         ],
       ),
     );

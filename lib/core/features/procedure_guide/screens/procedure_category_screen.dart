@@ -1,4 +1,9 @@
+
 import 'package:flutter/material.dart';
+
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 import '../data/procedure_data.dart';
 import '../widgets/procedure_card.dart';
@@ -21,18 +26,26 @@ class ProcedureCategoryScreen extends StatelessWidget {
         .toList();
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(title),
+        title: Text(
+          title,
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textPrimary,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
+        scrolledUnderElevation: 0,
       ),
-
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
+      body: ListView.separated(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(AppSpacing.md),
         itemCount: procedures.length,
+        separatorBuilder: (context, index) =>
+            const SizedBox(height: AppSpacing.sm),
         itemBuilder: (context, index) {
           final procedure = procedures[index];
 
@@ -43,7 +56,9 @@ class ProcedureCategoryScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => ProcedureDetailScreen(procedure: procedure),
+                  builder: (_) => ProcedureDetailScreen(
+                    procedure: procedure,
+                  ),
                 ),
               );
             },
