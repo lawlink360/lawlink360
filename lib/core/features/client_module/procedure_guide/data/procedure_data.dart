@@ -1,6 +1,6 @@
-import 'package:lawlink360/core/features/procedure_guide/models/procedure_model.dart';
+import 'package:lawlink360/core/features/client_module/procedure_guide/models/procedure_model.dart';
 import 'package:flutter/material.dart';
-import 'package:lawlink360/core/features/procedure_guide/models/procedure_category.dart';
+import 'package:lawlink360/core/features/client_module/procedure_guide/models/procedure_category.dart';
 import 'property_procedures.dart';
 import 'family_procedures.dart';
 import 'criminal_procedures.dart';
