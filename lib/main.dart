@@ -3,9 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/theme/app_theme.dart';
-import 'package:lawlink360/core/features/splash/splash_screen.dart';
+import 'package:lawlink360/core/features/client_module/splash/splash_screen.dart';
 import 'package:lawlink360/core/providers/theme_provider.dart';
-import 'package:lawlink360/core/features/scanner/services/camera_service.dart';
+import 'package:lawlink360/core/features/client_module/scanner/services/camera_service.dart';
 import 'package:lawlink360/core/services/notification_service.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_drafting/navigation/drafting_navigation.dart';
 

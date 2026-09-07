@@ -5,8 +5,8 @@ import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
-import '../widgets/scanner_category_header.dart';
-import '../widgets/scanner_feature_card.dart';
+import 'scanner_category_header.dart';
+import 'scanner_feature_card.dart';
 
 class ScannerConverterHomeScreen extends StatelessWidget {
   const ScannerConverterHomeScreen({super.key});

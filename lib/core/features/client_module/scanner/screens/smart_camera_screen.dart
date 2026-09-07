@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-import 'package:lawlink360/core/features/scanner/models/scanner_mode.dart';
+import 'package:lawlink360/core/features/client_module/scanner/models/scanner_mode.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';

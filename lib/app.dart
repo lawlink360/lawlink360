@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
-import 'core/features/splash/splash_screen.dart';
+import 'core/features/client_module/splash/splash_screen.dart';
 import 'core/providers/theme_provider.dart';
 import 'core/features/lawyer_module/lawyer_drafting/navigation/drafting_navigation.dart';
 
