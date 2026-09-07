@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../data/case_data.dart';
 import '../widgets/case_card.dart';
 import '../widgets/case_filter_tabs.dart';
@@ -19,68 +23,76 @@ class _MyCasesScreenState extends State<MyCasesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: AppColors.lightBackground,
       appBar: AppBar(
-        title: const Text("My Cases"),
+        title: Text(
+          'My Cases',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.lightTextPrimary,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.lightSurface,
+        foregroundColor: AppColors.lightTextPrimary,
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
       ),
-
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSpacing.md),
         children: [
-
           const CaseSearchBar(),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.lg),
 
           Row(
             children: const [
-
               CaseStatisticsCards(
-                title: "Active",
-                value: "1",
+                title: 'Active',
+                value: '1',
                 icon: Icons.gavel_outlined,
-                color: Colors.green,
+                color: AppColors.success,
               ),
-
-              SizedBox(width: 10),
-
+              SizedBox(width: AppSpacing.sm),
               CaseStatisticsCards(
-                title: "Pending",
-                value: "1",
-                icon: Icons.schedule,
-                color: Colors.orange,
+                title: 'Pending',
+                value: '1',
+                icon: Icons.schedule_rounded,
+                color: AppColors.warning,
               ),
             ],
           ),
 
-          const SizedBox(height: 10),
+          const SizedBox(height: AppSpacing.sm),
 
           Row(
             children: const [
-
               CaseStatisticsCards(
-                title: "Completed",
-                value: "1",
-                icon: Icons.check_circle_outline,
-                color: Colors.blue,
+                title: 'Completed',
+                value: '1',
+                icon: Icons.check_circle_outline_rounded,
+                color: AppColors.info,
               ),
-
-              SizedBox(width: 10),
-
+              SizedBox(width: AppSpacing.sm),
               CaseStatisticsCards(
-                title: "Archived",
-                value: "1",
+                title: 'Archived',
+                value: '1',
                 icon: Icons.archive_outlined,
-                color: Colors.grey,
+                color: AppColors.lightTextSecondary,
               ),
             ],
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: AppSpacing.lg),
+
+          Text(
+            'Case Status',
+            style: AppTextStyles.title.copyWith(
+              color: AppColors.lightTextPrimary,
+              fontSize: 18,
+            ),
+          ),
+
+          const SizedBox(height: AppSpacing.sm),
 
           CaseFilterTabs(
             selectedIndex: selectedTab,
@@ -91,7 +103,7 @@ class _MyCasesScreenState extends State<MyCasesScreen> {
             },
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.lg),
 
           ...CaseData.cases.map(
             (item) => CaseCard(
@@ -99,7 +111,7 @@ class _MyCasesScreenState extends State<MyCasesScreen> {
             ),
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.md),
         ],
       ),
     );

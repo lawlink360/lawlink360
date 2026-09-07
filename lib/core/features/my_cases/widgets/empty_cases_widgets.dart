@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class EmptyCasesWidget extends StatelessWidget {
   const EmptyCasesWidget({super.key});
 
@@ -7,33 +12,41 @@ class EmptyCasesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.all(AppSpacing.xxl),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.folder_open_outlined,
-              size: 90,
-              color: Colors.grey.shade400,
-            ),
-
-            const SizedBox(height: 20),
-
-            const Text(
-              "No Cases Found",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+            Container(
+              width: 88,
+              height: 88,
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.06),
+                borderRadius: BorderRadius.circular(AppRadius.xl),
+              ),
+              child: const Icon(
+                Icons.folder_open_outlined,
+                size: 42,
+                color: AppColors.primary,
               ),
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: AppSpacing.lg),
 
-            const Text(
-              "Your legal cases will appear here once they are created or assigned to you.",
+            Text(
+              'No Cases Found',
+              style: AppTextStyles.title.copyWith(
+                color: AppColors.lightTextPrimary,
+              ),
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey,
+            ),
+
+            const SizedBox(height: AppSpacing.sm),
+
+            Text(
+              'Your legal cases will appear here once they are created or assigned to you.',
+              textAlign: TextAlign.center,
+              style: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.lightTextSecondary,
                 height: 1.5,
               ),
             ),

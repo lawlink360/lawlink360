@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class CaseStatisticsCards extends StatelessWidget {
   final String title;
   final String value;
@@ -17,49 +22,53 @@ class CaseStatisticsCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Card(
-        elevation: 0,
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.lightSurface,
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          border: Border.all(
+            color: AppColors.lightBorder,
+          ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 18,
-            horizontal: 10,
-          ),
-          child: Column(
-            children: [
-              CircleAvatar(
-                backgroundColor: color.withValues(alpha:.12),
-                child: Icon(
-                  icon,
-                  color: color,
-                ),
+        padding: const EdgeInsets.symmetric(
+          vertical: AppSpacing.md,
+          horizontal: AppSpacing.sm,
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.10),
+                borderRadius: BorderRadius.circular(AppRadius.md),
               ),
-
-              const SizedBox(height: 12),
-
-              Text(
-                value,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
+              child: Icon(
+                icon,
+                color: color,
+                size: 22,
               ),
+            ),
 
-              const SizedBox(height: 4),
+            const SizedBox(height: AppSpacing.sm),
 
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 13,
-                ),
+            Text(
+              value,
+              style: AppTextStyles.headline.copyWith(
+                color: AppColors.lightTextPrimary,
               ),
-            ],
-          ),
+            ),
+
+            const SizedBox(height: AppSpacing.xs),
+
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.caption.copyWith(
+                color: AppColors.lightTextSecondary,
+              ),
+            ),
+          ],
         ),
       ),
     );
