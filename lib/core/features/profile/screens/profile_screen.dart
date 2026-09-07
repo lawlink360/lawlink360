@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../data/profile_menu_data.dart';
 import '../data/profile_stats_data.dart';
-
+import '../data/profile_user_data.dart';
 import '../widgets/logout_button.dart';
 import '../widgets/premium_banner.dart';
 import '../widgets/profile_header_card.dart';
 import '../widgets/profile_menu_tile.dart';
 import '../widgets/profile_stats_card.dart';
-import '../data/profile_user_data.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -16,19 +20,26 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: AppColors.lightBackground,
       appBar: AppBar(
-        title: const Text("My Profile"),
+        title: Text(
+          'My Profile',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.lightTextPrimary,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.lightSurface,
+        foregroundColor: AppColors.lightTextPrimary,
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
       ),
-
       body: ListView(
+        padding: const EdgeInsets.only(
+          top: AppSpacing.md,
+          bottom: AppSpacing.lg,
+        ),
         children: [
-          const SizedBox(height: 16),
-
           ProfileHeaderCard(
             name: ProfileUserData.currentUser.name,
             email: ProfileUserData.currentUser.email,
@@ -37,13 +48,18 @@ class ProfileScreen extends StatelessWidget {
             verified: ProfileUserData.currentUser.verified,
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.lg),
 
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
+            margin: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+            ),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(18),
+              color: AppColors.lightSurface,
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+              border: Border.all(
+                color: AppColors.lightBorder,
+              ),
             ),
             child: Row(
               children: ProfileStatsData.items
@@ -59,17 +75,22 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.lg),
 
-          PremiumBanner(onUpgrade: () {}),
+          const PremiumBanner(),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.lg),
 
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
+            margin: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+            ),
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(18),
+              color: AppColors.lightSurface,
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+              border: Border.all(
+                color: AppColors.lightBorder,
+              ),
             ),
             child: Column(
               children: ProfileMenuData.items
@@ -86,11 +107,11 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.md),
 
-          LogoutButton(onPressed: () {}),
+          const LogoutButton(),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSpacing.md),
         ],
       ),
     );

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class ProfileHeaderCard extends StatelessWidget {
   final String name;
   final String email;
@@ -25,48 +30,57 @@ class ProfileHeaderCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16),
-        padding: const EdgeInsets.all(18),
+        margin: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md,
+        ),
+        padding: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(AppRadius.xl),
           gradient: const LinearGradient(
             colors: [
-              Color(0xFF0F172A),
-              Color(0xFF1E3A8A),
+              AppColors.primary,
+              AppColors.secondary,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.primary.withValues(alpha: 0.12),
+              blurRadius: 18,
+              offset: const Offset(0, 8),
+            ),
+          ],
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
                 CircleAvatar(
                   radius: 42,
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppColors.lightSurface,
                   child: CircleAvatar(
                     radius: 39,
                     backgroundImage: AssetImage(imageUrl),
                   ),
                 ),
-
                 Positioned(
                   right: 0,
                   bottom: 0,
-                  child: InkWell(
-                    onTap: onEditPhoto,
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.white),
-                      ),
-                      child: const Icon(
-                        Icons.camera_alt,
-                        size: 18,
-                        color: Color(0xFF0F172A),
+                  child: Material(
+                    color: AppColors.lightSurface,
+                    shape: const CircleBorder(),
+                    child: InkWell(
+                      onTap: onEditPhoto,
+                      customBorder: const CircleBorder(),
+                      child: const Padding(
+                        padding: EdgeInsets.all(AppSpacing.xs),
+                        child: Icon(
+                          Icons.camera_alt_rounded,
+                          size: 18,
+                          color: AppColors.primary,
+                        ),
                       ),
                     ),
                   ),
@@ -74,86 +88,71 @@ class ProfileHeaderCard extends StatelessWidget {
               ],
             ),
 
-            const SizedBox(width: 18),
+            const SizedBox(width: AppSpacing.md),
 
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: Text(
                           name,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.title.copyWith(
+                            color: AppColors.textLight,
+                            fontSize: 21,
                           ),
                         ),
                       ),
-
-                      if (verified)
+                      if (verified) ...[
+                        const SizedBox(width: AppSpacing.xs),
                         const Icon(
-                          Icons.verified,
-                          color: Colors.lightBlueAccent,
+                          Icons.verified_rounded,
+                          color: AppColors.accent,
                           size: 22,
                         ),
+                      ],
                     ],
                   ),
 
-                  const SizedBox(height: 10),
+                  const SizedBox(height: AppSpacing.sm),
 
                   Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 5,
+                      horizontal: AppSpacing.sm,
+                      vertical: AppSpacing.xs,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFFD54F),
-                      borderRadius: BorderRadius.circular(30),
+                      color: AppColors.accent,
+                      borderRadius: BorderRadius.circular(
+                        AppRadius.pill,
+                      ),
                     ),
-                    child: const Text(
-                      "Verified Client",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
+                    child: Text(
+                      'Verified Client',
+                      style: AppTextStyles.caption.copyWith(
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
 
-                  const SizedBox(height: 14),
+                  const SizedBox(height: AppSpacing.md),
 
-                  Row(
-                    children: [
-                      const Icon(Icons.email,
-                          color: Colors.white70, size: 16),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          email,
-                          style: const TextStyle(
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ),
-                    ],
+                  _ContactRow(
+                    icon: Icons.email_outlined,
+                    value: email,
                   ),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: AppSpacing.xs),
 
-                  Row(
-                    children: [
-                      const Icon(Icons.phone,
-                          color: Colors.white70, size: 16),
-                      const SizedBox(width: 8),
-                      Text(
-                        phone,
-                        style: const TextStyle(
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ],
+                  _ContactRow(
+                    icon: Icons.phone_outlined,
+                    value: phone,
                   ),
                 ],
               ),
@@ -161,6 +160,46 @@ class ProfileHeaderCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ContactRow extends StatelessWidget {
+  final IconData icon;
+  final String value;
+
+  const _ContactRow({
+    required this.icon,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Icon(
+          Icons.circle,
+          size: 4,
+          color: AppColors.overlayLight,
+        ),
+        const SizedBox(width: AppSpacing.xs),
+        Icon(
+          icon,
+          size: 16,
+          color: Colors.white70,
+        ),
+        const SizedBox(width: AppSpacing.xs),
+        Expanded(
+          child: Text(
+            value,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.bodySmall.copyWith(
+              color: Colors.white70,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
