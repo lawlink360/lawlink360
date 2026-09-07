@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class FaqTile extends StatelessWidget {
   final String question;
   final String answer;
@@ -12,31 +17,63 @@ class FaqTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      color: Colors.white,
-      margin: const EdgeInsets.symmetric(vertical: 4),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+    return Container(
+      margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+      decoration: BoxDecoration(
+        color: AppColors.lightSurface,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        border: Border.all(
+          color: AppColors.lightBorder,
+        ),
       ),
       child: ExpansionTile(
-        leading: const Icon(
-          Icons.help_outline,
-          color: Color(0xFF0F172A),
+        tilePadding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.xs,
+        ),
+        childrenPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.md,
+          0,
+          AppSpacing.md,
+          AppSpacing.md,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+        ),
+        collapsedShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+        ),
+        iconColor: AppColors.lightTextSecondary,
+        collapsedIconColor: AppColors.lightTextSecondary,
+        leading: Container(
+          width: 38,
+          height: 38,
+          decoration: BoxDecoration(
+            color: AppColors.accent.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(AppRadius.sm),
+          ),
+          child: const Icon(
+            Icons.help_outline_rounded,
+            color: AppColors.accent,
+            size: 21,
+          ),
         ),
         title: Text(
           question,
-          style: const TextStyle(
+          style: AppTextStyles.body.copyWith(
+            color: AppColors.lightTextPrimary,
             fontWeight: FontWeight.w600,
           ),
         ),
-        childrenPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
         children: [
-          Text(
-            answer,
-            style: const TextStyle(
-              color: Colors.grey,
-              height: 1.5,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              answer,
+              style: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.lightTextSecondary,
+                height: 1.5,
+              ),
             ),
           ),
         ],
