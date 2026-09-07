@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+
 import '../components/empty_widget.dart';
 import '../components/loading_widget.dart';
 import '../components/navigator_card.dart';
@@ -30,79 +34,92 @@ class _LegalNavigatorState extends State<LegalNavigator> {
 
   @override
   Widget build(BuildContext context) {
+    final List<NavigatorItemModel> items = defaultNavigatorItems
+        .where((item) => item.isVisible)
+        .toList();
 
-    List<NavigatorItemModel> items =
-        defaultNavigatorItems.where((e) => e.isVisible).toList();
-
-    // Hide current category
+    // Hide the resource category that represents the current content.
     switch (widget.contentType) {
       case ContentType.law:
-        items.removeWhere((e) =>
-            e.title == 'Relevant Laws');
+        items.removeWhere(
+          (item) => item.title == 'Relevant Laws',
+        );
         break;
 
       case ContentType.judgment:
-        items.removeWhere((e) =>
-            e.title == 'Related Judgments');
+        items.removeWhere(
+          (item) => item.title == 'Related Judgments',
+        );
         break;
 
       case ContentType.procedure:
-        items.removeWhere((e) =>
-            e.title == 'Related Procedures');
+        items.removeWhere(
+          (item) => item.title == 'Related Procedures',
+        );
         break;
 
       case ContentType.application:
-        items.removeWhere((e) =>
-            e.title == 'Related Applications');
+        items.removeWhere(
+          (item) => item.title == 'Related Applications',
+        );
         break;
 
       case ContentType.drafting:
-        items.removeWhere((e) =>
-            e.title == 'Drafting');
+        items.removeWhere(
+          (item) => item.title == 'Drafting',
+        );
         break;
 
       default:
         break;
     }
 
-    final visibleItems =
-        expanded ? items : items.take(5).toList();
+    final visibleItems = expanded
+        ? items
+        : items.take(5).toList();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-
-        const NavigatorHeader(),
-
-        if (widget.isLoading)
-
-          const LoadingWidget()
-
-        else if (items.isEmpty)
-
-          const EmptyWidget()
-
-        else ...[
-
-          NavigatorCard(
-            items: visibleItems,
-            onItemTap: (item) {
-              debugPrint(item.title);
-            },
-          ),
-
-          if (items.length > 5)
-
-            ShowMoreButton(
-              expanded: expanded,
-              onPressed: () {
-                setState(() {
-                  expanded = !expanded;
-                });
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: AppColors.lightBackground,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        border: Border.all(
+          color: AppColors.lightBorder,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const NavigatorHeader(),
+          if (widget.isLoading)
+            const LoadingWidget()
+          else if (items.isEmpty)
+            const EmptyWidget()
+          else ...[
+            NavigatorCard(
+              items: visibleItems,
+              onItemTap: (item) {
+                debugPrint(item.title);
               },
             ),
+            if (items.length > 5) ...[
+              const SizedBox(height: AppSpacing.xs),
+              Align(
+                alignment: Alignment.center,
+                child: ShowMoreButton(
+                  expanded: expanded,
+                  onPressed: () {
+                    setState(() {
+                      expanded = !expanded;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ],
         ],
-      ],
+      ),
     );
   }
 }

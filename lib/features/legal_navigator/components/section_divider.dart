@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+
 class SectionDivider extends StatelessWidget {
   const SectionDivider({super.key});
 
@@ -8,6 +10,7 @@ class SectionDivider extends StatelessWidget {
     return const Divider(
       height: 1,
       thickness: 0.5,
+      color: AppColors.divider,
     );
   }
 }
