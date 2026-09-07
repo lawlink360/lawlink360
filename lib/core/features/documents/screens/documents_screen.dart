@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../data/document_data.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
+import '../data/document_data.dart';
 import '../widgets/document_card.dart';
 import '../widgets/documents_filter_tabs.dart';
 import '../widgets/document_search_bar.dart';
@@ -22,56 +25,60 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
   @override
   Widget build(BuildContext context) {
     final documents = DocumentData.documents;
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("My Documents"),
+        title: Text(
+          'My Documents',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textPrimary,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.surface,
+        foregroundColor: AppColors.textPrimary,
         elevation: 0,
+        scrolledUnderElevation: 0,
       ),
-
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSpacing.md),
         child: Column(
           children: [
             const DocumentSearchBar(),
-
-            const SizedBox(height: 18),
-
+            const SizedBox(height: AppSpacing.lg),
             Row(
               children: const [
-                DocumentStatisticsCards(
-                  title: "Documents",
-                  value: "3",
-                  icon: Icons.folder,
-                  color: Colors.indigo,
+                Expanded(
+                  child: DocumentStatisticsCards(
+                    title: 'Documents',
+                    value: '3',
+                    icon: Icons.folder,
+                    color: AppColors.info,
+                  ),
                 ),
-
-                SizedBox(width: 12),
-
-                DocumentStatisticsCards(
-                  title: "Favorites",
-                  value: "2",
-                  icon: Icons.star,
-                  color: Colors.amber,
+                SizedBox(width: AppSpacing.sm),
+                Expanded(
+                  child: DocumentStatisticsCards(
+                    title: 'Favorites',
+                    value: '2',
+                    icon: Icons.star,
+                    color: AppColors.warning,
+                  ),
                 ),
-
-                SizedBox(width: 12),
-
-                DocumentStatisticsCards(
-                  title: "Verified",
-                  value: "1",
-                  icon: Icons.verified,
-                  color: Colors.green,
+                SizedBox(width: AppSpacing.sm),
+                Expanded(
+                  child: DocumentStatisticsCards(
+                    title: 'Verified',
+                    value: '1',
+                    icon: Icons.verified,
+                    color: AppColors.success,
+                  ),
                 ),
               ],
             ),
-
-            const SizedBox(height: 18),
-
+            const SizedBox(height: AppSpacing.lg),
             DocumentFilterTabs(
               selectedIndex: selectedTab,
               onChanged: (index) {
@@ -80,18 +87,17 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                 });
               },
             ),
-
-            const SizedBox(height: 18),
-
+            const SizedBox(height: AppSpacing.lg),
             const RecentDocumentsCard(),
-
-            const SizedBox(height: 18),
-
+            const SizedBox(height: AppSpacing.lg),
             Expanded(
               child: documents.isEmpty
                   ? const EmptyDocumentsWidget()
-                  : ListView.builder(
+                  : ListView.separated(
+                      physics: const BouncingScrollPhysics(),
                       itemCount: documents.length,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: AppSpacing.sm),
                       itemBuilder: (context, index) {
                         return DocumentCard(
                           document: documents[index],

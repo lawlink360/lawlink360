@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../models/document_type.dart';
 
 class DocumentTypeBadge extends StatelessWidget {
@@ -12,51 +17,43 @@ class DocumentTypeBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color;
-    String label;
-
-    switch (type) {
-      case DocumentType.legal:
-        color = Colors.indigo;
-        label = "Legal";
-        break;
-
-      case DocumentType.application:
-        color = Colors.orange;
-        label = "Application";
-        break;
-
-      case DocumentType.scanned:
-        color = Colors.teal;
-        label = "Scanned";
-        break;
-
-      case DocumentType.translated:
-        color = Colors.purple;
-        label = "Translated";
-        break;
-
-      case DocumentType.verification:
-        color = Colors.green;
-        label = "Verified";
-        break;
-    }
+    final (Color color, String label) = switch (type) {
+      DocumentType.legal => (
+          AppColors.info,
+          'Legal',
+        ),
+      DocumentType.application => (
+          AppColors.warning,
+          'Application',
+        ),
+      DocumentType.scanned => (
+          AppColors.secondary,
+          'Scanned',
+        ),
+      DocumentType.translated => (
+          AppColors.accent,
+          'Translated',
+        ),
+      DocumentType.verification => (
+          AppColors.success,
+          'Verified',
+        ),
+    };
 
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 4,
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(
-        color: color.withValues(alpha:.12),
-        borderRadius: BorderRadius.circular(20),
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(AppRadius.pill),
       ),
       child: Text(
         label,
-        style: TextStyle(
+        style: AppTextStyles.caption.copyWith(
           color: color,
           fontWeight: FontWeight.w600,
-          fontSize: 12,
         ),
       ),
     );

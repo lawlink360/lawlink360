@@ -1,37 +1,50 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class EmptyDocumentsWidget extends StatelessWidget {
   const EmptyDocumentsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Padding(
-        padding: EdgeInsets.all(32),
+        padding: const EdgeInsets.all(AppSpacing.xxl),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.folder_open,
-              size: 90,
-              color: Colors.grey,
+            Container(
+              width: 96,
+              height: 96,
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.06),
+                borderRadius: BorderRadius.circular(AppRadius.xl),
+              ),
+              child: const Icon(
+                Icons.folder_open,
+                size: 52,
+                color: AppColors.textSecondary,
+              ),
             ),
-
-            SizedBox(height: 20),
-
+            const SizedBox(height: AppSpacing.lg),
             Text(
-              "No Documents Found",
-              style: TextStyle(
-                fontSize: 22,
+              'No Documents Found',
+              textAlign: TextAlign.center,
+              style: AppTextStyles.title.copyWith(
+                color: AppColors.textPrimary,
                 fontWeight: FontWeight.bold,
               ),
             ),
-
-            SizedBox(height: 10),
-
+            const SizedBox(height: AppSpacing.sm),
             Text(
-              "Scanned, translated and generated documents will appear here.",
+              'Scanned, translated and generated documents will appear here.',
               textAlign: TextAlign.center,
+              style: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.textSecondary,
+              ),
             ),
           ],
         ),
