@@ -10,7 +10,7 @@ import 'package:lawlink360/core/features/client_module/verification/screens/veri
 import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/profile/screens/profile_screen.dart';
 import 'package:lawlink360/core/features/client_module/client_settings/screens/settings_screen.dart';
-import 'package:lawlink360/core/features/help_support/screens/help_support_screen.dart';
+import 'package:lawlink360/core/features/client_module/help_support/screens/help_support_screen.dart';
 import 'package:lawlink360/core/features/my_cases/screens/my_cases_screen.dart';
 import 'package:lawlink360/core/features/client_module/appointments/screens/appointments_screen.dart';
 import 'package:lawlink360/core/features/client_module/client_messages/screens/messages_screen.dart';

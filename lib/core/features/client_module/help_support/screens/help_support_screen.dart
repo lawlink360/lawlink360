@@ -5,13 +5,13 @@ import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
-import 'package:lawlink360/core/features/client_module/help_support/data/faq_data.dart';
-import 'package:lawlink360/core/features/client_module/help_support/data/help_data.dart';
-import 'package:lawlink360/core/features/client_module/help_support/widgets/contact_card.dart';
-import 'package:lawlink360/core/features/client_module/help_support/widgets/emergency_support_banner.dart';
-import 'package:lawlink360/core/features/client_module/help_support/widgets/faq_tile.dart';
-import 'package:lawlink360/core/features/client_module/help_support/widgets/help_category_card.dart';
-import 'package:lawlink360/core/features/client_module/help_support/widgets/social_links_card.dart';
+import '../data/faq_data.dart';
+import '../data/help_data.dart';
+import '../widgets/contact_card.dart';
+import '../widgets/emergency_support_banner.dart';
+import '../widgets/faq_tile.dart';
+import '../widgets/help_category_card.dart';
+import '../widgets/social_links_card.dart';
 
 class HelpSupportScreen extends StatelessWidget {
   const HelpSupportScreen({super.key});
