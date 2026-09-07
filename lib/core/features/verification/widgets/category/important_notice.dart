@@ -1,59 +1,67 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class ImportantNotice extends StatelessWidget {
   const ImportantNotice({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 30),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.xl,
+      ),
       child: Container(
-        padding: const EdgeInsets.all(18),
+        width: double.infinity,
+        padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           color: const Color(0xFFFFFBEB),
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(AppRadius.lg),
           border: Border.all(
-            color: const Color(0xFFFBBF24),
-            width: 1,
+            color: AppColors.warning.withValues(alpha: 0.55),
           ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CircleAvatar(
-              radius: 22,
-              backgroundColor: Color(0xFFF59E0B),
-              child: Icon(
+            Container(
+              width: 44,
+              height: 44,
+              decoration: const BoxDecoration(
+                color: AppColors.warning,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
                 Icons.info_outline_rounded,
                 color: Colors.white,
-                size: 24,
+                size: 23,
               ),
             ),
-
-            const SizedBox(width: 16),
-
+            const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Important Notice',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF92400E),
+                    style: AppTextStyles.body.copyWith(
+                      color: const Color(0xFF92400E),
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-
-                  const SizedBox(height: 10),
-
+                  const SizedBox(height: AppSpacing.sm),
                   Text(
                     'LawLink360 is an independent legal technology platform that provides convenient access to official government and judicial verification services.\n\n'
                     'Information displayed through linked portals is provided and maintained by the respective departments. LawLink360 does not modify, verify, or store official government records unless explicitly stated.',
-                    style: TextStyle(
-                      fontSize: 14,
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: AppColors.textPrimary,
                       height: 1.6,
-                      color: Colors.grey.shade800,
                     ),
                   ),
                 ],

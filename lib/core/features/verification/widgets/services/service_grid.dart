@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../../models/verification_service.dart';
 import '../../services/verification_data_service.dart';
 import '../../screens/verification_webview_screen.dart';
@@ -19,47 +23,77 @@ class ServiceGrid extends StatelessWidget {
         VerificationDataService.getServices(institutionId);
 
     if (services.isEmpty) {
-      return const Center(
-        child: Text(
-          'No services available',
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey,
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.xl),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 72,
+                height: 72,
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withValues(alpha: 0.06),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.inventory_2_outlined,
+                  size: 34,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              Text(
+                'No Services Available',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.xs),
+              Text(
+                'There are currently no verification services for this institution.',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: AppColors.textSecondary,
+                  height: 1.5,
+                ),
+              ),
+            ],
           ),
         ),
       );
     }
 
-    return ListView.builder(
+    return ListView.separated(
       padding: const EdgeInsets.only(
-        left: 16,
-        right: 16,
-        top: 12,
-        bottom: 30,
+        top: AppSpacing.xs,
+        bottom: AppSpacing.xl,
       ),
+      physics: const BouncingScrollPhysics(),
       itemCount: services.length,
+      separatorBuilder: (_, _) =>
+          const SizedBox(height: AppSpacing.xs),
       itemBuilder: (context, index) {
         final service = services[index];
 
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 12),
-          child: ServiceCard(
-            icon: service.icon,
-            color: service.color,
-            title: service.title,
-            description: service.description,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => VerificationWebViewScreen(
-                    title: service.title,
-                    url: service.websiteUrl,
-                  ),
+        return ServiceCard(
+          icon: service.icon,
+          color: service.color,
+          title: service.title,
+          description: service.description,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => VerificationWebViewScreen(
+                  title: service.title,
+                  url: service.websiteUrl,
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         );
       },
     );

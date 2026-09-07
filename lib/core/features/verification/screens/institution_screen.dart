@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+
 import '../models/verification_institution.dart';
 
 import '../widgets/institution/institution_header.dart';
@@ -16,23 +18,18 @@ class InstitutionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-      body: SafeArea(
-        child: Column(
-          children: [
-            /// Institution Header
-            InstitutionHeader(
-              institution: institution,
+      backgroundColor: AppColors.lightBackground,
+      body: Column(
+        children: [
+          InstitutionHeader(
+            institution: institution,
+          ),
+          Expanded(
+            child: ServiceGrid(
+              institutionId: institution.id,
             ),
-
-            /// Services
-            Expanded(
-              child: ServiceGrid(
-                institutionId: institution.id,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

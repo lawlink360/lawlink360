@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class RecentServices extends StatelessWidget {
   const RecentServices({super.key});
 
@@ -10,57 +15,62 @@ class RecentServices extends StatelessWidget {
         'title': 'High Court Tracking',
         'subtitle': 'Lahore High Court',
         'icon': Icons.account_balance_rounded,
-        'color': Colors.indigo,
+        'color': AppColors.info,
       },
       {
         'title': 'Lawyer Verification',
         'subtitle': 'Punjab Bar Council',
         'icon': Icons.gavel_rounded,
-        'color': Colors.blue,
+        'color': AppColors.secondary,
       },
       {
         'title': 'Land Record',
         'subtitle': 'Punjab Land Records',
         'icon': Icons.home_work_rounded,
-        'color': Colors.green,
+        'color': AppColors.success,
       },
     ];
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.sm,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Recently Used',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0F172A),
+            style: AppTextStyles.title.copyWith(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.w600,
             ),
           ),
-
-          const SizedBox(height: 16),
-
+          const SizedBox(height: AppSpacing.md),
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: recentServices.length,
-            separatorBuilder: (_, _) => const SizedBox(height: 12),
+            separatorBuilder: (_, _) =>
+                const SizedBox(height: AppSpacing.sm),
             itemBuilder: (context, index) {
               final service = recentServices[index];
+              final color = service['color'] as Color;
 
               return Container(
-                padding: const EdgeInsets.all(14),
+                width: double.infinity,
+                padding: const EdgeInsets.all(AppSpacing.md),
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
+                  color: AppColors.surface,
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                   border: Border.all(
-                    color: Colors.grey.shade200,
+                    color: AppColors.border,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha:0.05),
+                      color: Colors.black.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -68,46 +78,50 @@ class RecentServices extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor:
-                          (service['color'] as Color).withValues(alpha:0.12),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: color.withValues(alpha: 0.10),
+                        shape: BoxShape.circle,
+                      ),
                       child: Icon(
                         service['icon'] as IconData,
-                        color: service['color'] as Color,
+                        color: color,
+                        size: 23,
                       ),
                     ),
-
-                    const SizedBox(width: 16),
-
+                    const SizedBox(width: AppSpacing.md),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             service['title'] as String,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Color(0xFF0F172A),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: AppColors.textPrimary,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const SizedBox(height: 4),
+                          const SizedBox(height: AppSpacing.xs),
                           Text(
                             service['subtitle'] as String,
-                            style: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontSize: 13,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.caption.copyWith(
+                              color: AppColors.textSecondary,
                             ),
                           ),
                         ],
                       ),
                     ),
-
-                    Icon(
+                    const SizedBox(width: AppSpacing.sm),
+                    const Icon(
                       Icons.arrow_forward_ios_rounded,
-                      size: 16,
-                      color: Colors.grey.shade500,
+                      size: 15,
+                      color: AppColors.textSecondary,
                     ),
                   ],
                 ),

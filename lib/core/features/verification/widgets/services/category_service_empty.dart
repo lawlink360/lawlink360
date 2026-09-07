@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class CategoryServiceEmpty extends StatelessWidget {
   const CategoryServiceEmpty({super.key});
 
@@ -7,57 +12,63 @@ class CategoryServiceEmpty extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: const EdgeInsets.all(AppSpacing.xl),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.search_off_rounded,
-              size: 80,
-              color: Colors.grey.shade400,
-            ),
-
-            const SizedBox(height: 20),
-
-            const Text(
-              "No Services Found",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF0F172A),
+            Container(
+              width: 88,
+              height: 88,
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.06),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.search_off_rounded,
+                size: 48,
+                color: AppColors.textSecondary.withValues(alpha: 0.65),
               ),
             ),
-
-            const SizedBox(height: 10),
-
+            const SizedBox(height: AppSpacing.lg),
             Text(
-              "There are currently no verification services available in this category.",
+              'No Services Found',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey.shade600,
-                fontSize: 15,
+              style: AppTextStyles.title.copyWith(
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              'There are currently no verification services available in this category.',
+              textAlign: TextAlign.center,
+              style: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.textSecondary,
                 height: 1.5,
               ),
             ),
-
-            const SizedBox(height: 30),
-
+            const SizedBox(height: AppSpacing.lg),
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: const Icon(Icons.arrow_back_rounded),
-              label: const Text("Go Back"),
+              icon: const Icon(
+                Icons.arrow_back_rounded,
+                size: 18,
+              ),
+              label: const Text('Go Back'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1E3A8A),
+                backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
+                elevation: 0,
+                minimumSize: const Size(0, AppSpacing.buttonHeight),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 14,
+                  horizontal: AppSpacing.lg,
                 ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(AppRadius.sm),
                 ),
+                textStyle: AppTextStyles.button,
               ),
             ),
           ],

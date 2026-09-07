@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import '../../models/verification_category.dart';
 
 class CategoryServiceHeader extends StatelessWidget {
@@ -15,19 +21,24 @@ class CategoryServiceHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 30),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.xl,
+      ),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xFF0F172A),
+            AppColors.primary,
             Color(0xFF1E3A8A),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+          bottomLeft: Radius.circular(AppRadius.xl),
+          bottomRight: Radius.circular(AppRadius.xl),
         ),
       ),
       child: SafeArea(
@@ -35,119 +46,132 @@ class CategoryServiceHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Top Row
             Row(
               children: [
-                InkWell(
-                  onTap: () => Navigator.pop(context),
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha:0.12),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: Colors.white,
-                      size: 18,
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () => Navigator.pop(context),
+                    borderRadius: BorderRadius.circular(AppRadius.sm),
+                    child: Ink(
+                      padding: const EdgeInsets.all(AppSpacing.sm),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(AppRadius.sm),
+                        border: Border.all(
+                          color: Colors.white.withValues(alpha: 0.08),
+                        ),
+                      ),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        color: Colors.white,
+                        size: 18,
+                      ),
                     ),
                   ),
                 ),
-
                 const Spacer(),
-
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha:0.12),
+                    color: Colors.white.withValues(alpha: 0.12),
                     shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.08),
+                    ),
                   ),
                   child: IconButton(
                     onPressed: () {},
+                    tooltip: 'Notifications',
                     icon: const Icon(
                       Icons.notifications_none_rounded,
                       color: Colors.white,
+                      size: 21,
                     ),
                   ),
                 ),
-
-                const SizedBox(width: 10),
-
+                const SizedBox(width: AppSpacing.sm),
                 const CircleAvatar(
                   radius: 20,
                   backgroundColor: Colors.white,
                   child: Icon(
                     Icons.person,
                     color: Color(0xFF1E3A8A),
+                    size: 21,
                   ),
                 ),
               ],
             ),
-
-            const SizedBox(height: 28),
-
-            CircleAvatar(
-              radius: 28,
-              backgroundColor: Colors.white.withValues(alpha:0.15),
+            const SizedBox(height: AppSpacing.xl),
+            Container(
+              width: 58,
+              height: 58,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.12),
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: AppColors.accent.withValues(alpha: 0.40),
+                ),
+              ),
               child: Icon(
                 category.icon,
-                color: const Color(0xFFD4AF37),
+                color: AppColors.accent,
                 size: 30,
               ),
             ),
-
-            const SizedBox(height: 18),
-
+            const SizedBox(height: AppSpacing.md),
             Text(
               category.title,
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.headline.copyWith(
                 color: Colors.white,
               ),
             ),
-
-            const SizedBox(height: 6),
-
+            const SizedBox(height: AppSpacing.xs),
             Text(
               category.description,
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 15,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.bodySmall.copyWith(
+                color: Colors.white.withValues(alpha: 0.78),
+                height: 1.45,
               ),
             ),
-
-            const SizedBox(height: 22),
-
+            const SizedBox(height: AppSpacing.lg),
             Container(
+              width: double.infinity,
               padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 12,
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.sm,
               ),
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha:0.10),
-                borderRadius: BorderRadius.circular(16),
+                color: Colors.white.withValues(alpha: 0.10),
+                borderRadius: BorderRadius.circular(AppRadius.md),
                 border: Border.all(
-                  color: const Color(0xFFD4AF37),
+                  color: AppColors.accent.withValues(alpha: 0.85),
                 ),
               ),
               child: Row(
                 children: [
                   const CircleAvatar(
-                    radius: 12,
-                    backgroundColor: Colors.green,
+                    radius: 13,
+                    backgroundColor: AppColors.success,
                     child: Icon(
-                      Icons.verified,
+                      Icons.verified_rounded,
                       color: Colors.white,
                       size: 16,
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  Text(
-                    "$totalServices Official Services",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  const SizedBox(width: AppSpacing.sm),
+                  Expanded(
+                    child: Text(
+                      '$totalServices Official Services',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.bodySmall.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+
 import '../models/verification_category.dart';
 import '../models/verification_subcategory.dart';
 import '../services/verification_data_service.dart';
@@ -21,22 +23,19 @@ class CategoryServicesScreen extends StatelessWidget {
         VerificationDataService.getSubCategories(category.id);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-      body: SafeArea(
-        child: Column(
-          children: [
-            CategoryServiceHeader(
-              category: category,
-              totalServices: subCategories.length,
+      backgroundColor: AppColors.lightBackground,
+      body: Column(
+        children: [
+          CategoryServiceHeader(
+            category: category,
+            totalServices: subCategories.length,
+          ),
+          Expanded(
+            child: SubCategoryGrid(
+              subCategories: subCategories,
             ),
-
-            Expanded(
-              child: SubCategoryGrid(
-                subCategories: subCategories,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

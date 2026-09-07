@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+
 import '../widgets/category/header_section.dart';
 import '../widgets/category/search_bar_widget.dart';
 import '../widgets/category/statistics_cards.dart';
@@ -23,34 +26,28 @@ class _VerificationScreenState extends State<VerificationScreen> {
     super.dispose();
   }
 
-  void _onSearchChanged(String value) {
-  }
+  void _onSearchChanged(String value) {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: AppColors.lightBackground,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const PremiumHeader(),
-
               SearchBarWidget(
                 controller: _searchController,
                 onChanged: _onSearchChanged,
               ),
-
               const StatisticsCards(),
-
               const CategoryGrid(),
-
               const RecentServices(),
-
               const ImportantNotice(),
-
-              const SizedBox(height: 20),
+              const SizedBox(height: AppSpacing.md),
             ],
           ),
         ),

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class CategoryServiceBadge extends StatelessWidget {
   final bool isOfficial;
   final bool isPopular;
@@ -13,65 +18,68 @@ class CategoryServiceBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 8,
-      runSpacing: 6,
+      spacing: AppSpacing.sm,
+      runSpacing: AppSpacing.xs,
       children: [
         if (isOfficial)
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 5,
+              horizontal: AppSpacing.sm,
+              vertical: AppSpacing.xs,
             ),
             decoration: BoxDecoration(
-              color: Colors.green.shade100,
-              borderRadius: BorderRadius.circular(20),
+              color: AppColors.success.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(AppRadius.pill),
+              border: Border.all(
+                color: AppColors.success.withValues(alpha: 0.20),
+              ),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
+                const Icon(
                   Icons.verified_rounded,
-                  color: Colors.green,
+                  color: AppColors.success,
                   size: 14,
                 ),
-                SizedBox(width: 4),
+                const SizedBox(width: AppSpacing.xs),
                 Text(
-                  "Official",
-                  style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
+                  'Official',
+                  style: AppTextStyles.caption.copyWith(
+                    color: AppColors.success,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
             ),
           ),
-
         if (isPopular)
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 5,
+              horizontal: AppSpacing.sm,
+              vertical: AppSpacing.xs,
             ),
             decoration: BoxDecoration(
-              color: Colors.orange.shade100,
-              borderRadius: BorderRadius.circular(20),
+              color: AppColors.warning.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(AppRadius.pill),
+              border: Border.all(
+                color: AppColors.warning.withValues(alpha: 0.20),
+              ),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
+                const Icon(
                   Icons.local_fire_department_rounded,
-                  color: Colors.orange,
+                  color: AppColors.warning,
                   size: 14,
                 ),
-                SizedBox(width: 4),
+                const SizedBox(width: AppSpacing.xs),
                 Text(
-                  "Popular",
-                  style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
+                  'Popular',
+                  style: AppTextStyles.caption.copyWith(
+                    color: AppColors.warning,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],

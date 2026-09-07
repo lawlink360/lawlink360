@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class PremiumHeader extends StatelessWidget {
   const PremiumHeader({super.key});
 
@@ -7,63 +12,63 @@ class PremiumHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 35),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.md,
+        AppSpacing.xl,
+      ),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
           colors: [
-            Color(0xFF0F172A),
+            AppColors.primary,
             Color(0xFF1E3A8A),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(35),
-          bottomRight: Radius.circular(35),
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(AppRadius.xl),
+          bottomRight: Radius.circular(AppRadius.xl),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black26,
+            color: Colors.black.withValues(alpha: 0.14),
             blurRadius: 12,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),
-
       child: SafeArea(
         bottom: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            /// TOP BAR
             Row(
               children: [
-
-                /// LAWLINK360 LOGO
                 Image.asset(
                   'assets/logos/lawlink360_transparent_logo.png',
                   height: 42,
                 ),
-
                 const Spacer(),
-
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha:0.12),
+                    color: Colors.white.withValues(alpha: 0.12),
                     shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.08),
+                    ),
                   ),
                   child: IconButton(
                     onPressed: () {},
+                    tooltip: 'Notifications',
                     icon: const Icon(
                       Icons.notifications_none_rounded,
                       color: Colors.white,
                     ),
                   ),
                 ),
-
-                const SizedBox(width: 10),
-
+                const SizedBox(width: AppSpacing.sm),
                 const CircleAvatar(
                   radius: 22,
                   backgroundColor: Colors.white,
@@ -74,95 +79,87 @@ class PremiumHeader extends StatelessWidget {
                 ),
               ],
             ),
-
-            const SizedBox(height: 28),
-
-            /// TITLE
+            const SizedBox(height: AppSpacing.xl),
             Row(
-              children: const [
-
-                Icon(
-                  Icons.verified_user_rounded,
-                  color: Color(0xFFD4AF37),
-                  size: 34,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.10),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: AppColors.accent.withValues(alpha: 0.35),
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.verified_user_rounded,
+                    color: AppColors.accent,
+                    size: 28,
+                  ),
                 ),
-
-                SizedBox(width: 12),
-
+                const SizedBox(width: AppSpacing.sm),
                 Expanded(
                   child: Text(
-                    "Verification Hub",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
+                    'Verification Hub',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.headline.copyWith(
                       color: Colors.white,
                     ),
                   ),
                 ),
               ],
             ),
-
-            const SizedBox(height: 10),
-
-            const Text(
-              "One Gateway, Multiple Verified Services",
-              style: TextStyle(
-                color: Colors.white70,
-                fontSize: 15,
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              'One Gateway, Multiple Verified Services',
+              style: AppTextStyles.bodySmall.copyWith(
+                color: Colors.white.withValues(alpha: 0.78),
                 height: 1.5,
               ),
             ),
-
-            const SizedBox(height: 22),
-
-            /// TRUST BADGE
+            const SizedBox(height: AppSpacing.lg),
             Container(
-              padding: const EdgeInsets.all(14),
+              width: double.infinity,
+              padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha:0.10),
-                borderRadius: BorderRadius.circular(18),
+                color: Colors.white.withValues(alpha: 0.10),
+                borderRadius: BorderRadius.circular(AppRadius.lg),
                 border: Border.all(
-                  color: const Color(0xFFD4AF37),
-                  width: 1.2,
+                  color: AppColors.accent.withValues(alpha: 0.85),
+                  width: 1.1,
                 ),
               ),
-
               child: Row(
                 children: [
-
                   const CircleAvatar(
-                    radius: 14,
-                    backgroundColor: Colors.green,
+                    radius: 15,
+                    backgroundColor: AppColors.success,
                     child: Icon(
-                      Icons.verified,
+                      Icons.verified_rounded,
                       color: Colors.white,
                       size: 18,
                     ),
                   ),
-
-                  const SizedBox(width: 12),
-
+                  const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-
+                      children: [
                         Text(
-                          "Trusted Official Gateway",
-                          style: TextStyle(
+                          'Trusted Official Gateway',
+                          style: AppTextStyles.bodySmall.copyWith(
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-
-                        SizedBox(height: 3),
-
+                        const SizedBox(height: AppSpacing.xs),
                         Text(
-                          "Government & Judicial Services",
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 13,
+                          'Government & Judicial Services',
+                          style: AppTextStyles.caption.copyWith(
+                            color: Colors.white.withValues(alpha: 0.72),
                           ),
                         ),
                       ],
@@ -171,8 +168,7 @@ class PremiumHeader extends StatelessWidget {
                 ],
               ),
             ),
-
-            const SizedBox(height: 24),
+            const SizedBox(height: AppSpacing.md),
           ],
         ),
       ),

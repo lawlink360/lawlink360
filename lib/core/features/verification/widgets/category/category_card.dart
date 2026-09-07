@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class CategoryCard extends StatelessWidget {
   final String title;
   final String description;
@@ -21,65 +26,58 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent,
+      color: AppColors.surface,
+      borderRadius: BorderRadius.circular(AppRadius.lg),
       child: InkWell(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         onTap: onTap,
         child: Ink(
-          padding: const EdgeInsets.all(16),
+          width: double.infinity,
+          padding: const EdgeInsets.all(AppSpacing.md),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(18),
+            color: AppColors.surface,
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             border: Border.all(
-              color: Colors.grey.shade200,
+              color: AppColors.border,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha:0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                radius: 24,
-                backgroundColor: color.withValues(alpha:0.12),
+              Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.10),
+                  shape: BoxShape.circle,
+                ),
                 child: Icon(
                   icon,
                   color: color,
-                  size: 26,
+                  size: 25,
                 ),
               ),
-
-              const SizedBox(height: 16),
-
+              const SizedBox(height: AppSpacing.md),
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF0F172A),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-
-              const SizedBox(height: 6),
-
+              const SizedBox(height: AppSpacing.xs),
               Text(
                 description,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.grey.shade600,
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: AppColors.textSecondary,
                   height: 1.4,
                 ),
               ),
-
               const Spacer(),
-
               Row(
                 children: [
                   Icon(
@@ -87,20 +85,23 @@ class CategoryCard extends StatelessWidget {
                     size: 18,
                     color: color,
                   ),
-                  const SizedBox(width: 6),
-                  Text(
-                    '$serviceCount Services',
-                    style: TextStyle(
-                      color: color,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 13,
+                  const SizedBox(width: AppSpacing.xs),
+                  Expanded(
+                    child: Text(
+                      '$serviceCount Services',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.caption.copyWith(
+                        color: color,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  const Spacer(),
-                  Icon(
+                  const SizedBox(width: AppSpacing.sm),
+                  const Icon(
                     Icons.arrow_forward_ios_rounded,
-                    size: 16,
-                    color: Colors.grey.shade500,
+                    size: 15,
+                    color: AppColors.textSecondary,
                   ),
                 ],
               ),
