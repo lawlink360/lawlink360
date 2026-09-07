@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:lawlink360/core/theme/app_spacing.dart';
 
-import 'package:lawlink360/core/features/verification/models/verification_subcategory.dart';
-import 'package:lawlink360/core/features/verification/services/verification_data_service.dart';
-import 'package:lawlink360/core/features/verification/screens/institution_screen.dart';
-import 'package:lawlink360/core/features/verification/widgets/institution/institution_card.dart';
+import 'package:lawlink360/core/features/client_module/verification/models/verification_subcategory.dart';
+import 'package:lawlink360/core/features/client_module/verification/services/verification_data_service.dart';
+import 'package:lawlink360/core/features/client_module/verification/screens/institution_screen.dart';
+import 'package:lawlink360/core/features/client_module/verification/widgets/institution/institution_card.dart';
 
 class InstitutionGrid extends StatelessWidget {
   final VerificationSubCategory subCategory;

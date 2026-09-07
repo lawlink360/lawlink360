@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:lawlink360/core/features/lawyer_module/home/screens/lawyer_home_screen.dart';
-import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 
 class LawyerNavigationController extends StatefulWidget {
   const LawyerNavigationController({super.key});

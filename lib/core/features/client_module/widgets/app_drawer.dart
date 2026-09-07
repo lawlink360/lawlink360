@@ -6,7 +6,7 @@ import 'package:lawlink360/core/features/procedure_guide/screens/guider_home_scr
 import 'package:lawlink360/core/features/scanner/screens/smart_camera_screen.dart';
 import 'package:lawlink360/core/features/scanner/models/scanner_mode.dart';
 import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
-import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/profile/screens/profile_screen.dart';
 import 'package:lawlink360/core/features/client_module/client_settings/screens/settings_screen.dart';
@@ -14,7 +14,7 @@ import 'package:lawlink360/core/features/help_support/screens/help_support_scree
 import 'package:lawlink360/core/features/my_cases/screens/my_cases_screen.dart';
 import 'package:lawlink360/core/features/client_module/appointments/screens/appointments_screen.dart';
 import 'package:lawlink360/core/features/client_module/client_messages/screens/messages_screen.dart';
-import 'package:lawlink360/core/features/documents/screens/documents_screen.dart';
+import 'package:lawlink360/core/features/client_module/documents/screens/documents_screen.dart';
 import 'package:lawlink360/core/features/client_module/client_dashboard/screens/dashboard_screen.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 

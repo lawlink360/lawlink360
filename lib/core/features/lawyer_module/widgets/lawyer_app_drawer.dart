@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lawlink360/core/features/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
-import 'package:lawlink360/core/features/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/appointments/screens/lawyer_appointment_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_messages/screens/lawyer_messages_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_settings/screens/lawyer_settings_screen.dart';
