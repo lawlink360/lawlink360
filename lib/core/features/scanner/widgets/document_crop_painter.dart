@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+
 class DocumentCropPainter extends CustomPainter {
   final Offset topLeft;
   final Offset topRight;
@@ -16,9 +18,12 @@ class DocumentCropPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFFD4AF37)
+      ..color = AppColors.accent
       ..strokeWidth = 3
-      ..style = PaintingStyle.stroke;
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
+      ..isAntiAlias = true;
 
     final path = Path()
       ..moveTo(topLeft.dx, topLeft.dy)
@@ -31,5 +36,10 @@ class DocumentCropPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant DocumentCropPainter oldDelegate) {
+    return oldDelegate.topLeft != topLeft ||
+        oldDelegate.topRight != topRight ||
+        oldDelegate.bottomLeft != bottomLeft ||
+        oldDelegate.bottomRight != bottomRight;
+  }
 }

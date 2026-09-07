@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 class ScannerFeatureCard extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -16,49 +21,54 @@ class ScannerFeatureCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(50),
-      onTap: onTap,
-      child: SizedBox(
-        width: 95,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-
-            Container(
-              width: 72,
-              height: 72,
-              decoration: BoxDecoration(
-                color: const Color(0xFFD4AF37),
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFFD4AF37).withValues(alpha:.30),
-                    blurRadius: 12,
-                    offset: const Offset(0, 5),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        onTap: onTap,
+        child: SizedBox(
+          width: 95,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: AppSpacing.xs,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 72,
+                  height: 72,
+                  decoration: BoxDecoration(
+                    color: AppColors.accent,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.accent.withValues(alpha: 0.24),
+                        blurRadius: 12,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: Icon(
-                icon,
-                color: Colors.white,
-                size: 32,
-              ),
+                  child: Icon(
+                    icon,
+                    color: AppColors.textLight,
+                    size: 30,
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: AppColors.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
-
-            const SizedBox(height: 10),
-
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Color(0xFF0D1B2A),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

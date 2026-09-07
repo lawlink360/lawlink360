@@ -4,12 +4,20 @@ import 'dart:typed_data';
 import 'package:crop_your_image/crop_your_image.dart';
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import 'document_editor_screen.dart';
 
 class DocumentCropScreen extends StatefulWidget {
   final String imagePath;
 
-  const DocumentCropScreen({super.key, required this.imagePath});
+  const DocumentCropScreen({
+    super.key,
+    required this.imagePath,
+  });
 
   @override
   State<DocumentCropScreen> createState() => _DocumentCropScreenState();
@@ -35,7 +43,16 @@ class _DocumentCropScreenState extends State<DocumentCropScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("Crop Document"),
+        foregroundColor: AppColors.textLight,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        title: Text(
+          'Crop Document',
+          style: AppTextStyles.title.copyWith(
+            color: AppColors.textLight,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
       body: Crop(
         controller: _cropController,
@@ -47,7 +64,7 @@ class _DocumentCropScreenState extends State<DocumentCropScreen> {
             width: 22,
             height: 22,
             decoration: const BoxDecoration(
-              color: Color(0xFFD4AF37),
+              color: AppColors.accent,
               shape: BoxShape.circle,
             ),
           );
@@ -66,7 +83,9 @@ class _DocumentCropScreenState extends State<DocumentCropScreen> {
 
               navigator.pushReplacement(
                 MaterialPageRoute(
-                  builder: (_) => DocumentEditorScreen(imagePath: file.path),
+                  builder: (_) => DocumentEditorScreen(
+                    imagePath: file.path,
+                  ),
                 ),
               );
 
@@ -75,35 +94,72 @@ class _DocumentCropScreenState extends State<DocumentCropScreen> {
             case CropFailure():
               if (!mounted) return;
 
+              setState(() {
+                _isCropping = false;
+              });
+
               messenger.showSnackBar(
-                SnackBar(content: Text(result.cause.toString())),
+                SnackBar(
+                  content: Text(
+                    result.cause.toString(),
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: AppColors.textLight,
+                    ),
+                  ),
+                ),
               );
 
               break;
           }
         },
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(20),
-        child: SizedBox(
-          height: 55,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFD4AF37),
-              foregroundColor: Colors.black,
-            ),
-            onPressed: _isCropping
-                ? null
-                : () {
-                    setState(() {
-                      _isCropping = true;
-                    });
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            AppSpacing.lg,
+            AppSpacing.sm,
+            AppSpacing.lg,
+            AppSpacing.lg,
+          ),
+          child: SizedBox(
+            height: AppSpacing.buttonHeight,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.accent,
+                foregroundColor: AppColors.primary,
+                disabledBackgroundColor:
+                    AppColors.accent.withValues(alpha: 0.45),
+                disabledForegroundColor:
+                    AppColors.primary.withValues(alpha: 0.65),
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.md),
+                ),
+              ),
+              onPressed: _isCropping
+                  ? null
+                  : () {
+                      setState(() {
+                        _isCropping = true;
+                      });
 
-                    _cropController.crop();
-                  },
-            child: const Text(
-              "Apply Crop",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      _cropController.crop();
+                    },
+              child: _isCropping
+                  ? const SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.5,
+                        color: AppColors.primary,
+                      ),
+                    )
+                  : Text(
+                      'Apply Crop',
+                      style: AppTextStyles.button.copyWith(
+                        color: AppColors.primary,
+                      ),
+                    ),
             ),
           ),
         ),

@@ -1,6 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+
 class SmartCameraPreview extends StatelessWidget {
   final CameraController controller;
 
@@ -14,13 +17,14 @@ class SmartCameraPreview extends StatelessWidget {
     if (!controller.value.isInitialized) {
       return const Center(
         child: CircularProgressIndicator(
-          color: Color(0xFFD4AF37),
+          color: AppColors.accent,
+          strokeWidth: 2.5,
         ),
       );
     }
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(AppRadius.lg),
       child: FittedBox(
         fit: BoxFit.cover,
         child: SizedBox(

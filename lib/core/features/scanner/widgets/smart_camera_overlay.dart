@@ -1,6 +1,11 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
+
 import 'smart_camera_preview.dart';
 
 class SmartCameraOverlay extends StatelessWidget {
@@ -19,20 +24,28 @@ class SmartCameraOverlay extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          const Positioned(
-            top: 5,
-            child: Text(
-              "Place document inside frame",
-              style: TextStyle(
-                color: Color(0xFFD4AF37),
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
+          Positioned(
+            top: AppSpacing.xs,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.xs,
+              ),
+              decoration: BoxDecoration(
+                color: AppColors.glassDark,
+                borderRadius: BorderRadius.circular(AppRadius.pill),
+              ),
+              child: Text(
+                'Place document inside frame',
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: AppColors.accent,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
-
           Positioned(
-            top: 40,
+            top: AppSpacing.xl,
             child: SizedBox(
               width: screenWidth * 0.92,
               height: screenWidth * 1.35,
@@ -43,15 +56,14 @@ class SmartCameraOverlay extends StatelessWidget {
                       controller: controller,
                     ),
                   ),
-
                   Positioned.fill(
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Color(0xFFD4AF37),
+                          color: AppColors.accent,
                           width: 3,
                         ),
-                        borderRadius: BorderRadius.circular(18),
+                        borderRadius: BorderRadius.circular(AppRadius.lg),
                       ),
                     ),
                   ),
