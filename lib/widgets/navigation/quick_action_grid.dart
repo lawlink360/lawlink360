@@ -4,7 +4,7 @@ import 'package:lawlink360/core/features/client_module/application/screens/appli
 import 'package:lawlink360/core/features/client_module/screens/find_lawyer_screen.dart';
 import 'package:lawlink360/core/features/client_module/procedure_guide/screens/guider_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/scanner/screens/scanner_converter_home_screen.dart';
-import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
+import 'package:lawlink360/core/features/client_module/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import '../cards/quick_action_card.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';

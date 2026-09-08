@@ -5,7 +5,7 @@ import 'package:lawlink360/core/features/client_module/screens/find_lawyer_scree
 import 'package:lawlink360/core/features/client_module/procedure_guide/screens/guider_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/scanner/screens/smart_camera_screen.dart';
 import 'package:lawlink360/core/features/client_module/scanner/models/scanner_mode.dart';
-import 'package:lawlink360/core/features/translation/screens/translation_screen.dart';
+import 'package:lawlink360/core/features/client_module/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/user_profile/screens/profile_screen.dart';
