@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/my_cases/screens/my_cases_screen.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
@@ -8,6 +9,15 @@ import 'case_card.dart';
 
 class MyCasesSection extends StatelessWidget {
   const MyCasesSection({super.key});
+
+  void _openMyCases(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const MyCasesScreen(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +39,8 @@ class MyCasesSection extends StatelessWidget {
                   ),
                 ),
               ),
-
               TextButton(
-                onPressed: () {},
+                onPressed: () => _openMyCases(context),
                 style: TextButton.styleFrom(
                   foregroundColor: AppColors.accent,
                   padding: const EdgeInsets.symmetric(
@@ -50,9 +59,7 @@ class MyCasesSection extends StatelessWidget {
             ],
           ),
         ),
-
         const SizedBox(height: AppSpacing.sm),
-
         SizedBox(
           height: 240,
           child: ListView(
@@ -67,21 +74,21 @@ class MyCasesSection extends StatelessWidget {
                 status: 'Active',
                 hearingDate: '18 July 2026',
                 progress: 0.70,
-                onTap: () {},
+                onTap: () => _openMyCases(context),
               ),
               CaseCard(
                 title: 'Family Matter',
                 status: 'Pending',
                 hearingDate: '22 July 2026',
                 progress: 0.45,
-                onTap: () {},
+                onTap: () => _openMyCases(context),
               ),
               CaseCard(
                 title: 'Bail Application',
                 status: 'Completed',
                 hearingDate: 'Completed',
                 progress: 1.0,
-                onTap: () {},
+                onTap: () => _openMyCases(context),
               ),
             ],
           ),

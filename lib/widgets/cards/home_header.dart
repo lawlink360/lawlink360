@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/user_profile/screens/profile_screen.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_radius.dart';
 import '../../core/theme/app_spacing.dart';
@@ -17,6 +18,15 @@ class HomeHeader extends StatelessWidget {
     this.subtitle = 'Your Legal Companion',
   });
 
+  void _openProfile(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const ProfileScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,8 +40,12 @@ class HomeHeader extends StatelessWidget {
       ),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(AppRadius.xl + AppSpacing.xs),
-          bottomRight: Radius.circular(AppRadius.xl + AppSpacing.xs),
+          bottomLeft: Radius.circular(
+            AppRadius.xl + AppSpacing.xs,
+          ),
+          bottomRight: Radius.circular(
+            AppRadius.xl + AppSpacing.xs,
+          ),
         ),
         gradient: LinearGradient(
           colors: [
@@ -69,17 +83,35 @@ class HomeHeader extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              const Icon(
-                Icons.notifications_none_rounded,
-                color: Colors.white,
-              ),
-              const SizedBox(width: AppSpacing.md),
-              const CircleAvatar(
-                radius: 18,
-                backgroundColor: AppColors.accent,
-                child: Icon(
-                  Icons.person,
+
+              IconButton(
+                tooltip: 'Notifications',
+                onPressed: null,
+                icon: const Icon(
+                  Icons.notifications_none_rounded,
                   color: Colors.white,
+                ),
+              ),
+
+              const SizedBox(width: AppSpacing.xs),
+
+              Material(
+                color: Colors.transparent,
+                shape: const CircleBorder(),
+                child: InkWell(
+                  onTap: () => _openProfile(context),
+                  customBorder: const CircleBorder(),
+                  child: const Padding(
+                    padding: EdgeInsets.all(4),
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: AppColors.accent,
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],

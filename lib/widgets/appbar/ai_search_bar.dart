@@ -23,6 +23,7 @@ class _AISearchBarState extends State<AISearchBar> {
 
   Timer? _rotationTimer;
   int _currentIndex = 0;
+  bool _isNavigating = false;
 
   @override
   void initState() {
@@ -31,7 +32,10 @@ class _AISearchBarState extends State<AISearchBar> {
     _rotationTimer = Timer.periodic(
       const Duration(seconds: 1),
       (_) {
-        if (!mounted || _focusNode.hasFocus || _controller.text.isNotEmpty) {
+        if (!mounted ||
+            _isNavigating ||
+            _focusNode.hasFocus ||
+            _controller.text.isNotEmpty) {
           return;
         }
 
@@ -51,7 +55,7 @@ class _AISearchBarState extends State<AISearchBar> {
     super.dispose();
   }
 
-  void _performSearch() {
+  Future<void> _performSearch() async {
     final query = _controller.text.trim();
 
     if (query.isEmpty) {
@@ -75,16 +79,37 @@ class _AISearchBarState extends State<AISearchBar> {
 
     _focusNode.unfocus();
 
-    _resolver.openDestination(
+    setState(() {
+      _isNavigating = true;
+    });
+
+    await _resolver.openDestination(
       context,
       destination,
     );
+
+    if (!mounted) return;
+
+    _controller.clear();
+
+    setState(() {
+      _currentIndex = 0;
+      _isNavigating = false;
+    });
   }
 
   void _clearSearch() {
     _controller.clear();
-    _focusNode.requestFocus();
+
     setState(() {});
+
+    _focusNode.requestFocus();
+  }
+
+  void _handleTapOutside(PointerDownEvent event) {
+    if (_focusNode.hasFocus) {
+      _focusNode.unfocus();
+    }
   }
 
   @override
@@ -127,12 +152,25 @@ class _AISearchBarState extends State<AISearchBar> {
             TextField(
               controller: _controller,
               focusNode: _focusNode,
+
+              // Important:
+              // Tapping anywhere outside the search field
+              // removes focus and closes the keyboard.
+              onTapOutside: _handleTapOutside,
+
+              onChanged: (_) {
+                setState(() {});
+              },
+
               onSubmitted: (_) => _performSearch(),
+
               textInputAction: TextInputAction.search,
+
               style: AppTextStyles.body.copyWith(
                 color: Theme.of(context).colorScheme.onSurface,
                 fontWeight: FontWeight.w600,
               ),
+
               decoration: InputDecoration(
                 hintText: currentIntent.title,
                 hintStyle: AppTextStyles.body.copyWith(
@@ -235,8 +273,10 @@ class _SuggestionChip extends StatelessWidget {
         final searchBar = context.findAncestorStateOfType<
             _AISearchBarState>();
 
-        searchBar?._controller.text = text;
-        searchBar?._performSearch();
+        if (searchBar == null) return;
+
+        searchBar._controller.text = text;
+        searchBar._performSearch();
       },
       child: Chip(
         label: Text(

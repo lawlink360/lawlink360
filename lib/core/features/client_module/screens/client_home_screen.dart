@@ -7,7 +7,7 @@ import 'package:lawlink360/core/features/client_module/widgets/popular_services_
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 import 'package:lawlink360/widgets/appbar/ai_search_bar.dart';
-import 'package:lawlink360/widgets/appointment/upcoming_appointment_card.dart';
+import 'package:lawlink360/core/features/client_module/client_dashboard/widgets/upcoming_appointments_card.dart';
 import 'package:lawlink360/widgets/cards/home_header.dart';
 import 'package:lawlink360/widgets/navigation/quick_action_grid.dart';
 

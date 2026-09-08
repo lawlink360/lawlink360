@@ -112,10 +112,10 @@ class AiSearchResolver {
     return null;
   }
 
-  void openDestination(
+  Future<void> openDestination(
     BuildContext context,
     AiSearchDestination destination,
-  ) {
+  ) async {
     final Widget screen;
 
     switch (destination) {
@@ -144,7 +144,7 @@ class AiSearchResolver {
         break;
     }
 
-    Navigator.push(
+    await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => screen,

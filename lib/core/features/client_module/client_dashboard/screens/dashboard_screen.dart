@@ -139,7 +139,7 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: AppSpacing.md),
           _SectionTitle(title: 'Upcoming Appointment'),
           const SizedBox(height: AppSpacing.sm),
-          const UpcomingAppointmentsCard(),
+          const UpcomingAppointmentCard(),
           const SizedBox(height: AppSpacing.xl),
           _SectionTitle(title: 'Recent Case'),
           const SizedBox(height: AppSpacing.sm),

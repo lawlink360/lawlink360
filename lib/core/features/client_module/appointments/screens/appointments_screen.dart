@@ -1,30 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
-import '../data/appointment_data.dart';
+import '../providers/appointment_filter_provider.dart';
+import '../providers/appointment_providers.dart';
 import '../widgets/appointment_calendar_card.dart';
 import '../widgets/appointment_card.dart';
 import '../widgets/appointment_filter_tabs.dart';
 import '../widgets/appointment_search_bar.dart';
 import '../widgets/appointment_statistics_card.dart';
+import 'package:lawlink360/core/features/client_module/appointments/screens/appointment_details_screen.dart';
 
-class AppointmentsScreen extends StatefulWidget {
+class AppointmentsScreen extends ConsumerWidget {
   const AppointmentsScreen({super.key});
 
   @override
-  State<AppointmentsScreen> createState() => _AppointmentsScreenState();
-}
-
-class _AppointmentsScreenState extends State<AppointmentsScreen> {
-  int selectedTab = 0;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
+
+    final statistics = ref.watch(appointmentStatisticsProvider);
+    final filteredAppointments =
+        ref.watch(filteredAppointmentsProvider);
+    final selectedFilter =
+        ref.watch(appointmentFilterProvider);
+
+    final selectedTab = switch (selectedFilter) {
+      AppointmentFilter.all => 0,
+      AppointmentFilter.today => 0,
+      AppointmentFilter.upcoming => 1,
+      AppointmentFilter.completed => 2,
+      AppointmentFilter.cancelled => 3,
+    };
 
     return Scaffold(
       backgroundColor: colorScheme.surfaceContainerLowest,
@@ -45,7 +55,9 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           preferredSize: const Size.fromHeight(1),
           child: Container(
             height: 1,
-            color: colorScheme.outlineVariant.withValues(alpha: 0.45),
+            color: colorScheme.outlineVariant.withValues(
+              alpha: 0.45,
+            ),
           ),
         ),
       ),
@@ -83,18 +95,22 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
 
           Row(
             children: [
-              const AppointmentStatisticsCards(
-                title: 'Today',
-                value: '1',
-                icon: Icons.today_rounded,
-                color: AppColors.error,
+              Expanded(
+                child: AppointmentStatisticsCards(
+                  title: 'Today',
+                  value: '${statistics.today}',
+                  icon: Icons.today_rounded,
+                  color: AppColors.error,
+                ),
               ),
               const SizedBox(width: AppSpacing.sm),
-              const AppointmentStatisticsCards(
-                title: 'Upcoming',
-                value: '1',
-                icon: Icons.schedule_rounded,
-                color: AppColors.success,
+              Expanded(
+                child: AppointmentStatisticsCards(
+                  title: 'Upcoming',
+                  value: '${statistics.upcoming}',
+                  icon: Icons.schedule_rounded,
+                  color: AppColors.success,
+                ),
               ),
             ],
           ),
@@ -103,18 +119,24 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
 
           Row(
             children: [
-              const AppointmentStatisticsCards(
-                title: 'Completed',
-                value: '1',
-                icon: Icons.check_circle_outline_rounded,
-                color: AppColors.info,
+              Expanded(
+                child: AppointmentStatisticsCards(
+                  title: 'Completed',
+                  value: '${statistics.completed}',
+                  icon: Icons.check_circle_outline_rounded,
+                  color: AppColors.info,
+                ),
               ),
               const SizedBox(width: AppSpacing.sm),
-              AppointmentStatisticsCards(
-                title: 'Cancelled',
-                value: '1',
-                icon: Icons.cancel_outlined,
-                color: colorScheme.onSurface.withValues(alpha: 0.48),
+              Expanded(
+                child: AppointmentStatisticsCards(
+                  title: 'Cancelled',
+                  value: '${statistics.cancelled}',
+                  icon: Icons.cancel_outlined,
+                  color: colorScheme.onSurface.withValues(
+                    alpha: 0.48,
+                  ),
+                ),
               ),
             ],
           ),
@@ -134,29 +156,78 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
           AppointmentFilterTabs(
             selectedIndex: selectedTab,
             onChanged: (index) {
-              setState(() {
-                selectedTab = index;
-              });
+              final notifier = ref.read(
+                appointmentFilterProvider.notifier,
+              );
+
+              switch (index) {
+                case 0:
+                  notifier.showAll();
+                  break;
+                case 1:
+                  notifier.showUpcoming();
+                  break;
+                case 2:
+                  notifier.showCompleted();
+                  break;
+                case 3:
+                  notifier.showCancelled();
+                  break;
+              }
             },
           ),
 
           const SizedBox(height: AppSpacing.md),
 
-          ...AppointmentData.appointments.map(
-            (appointment) => AppointmentCard(
-              appointment: appointment,
+          if (filteredAppointments.isEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: AppSpacing.xl,
+              ),
+              child: Center(
+                child: Text(
+                  'No appointments found.',
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: colorScheme.onSurface.withValues(
+                      alpha: 0.60,
+                    ),
+                  ),
+                ),
+              ),
+            )
+          else
+            ...filteredAppointments.map(
+              (appointment) => AppointmentCard(
+                appointment: appointment,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          AppointmentDetailsScreen(
+                        appointment: appointment,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
 
           const SizedBox(height: AppSpacing.md),
 
           Container(
             padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
-              color: colorScheme.primary.withValues(alpha: 0.045),
-              borderRadius: BorderRadius.circular(AppRadius.lg),
+              color: colorScheme.primary.withValues(
+                alpha: 0.045,
+              ),
+              borderRadius: BorderRadius.circular(
+                AppRadius.lg,
+              ),
               border: Border.all(
-                color: colorScheme.primary.withValues(alpha: 0.10),
+                color: colorScheme.primary.withValues(
+                  alpha: 0.10,
+                ),
               ),
             ),
             child: Row(
@@ -172,7 +243,9 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
                   child: Text(
                     'Your appointment information is securely organized in one place.',
                     style: AppTextStyles.caption.copyWith(
-                      color: colorScheme.onSurface.withValues(alpha: 0.65),
+                      color: colorScheme.onSurface.withValues(
+                        alpha: 0.65,
+                      ),
                       height: 1.4,
                     ),
                   ),
