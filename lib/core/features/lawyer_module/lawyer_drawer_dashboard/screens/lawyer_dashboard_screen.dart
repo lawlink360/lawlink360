@@ -120,7 +120,7 @@ class LawyerDashboardScreen extends StatelessWidget {
             const DashboardScheduleCard(
               time: '02:30 PM',
               client: 'Sara Khan',
-              matter: 'Family Law Consultation',
+              matter: 'Family & Guardian Consultation',
               status: 'Upcoming',
             ),
 

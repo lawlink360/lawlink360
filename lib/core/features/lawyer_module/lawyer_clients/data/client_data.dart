@@ -65,7 +65,7 @@ class ClientData {
       clientId: 'new_client_002',
       clientName: 'Sara Ahmed',
       clientImageUrl: null,
-      requestType: 'Family Law',
+      requestType: 'Family & Guardian',
       message:
           'I would like to discuss a family legal matter.',
       requestedAt: DateTime(2026, 8, 14, 14, 15),

@@ -8,10 +8,10 @@ class LawyerAboutCard extends StatelessWidget {
     return const _ProfileSection(
       title: 'About Me',
       child: Text(
-        'I am a professional lawyer practicing in criminal law, '
-        'bail matters, and constitutional law. I have 8+ years '
-        'of experience handling various legal matters with '
-        'dedication and commitment.',
+        'I am a professional lawyer with experience across '
+        'civil, criminal, family, and constitutional matters. '
+        'I provide dedicated legal representation and consultation '
+        'with professionalism, integrity, and commitment.',
         style: TextStyle(
           color: Color(0xFF475569),
           fontSize: 15,
@@ -45,7 +45,7 @@ class _ProfileSection extends StatelessWidget {
               fontSize: 19,
               fontWeight: FontWeight.w700,
             ),
-          ),
+            ),
 
           const SizedBox(height: 10),
 
