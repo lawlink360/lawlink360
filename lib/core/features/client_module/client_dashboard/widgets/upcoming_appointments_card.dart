@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/features/client_module/appointments/providers/appointment_providers.dart';
 import 'package:lawlink360/core/features/client_module/appointments/screens/appointment_details_screen.dart';
-import 'package:lawlink360/core/features/client_module/screens/video_consultation_screen.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/screens/video_consultation_screen.dart';
 
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';

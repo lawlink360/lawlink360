@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_radius.dart';
-import '../../core/theme/app_spacing.dart';
-import '../../core/theme/app_text_styles.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class StatsCard extends StatelessWidget {
-  const StatsCard({super.key});
+  final Lawyer? lawyer;
+
+  const StatsCard({
+    super.key,
+    this.lawyer,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +33,18 @@ class StatsCard extends StatelessWidget {
         children: [
           _Item(
             icon: Icons.workspace_premium_rounded,
-            value: '10+',
+            value: lawyer != null
+                ? '${lawyer!.experience}+'
+                : '10+',
             title: 'Years Experience',
             colorScheme: colorScheme,
             isDark: isDark,
           ),
           _Item(
             icon: Icons.gavel_rounded,
-            value: '1,250+',
+            value: lawyer != null
+                ? '${lawyer!.casesHandled}+'
+                : '1,250+',
             title: 'Cases Handled',
             colorScheme: colorScheme,
             isDark: isDark,

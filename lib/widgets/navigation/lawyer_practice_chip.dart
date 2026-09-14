@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
 
-import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_radius.dart';
-import '../../core/theme/app_spacing.dart';
-import '../../core/theme/app_text_styles.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
+import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
+import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class LawyerPracticeChip extends StatelessWidget {
-  const LawyerPracticeChip({super.key});
+  final Lawyer? lawyer;
+
+  const LawyerPracticeChip({
+    super.key,
+    this.lawyer,
+  });
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final practiceAreas = lawyer == null
+        ? const [
+            'Criminal Law',
+            'Bail Matters',
+            'FIR & Quash',
+            'Cyber Crime',
+            'White Collar',
+            'Appeals',
+            'Constitutional',
+            'Family Law',
+          ]
+        : _practiceAreasFor(lawyer!.speciality);
 
     return Container(
       margin: const EdgeInsets.symmetric(
@@ -47,20 +66,27 @@ class LawyerPracticeChip extends StatelessWidget {
           Wrap(
             spacing: AppSpacing.xs,
             runSpacing: AppSpacing.xs,
-            children: const [
-              _Chip('Criminal Law'),
-              _Chip('Bail Matters'),
-              _Chip('FIR & Quash'),
-              _Chip('Cyber Crime'),
-              _Chip('White Collar'),
-              _Chip('Appeals'),
-              _Chip('Constitutional'),
-              _Chip('Family Law'),
-            ],
+            children: practiceAreas
+                .map(
+                  (area) => _Chip(area),
+                )
+                .toList(),
           ),
         ],
       ),
     );
+  }
+
+  static List<String> _practiceAreasFor(String speciality) {
+    final value = speciality.trim();
+
+    if (value.isEmpty) {
+      return const ['Legal Practice'];
+    }
+
+    return [
+      value,
+    ];
   }
 }
 

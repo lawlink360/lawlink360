@@ -10,6 +10,7 @@ class ActivityCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final String time;
+  final VoidCallback? onTap;
 
   const ActivityCard({
     super.key,
@@ -18,95 +19,112 @@ class ActivityCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.time,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: AppSpacing.sm),
-      padding: const EdgeInsets.all(AppSpacing.md),
-      decoration: BoxDecoration(
-        color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppRadius.lg),
-        border: Border.all(
-          color: colorScheme.outlineVariant.withValues(alpha: 0.55),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: colorScheme.shadow.withValues(alpha: 0.06),
-            blurRadius: 14,
-            offset: const Offset(0, 5),
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: AppSpacing.sm,
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 46,
-            height: 46,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          splashColor: iconColor.withValues(alpha: 0.08),
+          highlightColor: Colors.transparent,
+          child: Ink(
+            padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
-              color: iconColor.withValues(alpha: 0.11),
-              borderRadius: BorderRadius.circular(AppRadius.md),
+              color: colorScheme.surface,
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+              border: Border.all(
+                color: colorScheme.outlineVariant.withValues(
+                  alpha: 0.55,
+                ),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: colorScheme.shadow.withValues(alpha: 0.06),
+                  blurRadius: 14,
+                  offset: const Offset(0, 5),
+                ),
+              ],
             ),
-            child: Icon(
-              icon,
-              color: iconColor,
-              size: 22,
-            ),
-          ),
-
-          const SizedBox(width: AppSpacing.md),
-
-          Expanded(
-            child: Column(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.body.copyWith(
-                    color: colorScheme.onSurface,
-                    fontWeight: FontWeight.w700,
+                Container(
+                  width: 46,
+                  height: 46,
+                  decoration: BoxDecoration(
+                    color: iconColor.withValues(alpha: 0.11),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: iconColor,
+                    size: 22,
                   ),
                 ),
-
-                const SizedBox(height: AppSpacing.xs),
-
-                Text(
-                  subtitle,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.bodySmall.copyWith(
-                    color: colorScheme.onSurface.withValues(alpha: 0.68),
-                  ),
-                ),
-
-                const SizedBox(height: AppSpacing.sm),
-
-                Row(
-                  children: [
-                    Icon(
-                      Icons.access_time_rounded,
-                      size: 15,
-                      color: colorScheme.onSurface.withValues(alpha: 0.50),
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      time,
-                      style: AppTextStyles.caption.copyWith(
-                        color: colorScheme.onSurface.withValues(alpha: 0.58),
+                const SizedBox(width: AppSpacing.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.body.copyWith(
+                          color: colorScheme.onSurface,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: AppSpacing.xs),
+                      Text(
+                        subtitle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: colorScheme.onSurface.withValues(
+                            alpha: 0.68,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: AppSpacing.sm),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.access_time_rounded,
+                            size: 15,
+                            color: colorScheme.onSurface.withValues(
+                              alpha: 0.50,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            time,
+                            style: AppTextStyles.caption.copyWith(
+                              color: colorScheme.onSurface.withValues(
+                                alpha: 0.58,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

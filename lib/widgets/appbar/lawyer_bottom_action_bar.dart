@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/features/client_module/screens/book_appointment_screen.dart';
+import '../../core/features/client_module/find_lawyer/screens/book_appointment_screen.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_radius.dart';
 import '../../core/theme/app_spacing.dart';

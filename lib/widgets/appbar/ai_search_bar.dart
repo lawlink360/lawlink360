@@ -69,7 +69,9 @@ class _AISearchBarState extends State<AISearchBar> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            'I could not identify the right service. Try searching for a lawyer, procedure, application, verification, translation, or scanner.',
+            'I could not identify the right service. '
+            'Try searching for a lawyer, procedure, application, '
+            'verification, translation, or scanner.',
           ),
           behavior: SnackBarBehavior.floating,
         ),
@@ -114,29 +116,37 @@ class _AISearchBarState extends State<AISearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark;
 
     final surfaceColor =
         isDark ? AppColors.darkSurface : AppColors.lightSurface;
 
-    final secondaryTextColor =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final secondaryTextColor = isDark
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
 
     final chipColor =
         isDark ? AppColors.darkBackground : AppColors.lightBackground;
 
-    final currentIntent = AiSearchIntent.available[_currentIndex];
+    final currentIntent =
+        AiSearchIntent.available[_currentIndex];
 
     return Material(
       color: Colors.transparent,
       child: Container(
         margin: const EdgeInsets.symmetric(
           horizontal: AppSpacing.lg,
+          vertical: AppSpacing.lg, // CHANGED: Increased from md to lg for more padding from profile avatar
         ),
-        padding: const EdgeInsets.all(AppSpacing.md),
+        padding: const EdgeInsets.all(
+          AppSpacing.md,
+        ),
         decoration: BoxDecoration(
           color: surfaceColor,
-          borderRadius: BorderRadius.circular(AppRadius.xl),
+          borderRadius: BorderRadius.circular(
+            AppRadius.xl,
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(
@@ -152,25 +162,18 @@ class _AISearchBarState extends State<AISearchBar> {
             TextField(
               controller: _controller,
               focusNode: _focusNode,
-
-              // Important:
-              // Tapping anywhere outside the search field
-              // removes focus and closes the keyboard.
               onTapOutside: _handleTapOutside,
-
               onChanged: (_) {
                 setState(() {});
               },
-
               onSubmitted: (_) => _performSearch(),
-
               textInputAction: TextInputAction.search,
-
               style: AppTextStyles.body.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSurface,
                 fontWeight: FontWeight.w600,
               ),
-
               decoration: InputDecoration(
                 hintText: currentIntent.title,
                 hintStyle: AppTextStyles.body.copyWith(
@@ -198,7 +201,8 @@ class _AISearchBarState extends State<AISearchBar> {
                       ),
                 filled: true,
                 fillColor: chipColor,
-                contentPadding: const EdgeInsets.symmetric(
+                contentPadding:
+                    const EdgeInsets.symmetric(
                   horizontal: AppSpacing.md,
                   vertical: AppSpacing.sm,
                 ),
@@ -225,7 +229,11 @@ class _AISearchBarState extends State<AISearchBar> {
                 ),
               ),
             ),
-            const SizedBox(height: AppSpacing.md),
+
+            const SizedBox(
+              height: AppSpacing.md,
+            ),
+
             Wrap(
               spacing: AppSpacing.xs,
               runSpacing: AppSpacing.xs,
@@ -260,18 +268,22 @@ class _SuggestionChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark;
 
-    final backgroundColor =
-        isDark ? AppColors.darkBackground : AppColors.lightBackground;
+    final backgroundColor = isDark
+        ? AppColors.darkBackground
+        : AppColors.lightBackground;
 
-    final textColor =
-        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textColor = isDark
+        ? AppColors.darkTextSecondary
+        : AppColors.lightTextSecondary;
 
     return GestureDetector(
       onTap: () {
-        final searchBar = context.findAncestorStateOfType<
-            _AISearchBarState>();
+        final searchBar =
+            context.findAncestorStateOfType<
+                _AISearchBarState>();
 
         if (searchBar == null) return;
 

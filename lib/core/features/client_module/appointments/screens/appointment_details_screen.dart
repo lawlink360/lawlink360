@@ -8,7 +8,7 @@ import 'package:lawlink360/core/theme/app_text_styles.dart';
 import '../models/appointment_model.dart';
 import '../models/appointment_status.dart';
 import '../widgets/appointment_status_badge.dart';
-import 'package:lawlink360/core/features/client_module/screens/video_consultation_screen.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/screens/video_consultation_screen.dart';
 
 class AppointmentDetailsScreen extends StatelessWidget {
   final AppointmentModel appointment;

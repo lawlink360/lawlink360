@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lawlink360/auth/screens/login_screen.dart';
-import 'package:lawlink360/core/features/client_module/screens/find_lawyer_screen.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/screens/find_lawyer_screen.dart';
 import 'package:lawlink360/core/features/client_module/procedure_guide/screens/guider_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/scanner/screens/smart_camera_screen.dart';
 import 'package:lawlink360/core/features/client_module/scanner/models/scanner_mode.dart';

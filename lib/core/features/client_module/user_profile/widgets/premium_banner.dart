@@ -38,66 +38,74 @@ class PremiumBanner extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.08),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.workspace_premium_rounded,
-              size: 28,
-              color: AppColors.primary,
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.08),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.workspace_premium_rounded,
+                  size: 28,
+                  color: AppColors.primary,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Upgrade to Premium',
+                      style: AppTextStyles.body.copyWith(
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.xs),
+                    Text(
+                      'Enjoy watermark-free documents, ad-free experience and future premium legal features.',
+                      style: AppTextStyles.caption.copyWith(
+                        color: AppColors.primary,
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
 
-          const SizedBox(width: AppSpacing.md),
+          const SizedBox(height: AppSpacing.md),
 
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Upgrade to Premium',
-                  style: AppTextStyles.body.copyWith(
-                    color: AppColors.primary,
-                    fontWeight: FontWeight.w700,
+          Align(
+            alignment: Alignment.centerRight,
+            child: OutlinedButton(
+              onPressed: onUpgrade,
+              style: OutlinedButton.styleFrom(
+                foregroundColor: AppColors.primary,
+                side: const BorderSide(
+                  color: AppColors.primary,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.lg,
+                  vertical: AppSpacing.sm,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    AppRadius.sm,
                   ),
                 ),
-                const SizedBox(height: AppSpacing.xs),
-                Text(
-                  'Enjoy watermark-free documents, ad-free experience and future premium legal features.',
-                  style: AppTextStyles.caption.copyWith(
-                    color: AppColors.primary,
-                    height: 1.4,
-                  ),
-                ),
-              ],
+              ),
+              child: const Text('Upgrade'),
             ),
-          ),
-
-          const SizedBox(width: AppSpacing.sm),
-
-          OutlinedButton(
-            onPressed: onUpgrade,
-            style: OutlinedButton.styleFrom(
-              foregroundColor: AppColors.primary,
-              side: const BorderSide(
-                color: AppColors.primary,
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.md,
-                vertical: AppSpacing.sm,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(AppRadius.sm),
-              ),
-            ),
-            child: const Text('Upgrade'),
           ),
         ],
       ),
