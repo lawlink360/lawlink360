@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class BookingSuccessScreen extends StatelessWidget {
-  const BookingSuccessScreen({super.key});
+  final Lawyer lawyer;
+  final String consultationType;
+  final String selectedDate;
+  final String selectedTime;
+
+  const BookingSuccessScreen({
+    super.key,
+    required this.lawyer,
+    this.consultationType = 'In Person',
+    this.selectedDate = 'Mon 21 July 2026',
+    this.selectedTime = '11:00 AM',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +53,9 @@ class BookingSuccessScreen extends StatelessWidget {
           Container(
             width: 112,
             height: 112,
-            margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+            margin: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.xl,
+            ),
             decoration: BoxDecoration(
               color: AppColors.accent.withValues(alpha: 0.14),
               shape: BoxShape.circle,
@@ -111,19 +125,25 @@ class BookingSuccessScreen extends StatelessWidget {
                 _BookingInfoTile(
                   icon: Icons.person_outline_rounded,
                   title: 'Lawyer',
-                  value: 'Adv. Ahmed Khan',
+                  value: lawyer.name,
                 ),
-                _BookingInfoDivider(),
+                const _BookingInfoDivider(),
                 _BookingInfoTile(
                   icon: Icons.calendar_today_outlined,
                   title: 'Date',
-                  value: '20 July 2026',
+                  value: selectedDate,
                 ),
-                _BookingInfoDivider(),
+                const _BookingInfoDivider(),
                 _BookingInfoTile(
                   icon: Icons.access_time_rounded,
                   title: 'Time',
-                  value: '11:00 AM',
+                  value: selectedTime,
+                ),
+                const _BookingInfoDivider(),
+                _BookingInfoTile(
+                  icon: Icons.video_camera_front_outlined,
+                  title: 'Consultation',
+                  value: consultationType,
                 ),
               ],
             ),

@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class BookSummaryCard extends StatelessWidget {
-  const BookSummaryCard({super.key});
+  final Lawyer lawyer;
+  final String consultationType;
+  final String selectedDate;
+  final String selectedTime;
+
+  const BookSummaryCard({
+    super.key,
+    required this.lawyer,
+    this.consultationType = 'In Person',
+    this.selectedDate = 'Mon 21 July 2026',
+    this.selectedTime = '11:00 AM',
+  });
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final consultationFee = lawyer.consultationFee;
+    const platformFee = 300.0;
+    final total = consultationFee + platformFee;
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.md),
@@ -57,30 +72,12 @@ class BookSummaryCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppSpacing.lg),
-          _summaryRow(
-            context,
-            'Lawyer',
-            'Adv. Ahmed Khan',
-          ),
-          _summaryRow(
-            context,
-            'Date',
-            '21 July 2026',
-          ),
-          _summaryRow(
-            context,
-            'Time',
-            '11:00 AM',
-          ),
-          _summaryRow(
-            context,
-            'Consultation',
-            'In Person',
-          ),
+          _summaryRow(context, 'Lawyer', lawyer.name),
+          _summaryRow(context, 'Date', selectedDate),
+          _summaryRow(context, 'Time', selectedTime),
+          _summaryRow(context, 'Consultation', consultationType),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: AppSpacing.sm,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
             child: Divider(
               height: 1,
               color: colorScheme.outline.withValues(alpha: 0.16),
@@ -89,17 +86,15 @@ class BookSummaryCard extends StatelessWidget {
           _summaryRow(
             context,
             'Consultation Fee',
-            'Rs. 5,000',
+            _formatAmount(consultationFee),
           ),
           _summaryRow(
             context,
             'Platform Fee',
-            'Rs. 300',
+            _formatAmount(platformFee),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: AppSpacing.sm,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
             child: Divider(
               height: 1,
               color: colorScheme.outline.withValues(alpha: 0.16),
@@ -116,7 +111,7 @@ class BookSummaryCard extends StatelessWidget {
                 ),
               ),
               Text(
-                'Rs. 5,300',
+                _formatAmount(total),
                 style: AppTextStyles.title.copyWith(
                   color: AppColors.accent,
                   fontSize: 20,
@@ -130,6 +125,10 @@ class BookSummaryCard extends StatelessWidget {
     );
   }
 
+  String _formatAmount(double amount) {
+    return 'Rs. ${amount.toStringAsFixed(0)}';
+  }
+
   Widget _summaryRow(
     BuildContext context,
     String title,
@@ -138,9 +137,7 @@ class BookSummaryCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: AppSpacing.xs,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: AppSpacing.xs),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

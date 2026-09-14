@@ -16,7 +16,6 @@ import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawye
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/practice_area_card.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/law_firm_profile_screen.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/chat_screen.dart';
-import 'package:lawlink360/core/features/client_module/find_lawyer/screens/book_appointment_screen.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
@@ -828,9 +827,10 @@ class _LawFirmCardState extends ConsumerState<_LawFirmCard> {
   }
 
   void _bookAppointment() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const BookAppointmentScreen()),
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Firm appointment booking will be available soon.'),
+      ),
     );
   }
 
@@ -1270,6 +1270,7 @@ class _PostCaseCard extends StatelessWidget {
     );
   }
 }
+
 class _RecentlyViewedEmptyState extends StatelessWidget {
   const _RecentlyViewedEmptyState();
 
@@ -1283,9 +1284,7 @@ class _RecentlyViewedEmptyState extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
         borderRadius: BorderRadius.circular(AppRadius.lg),
-        border: Border.all(
-          color: colorScheme.outline.withValues(alpha: 0.30),
-        ),
+        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.30)),
       ),
       child: Row(
         children: [
@@ -1361,9 +1360,7 @@ class _ErrorView extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             Text(
               'Unable to load lawyers',
-              style: AppTextStyles.title.copyWith(
-                color: colorScheme.onSurface,
-              ),
+              style: AppTextStyles.title.copyWith(color: colorScheme.onSurface),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.sm),
@@ -1375,10 +1372,7 @@ class _ErrorView extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.lg),
-            ElevatedButton(
-              onPressed: onRetry,
-              child: const Text('Try Again'),
-            ),
+            ElevatedButton(onPressed: onRetry, child: const Text('Try Again')),
           ],
         ),
       ),

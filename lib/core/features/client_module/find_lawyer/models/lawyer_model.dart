@@ -14,19 +14,22 @@ class Lawyer {
   final double consultationFee;
 
   /// Short description of the legal matters handled by the lawyer.
-  ///
-  /// Example:
-  /// Property disputes • Partition • Inheritance • Land litigation
-  ///
-  /// This is backend-ready and can later be populated from the
-  /// lawyer's professional profile.
   final String specializationSummary;
 
   /// Indicates whether the lawyer is currently available online.
-  ///
-  /// This can later be populated from the lawyer's live presence
-  /// or availability service.
   final bool isOnline;
+
+  /// Indicates whether the lawyer accepts instant consultations.
+  final bool instantConsultation;
+
+  /// Lawyer gender used for client-side directory filtering.
+  final String gender;
+
+  /// Highest court level at which the lawyer practices.
+  ///
+  /// Expected values:
+  /// lower, high, supreme
+  final String courtLevel;
 
   /// Indicates that LawLink360 has an active promotional placement
   /// for this lawyer.
@@ -55,6 +58,9 @@ class Lawyer {
     this.consultationFee = 0,
     this.specializationSummary = '',
     this.isOnline = false,
+    this.instantConsultation = false,
+    this.gender = '',
+    this.courtLevel = '',
     this.isFeatured = false,
     this.promotionStart,
     this.promotionEnd,
@@ -92,6 +98,9 @@ class Lawyer {
     double? consultationFee,
     String? specializationSummary,
     bool? isOnline,
+    bool? instantConsultation,
+    String? gender,
+    String? courtLevel,
     bool? isFeatured,
     DateTime? promotionStart,
     DateTime? promotionEnd,
@@ -112,10 +121,15 @@ class Lawyer {
       specializationSummary:
           specializationSummary ?? this.specializationSummary,
       isOnline: isOnline ?? this.isOnline,
+      instantConsultation:
+          instantConsultation ?? this.instantConsultation,
+      gender: gender ?? this.gender,
+      courtLevel: courtLevel ?? this.courtLevel,
       isFeatured: isFeatured ?? this.isFeatured,
       promotionStart: promotionStart ?? this.promotionStart,
       promotionEnd: promotionEnd ?? this.promotionEnd,
-      promotionPriority: promotionPriority ?? this.promotionPriority,
+      promotionPriority:
+          promotionPriority ?? this.promotionPriority,
     );
   }
 
@@ -138,14 +152,22 @@ class Lawyer {
       casesHandled: _readInt(map['casesHandled']),
       phone: _readString(map['phone']),
       email: _readString(map['email']),
-      consultationFee: _readDouble(map['consultationFee']),
+      consultationFee:
+          _readDouble(map['consultationFee']),
       specializationSummary:
           _readString(map['specializationSummary']),
       isOnline: _readBool(map['isOnline']),
+      instantConsultation:
+          _readBool(map['instantConsultation']),
+      gender: _readString(map['gender']),
+      courtLevel: _readString(map['courtLevel']),
       isFeatured: _readBool(map['isFeatured']),
-      promotionStart: _readDateTime(map['promotionStart']),
-      promotionEnd: _readDateTime(map['promotionEnd']),
-      promotionPriority: _readInt(map['promotionPriority']),
+      promotionStart:
+          _readDateTime(map['promotionStart']),
+      promotionEnd:
+          _readDateTime(map['promotionEnd']),
+      promotionPriority:
+          _readInt(map['promotionPriority']),
     );
   }
 
@@ -162,12 +184,20 @@ class Lawyer {
       'phone': phone,
       'email': email,
       'consultationFee': consultationFee,
-      'specializationSummary': specializationSummary,
+      'specializationSummary':
+          specializationSummary,
       'isOnline': isOnline,
+      'instantConsultation':
+          instantConsultation,
+      'gender': gender,
+      'courtLevel': courtLevel,
       'isFeatured': isFeatured,
-      'promotionStart': promotionStart?.toIso8601String(),
-      'promotionEnd': promotionEnd?.toIso8601String(),
-      'promotionPriority': promotionPriority,
+      'promotionStart':
+          promotionStart?.toIso8601String(),
+      'promotionEnd':
+          promotionEnd?.toIso8601String(),
+      'promotionPriority':
+          promotionPriority,
     };
   }
 }

@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class LawyerProfileHeader extends StatelessWidget {
-  const LawyerProfileHeader({super.key});
+  final Lawyer lawyer;
+
+  const LawyerProfileHeader({
+    super.key,
+    required this.lawyer,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 165,
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppRadius.xl),
@@ -62,36 +67,38 @@ class LawyerProfileHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 2,
-                right: 2,
-                child: Container(
-                  width: 25,
-                  height: 25,
-                  decoration: BoxDecoration(
-                    color: AppColors.success,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: AppColors.primary,
-                      width: 2,
+              if (lawyer.verified)
+                Positioned(
+                  bottom: 2,
+                  right: 2,
+                  child: Container(
+                    width: 25,
+                    height: 25,
+                    decoration: BoxDecoration(
+                      color: AppColors.success,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.primary,
+                        width: 2,
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.check_rounded,
+                      size: 14,
+                      color: Colors.white,
                     ),
                   ),
-                  child: const Icon(
-                    Icons.check_rounded,
-                    size: 14,
-                    color: Colors.white,
-                  ),
                 ),
-              ),
             ],
           ),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Adv. Ahmed Khan',
+                  lawyer.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.title.copyWith(
@@ -102,7 +109,9 @@ class LawyerProfileHeader extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.xs),
                 Text(
-                  'Criminal Lawyer',
+                  lawyer.speciality,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.bodySmall.copyWith(
                     color: AppColors.accent,
                     fontWeight: FontWeight.w600,
@@ -117,11 +126,15 @@ class LawyerProfileHeader extends StatelessWidget {
                       size: 18,
                     ),
                     const SizedBox(width: AppSpacing.xs),
-                    Text(
-                      '4.9 (124 Reviews)',
-                      style: AppTextStyles.bodySmall.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
+                    Flexible(
+                      child: Text(
+                        '${lawyer.rating.toStringAsFixed(1)} rating',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
@@ -137,7 +150,7 @@ class LawyerProfileHeader extends StatelessWidget {
                     const SizedBox(width: AppSpacing.xs),
                     Expanded(
                       child: Text(
-                        'Islamabad, Pakistan',
+                        lawyer.location,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.caption.copyWith(
@@ -161,7 +174,9 @@ class LawyerProfileHeader extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    '10+ Years Experience',
+                    '${lawyer.experience}+ Years Experience',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.caption.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,

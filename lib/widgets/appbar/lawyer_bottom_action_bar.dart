@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import '../../core/features/client_module/find_lawyer/screens/book_appointment_screen.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_radius.dart';
@@ -7,7 +8,12 @@ import '../../core/theme/app_spacing.dart';
 import '../../core/theme/app_text_styles.dart';
 
 class LawyerBottomActionBar extends StatelessWidget {
-  const LawyerBottomActionBar({super.key});
+  final Lawyer lawyer;
+
+  const LawyerBottomActionBar({
+    super.key,
+    required this.lawyer,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +80,9 @@ class LawyerBottomActionBar extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const BookAppointmentScreen(),
+                        builder: (context) => BookAppointmentScreen(
+                          lawyer: lawyer,
+                        ),
                       ),
                     );
                   },

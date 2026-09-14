@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
-import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
@@ -17,80 +16,44 @@ class LawyerAboutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    final name = lawyer?.name ?? 'Adv. Ahmed Khan';
-    final speciality =
-        lawyer?.speciality ?? 'Criminal and Civil Law';
-    final experience =
-        lawyer != null ? lawyer!.experience : 12;
-
-    final description = lawyer == null
-        ? 'Adv. Ahmed Khan is a highly experienced Criminal and Civil Lawyer with over 12 years of professional practice. He has successfully represented hundreds of clients before District Courts, High Courts and Special Tribunals. His approach focuses on professionalism, transparency and achieving practical legal solutions for clients.'
-        : '$name is a $speciality lawyer with $experience years of professional experience. LawLink360 connects clients with verified legal professionals so they can understand their options and choose the right legal support for their matter.';
+    final summary = lawyer?.specializationSummary.trim();
 
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.sm,
-      ),
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppRadius.xl),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(
-          color: colorScheme.outline.withValues(alpha: 0.45),
+          color: colorScheme.outline.withValues(alpha: 0.15),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(
-              alpha: isDark ? 0.20 : 0.06,
-            ),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  color: AppColors.accent.withValues(
-                    alpha: 0.10,
-                  ),
-                  borderRadius: BorderRadius.circular(
-                    AppRadius.md,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.person_outline_rounded,
-                  color: AppColors.accent,
-                  size: 22,
-                ),
-              ),
-              const SizedBox(width: AppSpacing.sm),
-              Expanded(
-                child: Text(
-                  'About Lawyer',
-                  style: AppTextStyles.title.copyWith(
-                    color: colorScheme.onSurface,
-                    fontSize: 19,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            'About Lawyer',
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
+            ),
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            description,
-            style: AppTextStyles.bodySmall.copyWith(
+            summary != null && summary.isNotEmpty
+                ? summary
+                : 'Experienced legal professional providing trusted legal consultation and representation.',
+            style: AppTextStyles.body.copyWith(
               color: colorScheme.onSurfaceVariant,
-              height: 1.65,
+              height: 1.5,
             ),
           ),
         ],

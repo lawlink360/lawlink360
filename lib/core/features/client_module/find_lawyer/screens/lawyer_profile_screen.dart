@@ -25,18 +25,14 @@ import 'package:lawlink360/widgets/navigation/lawyer_practice_chip.dart';
 class LawyerProfileScreen extends ConsumerStatefulWidget {
   final Lawyer? lawyer;
 
-  const LawyerProfileScreen({
-    super.key,
-    this.lawyer,
-  });
+  const LawyerProfileScreen({super.key, this.lawyer});
 
   @override
   ConsumerState<LawyerProfileScreen> createState() =>
       _LawyerProfileScreenState();
 }
 
-class _LawyerProfileScreenState
-    extends ConsumerState<LawyerProfileScreen> {
+class _LawyerProfileScreenState extends ConsumerState<LawyerProfileScreen> {
   @override
   void initState() {
     super.initState();
@@ -66,9 +62,7 @@ class _LawyerProfileScreenState
         surfaceTintColor: Colors.transparent,
         title: Text(
           'Lawyer Profile',
-          style: AppTextStyles.title.copyWith(
-            color: colorScheme.onSurface,
-          ),
+          style: AppTextStyles.title.copyWith(color: colorScheme.onSurface),
         ),
         leading: IconButton(
           onPressed: () {
@@ -87,32 +81,22 @@ class _LawyerProfileScreenState
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              LawyerProfileHeader(
-                lawyer: widget.lawyer,
-              ),
+              LawyerProfileHeader(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
               const QuickActions(),
               const SizedBox(height: AppSpacing.xxl),
 
-              LawyerAboutCard(
-                lawyer: widget.lawyer,
-              ),
+              LawyerAboutCard(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
-              StatsCard(
-                lawyer: widget.lawyer,
-              ),
+              StatsCard(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
-              LawyerPracticeChip(
-                lawyer: widget.lawyer,
-              ),
+              LawyerPracticeChip(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
-              LawyerEducationCard(
-                lawyer: widget.lawyer,
-              ),
+              LawyerEducationCard(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
               const LawyerExperienceCard(),
@@ -137,9 +121,7 @@ class _LawyerProfileScreenState
               const SizedBox(height: AppSpacing.xxl),
 
               Padding(
-                padding: const EdgeInsets.only(
-                  bottom: AppSpacing.xxl,
-                ),
+                padding: const EdgeInsets.only(bottom: AppSpacing.xxl),
                 child: Text(
                   'LawLink360 • Trusted Digital Legal Partner',
                   style: AppTextStyles.caption.copyWith(
@@ -151,7 +133,7 @@ class _LawyerProfileScreenState
           ),
         ),
       ),
-      bottomNavigationBar: const LawyerBottomActionBar(),
+      bottomNavigationBar: LawyerBottomActionBar(lawyer: widget.lawyer!),
     );
   }
 }

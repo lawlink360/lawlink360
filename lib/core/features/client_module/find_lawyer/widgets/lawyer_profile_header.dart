@@ -84,6 +84,8 @@ class LawyerProfileHeader extends StatelessWidget {
           Text(
             name,
             textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.headline.copyWith(
               color: colorScheme.onSurface,
               fontSize: 24,
@@ -93,6 +95,8 @@ class LawyerProfileHeader extends StatelessWidget {
           Text(
             speciality,
             textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.body.copyWith(
               color: colorScheme.onSurfaceVariant,
             ),
@@ -145,38 +149,37 @@ class LawyerProfileHeader extends StatelessWidget {
             height: 1,
           ),
           const SizedBox(height: AppSpacing.lg),
+
+          // Statistics are intentionally non-flexing so this header
+          // remains safe when placed inside constrained layouts.
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: _StatItem(
-                  value: rating,
-                  label: 'Rating',
-                  icon: Icons.star_rounded,
-                ),
+              _StatItem(
+                value: rating,
+                label: 'Rating',
+                icon: Icons.star_rounded,
               ),
               _VerticalDivider(
                 color: colorScheme.outline.withValues(
                   alpha: 0.45,
                 ),
               ),
-              Expanded(
-                child: _StatItem(
-                  value: experience,
-                  label: 'Years',
-                  icon: Icons.workspace_premium_rounded,
-                ),
+              _StatItem(
+                value: experience,
+                label: 'Years',
+                icon: Icons.workspace_premium_rounded,
               ),
               _VerticalDivider(
                 color: colorScheme.outline.withValues(
                   alpha: 0.45,
                 ),
               ),
-              Expanded(
-                child: _StatItem(
-                  value: cases,
-                  label: 'Cases',
-                  icon: Icons.gavel_rounded,
-                ),
+              _StatItem(
+                value: cases,
+                label: 'Cases',
+                icon: Icons.gavel_rounded,
               ),
             ],
           ),
@@ -219,6 +222,7 @@ class _StatItem extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Icon(
           icon,
@@ -228,6 +232,8 @@ class _StatItem extends StatelessWidget {
         const SizedBox(height: AppSpacing.xs),
         Text(
           value,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: AppTextStyles.title.copyWith(
             color: colorScheme.onSurface,
             fontSize: 20,
@@ -236,6 +242,8 @@ class _StatItem extends StatelessWidget {
         const SizedBox(height: AppSpacing.xs),
         Text(
           label,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: AppTextStyles.caption.copyWith(
             color: colorScheme.onSurfaceVariant,
             fontWeight: FontWeight.w600,

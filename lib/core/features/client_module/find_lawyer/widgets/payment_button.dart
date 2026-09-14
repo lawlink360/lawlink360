@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/booking_success_screen.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
@@ -7,13 +8,28 @@ import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class PaymentButton extends StatelessWidget {
-  const PaymentButton({super.key});
+  final Lawyer lawyer;
+  final String consultationType;
+  final String selectedDate;
+  final String selectedTime;
+
+  const PaymentButton({
+    super.key,
+    required this.lawyer,
+    this.consultationType = 'In Person',
+    this.selectedDate = 'Mon 21 July 2026',
+    this.selectedTime = '11:00 AM',
+  });
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
+    const platformFee = 300.0;
+    final total = lawyer.consultationFee + platformFee;
+
     return SafeArea(
+      top: false,
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
@@ -35,18 +51,15 @@ class PaymentButton extends StatelessWidget {
           height: AppSpacing.buttonHeight,
           child: ElevatedButton.icon(
             onPressed: () {
-              debugPrint('PAY BUTTON PRESSED');
-
-              final navigator = Navigator.of(context);
-
-              debugPrint('Navigator found: $navigator');
-
-              navigator.push(
+              Navigator.push(
+                context,
                 MaterialPageRoute(
-                  builder: (context) {
-                    debugPrint('BUILDING SUCCESS SCREEN');
-                    return const BookingSuccessScreen();
-                  },
+                  builder: (_) => BookingSuccessScreen(
+                    lawyer: lawyer,
+                    consultationType: consultationType,
+                    selectedDate: selectedDate,
+                    selectedTime: selectedTime,
+                  ),
                 ),
               );
             },
@@ -55,7 +68,7 @@ class PaymentButton extends StatelessWidget {
               size: 20,
             ),
             label: Text(
-              'Pay PKR 5,300',
+              'Pay PKR ${total.toStringAsFixed(0)}',
               style: AppTextStyles.button.copyWith(
                 color: Colors.white,
               ),
@@ -68,9 +81,7 @@ class PaymentButton extends StatelessWidget {
                 horizontal: AppSpacing.lg,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  AppRadius.md,
-                ),
+                borderRadius: BorderRadius.circular(AppRadius.md),
               ),
             ),
           ),

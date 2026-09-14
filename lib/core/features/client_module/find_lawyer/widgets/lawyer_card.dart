@@ -58,15 +58,17 @@ class _LawyerCardState extends ConsumerState<LawyerCard> {
   }
 
   void _bookAppointment() {
-    _recordView();
+  _recordView();
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => const BookAppointmentScreen(),
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => BookAppointmentScreen(
+        lawyer: lawyer,
       ),
-    );
-  }
+    ),
+  );
+}
 
   Future<void> _shareLawyer() async {
     final feeText = lawyer.consultationFee > 0

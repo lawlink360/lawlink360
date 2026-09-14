@@ -5,8 +5,31 @@ import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
-class BookTimeSlot extends StatelessWidget {
-  const BookTimeSlot({super.key});
+class BookTimeSlot extends StatefulWidget {
+  final ValueChanged<String>? onChanged;
+
+  const BookTimeSlot({
+    super.key,
+    this.onChanged,
+  });
+
+  @override
+  State<BookTimeSlot> createState() => _BookTimeSlotState();
+}
+
+class _BookTimeSlotState extends State<BookTimeSlot> {
+  int _selectedIndex = 2;
+
+  final List<String> _times = const [
+    '09:00 AM',
+    '10:00 AM',
+    '11:00 AM',
+    '12:00 PM',
+    '02:00 PM',
+    '03:00 PM',
+    '04:00 PM',
+    '05:00 PM',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +49,22 @@ class BookTimeSlot extends StatelessWidget {
         Wrap(
           spacing: AppSpacing.sm,
           runSpacing: AppSpacing.sm,
-          children: const [
-            TimeChip(time: '09:00 AM'),
-            TimeChip(time: '10:00 AM'),
-            TimeChip(
-              time: '11:00 AM',
-              selected: true,
-            ),
-            TimeChip(time: '12:00 PM'),
-            TimeChip(time: '02:00 PM'),
-            TimeChip(time: '03:00 PM'),
-            TimeChip(time: '04:00 PM'),
-            TimeChip(time: '05:00 PM'),
-          ],
+          children: List.generate(
+            _times.length,
+            (index) {
+              return TimeChip(
+                time: _times[index],
+                selected: _selectedIndex == index,
+                onTap: () {
+                  setState(() {
+                    _selectedIndex = index;
+                  });
+
+                  widget.onChanged?.call(_times[index]);
+                },
+              );
+            },
+          ),
         ),
       ],
     );
@@ -48,11 +74,13 @@ class BookTimeSlot extends StatelessWidget {
 class TimeChip extends StatelessWidget {
   final String time;
   final bool selected;
+  final VoidCallback? onTap;
 
   const TimeChip({
     super.key,
     required this.time,
     this.selected = false,
+    this.onTap,
   });
 
   @override
@@ -71,33 +99,40 @@ class TimeChip extends StatelessWidget {
         ? AppColors.accent
         : colorScheme.outline.withValues(alpha: 0.35);
 
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      width: 105,
-      height: 48,
-      decoration: BoxDecoration(
-        color: backgroundColor,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
         borderRadius: BorderRadius.circular(AppRadius.md),
-        border: Border.all(
-          color: borderColor,
-          width: selected ? 1.3 : 1,
-        ),
-        boxShadow: selected
-            ? [
-                BoxShadow(
-                  color: AppColors.accent.withValues(alpha: 0.16),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ]
-            : null,
-      ),
-      child: Center(
-        child: Text(
-          time,
-          style: AppTextStyles.bodySmall.copyWith(
-            color: foregroundColor,
-            fontWeight: FontWeight.w700,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 105,
+          height: 48,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(AppRadius.md),
+            border: Border.all(
+              color: borderColor,
+              width: selected ? 1.3 : 1,
+            ),
+            boxShadow: selected
+                ? [
+                    BoxShadow(
+                      color: AppColors.accent.withValues(alpha: 0.16),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ]
+                : null,
+          ),
+          child: Center(
+            child: Text(
+              time,
+              style: AppTextStyles.bodySmall.copyWith(
+                color: foregroundColor,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
         ),
       ),

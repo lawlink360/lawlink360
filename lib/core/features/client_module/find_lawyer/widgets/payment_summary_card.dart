@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
+
 import '../../../../theme/app_colors.dart';
 import '../../../../theme/app_radius.dart';
 import '../../../../theme/app_spacing.dart';
 import '../../../../theme/app_text_styles.dart';
 
 class PaymentSummaryCard extends StatelessWidget {
-  const PaymentSummaryCard({super.key});
+  final Lawyer lawyer;
+  final String consultationType;
+  final String selectedDate;
+  final String selectedTime;
+
+  const PaymentSummaryCard({
+    super.key,
+    required this.lawyer,
+    this.consultationType = 'In Person',
+    this.selectedDate = 'Mon 21 July 2026',
+    this.selectedTime = '11:00 AM',
+  });
 
   Widget _row(
     BuildContext context,
@@ -52,9 +65,17 @@ class PaymentSummaryCard extends StatelessWidget {
     );
   }
 
+  String _formatAmount(double amount) {
+    return 'PKR ${amount.toStringAsFixed(0)}';
+  }
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+
+    const platformFee = 300.0;
+    final consultationFee = lawyer.consultationFee;
+    final total = consultationFee + platformFee;
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
@@ -80,7 +101,7 @@ class PaymentSummaryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Appointment Summary",
+            'Appointment Summary',
             style: AppTextStyles.title.copyWith(
               color: colorScheme.onSurface,
               fontWeight: FontWeight.w700,
@@ -98,14 +119,14 @@ class PaymentSummaryCard extends StatelessWidget {
               ),
             ),
             title: Text(
-              "Adv. Ahmed Khan",
+              lawyer.name,
               style: AppTextStyles.body.copyWith(
                 color: colorScheme.onSurface,
                 fontWeight: FontWeight.w700,
               ),
             ),
             subtitle: Text(
-              "Criminal Lawyer",
+              lawyer.speciality,
               style: AppTextStyles.caption.copyWith(
                 color: colorScheme.onSurfaceVariant,
               ),
@@ -116,11 +137,31 @@ class PaymentSummaryCard extends StatelessWidget {
             height: AppSpacing.lg,
             color: colorScheme.outline.withValues(alpha: 0.35),
           ),
-          _row(context, "Consultation", "Video Call"),
-          _row(context, "Date", "20 July 2026"),
-          _row(context, "Time", "11:00 AM"),
-          _row(context, "Consultation Fee", "PKR 2,300"),
-          _row(context, "Service Charges", "PKR 200"),
+          _row(
+            context,
+            'Consultation',
+            consultationType,
+          ),
+          _row(
+            context,
+            'Date',
+            selectedDate,
+          ),
+          _row(
+            context,
+            'Time',
+            selectedTime,
+          ),
+          _row(
+            context,
+            'Consultation Fee',
+            _formatAmount(consultationFee),
+          ),
+          _row(
+            context,
+            'Service Charges',
+            _formatAmount(platformFee),
+          ),
           const SizedBox(height: AppSpacing.xs),
           Divider(
             height: AppSpacing.lg,
@@ -128,8 +169,8 @@ class PaymentSummaryCard extends StatelessWidget {
           ),
           _row(
             context,
-            "Total",
-            "PKR 2,500",
+            'Total',
+            _formatAmount(total),
             isTotal: true,
             color: AppColors.accent,
           ),
