@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class LawyerRatingSummaryCard extends StatelessWidget {
-  const LawyerRatingSummaryCard({super.key});
+  final Lawyer? lawyer;
+
+  const LawyerRatingSummaryCard({
+    super.key,
+    this.lawyer,
+  });
 
   Widget ratingBar(
     BuildContext context,
@@ -35,14 +41,18 @@ class LawyerRatingSummaryCard extends StatelessWidget {
         const SizedBox(width: AppSpacing.xs),
         Expanded(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(AppRadius.pill),
+            borderRadius: BorderRadius.circular(
+              AppRadius.pill,
+            ),
             child: LinearProgressIndicator(
               value: value,
               minHeight: 8,
-              backgroundColor: colorScheme.outline.withValues(
+              backgroundColor:
+                  colorScheme.outline.withValues(
                 alpha: 0.18,
               ),
-              valueColor: const AlwaysStoppedAnimation<Color>(
+              valueColor:
+                  const AlwaysStoppedAnimation<Color>(
                 AppColors.accent,
               ),
             ),
@@ -55,7 +65,11 @@ class LawyerRatingSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark;
+
+    final rating =
+        lawyer?.rating.toStringAsFixed(1) ?? '4.9';
 
     return Container(
       margin: const EdgeInsets.symmetric(
@@ -65,9 +79,13 @@ class LawyerRatingSummaryCard extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppRadius.xl),
+        borderRadius: BorderRadius.circular(
+          AppRadius.xl,
+        ),
         border: Border.all(
-          color: colorScheme.outline.withValues(alpha: 0.45),
+          color: colorScheme.outline.withValues(
+            alpha: 0.45,
+          ),
         ),
         boxShadow: [
           BoxShadow(
@@ -87,8 +105,12 @@ class LawyerRatingSummaryCard extends StatelessWidget {
                 width: 42,
                 height: 42,
                 decoration: BoxDecoration(
-                  color: AppColors.accent.withValues(alpha: 0.10),
-                  borderRadius: BorderRadius.circular(AppRadius.md),
+                  color: AppColors.accent.withValues(
+                    alpha: 0.10,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    AppRadius.md,
+                  ),
                 ),
                 child: const Icon(
                   Icons.star_rounded,
@@ -99,7 +121,7 @@ class LawyerRatingSummaryCard extends StatelessWidget {
               const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Text(
-                  'Client Ratings',
+                  'Client Ratings & Reviews',
                   style: AppTextStyles.title.copyWith(
                     color: colorScheme.onSurface,
                     fontSize: 19,
@@ -108,47 +130,34 @@ class LawyerRatingSummaryCard extends StatelessWidget {
               ),
             ],
           ),
+
           const SizedBox(height: AppSpacing.lg),
+
           Text(
-            '4.9',
+            rating,
             style: AppTextStyles.displayLarge.copyWith(
               color: AppColors.accent,
               fontSize: 48,
               height: 1,
             ),
           ),
+
           const SizedBox(height: AppSpacing.xs),
-          const Row(
+
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
+            children: List.generate(
+              5,
+              (index) => const Icon(
                 Icons.star_rounded,
                 color: AppColors.accent,
                 size: 21,
               ),
-              Icon(
-                Icons.star_rounded,
-                color: AppColors.accent,
-                size: 21,
-              ),
-              Icon(
-                Icons.star_rounded,
-                color: AppColors.accent,
-                size: 21,
-              ),
-              Icon(
-                Icons.star_rounded,
-                color: AppColors.accent,
-                size: 21,
-              ),
-              Icon(
-                Icons.star_rounded,
-                color: AppColors.accent,
-                size: 21,
-              ),
-            ],
+            ),
           ),
+
           const SizedBox(height: AppSpacing.sm),
+
           Text(
             'Based on 428 verified client reviews',
             style: AppTextStyles.bodySmall.copyWith(
@@ -156,7 +165,76 @@ class LawyerRatingSummaryCard extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
+
+          const SizedBox(height: AppSpacing.md),
+
+          Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(
+              AppRadius.md,
+            ),
+            child: InkWell(
+              onTap: () {
+                _showReviewSummary(context);
+              },
+              borderRadius: BorderRadius.circular(
+                AppRadius.md,
+              ),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.sm,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.accent.withValues(
+                    alpha: 0.07,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    AppRadius.md,
+                  ),
+                  border: Border.all(
+                    color: AppColors.accent.withValues(
+                      alpha: 0.25,
+                    ),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.rate_review_outlined,
+                      color: AppColors.accent,
+                      size: 19,
+                    ),
+                    const SizedBox(
+                      width: AppSpacing.xs,
+                    ),
+                    Text(
+                      'View all reviews',
+                      style:
+                          AppTextStyles.bodySmall.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: AppSpacing.xs,
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: AppColors.accent,
+                      size: 14,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
           const SizedBox(height: AppSpacing.lg),
+
           ratingBar(context, 5, 0.94),
           const SizedBox(height: AppSpacing.sm),
           ratingBar(context, 4, 0.75),
@@ -168,6 +246,71 @@ class LawyerRatingSummaryCard extends StatelessWidget {
           ratingBar(context, 1, 0.03),
         ],
       ),
+    );
+  }
+
+  void _showReviewSummary(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (context) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg,
+              AppSpacing.sm,
+              AppSpacing.lg,
+              AppSpacing.lg,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.rate_review_rounded,
+                  color: AppColors.accent,
+                  size: 32,
+                ),
+                const SizedBox(
+                  height: AppSpacing.sm,
+                ),
+                Text(
+                  'Client Reviews',
+                  style: AppTextStyles.title.copyWith(
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface,
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.sm,
+                ),
+                Text(
+                  '428 verified clients have reviewed this lawyer.',
+                  textAlign: TextAlign.center,
+                  style:
+                      AppTextStyles.bodySmall.copyWith(
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurfaceVariant,
+                  ),
+                ),
+                const SizedBox(
+                  height: AppSpacing.lg,
+                ),
+                FilledButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.check_rounded,
+                  ),
+                  label: const Text('Done'),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

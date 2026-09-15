@@ -6,7 +6,7 @@ import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
-class LawyerProfileHeader extends StatelessWidget {
+class LawyerProfileHeader extends StatefulWidget {
   final Lawyer? lawyer;
 
   const LawyerProfileHeader({
@@ -15,19 +15,39 @@ class LawyerProfileHeader extends StatelessWidget {
   });
 
   @override
+  State<LawyerProfileHeader> createState() =>
+      _LawyerProfileHeaderState();
+}
+
+class _LawyerProfileHeaderState
+    extends State<LawyerProfileHeader> {
+  bool _isFavorite = false;
+
+  @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark;
+
+    final lawyer = widget.lawyer;
 
     final name = lawyer?.name ?? 'Adv. Ahmed Khan';
     final speciality =
         lawyer?.speciality ?? 'Criminal & Civil Lawyer';
-    final rating = lawyer?.rating.toStringAsFixed(1) ?? '4.9';
+
+    final rating =
+        lawyer?.rating.toStringAsFixed(1) ?? '4.9';
+
     final experience =
-        lawyer != null ? '${lawyer!.experience}+' : '12+';
+        lawyer != null ? '${lawyer.experience}+' : '12+';
+
     final cases =
-        lawyer != null ? '${lawyer!.casesHandled}+' : '560+';
+        lawyer != null ? '${lawyer.casesHandled}+' : '560+';
+
     final verified = lawyer?.verified ?? true;
+
+    final courtLevel =
+        _formatCourtLevel(lawyer?.courtLevel);
 
     return Container(
       margin: const EdgeInsets.symmetric(
@@ -52,6 +72,53 @@ class LawyerProfileHeader extends StatelessWidget {
       ),
       child: Column(
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              _HeaderActionButton(
+                icon: _isFavorite
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_border_rounded,
+                color: _isFavorite
+                    ? Colors.redAccent
+                    : colorScheme.onSurface,
+                tooltip: _isFavorite
+                    ? 'Remove from favorites'
+                    : 'Add to favorites',
+                onPressed: () {
+                  setState(() {
+                    _isFavorite = !_isFavorite;
+                  });
+
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          _isFavorite
+                              ? 'Lawyer added to favorites'
+                              : 'Lawyer removed from favorites',
+                        ),
+                        duration:
+                            const Duration(seconds: 1),
+                      ),
+                    );
+                },
+              ),
+              const SizedBox(width: AppSpacing.xs),
+              _HeaderActionButton(
+                icon: Icons.share_outlined,
+                color: colorScheme.onSurface,
+                tooltip: 'Share lawyer',
+                onPressed: () {
+                  _showShareDialog(context, name);
+                },
+              ),
+            ],
+          ),
+
+          const SizedBox(height: AppSpacing.sm),
+
           Container(
             width: 104,
             height: 104,
@@ -80,18 +147,38 @@ class LawyerProfileHeader extends StatelessWidget {
               color: AppColors.accent,
             ),
           ),
+
           const SizedBox(height: AppSpacing.md),
-          Text(
-            name,
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.headline.copyWith(
-              color: colorScheme.onSurface,
-              fontSize: 24,
-            ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Text(
+                  name,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.headline.copyWith(
+                    color: colorScheme.onSurface,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+              if (verified) ...[
+                const SizedBox(width: AppSpacing.xs),
+                const Icon(
+                  Icons.verified_rounded,
+                  color: AppColors.accent,
+                  size: 22,
+                ),
+              ],
+            ],
           ),
+
           const SizedBox(height: AppSpacing.xs),
+
           Text(
             speciality,
             textAlign: TextAlign.center,
@@ -101,71 +188,51 @@ class LawyerProfileHeader extends StatelessWidget {
               color: colorScheme.onSurfaceVariant,
             ),
           ),
-          const SizedBox(height: AppSpacing.md),
-          if (verified)
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.md,
-                vertical: AppSpacing.xs,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.accent.withValues(
-                  alpha: 0.10,
-                ),
-                borderRadius: BorderRadius.circular(
-                  AppRadius.pill,
-                ),
-                border: Border.all(
-                  color: AppColors.accent.withValues(
-                    alpha: 0.35,
-                  ),
-                ),
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.verified_rounded,
-                    color: AppColors.accent,
-                    size: 18,
-                  ),
-                  SizedBox(width: AppSpacing.xs),
-                  Text(
-                    'Verified Lawyer',
-                    style: TextStyle(
-                      color: AppColors.accent,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
+
+          const SizedBox(height: AppSpacing.sm),
+
+          Text(
+            'LL.B • LL.M',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.bodySmall.copyWith(
+              color: AppColors.accent,
+              fontWeight: FontWeight.w700,
             ),
+          ),
+
           const SizedBox(height: AppSpacing.lg),
+
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: AppSpacing.xs,
+            runSpacing: AppSpacing.xs,
+            children: [
+              _InfoBadge(
+                icon: Icons.star_rounded,
+                text: '$rating Rating',
+              ),
+              _InfoBadge(
+                icon: Icons.rate_review_outlined,
+                text: '428 Reviews',
+              ),
+            ],
+          ),
+
+          const SizedBox(height: AppSpacing.lg),
+
           Divider(
             color: colorScheme.outline.withValues(
               alpha: 0.45,
             ),
             height: 1,
           ),
+
           const SizedBox(height: AppSpacing.lg),
 
-          // Statistics are intentionally non-flexing so this header
-          // remains safe when placed inside constrained layouts.
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _StatItem(
-                value: rating,
-                label: 'Rating',
-                icon: Icons.star_rounded,
-              ),
-              _VerticalDivider(
-                color: colorScheme.outline.withValues(
-                  alpha: 0.45,
-                ),
-              ),
               _StatItem(
                 value: experience,
                 label: 'Years',
@@ -181,7 +248,164 @@ class LawyerProfileHeader extends StatelessWidget {
                 label: 'Cases',
                 icon: Icons.gavel_rounded,
               ),
+              _VerticalDivider(
+                color: colorScheme.outline.withValues(
+                  alpha: 0.45,
+                ),
+              ),
+              _StatItem(
+                value: courtLevel,
+                label: 'Court',
+                icon: Icons.account_balance_rounded,
+              ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatCourtLevel(String? value) {
+    switch (value?.trim().toLowerCase()) {
+      case 'lower':
+        return 'Lower';
+      case 'high':
+        return 'High';
+      case 'supreme':
+        return 'Supreme';
+      default:
+        return 'High';
+    }
+  }
+
+  void _showShareDialog(
+    BuildContext context,
+    String name,
+  ) {
+    showDialog<void>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Share Lawyer'),
+          content: Text(
+            'Share $name with your contacts.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Close'),
+            ),
+            FilledButton.icon(
+              onPressed: () {
+                Navigator.pop(context);
+
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    const SnackBar(
+                      content: Text(
+                        'Share link ready',
+                      ),
+                      duration:
+                          Duration(seconds: 1),
+                    ),
+                  );
+              },
+              icon: const Icon(
+                Icons.share_outlined,
+              ),
+              label: const Text('Share'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _HeaderActionButton extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final String tooltip;
+  final VoidCallback onPressed;
+
+  const _HeaderActionButton({
+    required this.icon,
+    required this.color,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme =
+        Theme.of(context).colorScheme;
+
+    return Material(
+      color: colorScheme.surfaceContainerHighest
+          .withValues(alpha: 0.55),
+      shape: const CircleBorder(),
+      child: IconButton(
+        onPressed: onPressed,
+        tooltip: tooltip,
+        icon: Icon(
+          icon,
+          color: color,
+          size: 21,
+        ),
+      ),
+    );
+  }
+}
+
+class _InfoBadge extends StatelessWidget {
+  final IconData icon;
+  final String text;
+
+  const _InfoBadge({
+    required this.icon,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme =
+        Theme.of(context).colorScheme;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.sm,
+        vertical: AppSpacing.xs,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.accent.withValues(
+          alpha: 0.10,
+        ),
+        borderRadius:
+            BorderRadius.circular(AppRadius.pill),
+        border: Border.all(
+          color: AppColors.accent.withValues(
+            alpha: 0.35,
+          ),
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            color: AppColors.accent,
+            size: 17,
+          ),
+          const SizedBox(width: AppSpacing.xs),
+          Text(
+            text,
+            style: AppTextStyles.caption.copyWith(
+              color: colorScheme.onSurface,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ],
       ),
@@ -219,37 +443,41 @@ class _StatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final colorScheme =
+        Theme.of(context).colorScheme;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          icon,
-          color: AppColors.accent,
-          size: 19,
-        ),
-        const SizedBox(height: AppSpacing.xs),
-        Text(
-          value,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: AppTextStyles.title.copyWith(
-            color: colorScheme.onSurface,
-            fontSize: 20,
+    return Flexible(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            color: AppColors.accent,
+            size: 19,
           ),
-        ),
-        const SizedBox(height: AppSpacing.xs),
-        Text(
-          label,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: AppTextStyles.caption.copyWith(
-            color: colorScheme.onSurfaceVariant,
-            fontWeight: FontWeight.w600,
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            value,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
+              fontSize: 18,
+            ),
           ),
-        ),
-      ],
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyles.caption.copyWith(
+              color: colorScheme.onSurfaceVariant,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

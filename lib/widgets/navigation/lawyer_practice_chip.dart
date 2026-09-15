@@ -17,7 +17,8 @@ class LawyerPracticeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark;
 
     final practiceAreas = lawyer == null
         ? const [
@@ -39,9 +40,13 @@ class LawyerPracticeChip extends StatelessWidget {
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppRadius.xl),
+        borderRadius: BorderRadius.circular(
+          AppRadius.xl,
+        ),
         border: Border.all(
-          color: colorScheme.outline.withValues(alpha: 0.5),
+          color: colorScheme.outline.withValues(
+            alpha: 0.45,
+          ),
         ),
         boxShadow: [
           BoxShadow(
@@ -56,11 +61,36 @@ class LawyerPracticeChip extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Practice Areas',
-            style: AppTextStyles.title.copyWith(
-              color: colorScheme.onSurface,
-            ),
+          Row(
+            children: [
+              Container(
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                  color: AppColors.accent.withValues(
+                    alpha: 0.10,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    AppRadius.md,
+                  ),
+                ),
+                child: const Icon(
+                  Icons.gavel_rounded,
+                  color: AppColors.accent,
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: Text(
+                  'Specialization',
+                  style: AppTextStyles.title.copyWith(
+                    color: colorScheme.onSurface,
+                    fontSize: 19,
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: AppSpacing.md),
           Wrap(
@@ -77,7 +107,9 @@ class LawyerPracticeChip extends StatelessWidget {
     );
   }
 
-  static List<String> _practiceAreasFor(String speciality) {
+  static List<String> _practiceAreasFor(
+    String speciality,
+  ) {
     final value = speciality.trim();
 
     if (value.isEmpty) {
@@ -112,12 +144,15 @@ class _Chip extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ),
       ),
-      backgroundColor: AppColors.accent.withValues(alpha: 0.08),
+      backgroundColor:
+          AppColors.accent.withValues(alpha: 0.08),
       side: BorderSide(
         color: AppColors.accent.withValues(alpha: 0.55),
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppRadius.pill),
+        borderRadius: BorderRadius.circular(
+          AppRadius.pill,
+        ),
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.xs,

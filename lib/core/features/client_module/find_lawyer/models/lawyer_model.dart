@@ -1,3 +1,4 @@
+
 class Lawyer {
   final String id;
   final String name;
@@ -12,6 +13,12 @@ class Lawyer {
 
   /// Standard consultation fee shown to clients.
   final double consultationFee;
+
+  /// Optional discount percentage offered by the lawyer.
+  final double discountPercent;
+
+  /// Expected response time shown to clients.
+  final String responseTime;
 
   /// Short description of the legal matters handled by the lawyer.
   final String specializationSummary;
@@ -56,6 +63,8 @@ class Lawyer {
     this.phone = '',
     this.email = '',
     this.consultationFee = 0,
+    this.discountPercent = 0,
+    this.responseTime = '15 mins',
     this.specializationSummary = '',
     this.isOnline = false,
     this.instantConsultation = false,
@@ -96,6 +105,8 @@ class Lawyer {
     String? phone,
     String? email,
     double? consultationFee,
+    double? discountPercent,
+    String? responseTime,
     String? specializationSummary,
     bool? isOnline,
     bool? instantConsultation,
@@ -118,6 +129,8 @@ class Lawyer {
       phone: phone ?? this.phone,
       email: email ?? this.email,
       consultationFee: consultationFee ?? this.consultationFee,
+      discountPercent: discountPercent ?? this.discountPercent,
+      responseTime: responseTime ?? this.responseTime,
       specializationSummary:
           specializationSummary ?? this.specializationSummary,
       isOnline: isOnline ?? this.isOnline,
@@ -154,6 +167,14 @@ class Lawyer {
       email: _readString(map['email']),
       consultationFee:
           _readDouble(map['consultationFee']),
+      discountPercent:
+          _readDouble(map['discountPercent']),
+      responseTime:
+          _readString(
+            map['responseTime'],
+          ).isEmpty
+              ? '15 mins'
+              : _readString(map['responseTime']),
       specializationSummary:
           _readString(map['specializationSummary']),
       isOnline: _readBool(map['isOnline']),
@@ -184,6 +205,8 @@ class Lawyer {
       'phone': phone,
       'email': email,
       'consultationFee': consultationFee,
+      'discountPercent': discountPercent,
+      'responseTime': responseTime,
       'specializationSummary':
           specializationSummary,
       'isOnline': isOnline,
