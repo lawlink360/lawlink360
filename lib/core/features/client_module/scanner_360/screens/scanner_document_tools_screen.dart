@@ -6,6 +6,7 @@ import '../widgets/tools/scanner_tool_tile.dart';
 import 'document_tools/scanner_document_ocr_screen.dart';
 import 'document_tools/scanner_document_print_screen.dart';
 import 'document_tools/scanner_document_share_screen.dart';
+import 'document_tools/scanner_document_annotate_screen.dart';
 
 /// Document Tools home for Scanner 360.
 ///
@@ -26,6 +27,7 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       icon: Icons.draw_outlined,
       title: 'Annotate',
       subtitle: 'Add notes, highlights and shapes.',
+      implemented: true,
     ),
     _DocumentTool(
       icon: Icons.gesture,
@@ -107,6 +109,14 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const ScannerDocumentShareScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.title == 'Annotate') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => const ScannerDocumentAnnotateScreen(),
         ),
       );
       return;
