@@ -1,0 +1,15 @@
+enum ScannerDocumentCategory {
+  courtDocument,
+  legalNotice,
+  contract,
+  cnicOrDocumentScan,
+  propertyDocument,
+  agreement,
+  application,
+  affidavit,
+  judgment,
+  evidenceDocument,
+  caseFile,
+  legalCorrespondence,
+  other,
+}

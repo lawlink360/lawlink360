@@ -59,6 +59,7 @@ class ScannerPdfToImageService {
   /// Converts the PDF at [pdfPath].
   ///
   /// [pages] is a 1-based, ascending list of page numbers to render.
+  /// An empty list means all pages in the PDF.
   /// [format] selects PNG or JPEG.
   /// [dpi] must be 72, 150, or 300.
   ///
@@ -70,11 +71,6 @@ class ScannerPdfToImageService {
     required ScannerPdfToImageFormat format,
     required int dpi,
   }) async {
-    if (pages.isEmpty) {
-      throw const ScannerPdfToImageException(
-        'No pages were selected for conversion.',
-      );
-    }
     if (dpi != 72 && dpi != 150 && dpi != 300) {
       throw ScannerPdfToImageException(
         'Unsupported DPI: $dpi. Use 72, 150, or 300.',
@@ -136,7 +132,11 @@ class ScannerPdfToImageService {
 
       final totalPages = widths.length;
 
-      for (final pageNumber in pages) {
+      final resolvedPages = pages.isEmpty
+          ? List<int>.generate(totalPages, (i) => i + 1)
+          : pages;
+
+      for (final pageNumber in resolvedPages) {
         if (pageNumber < 1 || pageNumber > totalPages) {
           throw ScannerPdfToImageException(
             'Page $pageNumber is out of range (1..$totalPages).',
@@ -146,7 +146,7 @@ class ScannerPdfToImageService {
 
       final imagePaths = <String>[];
 
-      for (final pageNumber in pages) {
+      for (final pageNumber in resolvedPages) {
         final widthPoints = _toDouble(widths[pageNumber - 1]);
         final heightPoints = _toDouble(heights[pageNumber - 1]);
 

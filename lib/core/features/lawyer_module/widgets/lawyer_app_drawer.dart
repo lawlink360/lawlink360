@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lawlink360/core/features/client_module/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/appointments/screens/lawyer_appointment_screen.dart';
@@ -12,7 +11,7 @@ import 'package:lawlink360/core/features/client_module/application/screens/appli
 import 'package:lawlink360/core/features/lawyer_module/lawyer_profile/screens/lawyer_profile_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/client_queries/screens/client_queries_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_documents/screens/lawyer_documents_screen.dart';
-
+import 'package:lawlink360/core/features/client_module/scanner_360/screens/scanner_home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lawlink360/auth/providers/auth_state_provider.dart';
 import 'package:lawlink360/auth/screens/login_screen.dart';
@@ -292,7 +291,7 @@ class LawyerAppDrawer extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const ScannerConverterHomeScreen(),
+                          builder: (_) => const ScannerHomeScreen(),
                         ),
                       );
                     },

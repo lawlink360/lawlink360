@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/find_lawyer_screen.dart';
 import 'package:lawlink360/core/features/client_module/procedure_guide/screens/guider_home_screen.dart';
-import 'package:lawlink360/core/features/client_module/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
+import 'package:lawlink360/core/features/client_module/scanner_360/screens/scanner_home_screen.dart';
 import '../cards/quick_action_card.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 
@@ -73,7 +73,7 @@ class QuickActionsGrid extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => const ScannerConverterHomeScreen(),
+                  builder: (_) => const ScannerHomeScreen(),
                 ),
               );
             },

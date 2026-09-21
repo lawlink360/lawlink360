@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:lawlink360/widgets/cards/quick_action_card.dart';
-import 'package:lawlink360/core/features/client_module/scanner/screens/scanner_converter_home_screen.dart';
 import 'package:lawlink360/core/features/client_module/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/client_module/procedure_guide/screens/guider_home_screen.dart';
@@ -11,6 +10,7 @@ import 'package:lawlink360/core/features/lawyer_module/lawyer_clients/screens/la
 import 'package:lawlink360/core/features/lawyer_module/lawyer_drafting/screens/drafting_dashboard_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_law/screens/law_dashboard_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_judgments/screens/judgment_home_screen.dart';
+import 'package:lawlink360/core/features/client_module/scanner_360/screens/scanner_home_screen.dart';
 
 class LawyerQuickActions extends StatelessWidget {
   const LawyerQuickActions({super.key});
@@ -121,7 +121,7 @@ class LawyerQuickActions extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => const ScannerConverterHomeScreen(),
+                  builder: (_) => const ScannerHomeScreen(),
                 ),
               );
             },
