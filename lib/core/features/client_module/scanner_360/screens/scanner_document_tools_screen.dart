@@ -5,6 +5,7 @@ import '../../../../../core/theme/app_spacing.dart';
 import '../widgets/tools/scanner_tool_tile.dart';
 import 'document_tools/scanner_document_ocr_screen.dart';
 import 'document_tools/scanner_document_print_screen.dart';
+import 'document_tools/scanner_document_share_screen.dart';
 
 /// Document Tools home for Scanner 360.
 ///
@@ -46,6 +47,7 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       icon: Icons.share_outlined,
       title: 'Share',
       subtitle: 'Share the document with others.',
+      implemented: true,
     ),
   ];
 
@@ -97,6 +99,14 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const ScannerDocumentPrintScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.title == 'Share') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => const ScannerDocumentShareScreen(),
         ),
       );
       return;
