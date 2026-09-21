@@ -16,20 +16,6 @@ class LawyerEducationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (lawyer != null) {
-      return _buildProfessionalInformation(
-        context,
-        lawyer!,
-      );
-    }
-
-    return _buildDemoEducation(context);
-  }
-
-  Widget _buildProfessionalInformation(
-    BuildContext context,
-    Lawyer lawyer,
-  ) {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Container(
@@ -59,78 +45,7 @@ class LawyerEducationCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Professional Information',
-            style: AppTextStyles.title.copyWith(
-              color: colorScheme.onSurface,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.lg),
-          _item(
-            context,
-            Icons.gavel_rounded,
-            'Speciality',
-            lawyer.speciality.isEmpty
-                ? 'Legal Practice'
-                : lawyer.speciality,
-          ),
-          const Divider(
-            height: AppSpacing.xxl,
-          ),
-          _item(
-            context,
-            Icons.workspace_premium_rounded,
-            'Professional Experience',
-            '${lawyer.experience} years',
-          ),
-          const Divider(
-            height: AppSpacing.xxl,
-          ),
-          _item(
-            context,
-            lawyer.verified
-                ? Icons.verified_rounded
-                : Icons.info_outline_rounded,
-            'Verification Status',
-            lawyer.verified
-                ? 'Verified Lawyer'
-                : 'Verification pending',
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDemoEducation(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-      ),
-      padding: const EdgeInsets.all(AppSpacing.lg),
-      decoration: BoxDecoration(
-        color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppRadius.xl),
-        border: Border.all(
-          color: colorScheme.outline.withValues(alpha: 0.5),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(
-              alpha: Theme.of(context).brightness == Brightness.dark
-                  ? 0.20
-                  : 0.06,
-            ),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Education & Certifications',
+            'Education',
             style: AppTextStyles.title.copyWith(
               color: colorScheme.onSurface,
             ),
@@ -147,18 +62,9 @@ class LawyerEducationCard extends StatelessWidget {
           ),
           _item(
             context,
-            Icons.workspace_premium_rounded,
+            Icons.school_rounded,
             'LL.M (Criminal Law)',
             'International Islamic University',
-          ),
-          const Divider(
-            height: AppSpacing.xxl,
-          ),
-          _item(
-            context,
-            Icons.verified_rounded,
-            'Pakistan Bar Council',
-            'Licensed Advocate',
           ),
         ],
       ),

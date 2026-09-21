@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lawlink360/auth/screens/login_screen.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/find_lawyer_screen.dart';
 import 'package:lawlink360/core/features/client_module/procedure_guide/screens/guider_home_screen.dart';
-import 'package:lawlink360/core/features/client_module/scanner/screens/smart_camera_screen.dart';
-import 'package:lawlink360/core/features/client_module/scanner/models/scanner_mode.dart';
 import 'package:lawlink360/core/features/client_module/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/client_module/application/screens/application_home_screen.dart';
@@ -209,23 +207,6 @@ class AppDrawer extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => const VerificationScreen(),
-                        ),
-                      );
-                    },
-                  ),
-
-                  ListTile(
-                    leading: const Icon(Icons.document_scanner_outlined),
-                    title: const Text("Scanner"),
-                    onTap: () {
-                      Navigator.pop(context); // Close the drawer
-
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const SmartCameraScreen(
-                            initialMode: ScannerMode.document,
-                          ),
                         ),
                       );
                     },

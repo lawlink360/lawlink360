@@ -21,8 +21,7 @@ class LawyerConsultationCard extends StatelessWidget {
     String value, {
     bool highlighted = false,
   }) {
-    final colorScheme =
-        Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -37,8 +36,7 @@ class LawyerConsultationCard extends StatelessWidget {
               color: AppColors.accent.withValues(
                 alpha: 0.10,
               ),
-              borderRadius:
-                  BorderRadius.circular(
+              borderRadius: BorderRadius.circular(
                 AppRadius.md,
               ),
             ),
@@ -55,8 +53,7 @@ class LawyerConsultationCard extends StatelessWidget {
             child: Text(
               title,
               style: AppTextStyles.bodySmall.copyWith(
-                color:
-                    colorScheme.onSurfaceVariant,
+                color: colorScheme.onSurfaceVariant,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -90,8 +87,7 @@ class LawyerConsultationCard extends StatelessWidget {
   }
 
   String _discountText() {
-    final discount =
-        lawyer?.discountPercent ?? 0;
+    final discount = lawyer?.discountPercent ?? 0;
 
     if (discount <= 0) {
       return 'No discount';
@@ -102,83 +98,25 @@ class LawyerConsultationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme =
-        Theme.of(context).colorScheme;
-    final isDark =
-        Theme.of(context).brightness ==
-            Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
+    final isAvailable = lawyer?.isOnline ?? true;
 
-    final isAvailable =
-        lawyer?.isOnline ?? true;
-
-    return Container(
-      margin: const EdgeInsets.symmetric(
+    return Padding(
+      padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.lg,
-        vertical: AppSpacing.sm,
-      ),
-      padding: const EdgeInsets.all(
-        AppSpacing.lg,
-      ),
-      decoration: BoxDecoration(
-        color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(
-          AppRadius.xl,
-        ),
-        border: Border.all(
-          color: colorScheme.outline.withValues(
-            alpha: 0.45,
-          ),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(
-              alpha: isDark ? 0.20 : 0.06,
-            ),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
-        ],
       ),
       child: Column(
-        crossAxisAlignment:
-            CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  color: AppColors.accent.withValues(
-                    alpha: 0.10,
-                  ),
-                  borderRadius:
-                      BorderRadius.circular(
-                    AppRadius.md,
-                  ),
-                ),
-                child: const Icon(
-                  Icons.event_available_outlined,
-                  color: AppColors.accent,
-                  size: 22,
-                ),
-              ),
-              const SizedBox(
-                width: AppSpacing.sm,
-              ),
-              Expanded(
-                child: Text(
-                  'Availability & Fees',
-                  style: AppTextStyles.title.copyWith(
-                    color: colorScheme.onSurface,
-                    fontSize: 19,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            'Availability & Fees',
+            style: AppTextStyles.title.copyWith(
+              color: colorScheme.onSurface,
+              fontSize: 19,
+            ),
           ),
           const SizedBox(
-            height: AppSpacing.md,
+            height: AppSpacing.sm,
           ),
           Divider(
             height: 1,

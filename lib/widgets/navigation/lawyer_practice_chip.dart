@@ -83,7 +83,7 @@ class LawyerPracticeChip extends StatelessWidget {
               const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Text(
-                  'Specialization',
+                  'Specialization & Services',
                   style: AppTextStyles.title.copyWith(
                     color: colorScheme.onSurface,
                     fontSize: 19,

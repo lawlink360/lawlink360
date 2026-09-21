@@ -1,6 +1,7 @@
 
 class Lawyer {
   final String id;
+  final String? lawFirmId;
   final String name;
   final String speciality;
   final String location;
@@ -53,6 +54,7 @@ class Lawyer {
 
   const Lawyer({
     required this.id,
+    this.lawFirmId,
     required this.name,
     required this.speciality,
     required this.location,
@@ -95,6 +97,7 @@ class Lawyer {
 
   Lawyer copyWith({
     String? id,
+    String? lawFirmId,
     String? name,
     String? speciality,
     String? location,
@@ -119,6 +122,7 @@ class Lawyer {
   }) {
     return Lawyer(
       id: id ?? this.id,
+      lawFirmId: lawFirmId ?? this.lawFirmId,
       name: name ?? this.name,
       speciality: speciality ?? this.speciality,
       location: location ?? this.location,
@@ -153,6 +157,7 @@ class Lawyer {
   }) {
     return Lawyer(
       id: id,
+      lawFirmId: _readNullableString(map['lawFirmId']),
       name: _readString(map['name']),
       speciality: _readString(map['speciality']),
       location: _readString(map['location']),
@@ -196,6 +201,7 @@ class Lawyer {
   Map<String, dynamic> toMap() {
     return {
       'name': name,
+      'lawFirmId': lawFirmId,
       'speciality': speciality,
       'location': location,
       'rating': rating,
@@ -262,4 +268,7 @@ DateTime? _readDateTime(dynamic value) {
   }
 
   return null;
+}
+String? _readNullableString(dynamic value) {
+  return value is String && value.isNotEmpty ? value : null;
 }

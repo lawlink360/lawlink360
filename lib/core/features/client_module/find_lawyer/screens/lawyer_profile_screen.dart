@@ -5,7 +5,6 @@ import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_consultation_card.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/providers/recently_viewed_provider.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_about_card.dart';
-import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_certificates_card.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_enrollment_card.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_experience_card.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_languages_card.dart';
@@ -16,7 +15,6 @@ import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 import 'package:lawlink360/widgets/appbar/lawyer_bottom_action_bar.dart';
-import 'package:lawlink360/widgets/cards/lawyer_education_card.dart';
 import 'package:lawlink360/widgets/cards/lawyer_review_card.dart';
 import 'package:lawlink360/widgets/inputs/lawyer_quick_action.dart';
 import 'package:lawlink360/widgets/navigation/lawyer_practice_chip.dart';
@@ -24,18 +22,14 @@ import 'package:lawlink360/widgets/navigation/lawyer_practice_chip.dart';
 class LawyerProfileScreen extends ConsumerStatefulWidget {
   final Lawyer? lawyer;
 
-  const LawyerProfileScreen({
-    super.key,
-    this.lawyer,
-  });
+  const LawyerProfileScreen({super.key, this.lawyer});
 
   @override
   ConsumerState<LawyerProfileScreen> createState() =>
       _LawyerProfileScreenState();
 }
 
-class _LawyerProfileScreenState
-    extends ConsumerState<LawyerProfileScreen> {
+class _LawyerProfileScreenState extends ConsumerState<LawyerProfileScreen> {
   @override
   void initState() {
     super.initState();
@@ -65,9 +59,7 @@ class _LawyerProfileScreenState
         surfaceTintColor: Colors.transparent,
         title: Text(
           'Lawyer Profile',
-          style: AppTextStyles.title.copyWith(
-            color: colorScheme.onSurface,
-          ),
+          style: AppTextStyles.title.copyWith(color: colorScheme.onSurface),
         ),
         leading: IconButton(
           onPressed: () {
@@ -86,58 +78,38 @@ class _LawyerProfileScreenState
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              LawyerProfileHeader(
-                lawyer: widget.lawyer,
-              ),
+              LawyerProfileHeader(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
               const QuickActions(),
               const SizedBox(height: AppSpacing.lg),
 
-              LawyerRatingSummaryCard(
-                lawyer: widget.lawyer,
-              ),
+              LawyerConsultationCard(lawyer: widget.lawyer),
+              const SizedBox(height: AppSpacing.xxl),
+
+              LawyerRatingSummaryCard(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
               const LawyerReviewCard(),
               const SizedBox(height: AppSpacing.lg),
 
-              LawyerAboutCard(
-                lawyer: widget.lawyer,
-              ),
+              LawyerAboutCard(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
-              LawyerPracticeChip(
-                lawyer: widget.lawyer,
-              ),
-              const SizedBox(height: AppSpacing.lg),
-
-              LawyerEducationCard(
-                lawyer: widget.lawyer,
-              ),
+              LawyerPracticeChip(lawyer: widget.lawyer),
               const SizedBox(height: AppSpacing.lg),
 
               const LawyerExperienceCard(),
-              const SizedBox(height: AppSpacing.lg),
-
-              const LawyerCertificatesCard(),
               const SizedBox(height: AppSpacing.lg),
 
               const LawyerLanguagesCard(),
               const SizedBox(height: AppSpacing.lg),
 
               const LawyerEnrollmentCard(),
-const SizedBox(height: AppSpacing.lg),
-
-LawyerConsultationCard(
-  lawyer: widget.lawyer,
-),
-const SizedBox(height: AppSpacing.xxl),
+              const SizedBox(height: AppSpacing.lg),
 
               Padding(
-                padding: const EdgeInsets.only(
-                  bottom: AppSpacing.xxl,
-                ),
+                padding: const EdgeInsets.only(bottom: AppSpacing.xxl),
                 child: Text(
                   'LawLink360 • Trusted Digital Legal Partner',
                   style: AppTextStyles.caption.copyWith(
@@ -149,9 +121,7 @@ const SizedBox(height: AppSpacing.xxl),
           ),
         ),
       ),
-      bottomNavigationBar: LawyerBottomActionBar(
-        lawyer: widget.lawyer!,
-      ),
+      bottomNavigationBar: LawyerBottomActionBar(lawyer: widget.lawyer!),
     );
   }
 }

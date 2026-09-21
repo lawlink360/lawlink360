@@ -25,4 +25,24 @@ class ShareService {
       text: text,
     );
   }
+
+  // ============================================================
+  // SHARE GENERIC FILE
+  // ============================================================
+
+  Future<void> shareFile(
+    String filePath, {
+    String? text,
+  }) async {
+    final file = File(filePath);
+
+    if (!await file.exists()) {
+      throw Exception('File does not exist: $filePath');
+    }
+
+    await Share.shareXFiles(
+      [XFile(filePath)],
+      text: text,
+    );
+  }
 }
