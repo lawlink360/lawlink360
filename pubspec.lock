@@ -1358,7 +1358,7 @@ packages:
     source: hosted
     version: "33.2.13"
   syncfusion_flutter_signaturepad:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: syncfusion_flutter_signaturepad
       sha256: f127af6fcb7de2dae74a0856f005747d27869fb176c8b92346136fe2254d73dc

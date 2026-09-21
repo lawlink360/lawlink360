@@ -7,6 +7,7 @@ import 'document_tools/scanner_document_ocr_screen.dart';
 import 'document_tools/scanner_document_print_screen.dart';
 import 'document_tools/scanner_document_share_screen.dart';
 import 'document_tools/scanner_document_annotate_screen.dart';
+import 'document_tools/scanner_document_sign_screen.dart';
 
 /// Document Tools home for Scanner 360.
 ///
@@ -33,6 +34,7 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       icon: Icons.gesture,
       title: 'Sign',
       subtitle: 'Add a handwritten signature.',
+      implemented: true,
     ),
     _DocumentTool(
       icon: Icons.edit_note,
@@ -117,6 +119,14 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const ScannerDocumentAnnotateScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.title == 'Sign') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => const ScannerDocumentSignScreen(),
         ),
       );
       return;
