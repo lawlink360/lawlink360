@@ -8,6 +8,7 @@ import 'document_tools/scanner_document_print_screen.dart';
 import 'document_tools/scanner_document_share_screen.dart';
 import 'document_tools/scanner_document_annotate_screen.dart';
 import 'document_tools/scanner_document_sign_screen.dart';
+import 'document_tools/scanner_document_fill_screen.dart';
 
 /// Document Tools home for Scanner 360.
 ///
@@ -40,6 +41,7 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       icon: Icons.edit_note,
       title: 'Fill',
       subtitle: 'Fill in form fields on a document.',
+      implemented: true,
     ),
     _DocumentTool(
       icon: Icons.print_outlined,
@@ -127,6 +129,14 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const ScannerDocumentSignScreen(),
+        ),
+      );
+      return;
+    }
+        if (tool.title == 'Fill') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => const ScannerDocumentFillScreen(),
         ),
       );
       return;
