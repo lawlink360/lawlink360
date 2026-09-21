@@ -4,6 +4,7 @@ import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_spacing.dart';
 import '../widgets/tools/scanner_tool_tile.dart';
 import 'document_tools/scanner_document_ocr_screen.dart';
+import 'document_tools/scanner_document_print_screen.dart';
 
 /// Document Tools home for Scanner 360.
 ///
@@ -39,6 +40,7 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       icon: Icons.print_outlined,
       title: 'Print',
       subtitle: 'Send the document to a printer.',
+      implemented: true,
     ),
     _DocumentTool(
       icon: Icons.share_outlined,
@@ -87,6 +89,14 @@ class ScannerDocumentToolsScreen extends StatelessWidget {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const ScannerDocumentOcrScreen(),
+        ),
+      );
+      return;
+    }
+    if (tool.title == 'Print') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => const ScannerDocumentPrintScreen(),
         ),
       );
       return;
