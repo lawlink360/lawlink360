@@ -15,8 +15,15 @@ import 'scanner_document_viewer_screen.dart';
 
 /// Document Library for Scanner 360.
 ///
-/// Displays all saved documents in a responsive 2-column grid and
-/// supports search-as-typed via the existing documents provider.
+/// Displays saved documents in a responsive 2-column grid. Supports
+/// search-as-typed via the existing documents provider, an AppBar
+/// favourites filter that reuses the provider's favourite capability,
+/// and per-document actions (favourite, rename, delete) surfaced
+/// through a long-press bottom sheet.
+///
+/// Search and the favourites filter are mutually exclusive: enabling
+/// one clears the other. Both reuse the existing provider methods;
+/// no additional state or persistence is introduced.
 class ScannerDocumentLibraryScreen extends ConsumerStatefulWidget {
   const ScannerDocumentLibraryScreen({super.key});
 
@@ -30,6 +37,7 @@ class _ScannerDocumentLibraryScreenState
   final TextEditingController _searchController =
       TextEditingController();
   String _query = '';
+  bool _favoritesOnly = false;
 
   @override
   void initState() {
@@ -57,6 +65,20 @@ class _ScannerDocumentLibraryScreenState
         foregroundColor: AppColors.lightTextPrimary,
         elevation: 0,
         title: const Text('Documents'),
+        actions: [
+          IconButton(
+            tooltip: _favoritesOnly
+                ? 'Show all documents'
+                : 'Show favourites',
+            icon: Icon(
+              _favoritesOnly ? Icons.star : Icons.star_border,
+              color: _favoritesOnly
+                  ? AppColors.accent
+                  : AppColors.lightTextSecondary,
+            ),
+            onPressed: _handleToggleFavoritesFilter,
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -137,11 +159,19 @@ class _ScannerDocumentLibraryScreenState
       ),
       data: (docs) {
         if (docs.isEmpty) {
-          if (_query.trim().isEmpty) {
+          if (_query.trim().isEmpty && !_favoritesOnly) {
             return const ScannerEmptyView(
               icon: Icons.folder_outlined,
               title: 'No documents yet',
               subtitle: 'Your scanned documents will appear here.',
+            );
+          }
+          if (_favoritesOnly && _query.trim().isEmpty) {
+            return const ScannerEmptyView(
+              icon: Icons.star_border,
+              title: 'No favourites yet',
+              subtitle:
+                  'Long-press a document and tap Favourite to add it here.',
             );
           }
           return const ScannerEmptyView(
@@ -166,6 +196,8 @@ class _ScannerDocumentLibraryScreenState
             return ScannerLibraryCard(
               document: doc,
               onTap: () => _handleOpenDocument(doc),
+              onLongPress: () => _handleOpenDocumentActions(doc),
+              onToggleFavorite: () => _handleToggleFavorite(doc),
             );
           },
         );
@@ -173,10 +205,41 @@ class _ScannerDocumentLibraryScreenState
     );
   }
 
+  // ------------------------------------------------------------
+  // Search + filter
+  // ------------------------------------------------------------
+
   void _handleSearchChanged(String value) {
-    _query = value;
+    setState(() {
+      _query = value;
+      if (value.trim().isNotEmpty) {
+        _favoritesOnly = false;
+      }
+    });
     ref.read(scannerDocumentsProvider.notifier).search(value);
   }
+
+  void _handleToggleFavoritesFilter() {
+    final next = !_favoritesOnly;
+    setState(() {
+      _favoritesOnly = next;
+      if (next) {
+        _query = '';
+        _searchController.clear();
+      }
+    });
+
+    final notifier = ref.read(scannerDocumentsProvider.notifier);
+    if (next) {
+      notifier.loadFavorites();
+    } else {
+      notifier.refresh();
+    }
+  }
+
+  // ------------------------------------------------------------
+  // Navigation
+  // ------------------------------------------------------------
 
   void _handleOpenDocument(ScannerDocument document) {
     Navigator.of(context).push(
@@ -187,4 +250,234 @@ class _ScannerDocumentLibraryScreenState
       ),
     );
   }
+
+  // ------------------------------------------------------------
+  // Actions
+  // ------------------------------------------------------------
+
+  Future<void> _handleOpenDocumentActions(
+    ScannerDocument document,
+  ) async {
+    final action = await showModalBottomSheet<_DocumentAction>(
+      context: context,
+      backgroundColor: AppColors.lightSurface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppSpacing.lg),
+        ),
+      ),
+      builder: (sheetContext) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: Icon(
+                document.metadata.isFavorite
+                    ? Icons.star
+                    : Icons.star_border,
+                color: AppColors.accent,
+              ),
+              title: Text(
+                document.metadata.isFavorite
+                    ? 'Unfavourite'
+                    : 'Favourite',
+              ),
+              onTap: () => Navigator.of(sheetContext)
+                  .pop(_DocumentAction.toggleFavorite),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.drive_file_rename_outline,
+              ),
+              title: const Text('Rename'),
+              onTap: () => Navigator.of(sheetContext)
+                  .pop(_DocumentAction.rename),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.delete_outline,
+                color: AppColors.error,
+              ),
+              title: const Text('Delete'),
+              onTap: () => Navigator.of(sheetContext)
+                  .pop(_DocumentAction.delete),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    if (!mounted || action == null) return;
+
+    switch (action) {
+      case _DocumentAction.toggleFavorite:
+        await _handleToggleFavorite(document);
+        break;
+      case _DocumentAction.rename:
+        await _handleRename(document);
+        break;
+      case _DocumentAction.delete:
+        await _handleDelete(document);
+        break;
+    }
+  }
+
+  Future<void> _handleToggleFavorite(
+    ScannerDocument document,
+  ) async {
+    final newValue = !document.metadata.isFavorite;
+    final notifier = ref.read(scannerDocumentsProvider.notifier);
+    try {
+      await notifier.setFavorite(document.id, newValue);
+    } catch (e) {
+      if (!mounted) return;
+      _showSnackBar('Failed to update favourite: $e');
+      return;
+    }
+
+    if (!mounted) return;
+
+    // The provider's setFavorite repopulates state from
+    // getAllDocuments(). When the favourites filter is active, re-apply
+    // loadFavorites() so the grid stays consistent, and drop the filter
+    // automatically if no favourites remain.
+    if (_favoritesOnly) {
+      await notifier.loadFavorites();
+      if (!mounted) return;
+      final docs = ref
+          .read(scannerDocumentsProvider)
+          .valueOrNull;
+      if (docs != null && docs.isEmpty) {
+        setState(() => _favoritesOnly = false);
+        await notifier.refresh();
+      }
+    }
+  }
+
+  Future<void> _handleRename(ScannerDocument document) async {
+    final controller =
+        TextEditingController(text: document.metadata.name);
+
+    final result = await showDialog<String>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: const Text('Rename document'),
+          content: TextField(
+            controller: controller,
+            autofocus: true,
+            textInputAction: TextInputAction.done,
+            decoration: const InputDecoration(
+              labelText: 'Document name',
+              border: OutlineInputBorder(),
+            ),
+            onSubmitted: (value) {
+              final trimmed = value.trim();
+              if (trimmed.isEmpty) return;
+              Navigator.of(dialogContext).pop(trimmed);
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final trimmed = controller.text.trim();
+                if (trimmed.isEmpty) return;
+                Navigator.of(dialogContext).pop(trimmed);
+              },
+              child: const Text('Rename'),
+            ),
+          ],
+        );
+      },
+    );
+
+    controller.dispose();
+
+    if (result == null || result.isEmpty) return;
+
+    final notifier = ref.read(scannerDocumentsProvider.notifier);
+    try {
+      await notifier.renameDocument(document.id, result);
+    } catch (e) {
+      if (!mounted) return;
+      _showSnackBar('Failed to rename: $e');
+      return;
+    }
+
+    if (!mounted) return;
+
+    if (_favoritesOnly) {
+      await notifier.loadFavorites();
+    }
+  }
+
+  Future<void> _handleDelete(ScannerDocument document) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: const Text('Delete document'),
+          content: Text(
+            'Delete "${document.metadata.name}"? '
+            'This cannot be undone.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(false),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.error,
+                foregroundColor: AppColors.textLight,
+              ),
+              onPressed: () => Navigator.of(dialogContext).pop(true),
+              child: const Text('Delete'),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirmed != true) return;
+
+    final notifier = ref.read(scannerDocumentsProvider.notifier);
+    try {
+      await notifier.deleteDocument(document.id);
+    } catch (e) {
+      if (!mounted) return;
+      _showSnackBar('Failed to delete: $e');
+      return;
+    }
+
+    if (!mounted) return;
+
+    if (_favoritesOnly) {
+      await notifier.loadFavorites();
+      if (!mounted) return;
+      final docs =
+          ref.read(scannerDocumentsProvider).valueOrNull;
+      if (docs != null && docs.isEmpty) {
+        setState(() => _favoritesOnly = false);
+        await notifier.refresh();
+      }
+    }
+  }
+
+  void _showSnackBar(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+}
+
+enum _DocumentAction {
+  toggleFavorite,
+  rename,
+  delete,
 }

@@ -12,15 +12,28 @@ import '../../models/scanner_document_category.dart';
 /// Designed to be placed inside a bounded GridView cell. It uses
 /// intrinsic sizing from its parent cell and does not request
 /// infinite width.
+///
+/// The card does not access repositories or providers. It exposes
+/// callbacks only.
 class ScannerLibraryCard extends StatelessWidget {
   const ScannerLibraryCard({
     super.key,
     required this.document,
     required this.onTap,
+    this.onLongPress,
+    this.onToggleFavorite,
   });
 
   final ScannerDocument document;
   final VoidCallback onTap;
+
+  /// Raised on long-press. The parent is expected to open a document
+  /// action surface. Null disables the gesture.
+  final VoidCallback? onLongPress;
+
+  /// Raised when the favourite star is tapped. Null makes the star a
+  /// read-only indicator.
+  final VoidCallback? onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +44,7 @@ class ScannerLibraryCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppRadius.lg),
       child: InkWell(
         onTap: onTap,
+        onLongPress: onLongPress,
         borderRadius: BorderRadius.circular(AppRadius.lg),
         child: Container(
           padding: const EdgeInsets.all(AppSpacing.sm),
@@ -58,12 +72,10 @@ class ScannerLibraryCard extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  if (meta.isFavorite)
-                    const Icon(
-                      Icons.star,
-                      color: AppColors.accent,
-                      size: AppSpacing.iconSm,
-                    ),
+                  _FavoriteStar(
+                    isFavorite: meta.isFavorite,
+                    onTap: onToggleFavorite,
+                  ),
                 ],
               ),
               const SizedBox(height: AppSpacing.sm),
@@ -158,5 +170,41 @@ class ScannerLibraryCard extends StatelessWidget {
 
   static String _formatDate(DateTime date) {
     return '${date.day} ${_months[date.month - 1]} ${date.year}';
+  }
+}
+
+/// Tappable favourite indicator. Renders filled/outline based on
+/// [isFavorite]. When [onTap] is null the star is a read-only icon.
+class _FavoriteStar extends StatelessWidget {
+  const _FavoriteStar({
+    required this.isFavorite,
+    required this.onTap,
+  });
+
+  final bool isFavorite;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = Icon(
+      isFavorite ? Icons.star : Icons.star_border,
+      color: isFavorite
+          ? AppColors.accent
+          : AppColors.lightTextSecondary,
+      size: AppSpacing.iconSm,
+    );
+
+    if (onTap == null) {
+      return icon;
+    }
+
+    return InkResponse(
+      onTap: onTap,
+      radius: AppSpacing.iconSm,
+      child: Padding(
+        padding: const EdgeInsets.all(AppSpacing.xs),
+        child: icon,
+      ),
+    );
   }
 }
