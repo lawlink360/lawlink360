@@ -5,6 +5,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/models/law_firm_model.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/providers/lawyer_provider.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/providers/recently_viewed_firms_provider.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/book_appointment_screen.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_card.dart';
 
@@ -28,6 +29,17 @@ class LawFirmProfileScreen extends ConsumerStatefulWidget {
 
 class _LawFirmProfileScreenState
     extends ConsumerState<LawFirmProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+
+      ref.read(recentlyViewedFirmsProvider.notifier).add(widget.firm);
+    });
+  }
+
   bool _isFavorite = false;
 
   void _shareFirm() {

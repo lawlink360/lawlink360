@@ -7,6 +7,7 @@ import '../models/document_subcategory.dart';
 import '../services/document_data_service.dart';
 import '../widgets/subcategory/application_subcategory_grid.dart';
 import '../widgets/template/application_template_header.dart';
+import '../services/document_json_service.dart';
 
 class ApplicationCategoryScreen extends StatelessWidget {
   final DocumentCategory category;
@@ -18,8 +19,9 @@ class ApplicationCategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<DocumentSubCategory> subCategories =
-        DocumentDataService.getSubCategories(category.id);
+    final List<DocumentSubCategory> subCategories = DocumentJsonService.loaded
+    ? DocumentJsonService.getSubCategories(category.id)
+    : DocumentDataService.getSubCategories(category.id);
 
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
@@ -27,9 +29,10 @@ class ApplicationCategoryScreen extends StatelessWidget {
         child: Column(
           children: [
             ApplicationTemplateHeader(
-              category: category,
-              totalServices: subCategories.length,
-            ),
+  category: category,
+  count: subCategories.length,
+  countLabel: 'Subcategories',
+),
             Expanded(
               child: ApplicationSubCategoryGrid(
                 category: category,

@@ -1,0 +1,802 @@
+[
+  {
+    "id": "tpl_personal_bio_data",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Personal Bio-Data",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document setting out an individual's personal bio-data.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "tpl_personal_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Personal Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration made by an individual regarding personal matters.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "tpl_self_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Self-Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration made by an individual about his or her own particulars.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "tpl_name_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Name Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration regarding an individual's name.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "tpl_one_and_same_person_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "One & Same Person Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration that different names refer to one and the same person.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "tpl_address_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Address Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration regarding an individual's address.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "tpl_change_of_address_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Change of Address Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration recording a change of an individual's address.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "tpl_marital_status_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Marital Status Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration regarding an individual's marital status.",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "tpl_family_details_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Family Details Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration setting out an individual's family details.",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "tpl_next_of_kin_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_personal_and_identity_documents",
+    "name": "Next of Kin Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration naming an individual's next of kin.",
+    "order": 10,
+    "isActive": true
+  },
+  {
+    "id": "tpl_general_authority_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "General Authority Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter granting general authority to act on one's behalf.",
+    "order": 11,
+    "isActive": true
+  },
+  {
+    "id": "tpl_special_authority_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "Special Authority Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter granting authority for a specific act or matter.",
+    "order": 12,
+    "isActive": true
+  },
+  {
+    "id": "tpl_authorization_letter_for_document_collection",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "Authorization Letter for Document Collection",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter authorizing a person to collect documents on one's behalf.",
+    "order": 13,
+    "isActive": true
+  },
+  {
+    "id": "tpl_authorization_letter_for_bank_office_matters",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "Authorization Letter for Bank/Office Matters",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter authorizing a person to handle bank or office matters.",
+    "order": 14,
+    "isActive": true
+  },
+  {
+    "id": "tpl_general_noc",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "General NOC",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A general no-objection certificate issued by a party.",
+    "order": 15,
+    "isActive": true
+  },
+  {
+    "id": "tpl_personal_noc",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "Personal NOC",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A personal no-objection certificate issued by an individual.",
+    "order": 16,
+    "isActive": true
+  },
+  {
+    "id": "tpl_consent_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "Consent Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter recording a person's consent to a matter.",
+    "order": 17,
+    "isActive": true
+  },
+  {
+    "id": "tpl_no_objection_no_claim_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "No-Objection / No-Claim Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration of no objection and no claim in respect of a matter.",
+    "order": 18,
+    "isActive": true
+  },
+  {
+    "id": "tpl_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A written undertaking given by an individual to do or refrain from an act.",
+    "order": 19,
+    "isActive": true
+  },
+  {
+    "id": "tpl_indemnity_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_authorization_and_noc_documents",
+    "name": "Indemnity Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An undertaking to indemnify a party against specified losses or claims.",
+    "order": 20,
+    "isActive": true
+  },
+  {
+    "id": "tpl_property_ownership_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Property Ownership Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration regarding ownership of property.",
+    "order": 21,
+    "isActive": true
+  },
+  {
+    "id": "tpl_possession_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Possession Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration regarding possession of property.",
+    "order": 22,
+    "isActive": true
+  },
+  {
+    "id": "tpl_property_payment_receipt",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Property Payment Receipt",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A receipt acknowledging payment made for property.",
+    "order": 23,
+    "isActive": true
+  },
+  {
+    "id": "tpl_money_receipt",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Money Receipt",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A receipt acknowledging receipt of money.",
+    "order": 24,
+    "isActive": true
+  },
+  {
+    "id": "tpl_loan_acknowledgment",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Loan Acknowledgment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document acknowledging a loan and its terms.",
+    "order": 25,
+    "isActive": true
+  },
+  {
+    "id": "tpl_debt_acknowledgment",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Debt Acknowledgment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document acknowledging an outstanding debt.",
+    "order": 26,
+    "isActive": true
+  },
+  {
+    "id": "tpl_payment_acknowledgment",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Payment Acknowledgment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document acknowledging receipt of payment.",
+    "order": 27,
+    "isActive": true
+  },
+  {
+    "id": "tpl_no_dues_certificate",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "No-Dues Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A certificate confirming that no dues remain outstanding.",
+    "order": 28,
+    "isActive": true
+  },
+  {
+    "id": "tpl_no_demand_certificate",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "No-Demand Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A certificate confirming that no demand remains outstanding.",
+    "order": 29,
+    "isActive": true
+  },
+  {
+    "id": "tpl_personal_guarantee",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_property_and_financial_documents",
+    "name": "Personal Guarantee",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A personal guarantee securing an obligation of another party.",
+    "order": 30,
+    "isActive": true
+  },
+  {
+    "id": "tpl_marriage_consent_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Marriage Consent/Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration recording consent to marriage.",
+    "order": 31,
+    "isActive": true
+  },
+  {
+    "id": "tpl_unmarried_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Unmarried Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration that an individual is unmarried.",
+    "order": 32,
+    "isActive": true
+  },
+  {
+    "id": "tpl_family_relationship_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Family Relationship Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration setting out family relationships between individuals.",
+    "order": 33,
+    "isActive": true
+  },
+  {
+    "id": "tpl_child_custody_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Child Custody Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration regarding custody of a child.",
+    "order": 34,
+    "isActive": true
+  },
+  {
+    "id": "tpl_child_maintenance_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Child Maintenance Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An undertaking to provide maintenance for a child.",
+    "order": 35,
+    "isActive": true
+  },
+  {
+    "id": "tpl_child_travel_consent",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Child Travel Consent",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A consent document permitting a child to travel.",
+    "order": 36,
+    "isActive": true
+  },
+  {
+    "id": "tpl_dowry_articles_list",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Dowry Articles List",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A list of dowry articles given or received.",
+    "order": 37,
+    "isActive": true
+  },
+  {
+    "id": "tpl_dowry_articles_receipt",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Dowry Articles Receipt",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A receipt acknowledging receipt of dowry articles.",
+    "order": 38,
+    "isActive": true
+  },
+  {
+    "id": "tpl_legal_heirs_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Legal Heirs Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration setting out the legal heirs of a person.",
+    "order": 39,
+    "isActive": true
+  },
+  {
+    "id": "tpl_family_settlement_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_family_and_personal_affairs",
+    "name": "Family Settlement Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration recording a settlement among family members.",
+    "order": 40,
+    "isActive": true
+  },
+  {
+    "id": "tpl_visa_sponsorship_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_travel_and_education_documents",
+    "name": "Visa Sponsorship Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter sponsoring an individual's visa application.",
+    "order": 41,
+    "isActive": true
+  },
+  {
+    "id": "tpl_invitation_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_travel_and_education_documents",
+    "name": "Invitation Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter inviting an individual for a visit or event.",
+    "order": 42,
+    "isActive": true
+  },
+  {
+    "id": "tpl_travel_consent_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_travel_and_education_documents",
+    "name": "Travel Consent Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter consenting to an individual's travel.",
+    "order": 43,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_declaration_of_financial_support",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_travel_and_education_documents",
+    "name": "Affidavit/Declaration of Financial Support",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit or declaration undertaking financial support for a person.",
+    "order": 44,
+    "isActive": true
+  },
+  {
+    "id": "tpl_student_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_travel_and_education_documents",
+    "name": "Student Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An undertaking given by a student in respect of a matter.",
+    "order": 45,
+    "isActive": true
+  },
+  {
+    "id": "tpl_educational_qualification_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_travel_and_education_documents",
+    "name": "Educational Qualification Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration setting out an individual's educational qualifications.",
+    "order": 46,
+    "isActive": true
+  },
+  {
+    "id": "tpl_character_certificate_request",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_travel_and_education_documents",
+    "name": "Character Certificate Request",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A request for issuance of a character certificate.",
+    "order": 47,
+    "isActive": true
+  },
+  {
+    "id": "tpl_cv_resume",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "CV / Resume",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document summarizing an individual's education, skills, and experience.",
+    "order": 48,
+    "isActive": true
+  },
+  {
+    "id": "tpl_job_application_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Job Application Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter applying for a job position.",
+    "order": 49,
+    "isActive": true
+  },
+  {
+    "id": "tpl_cover_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Cover Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter accompanying a job application to introduce the applicant.",
+    "order": 50,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employment_offer_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Employment Offer Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter offering employment to a candidate.",
+    "order": 51,
+    "isActive": true
+  },
+  {
+    "id": "tpl_appointment_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Appointment Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter appointing an individual to a position.",
+    "order": 52,
+    "isActive": true
+  },
+  {
+    "id": "tpl_experience_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Experience Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter certifying an individual's work experience.",
+    "order": 53,
+    "isActive": true
+  },
+  {
+    "id": "tpl_service_certificate",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Service Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A certificate confirming an individual's period of service.",
+    "order": 54,
+    "isActive": true
+  },
+  {
+    "id": "tpl_salary_certificate",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Salary Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A certificate stating an individual's salary and employment details.",
+    "order": 55,
+    "isActive": true
+  },
+  {
+    "id": "tpl_relieving_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Relieving Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter relieving an employee from duties upon leaving employment.",
+    "order": 56,
+    "isActive": true
+  },
+  {
+    "id": "tpl_resignation_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Resignation Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter by which an employee resigns from a position.",
+    "order": 57,
+    "isActive": true
+  },
+  {
+    "id": "tpl_leave_application",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Leave Application",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An application requesting leave from employment or duty.",
+    "order": 58,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employee_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Employee Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An undertaking given by an employee in respect of a matter.",
+    "order": 59,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employee_noc",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_employment_and_career_documents",
+    "name": "Employee NOC",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A no-objection certificate issued by an employer for an employee.",
+    "order": 60,
+    "isActive": true
+  },
+  {
+    "id": "tpl_freelance_service_agreement",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_freelance_and_professional_services",
+    "name": "Freelance Service Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement engaging a freelancer to provide services.",
+    "order": 61,
+    "isActive": true
+  },
+  {
+    "id": "tpl_professional_engagement_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_freelance_and_professional_services",
+    "name": "Professional Engagement Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter formalizing engagement of a professional for services.",
+    "order": 62,
+    "isActive": true
+  },
+  {
+    "id": "tpl_scope_of_work",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_freelance_and_professional_services",
+    "name": "Scope of Work",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document defining the scope of work for a service engagement.",
+    "order": 63,
+    "isActive": true
+  },
+  {
+    "id": "tpl_professional_fee_agreement",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_freelance_and_professional_services",
+    "name": "Professional Fee Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement setting out professional fees for services.",
+    "order": 64,
+    "isActive": true
+  },
+  {
+    "id": "tpl_professional_invoice",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_freelance_and_professional_services",
+    "name": "Professional Invoice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An invoice issued by a professional for services rendered.",
+    "order": 65,
+    "isActive": true
+  },
+  {
+    "id": "tpl_payment_receipt",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_freelance_and_professional_services",
+    "name": "Payment Receipt",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A receipt acknowledging receipt of payment.",
+    "order": 66,
+    "isActive": true
+  },
+  {
+    "id": "tpl_professional_request_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Professional Request Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A formal letter making a professional request.",
+    "order": 67,
+    "isActive": true
+  },
+  {
+    "id": "tpl_complaint_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Complaint Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter making a formal complaint about a matter.",
+    "order": 68,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reminder_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Reminder Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter reminding a party of a pending matter or obligation.",
+    "order": 69,
+    "isActive": true
+  },
+  {
+    "id": "tpl_explanation_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Explanation Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter explaining a matter or responding to a query.",
+    "order": 70,
+    "isActive": true
+  },
+  {
+    "id": "tpl_response_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Response Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter responding to a communication or request.",
+    "order": 71,
+    "isActive": true
+  },
+  {
+    "id": "tpl_recommendation_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Recommendation Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter recommending an individual for a purpose.",
+    "order": 72,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reference_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Reference Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter providing a reference for an individual.",
+    "order": 73,
+    "isActive": true
+  },
+  {
+    "id": "tpl_introduction_letter",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_correspondence",
+    "name": "Introduction Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter introducing an individual or business to another party.",
+    "order": 74,
+    "isActive": true
+  },
+  {
+    "id": "tpl_confidentiality_agreement_nda",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_compliance",
+    "name": "Confidentiality Agreement / NDA",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement protecting confidential information between parties.",
+    "order": 75,
+    "isActive": true
+  },
+  {
+    "id": "tpl_conflict_of_interest_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_compliance",
+    "name": "Conflict of Interest Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration disclosing a conflict of interest.",
+    "order": 76,
+    "isActive": true
+  },
+  {
+    "id": "tpl_code_of_conduct_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_compliance",
+    "name": "Code of Conduct Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An undertaking to abide by a code of conduct.",
+    "order": 77,
+    "isActive": true
+  },
+  {
+    "id": "tpl_professional_declaration",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_compliance",
+    "name": "Professional Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A declaration made by a professional in respect of a matter.",
+    "order": 78,
+    "isActive": true
+  },
+  {
+    "id": "tpl_compliance_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_compliance",
+    "name": "Compliance Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An undertaking to comply with applicable requirements.",
+    "order": 79,
+    "isActive": true
+  },
+  {
+    "id": "tpl_data_information_confidentiality_undertaking",
+    "categoryId": "cat_personal_professional_documents",
+    "subCategoryId": "subcat_professional_compliance",
+    "name": "Data/Information Confidentiality Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An undertaking to keep data and information confidential.",
+    "order": 80,
+    "isActive": true
+  }
+]

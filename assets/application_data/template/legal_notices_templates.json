@@ -1,0 +1,1868 @@
+[
+  {
+    "id": "tpl_general_legal_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "General Legal Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A general purpose legal notice formally calling upon a person or entity to address a specified legal or contractual grievance before further steps are considered.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_intended_civil_proceedings",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice of Intended Civil Proceedings",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of the sender's intention to commence civil proceedings unless the underlying dispute is resolved within the stated period.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_compliance_with_legal_obligation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice for Compliance with Legal Obligation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice requiring the recipient to comply with a legal obligation owed to the sender within a specified period.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_demanding_performance",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice Demanding Performance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to perform a specific obligation or contractual duty that has not been performed.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_damages",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice for Damages",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding compensation for loss or damage allegedly caused to the sender by the recipient's act or omission.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_withdrawal_of_unlawful_claim",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice for Withdrawal of Unlawful Claim",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to withdraw a claim asserted against the sender on the ground that the claim is without lawful basis.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_injunction_compliance",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice for Injunction/Compliance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to comply with a stated obligation or to refrain from a stated act, failing which injunctive relief may be sought.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_compensation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice for Compensation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding compensation for a stated loss arising from the recipient's conduct, act, or omission.",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_calling_upon_party_to_respond",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice Calling Upon Party to Respond",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice inviting the recipient to respond to an allegation, claim, or question raised by the sender within a stated period.",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reply_to_legal_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Reply to Legal Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A reply to a legal notice received by the sender, setting out the sender's response to the allegations, claims, or demands contained in that notice.",
+    "order": 10,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_inspection_of_documents",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice for Inspection of Documents",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice requesting the recipient to allow inspection of specified documents relevant to a matter in dispute.",
+    "order": 11,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_production_of_documents",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_civil_general_notices",
+    "name": "Notice for Production of Documents",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice requesting the recipient to produce specified documents in connection with a matter in dispute.",
+    "order": 12,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_under_section_80_cpc_provincial_government",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_government_public_authority_notices",
+    "name": "Notice under Section 80 CPC — Provincial Government",
+    "legalBasis": {
+      "act": "Code of Civil Procedure, 1908",
+      "section": "80",
+      "order": null,
+      "rule": null,
+      "text": null
+    },
+    "description": "A statutory notice served on a provincial government before instituting specified civil proceedings, as required prior to suit against the Government in the cases covered by the provision.",
+    "order": 13,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_government_department_action",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_government_public_authority_notices",
+    "name": "Notice against Government Department's Action",
+    "legalBasis": {
+      "act": null,
+      "section": null,
+      "order": null,
+      "rule": null,
+      "text": null
+    },
+    "description": "A notice objecting to an action taken by a government department and calling upon the department to address the grievance raised.",
+    "order": 14,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_government_contract_breach",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_government_public_authority_notices",
+    "name": "Notice concerning Government Contract Breach",
+    "legalBasis": {
+      "act": null,
+      "section": null,
+      "order": null,
+      "rule": null,
+      "text": null
+    },
+    "description": "A notice concerning an alleged breach by a government body of a contract to which the sender is a party.",
+    "order": 15,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_government_acquisition",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_government_public_authority_notices",
+    "name": "Notice concerning Government Acquisition",
+    "legalBasis": {
+      "act": null,
+      "section": null,
+      "order": null,
+      "rule": null,
+      "text": null
+    },
+    "description": "A notice concerning a government acquisition affecting the sender's rights, and calling upon the authority to address the matter raised.",
+    "order": 16,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_public_works_contract",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_government_public_authority_notices",
+    "name": "Notice concerning Public Works Contract",
+    "legalBasis": {
+      "act": null,
+      "section": null,
+      "order": null,
+      "rule": null,
+      "text": null
+    },
+    "description": "A notice concerning a public works contract, raising a grievance and calling upon the concerned authority to address it.",
+    "order": 17,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reply_to_government_legal_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_government_public_authority_notices",
+    "name": "Reply to Government Legal Notice",
+    "legalBasis": {
+      "act": null,
+      "section": null,
+      "order": null,
+      "rule": null,
+      "text": null
+    },
+    "description": "A reply to a legal notice received from a government body or public authority, setting out the sender's response.",
+    "order": 18,
+    "isActive": true
+  },
+  {
+    "id": "tpl_loan_recovery_legal_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Loan Recovery Legal Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A legal notice demanding repayment of a loan advanced by the sender to the recipient.",
+    "order": 19,
+    "isActive": true
+  },
+  {
+    "id": "tpl_personal_loan_recovery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Personal Loan Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding repayment of a personal loan advanced by the sender to the recipient.",
+    "order": 20,
+    "isActive": true
+  },
+  {
+    "id": "tpl_friendly_loan_recovery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Friendly Loan Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding repayment of a friendly or informal loan advanced by the sender to the recipient.",
+    "order": 21,
+    "isActive": true
+  },
+  {
+    "id": "tpl_outstanding_dues_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Outstanding Dues Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of outstanding dues owed by the recipient to the sender.",
+    "order": 22,
+    "isActive": true
+  },
+  {
+    "id": "tpl_security_deposit_refund_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Security Deposit Refund Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding refund of a security deposit held by the recipient.",
+    "order": 23,
+    "isActive": true
+  },
+  {
+    "id": "tpl_salary_arrears_demand_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Salary Arrears Demand Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of salary arrears owed to the sender.",
+    "order": 24,
+    "isActive": true
+  },
+  {
+    "id": "tpl_commission_recovery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Commission Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of commission owed to the sender in connection with a transaction or engagement.",
+    "order": 25,
+    "isActive": true
+  },
+  {
+    "id": "tpl_professional_fee_recovery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Professional Fee Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of professional fees owed to the sender for services rendered.",
+    "order": 26,
+    "isActive": true
+  },
+  {
+    "id": "tpl_business_debt_recovery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Business Debt Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of a business debt owed by the recipient to the sender.",
+    "order": 27,
+    "isActive": true
+  },
+  {
+    "id": "tpl_markup_interest_demand_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Mark-up/Interest Demand Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of mark-up or interest owed to the sender under a financing or contractual arrangement.",
+    "order": 28,
+    "isActive": true
+  },
+  {
+    "id": "tpl_compensation_demand_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Compensation Demand Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding compensation for a loss sustained by the sender and attributable to the recipient.",
+    "order": 29,
+    "isActive": true
+  },
+  {
+    "id": "tpl_damages_demand_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Damages Demand Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of damages for loss or injury sustained by the sender owing to the recipient's act or omission.",
+    "order": 30,
+    "isActive": true
+  },
+  {
+    "id": "tpl_recovery_of_wrongfully_withheld_money_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Recovery of Wrongfully Withheld Money Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding the return of money alleged to be wrongfully withheld by the recipient.",
+    "order": 31,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_financial_default",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Notice of Financial Default",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of a default in a financial obligation owed to the sender.",
+    "order": 32,
+    "isActive": true
+  },
+  {
+    "id": "tpl_final_demand_for_payment",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_money_recovery_debt_notices",
+    "name": "Final Demand for Payment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A final demand calling upon the recipient to pay an outstanding amount within a specified period before further action is considered.",
+    "order": 33,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_cheque_dishonour",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_cheque_negotiable_instruments_notices",
+    "name": "Notice concerning Cheque Dishonour",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice to the drawer or relevant party concerning the dishonour of a cheque presented for payment.",
+    "order": 34,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_promissory_note_default",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_cheque_negotiable_instruments_notices",
+    "name": "Notice concerning Promissory Note Default",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning default in payment under a promissory note.",
+    "order": 35,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_bill_of_exchange",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_cheque_negotiable_instruments_notices",
+    "name": "Notice concerning Bill of Exchange",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a bill of exchange and any default or issue arising in respect of it.",
+    "order": 36,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_to_endorser",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_cheque_negotiable_instruments_notices",
+    "name": "Notice to Endorser",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice addressed to the endorser of a negotiable instrument in connection with its non-payment or dishonour.",
+    "order": 37,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_to_acceptor",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_cheque_negotiable_instruments_notices",
+    "name": "Notice to Acceptor",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice addressed to the acceptor of a bill of exchange in connection with its non-payment or dishonour.",
+    "order": 38,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reply_to_cheque_dishonour_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_cheque_negotiable_instruments_notices",
+    "name": "Reply to Cheque-Dishonour Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A reply to a notice received concerning the dishonour of a cheque, setting out the sender's response.",
+    "order": 39,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_breach_of_contract",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Breach of Contract",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of an alleged breach of contract and calling for remedial action.",
+    "order": 40,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_to_perform_contract",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice to Perform Contract",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to perform obligations under an existing contract.",
+    "order": 41,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_non_performance",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Non-Performance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of non-performance of contractual obligations and calling for a response.",
+    "order": 42,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_delayed_performance",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Delayed Performance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of delayed performance of contractual obligations.",
+    "order": 43,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_repudiation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Repudiation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of the sender's position that the contract has been repudiated.",
+    "order": 44,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_accepting_repudiation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice Accepting Repudiation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice accepting the recipient's repudiation of the contract and setting out the sender's position on the consequences.",
+    "order": 45,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_termination_of_contract",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Termination of Contract",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice terminating a contract in accordance with its terms or the applicable law.",
+    "order": 46,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_cancellation_of_agreement",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Cancellation of Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice cancelling an agreement and setting out the sender's position on the consequences.",
+    "order": 47,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_rescission",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Rescission",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice rescinding a contract or agreement on a ground available to the sender.",
+    "order": 48,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_invoking_indemnity",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice Invoking Indemnity",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to indemnify the sender in accordance with a contractual indemnity.",
+    "order": 49,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_revocation_of_guarantee",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Revocation of Guarantee",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice revoking a guarantee in accordance with its terms or the applicable law.",
+    "order": 50,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_revocation_of_agency",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Revocation of Agency",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice revoking an agency created between the sender and the recipient.",
+    "order": 51,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_termination_of_agency",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Termination of Agency",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice terminating an agency arrangement between the sender and the recipient.",
+    "order": 52,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_revocation_of_authority",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Revocation of Authority",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice revoking authority previously conferred on the recipient by the sender.",
+    "order": 53,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_bailment",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice Concerning Bailment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a bailment and any issue arising in respect of the goods bailed.",
+    "order": 54,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_pledge",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice Concerning Pledge",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a pledge and any issue arising in respect of the pledged property.",
+    "order": 55,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_contractual_dispute",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice of Contractual Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of a dispute arising under or in connection with a contract.",
+    "order": 56,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_invoking_arbitration_clause",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_contract_notices",
+    "name": "Notice Invoking Arbitration Clause",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice invoking an arbitration clause contained in a contract and calling for arbitration of the dispute.",
+    "order": 57,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_illegal_possession",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Illegal Possession",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning alleged illegal possession of property and calling upon the recipient to address the matter.",
+    "order": 58,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_recovery_of_possession",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Recovery of Possession",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding recovery of possession of property from the recipient.",
+    "order": 59,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_encroachment",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Against Encroachment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to an alleged encroachment on the sender's property.",
+    "order": 60,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_to_remove_encroachment",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice to Remove Encroachment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to remove an alleged encroachment within a specified period.",
+    "order": 61,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_interference_with_possession",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Against Interference with Possession",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to interference with the sender's possession of property.",
+    "order": 62,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_interference_with_ownership",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Against Interference with Ownership",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to interference with the sender's ownership rights in property.",
+    "order": 63,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_ownership_dispute",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Ownership Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of a dispute concerning ownership of property.",
+    "order": 64,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_title_dispute",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Title Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of a dispute concerning title to property.",
+    "order": 65,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_declaration_of_title",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Declaration of Title",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice asserting the sender's title to property and calling for acknowledgment or resolution.",
+    "order": 66,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_unauthorized_construction",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Unauthorized Construction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to alleged unauthorized construction on property.",
+    "order": 67,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_to_stop_unauthorized_construction",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice to Stop Unauthorized Construction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to stop alleged unauthorized construction.",
+    "order": 68,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_construction_on_disputed_property",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Against Construction on Disputed Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to construction on property whose title or possession is in dispute.",
+    "order": 69,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_alienation_of_property",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Against Alienation of Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to an alleged alienation of property in which the sender asserts an interest.",
+    "order": 70,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_sale_of_disputed_property",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Against Sale of Disputed Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to an alleged sale of property whose title or possession is in dispute.",
+    "order": 71,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_transfer_of_property",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Against Transfer of Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to an alleged transfer of property in which the sender asserts an interest.",
+    "order": 72,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_agreement_to_sell",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Agreement to Sell",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an agreement to sell property and any issue arising in respect of it.",
+    "order": 73,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_specific_performance_of_agreement_to_sell",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Specific Performance of Agreement to Sell",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to perform an agreement to sell property.",
+    "order": 74,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_cancellation_of_agreement_to_sell",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Cancellation of Agreement to Sell",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice cancelling an agreement to sell property and setting out the sender's position.",
+    "order": 75,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_refund_under_agreement_to_sell",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Refund under Agreement to Sell",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding refund of amounts paid under an agreement to sell.",
+    "order": 76,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_return_of_earnest_money",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Return of Earnest Money",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding return of earnest money paid in connection with a proposed transaction.",
+    "order": 77,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_execution_of_sale_deed",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Execution of Sale Deed",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the recipient to execute a sale deed in accordance with the agreed terms.",
+    "order": 78,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_defective_property_title",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Defective Property Title",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of an alleged defect in the title to property.",
+    "order": 79,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_sellers_duty_to_disclose_defect",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Seller's Duty to Disclose Defect",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged failure by the seller to disclose a defect in the property.",
+    "order": 80,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_buyers_payment",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Buyer's Payment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning payment obligations of the buyer under a property transaction.",
+    "order": 81,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_mortgage",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Mortgage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a mortgage and any issue arising in respect of the mortgaged property.",
+    "order": 82,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_redemption_of_mortgage",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice for Redemption of Mortgage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the mortgagee to accept redemption of the mortgage.",
+    "order": 83,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_mortgage_default",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Mortgage Default",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning default under a mortgage and calling upon the recipient to address the matter.",
+    "order": 84,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_mortgagees_demand",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice of Mortgagee's Demand",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice by a mortgagee demanding payment or performance of obligations secured by the mortgage.",
+    "order": 85,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_charge_on_property",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Charge on Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a charge on property and any issue arising in respect of it.",
+    "order": 86,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_assignment_of_actionable_claim",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice of Assignment of Actionable Claim",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of an assignment of an actionable claim.",
+    "order": 87,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_maintenance_charge_on_property",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Maintenance Charge on Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a maintenance charge on property and the sender's position in respect of it.",
+    "order": 88,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_restrictive_covenant",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_property_notices",
+    "name": "Notice Concerning Restrictive Covenant",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged breach of a restrictive covenant affecting property.",
+    "order": 89,
+    "isActive": true
+  },
+  {
+    "id": "tpl_rent_demand_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Rent Demand Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of rent owed by the tenant to the landlord.",
+    "order": 90,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_arrears_of_rent",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice for Arrears of Rent",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of arrears of rent owed by the tenant.",
+    "order": 91,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_to_pay_rent",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice to Pay Rent",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the tenant to pay rent due under the tenancy.",
+    "order": 92,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_to_vacate_premises",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice to Vacate Premises",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the tenant to vacate the tenanted premises.",
+    "order": 93,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_termination_of_tenancy",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice of Termination of Tenancy",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice terminating the tenancy in accordance with the terms of the tenancy or the applicable law.",
+    "order": 94,
+    "isActive": true
+  },
+  {
+    "id": "tpl_eviction_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Eviction Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the tenant to vacate the premises, setting out the grounds on which eviction is sought.",
+    "order": 95,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_expiry_of_tenancy",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice of Expiry of Tenancy",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the tenant of the expiry of the tenancy.",
+    "order": 96,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_unauthorized_subletting",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice Against Unauthorized Subletting",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to alleged unauthorized subletting of the tenanted premises.",
+    "order": 97,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_unauthorized_construction_by_tenant",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice Against Unauthorized Construction by Tenant",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to alleged unauthorized construction carried out by the tenant on the tenanted premises.",
+    "order": 98,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_restoration_of_premises",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice for Restoration of Premises",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice calling upon the tenant to restore the premises to their original condition.",
+    "order": 99,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_possession_after_expiry_of_lease",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice for Possession after Expiry of Lease",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding possession of the premises following the expiry of the lease.",
+    "order": 100,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_security_deposit",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice Concerning Security Deposit",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a security deposit held in connection with the tenancy.",
+    "order": 101,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_rent_increase",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice of Rent Increase",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the tenant of an increase in rent in accordance with the tenancy or the applicable law.",
+    "order": 102,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_landlords_breach",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice of Landlord's Breach",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the landlord of an alleged breach of the landlord's obligations under the tenancy.",
+    "order": 103,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_tenants_breach",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice of Tenant's Breach",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the tenant of an alleged breach of the tenant's obligations under the tenancy.",
+    "order": 104,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_essential_services",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice Concerning Essential Services",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning the provision or withdrawal of essential services at the tenanted premises.",
+    "order": 105,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_nuisance_by_tenant",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Notice Against Nuisance by Tenant",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to alleged nuisance caused by the tenant at the tenanted premises.",
+    "order": 106,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reply_to_eviction_rent_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_rent_tenancy_notices",
+    "name": "Reply to Eviction/Rent Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A reply to an eviction or rent notice received by the sender, setting out the sender's response.",
+    "order": 107,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_talaq",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice of Talaq",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice of pronouncement of talaq, issued to the relevant party in connection with the dissolution of marriage.",
+    "order": 108,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_maintenance",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Maintenance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning maintenance obligations owed to the sender or to a dependant.",
+    "order": 109,
+    "isActive": true
+  },
+  {
+    "id": "tpl_maintenance_demand_notice_by_wife",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Maintenance Demand Notice by Wife",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice by a wife demanding maintenance owed to her.",
+    "order": 110,
+    "isActive": true
+  },
+  {
+    "id": "tpl_child_maintenance_demand_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Child Maintenance Demand Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding maintenance for a child owed by the other parent or the person liable.",
+    "order": 111,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_recovery_of_haq_mehr",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice for Recovery of Haq Mehr",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of Haq Mehr owed to the wife.",
+    "order": 112,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_demanding_payment_of_dower",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Demanding Payment of Dower",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of dower owed to the wife.",
+    "order": 113,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_return_of_dowry_articles",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice for Return of Dowry Articles",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding the return of dowry articles belonging to the sender.",
+    "order": 114,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_return_of_personal_belongings",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice for Return of Personal Belongings",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding the return of personal belongings of the sender held by the recipient.",
+    "order": 115,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_child_custody",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Child Custody",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning custody of a child and the sender's position in respect of it.",
+    "order": 116,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_visitation_rights",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Visitation Rights",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning visitation rights in respect of a child.",
+    "order": 117,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_guardianship",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Guardianship",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning guardianship of a minor or of a person requiring a guardian.",
+    "order": 118,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_child_expenses",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Child Expenses",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning expenses incurred for a child and the sender's position in respect of their payment.",
+    "order": 119,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_matrimonial_property",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Matrimonial Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning matrimonial property and the sender's position in respect of it.",
+    "order": 120,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_restitution_of_conjugal_rights",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Restitution of Conjugal Rights",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning restitution of conjugal rights and the sender's position in respect of it.",
+    "order": 121,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_dissolution_of_marriage",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Dissolution of Marriage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning dissolution of marriage and the sender's position in respect of it.",
+    "order": 122,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_iddat_maintenance",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Iddat Maintenance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning maintenance during the period of iddat.",
+    "order": 123,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_marriage_dispute",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Marriage Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a dispute arising in connection with a marriage.",
+    "order": 124,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_second_marriage",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Second Marriage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning the matter of a second marriage.",
+    "order": 125,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_application_concerning_permission_for_second_marriage",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice/Application Concerning Permission for Second Marriage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice or application concerning permission for a second marriage.",
+    "order": 126,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_arbitration_council_in_talaq",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Arbitration Council in Talaq",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning proceedings of the Arbitration Council in connection with a talaq.",
+    "order": 127,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_reconciliation_proceedings",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Notice Concerning Reconciliation Proceedings",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning reconciliation proceedings between spouses.",
+    "order": 128,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reply_to_family_legal_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_family_law_notices",
+    "name": "Reply to Family Legal Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A reply to a family legal notice received by the sender, setting out the sender's response.",
+    "order": 129,
+    "isActive": true
+  },
+  {
+    "id": "tpl_defamation_legal_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Defamation Legal Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged defamatory statement made against the sender, calling for redressal.",
+    "order": 130,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_demanding_retraction",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Demanding Retraction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding retraction of an alleged defamatory statement.",
+    "order": 131,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_demanding_apology",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Demanding Apology",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding an apology in respect of an alleged defamatory statement.",
+    "order": 132,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_demanding_correction",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Demanding Correction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding correction of an alleged false or inaccurate statement.",
+    "order": 133,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_newspaper_defamation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Concerning Newspaper Defamation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged defamatory statement published in a newspaper.",
+    "order": 134,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_television_defamation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Concerning Television Defamation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged defamatory statement broadcast on television.",
+    "order": 135,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_online_defamation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Concerning Online Defamation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged defamatory statement published online.",
+    "order": 136,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_social_media_defamation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Concerning Social-Media Defamation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged defamatory statement published on a social media platform.",
+    "order": 137,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_whatsapp_defamation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Concerning WhatsApp Defamation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged defamatory statement circulated through WhatsApp.",
+    "order": 138,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_removal_of_defamatory_content",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice for Removal of Defamatory Content",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding removal of alleged defamatory content from a publication or platform.",
+    "order": 139,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_false_publication",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Concerning False Publication",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged false publication about the sender.",
+    "order": 140,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_false_allegation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice Concerning False Allegation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged false allegation made against the sender.",
+    "order": 141,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_damages_for_defamation",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Notice for Damages for Defamation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding damages for an alleged defamation of the sender.",
+    "order": 142,
+    "isActive": true
+  },
+  {
+    "id": "tpl_reply_to_defamation_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_defamation_notices",
+    "name": "Reply to Defamation Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A reply to a defamation notice received by the sender, setting out the sender's response.",
+    "order": 143,
+    "isActive": true
+  },
+  {
+    "id": "tpl_salary_recovery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Salary Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding recovery of salary owed to the employee.",
+    "order": 144,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_unpaid_wages",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice for Unpaid Wages",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of unpaid wages owed to the employee.",
+    "order": 145,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_unpaid_overtime",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice for Unpaid Overtime",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of unpaid overtime owed to the employee.",
+    "order": 146,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_employment_benefits",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice for Employment Benefits",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding employment benefits owed to the employee.",
+    "order": 147,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_challenging_termination",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Challenging Termination",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice challenging the termination of the sender's employment.",
+    "order": 148,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_against_wrongful_dismissal",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Against Wrongful Dismissal",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice objecting to the sender's alleged wrongful dismissal and calling for redressal.",
+    "order": 149,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_reinstatement",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice for Reinstatement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding reinstatement of the sender to the position previously held.",
+    "order": 150,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_resignation_dispute",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Resignation Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning a dispute arising in connection with the sender's resignation.",
+    "order": 151,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_employment_contract_breach",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Employment Contract Breach",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged breach of the employment contract.",
+    "order": 152,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_provident_fund",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Provident Fund",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning provident fund contributions or benefits owed to the employee.",
+    "order": 153,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_gratuity",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Gratuity",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning gratuity owed to the employee.",
+    "order": 154,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_bonus",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Bonus",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning bonus owed to the employee.",
+    "order": 155,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_leave_entitlement",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Leave Entitlement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning the employee's entitlement to leave.",
+    "order": 156,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_workplace_harassment",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Workplace Harassment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning alleged harassment at the workplace.",
+    "order": 157,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_workplace_discrimination",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Workplace Discrimination",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning alleged discrimination at the workplace.",
+    "order": 158,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_service_certificate",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Service Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding issuance of a service certificate by the employer.",
+    "order": 159,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_concerning_final_settlement",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice Concerning Final Settlement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning final settlement of amounts owed to the employee on cessation of employment.",
+    "order": 160,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employer_show_cause_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Employer Show-Cause Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A show-cause notice issued by an employer to an employee requiring the employee to explain the conduct or matter specified.",
+    "order": 161,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employee_reply_to_show_cause_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Employee Reply to Show-Cause Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A reply by an employee to a show-cause notice received from the employer.",
+    "order": 162,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_misconduct",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice of Misconduct",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning alleged misconduct by an employee.",
+    "order": 163,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_absence_unauthorized_absence",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice of Absence/Unauthorized Absence",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning absence or unauthorized absence of an employee from duty.",
+    "order": 164,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_domestic_inquiry",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice of Domestic Inquiry",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice convening a domestic inquiry in respect of an employee and setting out the matter to be inquired into.",
+    "order": 165,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_industrial_dispute",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_employment_labour_notices",
+    "name": "Notice of Industrial Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an industrial dispute and the sender's position in respect of it.",
+    "order": 166,
+    "isActive": true
+  },
+  {
+    "id": "tpl_commercial_recovery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Commercial Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of an amount owed to the sender in a commercial transaction.",
+    "order": 167,
+    "isActive": true
+  },
+  {
+    "id": "tpl_supplier_default_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Supplier Default Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing a supplier of an alleged default in its obligations.",
+    "order": 168,
+    "isActive": true
+  },
+  {
+    "id": "tpl_vendor_breach_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Vendor Breach Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing a vendor of an alleged breach of its obligations.",
+    "order": 169,
+    "isActive": true
+  },
+  {
+    "id": "tpl_customer_default_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Customer Default Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing a customer of an alleged default in its obligations to the sender.",
+    "order": 170,
+    "isActive": true
+  },
+  {
+    "id": "tpl_purchase_order_breach_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Purchase Order Breach Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning an alleged breach of a purchase order.",
+    "order": 171,
+    "isActive": true
+  },
+  {
+    "id": "tpl_non_delivery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Non-Delivery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning non-delivery of goods or materials that were to be supplied.",
+    "order": 172,
+    "isActive": true
+  },
+  {
+    "id": "tpl_delayed_delivery_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Delayed Delivery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning delayed delivery of goods or materials that were to be supplied.",
+    "order": 173,
+    "isActive": true
+  },
+  {
+    "id": "tpl_defective_goods_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Defective Goods Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning alleged defects in goods supplied.",
+    "order": 174,
+    "isActive": true
+  },
+  {
+    "id": "tpl_rejection_of_goods_notice",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Rejection of Goods Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice rejecting goods supplied on the ground specified by the sender.",
+    "order": 175,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_refund_of_purchase_price",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice for Refund of Purchase Price",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding refund of the purchase price paid for goods.",
+    "order": 176,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_for_replacement_of_defective_goods",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice for Replacement of Defective Goods",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding replacement of defective goods supplied.",
+    "order": 177,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_commercial_contract_termination",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice of Commercial Contract Termination",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice terminating a commercial contract in accordance with its terms or the applicable law.",
+    "order": 178,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_partnership_dispute",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice of Partnership Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of a dispute arising in connection with a partnership.",
+    "order": 179,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_partnership_dissolution",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice of Partnership Dissolution",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice of dissolution of a partnership.",
+    "order": 180,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_expulsion_of_partner",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice of Expulsion of Partner",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice concerning the expulsion of a partner from a firm.",
+    "order": 181,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_change_in_firm_constitution",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice of Change in Firm Constitution",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of a change in the constitution of the firm.",
+    "order": 182,
+    "isActive": true
+  },
+  {
+    "id": "tpl_notice_of_change_of_firm_address",
+    "categoryId": "cat_legal_notices",
+    "subCategoryId": "subcat_commercial_business_notices",
+    "name": "Notice of Change of Firm Address",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing the recipient of a change in the address of the firm.",
+    "order": 183,
+    "isActive": true
+  }
+]

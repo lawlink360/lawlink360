@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/services/pdf_service.dart';
-import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 import '../models/document_template.dart';
+import '../providers/application_recent_documents_provider.dart';
 import 'document_editor_screen.dart';
 
-class DocumentPreviewScreen extends StatefulWidget {
+class DocumentPreviewScreen extends ConsumerStatefulWidget {
   final DocumentTemplate template;
 
   const DocumentPreviewScreen({
@@ -18,30 +19,48 @@ class DocumentPreviewScreen extends StatefulWidget {
   });
 
   @override
-  State<DocumentPreviewScreen> createState() => _DocumentPreviewScreenState();
+  ConsumerState<DocumentPreviewScreen> createState() =>
+      _DocumentPreviewScreenState();
 }
 
-class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
+class _DocumentPreviewScreenState
+    extends ConsumerState<DocumentPreviewScreen> {
   late String documentBody;
 
   @override
   void initState() {
     super.initState();
     documentBody = widget.template.body;
+
+    // Record the template visit once, when this screen initializes.
+    // Deferred to the next microtask because Riverpod forbids
+    // modifying a provider during the widget-tree build phase
+    // (initState runs as part of that phase). Rebuilds do not
+    // re-trigger this, so a single screen open yields one visit.
+    Future(() {
+      if (!mounted) return;
+      ref.read(recentDocumentsProvider.notifier).recordVisit(
+            widget.template.id,
+          );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: AppColors.lightBackground,
+      backgroundColor: colorScheme.surfaceContainerLowest,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.surface,
-        foregroundColor: AppColors.textPrimary,
+        scrolledUnderElevation: 0,
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
+        surfaceTintColor: Colors.transparent,
         title: Text(
           'Document Preview',
           style: AppTextStyles.title.copyWith(
-            color: AppColors.textPrimary,
+            color: colorScheme.onSurface,
           ),
         ),
       ),
@@ -55,14 +74,15 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
-                  color: AppColors.surface,
+                  color: colorScheme.surface,
                   borderRadius: BorderRadius.circular(AppRadius.lg),
                   border: Border.all(
-                    color: AppColors.border,
+                    color: colorScheme.outlineVariant
+                        .withValues(alpha: 0.55),
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
+                      color: colorScheme.shadow.withValues(alpha: 0.05),
                       blurRadius: 14,
                       offset: const Offset(0, 5),
                     ),
@@ -78,12 +98,14 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                           width: 46,
                           height: 46,
                           decoration: BoxDecoration(
-                            color: AppColors.primary.withValues(alpha: 0.08),
-                            borderRadius: BorderRadius.circular(AppRadius.md),
+                            color: colorScheme.primary
+                                .withValues(alpha: 0.08),
+                            borderRadius:
+                                BorderRadius.circular(AppRadius.md),
                           ),
-                          child: const Icon(
+                          child: Icon(
                             Icons.description_outlined,
-                            color: AppColors.primary,
+                            color: colorScheme.primary,
                             size: 24,
                           ),
                         ),
@@ -94,7 +116,7 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.headline.copyWith(
-                              color: AppColors.textPrimary,
+                              color: colorScheme.onSurface,
                               fontSize: 22,
                             ),
                           ),
@@ -103,14 +125,15 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                     ),
                     const SizedBox(height: AppSpacing.lg),
                     Divider(
-                      color: AppColors.divider,
+                      color: colorScheme.outlineVariant
+                          .withValues(alpha: 0.55),
                       height: 1,
                     ),
                     const SizedBox(height: AppSpacing.lg),
                     Text(
                       documentBody,
                       style: AppTextStyles.body.copyWith(
-                        color: AppColors.textPrimary,
+                        color: colorScheme.onSurface,
                         height: 1.8,
                       ),
                     ),
@@ -129,10 +152,11 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                 AppSpacing.md,
               ),
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: colorScheme.surface,
                 border: Border(
                   top: BorderSide(
-                    color: AppColors.border,
+                    color: colorScheme.outlineVariant
+                        .withValues(alpha: 0.55),
                   ),
                 ),
               ),
@@ -163,9 +187,9 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                       ),
                       label: const Text('Edit Manually'),
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: AppColors.primary,
-                        side: const BorderSide(
-                          color: AppColors.primary,
+                        foregroundColor: colorScheme.primary,
+                        side: BorderSide(
+                          color: colorScheme.primary,
                         ),
                         minimumSize: const Size(
                           0,
@@ -182,163 +206,21 @@ class _DocumentPreviewScreenState extends State<DocumentPreviewScreen> {
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     child: ElevatedButton.icon(
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          backgroundColor: AppColors.surface,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(AppRadius.xl),
-                            ),
-                          ),
-                          builder: (context) {
-                            return SafeArea(
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  AppSpacing.lg,
-                                  AppSpacing.md,
-                                  AppSpacing.lg,
-                                  AppSpacing.lg,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Container(
-                                      width: 42,
-                                      height: 4,
-                                      decoration: BoxDecoration(
-                                        color: AppColors.border,
-                                        borderRadius:
-                                            BorderRadius.circular(
-                                          AppRadius.pill,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(height: AppSpacing.lg),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 44,
-                                          height: 44,
-                                          decoration: BoxDecoration(
-                                            color: AppColors.primary
-                                                .withValues(alpha: 0.08),
-                                            borderRadius:
-                                                BorderRadius.circular(
-                                              AppRadius.md,
-                                            ),
-                                          ),
-                                          child: const Icon(
-                                            Icons.download_outlined,
-                                            color: AppColors.primary,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: AppSpacing.md,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            'Download Document',
-                                            style: AppTextStyles.title
-                                                .copyWith(
-                                              color: AppColors.textPrimary,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: AppSpacing.md),
-                                    ListTile(
-                                      contentPadding: EdgeInsets.zero,
-                                      leading: Container(
-                                        width: 42,
-                                        height: 42,
-                                        decoration: BoxDecoration(
-                                          color: AppColors.error
-                                              .withValues(alpha: 0.08),
-                                          borderRadius:
-                                              BorderRadius.circular(
-                                            AppRadius.sm,
-                                          ),
-                                        ),
-                                        child: const Icon(
-                                          Icons.picture_as_pdf_outlined,
-                                          color: AppColors.error,
-                                        ),
-                                      ),
-                                      title: Text(
-                                        'Download as PDF',
-                                        style: AppTextStyles.body.copyWith(
-                                          color: AppColors.textPrimary,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      subtitle: Text(
-                                        'Prepare the document as a PDF',
-                                        style: AppTextStyles.caption.copyWith(
-                                          color: AppColors.textSecondary,
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                    ),
-                                    ListTile(
-                                      contentPadding: EdgeInsets.zero,
-                                      leading: Container(
-                                        width: 42,
-                                        height: 42,
-                                        decoration: BoxDecoration(
-                                          color: AppColors.info
-                                              .withValues(alpha: 0.08),
-                                          borderRadius:
-                                              BorderRadius.circular(
-                                            AppRadius.sm,
-                                          ),
-                                        ),
-                                        child: const Icon(
-                                          Icons.description_outlined,
-                                          color: AppColors.info,
-                                        ),
-                                      ),
-                                      title: Text(
-                                        'Download as DOCX',
-                                        style: AppTextStyles.body.copyWith(
-                                          color: AppColors.textPrimary,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      subtitle: Text(
-                                        'Prepare the document file',
-                                        style: AppTextStyles.caption.copyWith(
-                                          color: AppColors.textSecondary,
-                                        ),
-                                      ),
-                                      onTap: () async {
-                                        Navigator.pop(context);
-
-                                        await PdfService.previewPdf(
-                                          title: widget.template.title,
-                                          body: documentBody,
-                                          rtl: false,
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
+                      onPressed: () async {
+                        await PdfService.previewPdf(
+                          title: widget.template.title,
+                          body: documentBody,
+                          rtl: false,
                         );
                       },
                       icon: const Icon(
-                        Icons.download_outlined,
+                        Icons.picture_as_pdf_outlined,
                         size: 18,
                       ),
-                      label: const Text('Download'),
+                      label: const Text('Download PDF'),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        foregroundColor: AppColors.textLight,
+                        backgroundColor: colorScheme.primary,
+                        foregroundColor: colorScheme.onPrimary,
                         elevation: 0,
                         minimumSize: const Size(
                           0,

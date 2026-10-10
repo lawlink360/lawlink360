@@ -1,0 +1,263 @@
+[
+  { "templateId": "tpl_general_affidavit", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_undertaking", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_declaration", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_verification", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_one_and_the_same_person", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_name_difference", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_change_correction_of_name", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_difference_in_fathers_name", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_date_of_birth_correction", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_residence", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_relationship", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_dependency", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_no_objection", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_consent", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_non_claim", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_indemnity", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_solvency", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_ownership", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_possession", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_sale_of_property", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_purchase_of_property", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_agreement_to_sell", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_bayana", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_payment_of_sale_consideration", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_no_objection_to_transfer", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_mutation", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_inheritance_mutation", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_joint_ownership", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_relinquishment_of_property_rights", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_family_settlement", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_property_documents", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_property_possession", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_legal_heirs", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_heirship", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_family_members", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_no_other_legal_heirs", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_no_objection_by_legal_heirs", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_succession_certificate", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_letter_of_administration", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_estate_of_deceased", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_deceaseds_bank_account", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_relinquishment_of_inheritance", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_marriage", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_nikahnama", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_free_consent_to_marriage", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_single_unmarried_status", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_divorce", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_khula", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_haq_mehr", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_dowry_articles", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_child_custody", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_guardianship", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_child_maintenance", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_parental_consent", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_in_support_of_application", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_in_support_of_petition", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_in_support_of_plaint", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_in_evidence", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_witness", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_documents", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_service", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_compliance_with_court_order", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_compromise", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_withdrawal", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_surety", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_cnic", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_passport", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_driving_licence", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_vehicle_documents", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_mobile_phone", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_educational_certificate", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_degree", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_cheque", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_cheque_book", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_general_lost_document_affidavit", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_cnic_correction", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_name_correction", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_fathers_name_correction", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_date_of_birth_correction", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_family_tree", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_parentage", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_passport", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_sponsorship", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_financial_support", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_parental_consent_for_minor", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_visa_immigration_purpose", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_certificate", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_dmc", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_duplicate_certificate", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_name_difference_in_educational_documents", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_fathers_name_difference", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_date_of_birth_difference", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_educational_gap", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_scholarship_student_undertaking", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_employment", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_experience", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_income", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_no_government_employment", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_dual_employment", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_undertaking_by_employee", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_loss_of_employer_property", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_sole_proprietorship", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_business_ownership", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_partnership", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_partner", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_change_of_business_address", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_source_of_funds", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_source_of_income", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_beneficial_ownership", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_for_bank_account", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_name_difference_in_bank_account", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_signature_difference", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_atm_debit_card", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_deceased_account_holder", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_legal_heirs_for_bank_account", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_vehicle_ownership", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_vehicle_sale", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_vehicle_transfer", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_registration_book", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_lost_number_plate", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_vehicle_inheritance", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_engine_chassis_number", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_domicile_related_declaration", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_government_employment", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_pension", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_family_pension", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_government_accommodation", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_life", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_of_non_remarriage", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_legal_heirs_for_pension", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" },
+  
+  { "templateId": "tpl_affidavit_regarding_death_of_pensioner", "body": "[[LEGAL_SPECIMEN_CONTENT_PENDING_APPROVED_DRAFTER_CONTENT]]" }
+]

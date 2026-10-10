@@ -1,0 +1,622 @@
+[
+  {
+    "id": "tpl_partnership_deed",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_formation_and_partnership",
+    "name": "Partnership Deed",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A deed recording the terms of a partnership between business partners.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "tpl_partnership_amendment_deed",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_formation_and_partnership",
+    "name": "Partnership Amendment Deed",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A deed amending the terms of an existing partnership deed.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "tpl_partnership_dissolution_deed",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_formation_and_partnership",
+    "name": "Partnership Dissolution Deed",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A deed dissolving a partnership and settling its affairs.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "tpl_joint_venture_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_formation_and_partnership",
+    "name": "Joint Venture Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement establishing and governing a joint venture between parties.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "tpl_founders_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_formation_and_partnership",
+    "name": "Founders Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement among founders setting out their rights and obligations in a business.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "tpl_business_company_shareholders_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_formation_and_partnership",
+    "name": "Business/Company Shareholders Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement governing the relationship and rights of a company's shareholders.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "tpl_board_resolution",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_company_and_corporate",
+    "name": "Board Resolution",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A formal resolution passed by a company's board of directors.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "tpl_shareholders_resolution",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_company_and_corporate",
+    "name": "Shareholders Resolution",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A formal resolution passed by the shareholders of a company.",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "tpl_share_transfer_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_company_and_corporate",
+    "name": "Share Transfer Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement for the transfer of shares from one party to another.",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "tpl_share_sale_purchase_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_company_and_corporate",
+    "name": "Share Sale/Purchase Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement for the sale and purchase of shares between parties.",
+    "order": 10,
+    "isActive": true
+  },
+  {
+    "id": "tpl_director_appointment_letter",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_company_and_corporate",
+    "name": "Director Appointment Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter appointing an individual as a director of a company.",
+    "order": 11,
+    "isActive": true
+  },
+  {
+    "id": "tpl_director_resignation_letter",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_company_and_corporate",
+    "name": "Director Resignation Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter by which a director resigns from the board of a company.",
+    "order": 12,
+    "isActive": true
+  },
+  {
+    "id": "tpl_business_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Business Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A general agreement setting out terms of a business arrangement between parties.",
+    "order": 13,
+    "isActive": true
+  },
+  {
+    "id": "tpl_sale_of_goods_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Sale of Goods Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement for the sale and purchase of goods between parties.",
+    "order": 14,
+    "isActive": true
+  },
+  {
+    "id": "tpl_supply_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Supply Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement governing the supply of goods or materials between parties.",
+    "order": 15,
+    "isActive": true
+  },
+  {
+    "id": "tpl_service_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Service Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement for the provision of services between parties.",
+    "order": 16,
+    "isActive": true
+  },
+  {
+    "id": "tpl_consultancy_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Consultancy Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement engaging a consultant to provide professional services.",
+    "order": 17,
+    "isActive": true
+  },
+  {
+    "id": "tpl_agency_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Agency Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement appointing an agent to act on behalf of a principal.",
+    "order": 18,
+    "isActive": true
+  },
+  {
+    "id": "tpl_distribution_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Distribution Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement appointing a distributor to distribute products.",
+    "order": 19,
+    "isActive": true
+  },
+  {
+    "id": "tpl_franchise_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Franchise Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement granting franchise rights to operate under a brand.",
+    "order": 20,
+    "isActive": true
+  },
+  {
+    "id": "tpl_commission_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Commission Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement setting out terms for payment of commission.",
+    "order": 21,
+    "isActive": true
+  },
+  {
+    "id": "tpl_memorandum_of_understanding_mou",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Memorandum of Understanding (MOU)",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document recording a mutual understanding between parties.",
+    "order": 22,
+    "isActive": true
+  },
+  {
+    "id": "tpl_letter_of_intent_loi",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_commercial_agreements",
+    "name": "Letter of Intent (LOI)",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter expressing an intention to enter into an agreement or transaction.",
+    "order": 23,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employment_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Employment Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement setting out the terms and conditions of employment.",
+    "order": 24,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employee_appointment_letter",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Employee Appointment Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter appointing an individual to a position of employment.",
+    "order": 25,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employee_confidentiality_nda",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Employee Confidentiality/NDA",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement requiring an employee to keep company information confidential.",
+    "order": 26,
+    "isActive": true
+  },
+  {
+    "id": "tpl_independent_contractor_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Independent Contractor Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement engaging an independent contractor to perform services.",
+    "order": 27,
+    "isActive": true
+  },
+  {
+    "id": "tpl_employee_warning_letter",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Employee Warning Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter warning an employee about a performance or conduct issue.",
+    "order": 28,
+    "isActive": true
+  },
+  {
+    "id": "tpl_show_cause_notice",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Show Cause Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice requiring an employee to explain an alleged misconduct or lapse.",
+    "order": 29,
+    "isActive": true
+  },
+  {
+    "id": "tpl_termination_letter",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Termination Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter terminating an employee's employment with the organization.",
+    "order": 30,
+    "isActive": true
+  },
+  {
+    "id": "tpl_resignation_acceptance_letter",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Resignation Acceptance Letter",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A letter formally accepting an employee's resignation.",
+    "order": 31,
+    "isActive": true
+  },
+  {
+    "id": "tpl_experience_service_certificate",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_employment_and_business_hr",
+    "name": "Experience/Service Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A certificate confirming an employee's experience and service record.",
+    "order": 32,
+    "isActive": true
+  },
+  {
+    "id": "tpl_commercial_lease_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_property",
+    "name": "Commercial Lease Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement leasing commercial premises for business use.",
+    "order": 33,
+    "isActive": true
+  },
+  {
+    "id": "tpl_shop_rent_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_property",
+    "name": "Shop Rent Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement renting a shop premises between landlord and tenant.",
+    "order": 34,
+    "isActive": true
+  },
+  {
+    "id": "tpl_office_rent_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_property",
+    "name": "Office Rent Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement renting office premises between landlord and tenant.",
+    "order": 35,
+    "isActive": true
+  },
+  {
+    "id": "tpl_warehouse_rent_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_property",
+    "name": "Warehouse Rent Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement renting warehouse premises between landlord and tenant.",
+    "order": 36,
+    "isActive": true
+  },
+  {
+    "id": "tpl_business_loan_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_finance",
+    "name": "Business Loan Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement setting out the terms of a business loan.",
+    "order": 37,
+    "isActive": true
+  },
+  {
+    "id": "tpl_promissory_note",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_finance",
+    "name": "Promissory Note",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A written promise to pay a specified sum of money to a party.",
+    "order": 38,
+    "isActive": true
+  },
+  {
+    "id": "tpl_payment_installment_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_finance",
+    "name": "Payment/Installment Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement setting out terms for payment in installments.",
+    "order": 39,
+    "isActive": true
+  },
+  {
+    "id": "tpl_debt_settlement_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_finance",
+    "name": "Debt Settlement Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement settling outstanding debt between creditor and debtor.",
+    "order": 40,
+    "isActive": true
+  },
+  {
+    "id": "tpl_guarantee_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_finance",
+    "name": "Guarantee Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement by which a guarantor undertakes to secure an obligation.",
+    "order": 41,
+    "isActive": true
+  },
+  {
+    "id": "tpl_indemnity_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_finance",
+    "name": "Indemnity Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement indemnifying a party against specified losses or claims.",
+    "order": 42,
+    "isActive": true
+  },
+  {
+    "id": "tpl_customer_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_customer_vendor_and_e_commerce",
+    "name": "Customer Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement setting out terms between a business and its customers.",
+    "order": 43,
+    "isActive": true
+  },
+  {
+    "id": "tpl_vendor_supplier_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_customer_vendor_and_e_commerce",
+    "name": "Vendor/Supplier Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement setting out terms between a business and its vendors or suppliers.",
+    "order": 44,
+    "isActive": true
+  },
+  {
+    "id": "tpl_purchase_order",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_customer_vendor_and_e_commerce",
+    "name": "Purchase Order",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document issued by a buyer to order goods or services from a seller.",
+    "order": 45,
+    "isActive": true
+  },
+  {
+    "id": "tpl_sales_order",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_customer_vendor_and_e_commerce",
+    "name": "Sales Order",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document confirming a customer's order for goods or services.",
+    "order": 46,
+    "isActive": true
+  },
+  {
+    "id": "tpl_terms_and_conditions",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_customer_vendor_and_e_commerce",
+    "name": "Terms & Conditions",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document setting out the terms governing use of products or services.",
+    "order": 47,
+    "isActive": true
+  },
+  {
+    "id": "tpl_privacy_policy",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_customer_vendor_and_e_commerce",
+    "name": "Privacy Policy",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A document explaining how personal information is collected and used.",
+    "order": 48,
+    "isActive": true
+  },
+  {
+    "id": "tpl_refund_return_policy",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_customer_vendor_and_e_commerce",
+    "name": "Refund/Return Policy",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A policy setting out the terms for refunds and returns of products.",
+    "order": 49,
+    "isActive": true
+  },
+  {
+    "id": "tpl_non_disclosure_agreement_nda",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_confidentiality_and_ip",
+    "name": "Non-Disclosure Agreement (NDA)",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement protecting confidential information shared between parties.",
+    "order": 50,
+    "isActive": true
+  },
+  {
+    "id": "tpl_trademark_license_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_confidentiality_and_ip",
+    "name": "Trademark License Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement licensing the use of a trademark to another party.",
+    "order": 51,
+    "isActive": true
+  },
+  {
+    "id": "tpl_copyright_assignment_license_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_confidentiality_and_ip",
+    "name": "Copyright Assignment/License Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement assigning or licensing copyright in a work.",
+    "order": 52,
+    "isActive": true
+  },
+  {
+    "id": "tpl_intellectual_property_assignment_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_confidentiality_and_ip",
+    "name": "Intellectual Property Assignment Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement assigning intellectual property rights from one party to another.",
+    "order": 53,
+    "isActive": true
+  },
+  {
+    "id": "tpl_demand_for_payment_notice",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_notes",
+    "name": "Demand for Payment Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding payment of an outstanding amount.",
+    "order": 54,
+    "isActive": true
+  },
+  {
+    "id": "tpl_breach_of_contract_notice",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_notes",
+    "name": "Breach of Contract Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice informing a party of a breach of contract.",
+    "order": 55,
+    "isActive": true
+  },
+  {
+    "id": "tpl_contract_termination_notice",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_notes",
+    "name": "Contract Termination Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice terminating a contract between parties.",
+    "order": 56,
+    "isActive": true
+  },
+  {
+    "id": "tpl_debt_recovery_notice",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_notes",
+    "name": "Debt Recovery Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice demanding recovery of an outstanding debt.",
+    "order": 57,
+    "isActive": true
+  },
+  {
+    "id": "tpl_cheque_dishonour_notice",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_notes",
+    "name": "Cheque Dishonour Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice regarding the dishonour of a cheque.",
+    "order": 58,
+    "isActive": true
+  },
+  {
+    "id": "tpl_legal_notice_for_business_dispute",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_notes",
+    "name": "Legal Notice for Business Dispute",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A legal notice concerning a dispute between business parties.",
+    "order": 59,
+    "isActive": true
+  },
+  {
+    "id": "tpl_business_dissolution_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_closure",
+    "name": "Business Dissolution Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement dissolving a business and settling its affairs.",
+    "order": 60,
+    "isActive": true
+  },
+  {
+    "id": "tpl_business_sale_transfer_agreement",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_closure",
+    "name": "Business Sale/Transfer Agreement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An agreement for the sale or transfer of a business.",
+    "order": 61,
+    "isActive": true
+  },
+  {
+    "id": "tpl_business_closure_notice",
+    "categoryId": "cat_business_documents",
+    "subCategoryId": "subcat_business_closure",
+    "name": "Business Closure Notice",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A notice announcing the closure of a business.",
+    "order": 62,
+    "isActive": true
+  }
+]

@@ -80,13 +80,19 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/
-    - assets/images/
-    - assets/logos/
-    - assets/backgrounds/
-    - assets/illustrations/
-    - assets/splash/
-    - assets/
+  - assets/icons/
+  - assets/images/
+  - assets/logos/
+  - assets/backgrounds/
+  - assets/illustrations/
+  - assets/splash/
+  - assets/application_data/
+  - assets/application_data/categories/
+  - assets/application_data/subcategories/
+  - assets/application_data/template/
+  - assets/application_data/template_contents/
+  - assets/application_data/forms/
+  - assets/
 
   fonts:
     - family: NotoNaskh

@@ -15,6 +15,16 @@ import '../../models/scanner_document_category.dart';
 ///
 /// The card does not access repositories or providers. It exposes
 /// callbacks only.
+///
+/// Long-press is reserved for entering multi-select mode. In
+/// selection mode, tap and long-press both raise
+/// [onToggleSelection]. The card does not own selection state; the
+/// provider and screen do.
+///
+/// Single-document actions (Favourite, Rename, Delete, Move,
+/// Duplicate) are surfaced through the explicit overflow affordance
+/// (`onOpenActions`) in normal mode. That affordance is hidden
+/// while the card is in selection mode.
 class ScannerLibraryCard extends StatelessWidget {
   const ScannerLibraryCard({
     super.key,
@@ -22,35 +32,67 @@ class ScannerLibraryCard extends StatelessWidget {
     required this.onTap,
     this.onLongPress,
     this.onToggleFavorite,
+    this.onOpenActions,
+    this.isSelectionMode = false,
+    this.isSelected = false,
+    this.onToggleSelection,
   });
 
   final ScannerDocument document;
   final VoidCallback onTap;
 
-  /// Raised on long-press. The parent is expected to open a document
-  /// action surface. Null disables the gesture.
+  /// Raised on long-press. The screen uses this to enter selection
+  /// mode. Null disables the gesture.
   final VoidCallback? onLongPress;
 
   /// Raised when the favourite star is tapped. Null makes the star a
-  /// read-only indicator.
+  /// read-only indicator. Hidden in selection mode.
   final VoidCallback? onToggleFavorite;
+
+  /// Raised when the overflow affordance is tapped. Null hides the
+  /// overflow entirely. Hidden in selection mode.
+  final VoidCallback? onOpenActions;
+
+  /// When true, the card is a selection target: tap and long-press
+  /// raise [onToggleSelection], the overflow and favourite star are
+  /// hidden, and the selected state is rendered when [isSelected].
+  final bool isSelectionMode;
+
+  /// When true and [isSelectionMode] is true, the card renders a
+  /// selected treatment.
+  final bool isSelected;
+
+  /// Raised on tap or long-press while [isSelectionMode] is true.
+  final VoidCallback? onToggleSelection;
 
   @override
   Widget build(BuildContext context) {
     final meta = document.metadata;
+    final selected = isSelectionMode && isSelected;
 
     return Material(
-      color: AppColors.lightSurface,
+      color: selected
+          ? AppColors.primary.withValues(alpha: 0.08)
+          : AppColors.lightSurface,
       borderRadius: BorderRadius.circular(AppRadius.lg),
       child: InkWell(
-        onTap: onTap,
-        onLongPress: onLongPress,
+        onTap: isSelectionMode
+            ? (onToggleSelection ?? onTap)
+            : onTap,
+        onLongPress: isSelectionMode
+            ? (onToggleSelection ?? onLongPress)
+            : onLongPress,
         borderRadius: BorderRadius.circular(AppRadius.lg),
         child: Container(
           padding: const EdgeInsets.all(AppSpacing.sm),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.lg),
-            border: Border.all(color: AppColors.lightBorder),
+            border: Border.all(
+              color: selected
+                  ? AppColors.primary
+                  : AppColors.lightBorder,
+              width: selected ? 1.5 : 1,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,10 +114,18 @@ class ScannerLibraryCard extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  _FavoriteStar(
-                    isFavorite: meta.isFavorite,
-                    onTap: onToggleFavorite,
-                  ),
+                  if (isSelectionMode)
+                    _SelectionIndicator(isSelected: selected)
+                  else ...[
+                    _FavoriteStar(
+                      isFavorite: meta.isFavorite,
+                      onTap: onToggleFavorite,
+                    ),
+                    if (onOpenActions != null)
+                      _CardOverflowButton(
+                        onPressed: onOpenActions!,
+                      ),
+                  ],
                 ],
               ),
               const SizedBox(height: AppSpacing.sm),
@@ -205,6 +255,56 @@ class _FavoriteStar extends StatelessWidget {
         padding: const EdgeInsets.all(AppSpacing.xs),
         child: icon,
       ),
+    );
+  }
+}
+
+/// Small overflow affordance. Calls [onPressed] when tapped. Kept
+/// deliberately minimal: it is only an entry point for the
+/// single-document action sheet, which the screen owns.
+class _CardOverflowButton extends StatelessWidget {
+  const _CardOverflowButton({required this.onPressed});
+
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkResponse(
+      onTap: onPressed,
+      radius: AppSpacing.iconSm,
+      child: const Padding(
+        padding: EdgeInsets.all(AppSpacing.xs),
+        child: Icon(
+          Icons.more_vert,
+          color: AppColors.lightTextSecondary,
+          size: AppSpacing.iconSm,
+        ),
+      ),
+    );
+  }
+}
+
+/// Selection affordance shown in place of the favourite star and
+/// overflow button while the card is in selection mode.
+///
+/// Uses only the existing theme language: the primary color for
+/// the selected checkmark and the secondary text color for the
+/// unselected outline.
+class _SelectionIndicator extends StatelessWidget {
+  const _SelectionIndicator({required this.isSelected});
+
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      isSelected
+          ? Icons.check_circle
+          : Icons.radio_button_unchecked,
+      color: isSelected
+          ? AppColors.primary
+          : AppColors.lightTextSecondary,
+      size: AppSpacing.iconMd,
     );
   }
 }

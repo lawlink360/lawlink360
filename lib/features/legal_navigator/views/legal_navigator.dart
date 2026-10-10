@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
@@ -12,8 +13,11 @@ import '../components/show_more_button.dart';
 import '../data/default_navigator_items.dart';
 import '../enums/content_type.dart';
 import '../models/navigator_item_model.dart';
+import '../providers/related_resource_provider.dart';
+import '../utils/navigator_helper.dart';
+import '../utils/route_helper.dart';
 
-class LegalNavigator extends StatefulWidget {
+class LegalNavigator extends ConsumerStatefulWidget {
   final ContentType contentType;
   final String contentId;
   final bool isLoading;
@@ -26,57 +30,36 @@ class LegalNavigator extends StatefulWidget {
   });
 
   @override
-  State<LegalNavigator> createState() => _LegalNavigatorState();
+  ConsumerState<LegalNavigator> createState() => _LegalNavigatorState();
 }
 
-class _LegalNavigatorState extends State<LegalNavigator> {
+class _LegalNavigatorState extends ConsumerState<LegalNavigator> {
   bool expanded = false;
 
   @override
   Widget build(BuildContext context) {
-    final List<NavigatorItemModel> items = defaultNavigatorItems
+    // Single source of truth for current-content filtering.
+    // Uses typed enum-based filtering via NavigatorHelper so that
+    // title strings are not used as the filtering key.
+    final visibleByVisibility = defaultNavigatorItems
         .where((item) => item.isVisible)
         .toList();
 
-    // Hide the resource category that represents the current content.
-    switch (widget.contentType) {
-      case ContentType.law:
-        items.removeWhere(
-          (item) => item.title == 'Relevant Laws',
-        );
-        break;
+    final items = NavigatorHelper.filterCurrentCategory(
+      contentType: widget.contentType,
+      items: visibleByVisibility,
+    );
 
-      case ContentType.judgment:
-        items.removeWhere(
-          (item) => item.title == 'Related Judgments',
-        );
-        break;
+    // Resolve related resources for the current context.
+    // Currently returns an empty list because the underlying
+    // datasets do not exist yet in this phase.
+    final related = ref.watch(
+      relatedResourcesProvider(
+        (contentType: widget.contentType, contentId: widget.contentId),
+      ),
+    );
 
-      case ContentType.procedure:
-        items.removeWhere(
-          (item) => item.title == 'Related Procedures',
-        );
-        break;
-
-      case ContentType.application:
-        items.removeWhere(
-          (item) => item.title == 'Related Applications',
-        );
-        break;
-
-      case ContentType.drafting:
-        items.removeWhere(
-          (item) => item.title == 'Drafting',
-        );
-        break;
-
-      default:
-        break;
-    }
-
-    final visibleItems = expanded
-        ? items
-        : items.take(5).toList();
+    final visibleItems = expanded ? items : items.take(5).toList();
 
     return Container(
       width: double.infinity,
@@ -99,9 +82,7 @@ class _LegalNavigatorState extends State<LegalNavigator> {
           else ...[
             NavigatorCard(
               items: visibleItems,
-              onItemTap: (item) {
-                debugPrint(item.title);
-              },
+              onItemTap: (item) => _onItemTap(item, related),
             ),
             if (items.length > 5) ...[
               const SizedBox(height: AppSpacing.xs),
@@ -121,5 +102,37 @@ class _LegalNavigatorState extends State<LegalNavigator> {
         ],
       ),
     );
+  }
+
+    void _onItemTap(
+    NavigatorItemModel item,
+    List<dynamic> related,
+  ) {
+    // Resolve a destination route for this navigator item type.
+    const routeHelper = RouteHelper();
+    final route = routeHelper.resolve(item.type);
+
+    if (route == null) {
+      // Destination not implemented yet. Fail gracefully.
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        const SnackBar(
+          content: Text('This section is not available yet.'),
+        ),
+      );
+      return;
+    }
+
+    // Attempt to navigate to the named route. If the app has not
+    // registered this route in its MaterialApp routes table, fall
+    // back to a graceful message instead of crashing.
+    try {
+      Navigator.of(context).pushNamed(route);
+    } on FlutterError {
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        const SnackBar(
+          content: Text('This section is not available yet.'),
+        ),
+      );
+    }
   }
 }

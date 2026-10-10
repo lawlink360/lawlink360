@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cat_court_applications",
+    "name": "Court Applications",
+    "description": "Court-related applications, petitions, miscellaneous applications, execution applications, and other filings submitted before courts or judicial authorities, regardless of whether a prescribed format exists.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "cat_government_applications",
+    "name": "Government Applications",
+    "description": "Written applications or requests prepared by the applicant and submitted to a government department or authority, such as applications for correction, issuance of certificates, permission, restoration, or registration.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "cat_legal_notices",
+    "name": "Legal Notices",
+    "description": "Legal notices issued or responded to by individuals, businesses, or entities as a formal step prior to or in connection with legal proceedings.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "cat_contracts_agreements",
+    "name": "Contracts & Agreements",
+    "description": "Contracts, agreements, and related instruments defining rights and obligations between parties.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "cat_business_documents",
+    "name": "Business Documents",
+    "description": "Documents related to business formation, operation, compliance, and commercial activity, other than contracts and agreements.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "cat_personal_professional_documents",
+    "name": "Personal & Professional Documents",
+    "description": "Documents relating to a person's personal, educational, employment, career, or professional needs that do not properly belong to another category, such as CVs, cover letters, recommendation letters, authority letters, and similar documents.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "cat_affidavits",
+    "name": "Affidavits",
+    "description": "Affidavits and sworn statements made before an authorized officer, including supporting affidavits for various purposes.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "cat_government_prescribed_forms",
+    "name": "Government Prescribed Forms",
+    "description": "Official forms prescribed or issued by a government department, authority, statutory body, or government portal, which the applicant is expected to complete in the department's own prescribed format. Does not include court filings, which remain under Court Applications.",
+    "order": 8,
+    "isActive": true
+  }
+]

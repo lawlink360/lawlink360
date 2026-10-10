@@ -39,6 +39,15 @@ class ScannerConstants {
   /// index is stored.
   static const String documentIndexKey = 'scanner_360_documents_index_v1';
 
+  /// Key inside shared_preferences where the scanner folder
+  /// index is stored.
+  ///
+  /// Additive. The document index key above is unchanged. The
+  /// folder index is not read or written by any code yet; this
+  /// constant only reserves the key for the future folder
+  /// persistence batch.
+  static const String folderIndexKey = 'scanner_360_folders_index_v1';
+
   // ------------------------------------------------------------
   // Session / document ownership layout (Phase 9)
   // ------------------------------------------------------------

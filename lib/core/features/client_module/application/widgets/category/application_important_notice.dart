@@ -42,7 +42,7 @@ class ApplicationImportantNotice extends StatelessWidget {
                 ),
               ),
               child: const Icon(
-                Icons.auto_awesome_rounded,
+                Icons.info_outline_rounded,
                 color: AppColors.warning,
                 size: 23,
               ),
@@ -55,7 +55,7 @@ class ApplicationImportantNotice extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'AI Document Assistant',
+                    'Important Notice',
                     style: AppTextStyles.body.copyWith(
                       color: colorScheme.onSurface,
                       fontWeight: FontWeight.w700,
@@ -65,8 +65,8 @@ class ApplicationImportantNotice extends StatelessWidget {
                   const SizedBox(height: AppSpacing.xs),
 
                   Text(
-                    'Generate professional applications, legal notices, contracts, affidavits, court documents, business documents and other templates in seconds.\n\n'
-                    'AI-generated documents should always be reviewed before submission. For legal matters, consult a qualified lawyer when necessary.',
+                    'LawLink360 provides prepared legal document specimens for reference and preparation.\n\n'
+                    'Please review each document carefully, complete the required information, and make any necessary changes before use or submission. For legal matters, consult a qualified lawyer where necessary.',
                     style: AppTextStyles.bodySmall.copyWith(
                       color: colorScheme.onSurface.withValues(alpha: 0.72),
                       height: 1.55,

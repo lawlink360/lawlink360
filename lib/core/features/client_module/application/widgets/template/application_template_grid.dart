@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
+import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 import '../../models/document_template.dart';
 import '../../screens/document_preview_screen.dart';
@@ -19,6 +18,8 @@ class ApplicationTemplateGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     if (templates.isEmpty) {
       return Center(
         child: Padding(
@@ -30,26 +31,46 @@ class ApplicationTemplateGrid extends StatelessWidget {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: AppColors.lightBackground,
+                  color: colorScheme.surface,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: AppColors.border,
+                    color: colorScheme.outlineVariant
+                        .withValues(alpha: 0.55),
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: colorScheme.shadow.withValues(alpha: 0.05),
+                      blurRadius: 12,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.description_outlined,
-                  color: AppColors.textSecondary,
+                  color: colorScheme.onSurface.withValues(alpha: 0.55),
                   size: 30,
                 ),
               ),
+
               const SizedBox(height: AppSpacing.md),
+
               Text(
                 'No templates available',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
+                style: AppTextStyles.body.copyWith(
+                  color: colorScheme.onSurface,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+
+              const SizedBox(height: AppSpacing.xs),
+
+              Text(
+                'Templates for this subcategory will appear here once available.',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: colorScheme.onSurface.withValues(alpha: 0.62),
+                  height: 1.4,
                 ),
               ),
             ],

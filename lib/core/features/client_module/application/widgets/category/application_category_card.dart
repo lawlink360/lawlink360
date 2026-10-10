@@ -9,7 +9,7 @@ class ApplicationCategoryCard extends StatelessWidget {
   final String description;
   final IconData icon;
   final Color color;
-  final int templateCount;
+  final int subcategoryCount;
   final VoidCallback? onTap;
 
   const ApplicationCategoryCard({
@@ -18,7 +18,7 @@ class ApplicationCategoryCard extends StatelessWidget {
     required this.description,
     required this.icon,
     required this.color,
-    required this.templateCount,
+    required this.subcategoryCount,
     this.onTap,
   });
 
@@ -33,7 +33,10 @@ class ApplicationCategoryCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppRadius.lg),
         child: Ink(
-          padding: const EdgeInsets.all(AppSpacing.md),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.sm,
+          ),
           decoration: BoxDecoration(
             color: colorScheme.surface,
             borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -49,53 +52,51 @@ class ApplicationCategoryCard extends StatelessWidget {
             ],
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.11),
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: color.withValues(alpha: 0.16),
-                  ),
-                ),
-                child: Icon(
-                  icon,
-                  color: color,
-                  size: 25,
-                ),
-              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: color.withValues(alpha: 0.11),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: color.withValues(alpha: 0.16),
+                          ),
+                        ),
+                        child: Icon(
+                          icon,
+                          color: color,
+                          size: 25,
+                        ),
+                      ),
+                    ),
 
-              const SizedBox(height: AppSpacing.md),
+                    const SizedBox(height: AppSpacing.xs),
 
-              Text(
-                title,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.body.copyWith(
-                  color: colorScheme.onSurface,
-                  fontWeight: FontWeight.w700,
-                  height: 1.2,
+                    Text(
+                      title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.body.copyWith(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2,
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
               const SizedBox(height: AppSpacing.xs),
-
-              Expanded(
-                child: Text(
-                  description,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.caption.copyWith(
-                    color: colorScheme.onSurface.withValues(alpha: 0.62),
-                    height: 1.4,
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: AppSpacing.sm),
 
               Row(
                 children: [
@@ -107,7 +108,7 @@ class ApplicationCategoryCard extends StatelessWidget {
                   const SizedBox(width: AppSpacing.xs),
                   Expanded(
                     child: Text(
-                      '$templateCount Templates',
+                      '$subcategoryCount Subcategories',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.caption.copyWith(

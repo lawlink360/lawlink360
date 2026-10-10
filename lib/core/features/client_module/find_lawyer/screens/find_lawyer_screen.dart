@@ -2,25 +2,27 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:share_plus/share_plus.dart';
 
 import 'package:lawlink360/core/features/client_module/find_lawyer/models/law_firm_model.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/models/lawyer_model.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/providers/law_firm_provider.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/providers/lawyer_provider.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/providers/lawyer_search_provider.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/providers/recently_viewed_firms_provider.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/providers/recently_viewed_provider.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/category_lawyers_screen.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/screens/post_case_screen.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/screens/recently_viewed_lawyers_screen.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/screens/top_rated_law_firms_screen.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/screens/top_rated_lawyers_screen.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/hero_section.dart';
+import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/law_firm_card.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/lawyer_card.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/practice_area_card.dart';
-import 'package:lawlink360/core/features/client_module/find_lawyer/screens/law_firm_profile_screen.dart';
-import 'package:lawlink360/core/features/client_module/find_lawyer/screens/chat_screen.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
-import 'package:lawlink360/core/features/client_module/find_lawyer/screens/post_case_screen.dart';
 
 class FindLawyerScreen extends ConsumerStatefulWidget {
   const FindLawyerScreen({super.key});
@@ -72,21 +74,62 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
     );
   }
 
+  void _openTopRatedLawyers() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const TopRatedLawyersScreen()),
+    );
+  }
+
+  void _openTopRatedLawFirms() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const TopRatedLawFirmsScreen()),
+    );
+  }
+
+  void _openRecentlyViewed() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const RecentlyViewedLawyersScreen(),
+      ),
+    );
+  }
+
+  // ---------------------------------------------------------------------------
+  // City filter sheet
+  // ---------------------------------------------------------------------------
+
+  /// User-facing label for the internal sentinel `'All'`.
+  static const String _allCitiesLabel = 'All Cities';
+
+  /// Maps the internal sentinel to the user-facing label.
+  String _cityLabelFor(String internal) {
+    if (internal.trim().isEmpty || internal == 'All') {
+      return _allCitiesLabel;
+    }
+    return internal;
+  }
+
+  /// Maps a user-facing label back to the internal sentinel.
+  String _internalForCityLabel(String label) {
+    if (label == _allCitiesLabel) {
+      return 'All';
+    }
+    return label;
+  }
+
   void _showFilterSheet() {
     final searchState = ref.read(lawyerSearchProvider);
-    final lawyers = ref.read(lawyerDirectoryProvider).valueOrNull ?? [];
-
-    final locations = <String>{
-      ...lawyers
-          .map((lawyer) => lawyer.location.trim())
-          .where((location) => location.isNotEmpty),
-    }.toList()..sort();
 
     showModalBottomSheet<void>(
       context: context,
       showDragHandle: true,
       backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (sheetContext) {
+        final currentLabel = _cityLabelFor(searchState.selectedLocation);
+
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(
@@ -107,34 +150,37 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
                 ),
                 const SizedBox(height: AppSpacing.lg),
                 Text(
-                  'Location',
+                  'City',
                   style: AppTextStyles.body.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 DropdownButtonFormField<String>(
-                  initialValue: searchState.selectedLocation,
+                  initialValue: currentLabel,
+                  isExpanded: true,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Select location',
+                    labelText: 'Select city',
                   ),
                   items: [
                     const DropdownMenuItem<String>(
-                      value: 'All',
-                      child: Text('All Locations'),
+                      value: _allCitiesLabel,
+                      child: Text(_allCitiesLabel),
                     ),
-                    ...locations.map(
-                      (location) => DropdownMenuItem<String>(
-                        value: location,
-                        child: Text(location),
+                    ...LawyerSearchNotifier.cities.map(
+                      (city) => DropdownMenuItem<String>(
+                        value: city,
+                        child: Text(city),
                       ),
                     ),
                   ],
                   onChanged: (value) {
                     if (value == null) return;
 
-                    ref.read(lawyerSearchProvider.notifier).setLocation(value);
+                    ref
+                        .read(lawyerSearchProvider.notifier)
+                        .setLocation(_internalForCityLabel(value));
 
                     Navigator.pop(sheetContext);
                   },
@@ -163,12 +209,97 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
     );
   }
 
+  // ---------------------------------------------------------------------------
+  // Ranking helpers
+  // ---------------------------------------------------------------------------
+
+  /// Top Rated Lawyers: rating desc → experience desc → name asc.
+  /// Promotion status is intentionally NOT considered.
+  List<Lawyer> _rankTopRatedLawyers(List<Lawyer> lawyers) {
+    final sorted = List<Lawyer>.from(lawyers)
+      ..sort((a, b) {
+        final ratingCompare = b.rating.compareTo(a.rating);
+        if (ratingCompare != 0) return ratingCompare;
+
+        final experienceCompare = b.experience.compareTo(a.experience);
+        if (experienceCompare != 0) return experienceCompare;
+
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      });
+
+    return sorted;
+  }
+
+  /// Top Rated Law Firms: rating desc → lawyersCount desc → name asc.
+  /// Promotion status is intentionally NOT considered.
+  List<LawFirm> _rankTopRatedFirms(List<LawFirm> firms) {
+    final sorted = List<LawFirm>.from(firms)
+      ..sort((a, b) {
+        final ratingCompare = b.rating.compareTo(a.rating);
+        if (ratingCompare != 0) return ratingCompare;
+
+        final countCompare = b.lawyersCount.compareTo(a.lawyersCount);
+        if (countCompare != 0) return countCompare;
+
+        return a.name.toLowerCase().compareTo(b.name.toLowerCase());
+      });
+
+    return sorted;
+  }
+
+  /// Applies only the city filter to a list of lawyers.
+  /// Used to build "discovery" portions (categories, top rated).
+  List<Lawyer> _applyCityOnly(List<Lawyer> lawyers) {
+    final selected = ref.read(lawyerSearchProvider).selectedLocation;
+
+    if (selected.trim().isEmpty || selected == 'All') {
+      return List<Lawyer>.from(lawyers);
+    }
+
+    final target = selected.trim().toLowerCase();
+
+    return lawyers
+        .where((lawyer) => lawyer.location.trim().toLowerCase() == target)
+        .toList();
+  }
+
+  /// Applies only the city filter to a list of firms.
+  List<LawFirm> _applyCityOnlyFirms(List<LawFirm> firms) {
+    final selected = ref.read(lawyerSearchProvider).selectedLocation;
+
+    if (selected.trim().isEmpty || selected == 'All') {
+      return List<LawFirm>.from(firms);
+    }
+
+    final target = selected.trim().toLowerCase();
+
+    return firms
+        .where((firm) => firm.location.trim().toLowerCase() == target)
+        .toList();
+  }
+
+  /// True when a city is selected AND no lawyers exist in that city.
+  bool _isCityEmpty(List<Lawyer> allLawyers) {
+    final selected = ref.read(lawyerSearchProvider).selectedLocation;
+
+    if (selected.trim().isEmpty || selected == 'All') {
+      return false;
+    }
+
+    return _applyCityOnly(allLawyers).isEmpty;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Build
+  // ---------------------------------------------------------------------------
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final directoryAsync = ref.watch(lawyerDirectoryProvider);
     final firmAsync = ref.watch(lawFirmDirectoryProvider);
     final recentlyViewed = ref.watch(recentlyViewedProvider);
+    final recentlyViewedFirms = ref.watch(recentlyViewedFirmsProvider);
     final searchState = ref.watch(lawyerSearchProvider);
 
     return Scaffold(
@@ -204,32 +335,31 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
             },
           ),
           data: (lawyers) {
+            final showSearchResults =
+                searchState.searchQuery.trim().isNotEmpty;
+
+            // Full filter pipeline (search + all filters incl. city).
             final filteredLawyers = ref
                 .read(lawyerSearchProvider.notifier)
                 .filterLawyers(lawyers);
 
-            final topRated = [...lawyers]
-              ..sort((a, b) {
-                if (a.hasActivePromotion != b.hasActivePromotion) {
-                  return a.hasActivePromotion ? -1 : 1;
-                }
+            // City-only slice used for "discovery" portions.
+            final cityLawyers = _applyCityOnly(lawyers);
 
-                if (a.hasActivePromotion &&
-                    b.hasActivePromotion &&
-                    a.promotionPriority != b.promotionPriority) {
-                  return b.promotionPriority.compareTo(a.promotionPriority);
-                }
+            // Whether the selected city itself has no lawyers at all.
+            final cityIsEmpty = _isCityEmpty(lawyers);
 
-                return b.rating.compareTo(a.rating);
-              });
+            final selectedCityLabel = _cityLabelFor(
+              searchState.selectedLocation,
+            );
 
-            final legalCategories = _buildLegalCategories(lawyers);
+            final legalCategories = _buildLegalCategories(cityLawyers);
+
+            final topRated = _rankTopRatedLawyers(cityLawyers);
 
             final matchingCategory = ref
                 .read(lawyerSearchProvider.notifier)
                 .findMatchingPracticeArea(searchState.searchQuery);
-
-            final showSearchResults = searchState.searchQuery.trim().isNotEmpty;
 
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -241,17 +371,30 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
 
                   const SizedBox(height: AppSpacing.lg),
 
+                  // Search + circular city filter button.
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.lg,
                     ),
-                    child: _SearchField(
-                      colorScheme: colorScheme,
-                      controller: _searchController,
-                      hintText:
-                          'Search ${LawyerSearchNotifier.practiceAreas[_placeholderIndex]}',
-                      onChanged: _updateSearch,
-                      onFilterPressed: _showFilterSheet,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: _SearchField(
+                            colorScheme: colorScheme,
+                            controller: _searchController,
+                            hintText:
+                                'Search ${LawyerSearchNotifier.practiceAreas[_placeholderIndex]}',
+                            onChanged: _updateSearch,
+                          ),
+                        ),
+                        const SizedBox(width: AppSpacing.sm),
+                        _CircularFilterButton(
+                          colorScheme: colorScheme,
+                          hasActiveFilter:
+                              searchState.selectedLocation != 'All',
+                          onPressed: _showFilterSheet,
+                        ),
+                      ],
                     ),
                   ),
 
@@ -284,13 +427,18 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
                     const SizedBox(height: AppSpacing.sm),
 
                     if (filteredLawyers.isEmpty)
-                      const Padding(
-                        padding: EdgeInsets.symmetric(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
                           horizontal: AppSpacing.lg,
                         ),
                         child: _InlineEmptyMessage(
-                          message:
-                              'No lawyers found for your search. Try another name or legal category.',
+                          message: cityIsEmpty
+                              ? 'No lawyers are currently available in '
+                                    '$selectedCityLabel.\n'
+                                    "We're working to onboard lawyers in your "
+                                    'city soon.'
+                              : 'No lawyers found for your search. '
+                                    'Try another name or legal category.',
                         ),
                       )
                     else
@@ -336,6 +484,7 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
 
                   const SizedBox(height: AppSpacing.xxl),
 
+                  // Legal Categories
                   _SectionTitle(
                     title: 'Legal Categories',
                     color: colorScheme.onSurface,
@@ -378,16 +527,45 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
 
                   const SizedBox(height: AppSpacing.xxl),
 
+                  // Post Your Case — intentionally independent of city.
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg,
+                    ),
+                    child: _PostCaseCard(colorScheme: colorScheme),
+                  ),
+
+                  const SizedBox(height: AppSpacing.xxl),
+
+                  // Top Rated Lawyers
                   _SectionTitle(
                     title: 'Top Rated Lawyers',
                     color: colorScheme.onSurface,
+                    trailing: _ViewAllButton(
+                      onPressed: _openTopRatedLawyers,
+                    ),
                   ),
 
                   const SizedBox(height: AppSpacing.md),
 
-                  if (topRated.isEmpty)
+                  if (cityIsEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg,
+                      ),
+                      child: _InlineEmptyMessage(
+                        message:
+                            'No lawyers are currently available in '
+                            '$selectedCityLabel.\n'
+                            "We're working to onboard lawyers in your city "
+                            'soon.',
+                      ),
+                    )
+                  else if (topRated.isEmpty)
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg,
+                      ),
                       child: _InlineEmptyMessage(
                         message: 'No lawyers are currently available.',
                       ),
@@ -407,26 +585,13 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
 
                   const SizedBox(height: AppSpacing.xxl),
 
+                  // Top Rated Law Firms
                   firmAsync.when(
                     loading: () => const SizedBox.shrink(),
                     error: (error, stackTrace) => const SizedBox.shrink(),
                     data: (firms) {
-                      final topRatedFirms = [...firms]
-                        ..sort((a, b) {
-                          if (a.hasActivePromotion != b.hasActivePromotion) {
-                            return a.hasActivePromotion ? -1 : 1;
-                          }
-
-                          if (a.hasActivePromotion &&
-                              b.hasActivePromotion &&
-                              a.promotionPriority != b.promotionPriority) {
-                            return b.promotionPriority.compareTo(
-                              a.promotionPriority,
-                            );
-                          }
-
-                          return b.rating.compareTo(a.rating);
-                        });
+                      final cityFirms = _applyCityOnlyFirms(firms);
+                      final topRatedFirms = _rankTopRatedFirms(cityFirms);
 
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -434,6 +599,9 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
                           _SectionTitle(
                             title: 'Top Rated Law Firms',
                             color: colorScheme.onSurface,
+                            trailing: _ViewAllButton(
+                              onPressed: _openTopRatedLawFirms,
+                            ),
                           ),
                           const SizedBox(height: AppSpacing.md),
                           if (topRatedFirms.isEmpty)
@@ -454,7 +622,9 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
                               child: Column(
                                 children: topRatedFirms
                                     .take(4)
-                                    .map((firm) => _LawFirmCard(firm: firm))
+                                    .map(
+                                      (firm) => LawFirmCard(firm: firm),
+                                    )
                                     .toList(),
                               ),
                             ),
@@ -465,16 +635,25 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
 
                   const SizedBox(height: AppSpacing.xxl),
 
+                  // Recently Viewed Lawyers — always visible, city-independent.
+                  // Home preview shows a maximum of 3 (newest first).
+                  // The full retained history is available via View All,
+                  // which opens the combined Recently Viewed screen.
                   _SectionTitle(
                     title: 'Recently Viewed Lawyers',
                     color: colorScheme.onSurface,
+                    trailing: _ViewAllButton(
+                      onPressed: _openRecentlyViewed,
+                    ),
                   ),
 
                   const SizedBox(height: AppSpacing.md),
 
                   if (recentlyViewed.isEmpty)
                     const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg,
+                      ),
                       child: _RecentlyViewedEmptyState(),
                     )
                   else
@@ -484,6 +663,7 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
                       ),
                       child: Column(
                         children: recentlyViewed
+                            .take(3)
                             .map((lawyer) => LawyerCard(lawyer: lawyer))
                             .toList(),
                       ),
@@ -491,12 +671,40 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
 
                   const SizedBox(height: AppSpacing.xxl),
 
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.lg,
+                  // Recently Viewed Law Firms — always visible, city-independent.
+                  // Home preview shows a maximum of 3 (newest first).
+                  // View All opens the same combined Recently Viewed screen.
+                  _SectionTitle(
+                    title: 'Recently Viewed Law Firms',
+                    color: colorScheme.onSurface,
+                    trailing: _ViewAllButton(
+                      onPressed: _openRecentlyViewed,
                     ),
-                    child: _PostCaseCard(colorScheme: colorScheme),
                   ),
+
+                  const SizedBox(height: AppSpacing.md),
+
+                  if (recentlyViewedFirms.isEmpty)
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg,
+                      ),
+                      child: _RecentlyViewedFirmsEmptyState(),
+                    )
+                  else
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg,
+                      ),
+                      child: Column(
+                        children: recentlyViewedFirms
+                            .take(3)
+                            .map((firm) => LawFirmCard(firm: firm))
+                            .toList(),
+                      ),
+                    ),
+
+                  const SizedBox(height: AppSpacing.xxl),
                 ],
               ),
             );
@@ -597,6 +805,10 @@ class _FindLawyerScreenState extends ConsumerState<FindLawyerScreen> {
   }
 }
 
+// -----------------------------------------------------------------------------
+// Small local widgets
+// -----------------------------------------------------------------------------
+
 class _LegalCategoryDefinition {
   final String title;
   final IconData icon;
@@ -621,14 +833,12 @@ class _SearchField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final ValueChanged<String> onChanged;
-  final VoidCallback onFilterPressed;
 
   const _SearchField({
     required this.colorScheme,
     required this.controller,
     required this.hintText,
     required this.onChanged,
-    required this.onFilterPressed,
   });
 
   @override
@@ -646,11 +856,6 @@ class _SearchField extends StatelessWidget {
           color: colorScheme.onSurfaceVariant,
         ),
         prefixIcon: Icon(Icons.search_rounded, color: colorScheme.primary),
-        suffixIcon: IconButton(
-          onPressed: onFilterPressed,
-          icon: Icon(Icons.tune_rounded, color: colorScheme.primary),
-          tooltip: 'Filter lawyers',
-        ),
         filled: true,
         fillColor: colorScheme.surfaceContainerHighest.withValues(alpha: 0.55),
         contentPadding: const EdgeInsets.symmetric(
@@ -670,6 +875,56 @@ class _SearchField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.xl),
           borderSide: const BorderSide(color: AppColors.accent, width: 1.5),
+        ),
+      ),
+    );
+  }
+}
+
+/// Circular filter button beside the search field.
+class _CircularFilterButton extends StatelessWidget {
+  final ColorScheme colorScheme;
+  final bool hasActiveFilter;
+  final VoidCallback onPressed;
+
+  const _CircularFilterButton({
+    required this.colorScheme,
+    required this.hasActiveFilter,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final background = hasActiveFilter
+        ? colorScheme.primary.withValues(alpha: 0.10)
+        : colorScheme.surfaceContainerHighest.withValues(alpha: 0.55);
+
+    final iconColor = hasActiveFilter
+        ? colorScheme.primary
+        : colorScheme.onSurface;
+
+    final borderColor = hasActiveFilter
+        ? colorScheme.primary
+        : colorScheme.outline.withValues(alpha: 0.25);
+
+    return Material(
+      color: background,
+      shape: const CircleBorder(),
+      child: InkWell(
+        onTap: onPressed,
+        customBorder: const CircleBorder(),
+        child: Container(
+          width: 52,
+          height: 52,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: borderColor),
+          ),
+          child: Icon(
+            Icons.tune_rounded,
+            color: iconColor,
+            size: 22,
+          ),
         ),
       ),
     );
@@ -766,424 +1021,62 @@ class _SearchResultsHeader extends StatelessWidget {
 class _SectionTitle extends StatelessWidget {
   final String title;
   final Color color;
+  final Widget? trailing;
 
-  const _SectionTitle({required this.title, required this.color});
+  const _SectionTitle({
+    required this.title,
+    required this.color,
+    this.trailing,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-      child: Text(
-        title,
-        style: AppTextStyles.headline.copyWith(color: color, fontSize: 23),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              title,
+              style: AppTextStyles.headline.copyWith(
+                color: color,
+                fontSize: 23,
+              ),
+            ),
+          ),
+          ?trailing,
+        ],
       ),
     );
   }
 }
 
-class _LawFirmCard extends ConsumerStatefulWidget {
-  final LawFirm firm;
+class _ViewAllButton extends StatelessWidget {
+  final VoidCallback onPressed;
 
-  const _LawFirmCard({required this.firm});
-
-  @override
-  ConsumerState<_LawFirmCard> createState() => _LawFirmCardState();
-}
-
-class _LawFirmCardState extends ConsumerState<_LawFirmCard> {
-  bool _isFavorite = false;
-
-  Future<void> _shareFirm() async {
-    final firm = widget.firm;
-
-    final specialization = firm.specializationSummary.isNotEmpty
-        ? firm.specializationSummary
-        : firm.description;
-
-    await Share.share(
-      '${firm.name}\n'
-      '${firm.location}\n\n'
-      '$specialization\n\n'
-      'Consultation fee: PKR ${firm.consultationFee.toStringAsFixed(0)}\n'
-      'Lawyers: ${firm.lawyersCount}\n'
-      'Rating: ${firm.rating.toStringAsFixed(1)}',
-    );
-  }
-
-  void _openChat() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const ChatScreen()),
-    );
-  }
-
-  void _openFirmProfile() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => LawFirmProfileScreen(firm: widget.firm),
-      ),
-    );
-  }
-
-  void _bookAppointment() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Firm appointment booking will be available soon.'),
-      ),
-    );
-  }
+  const _ViewAllButton({required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    final firm = widget.firm;
     final colorScheme = Theme.of(context).colorScheme;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    final specialization = firm.specializationSummary.isNotEmpty
-        ? firm.specializationSummary
-        : firm.description;
-
-    return Container(
-      margin: const EdgeInsets.only(bottom: AppSpacing.md),
-      padding: const EdgeInsets.all(AppSpacing.lg),
-      decoration: BoxDecoration(
-        color: colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppRadius.xl),
-        border: Border.all(
-          color: firm.hasActivePromotion
-              ? AppColors.accent.withValues(alpha: 0.55)
-              : colorScheme.outline.withValues(alpha: 0.45),
+    return TextButton(
+      onPressed: onPressed,
+      style: TextButton.styleFrom(
+        foregroundColor: colorScheme.primary,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.sm,
+          vertical: AppSpacing.xs,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.20 : 0.06),
-            blurRadius: 16,
-            offset: const Offset(0, 7),
-          ),
-        ],
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 54,
-                height: 54,
-                decoration: BoxDecoration(
-                  color: colorScheme.primary.withValues(alpha: 0.10),
-                  borderRadius: BorderRadius.circular(AppRadius.lg),
-                ),
-                child: Icon(
-                  Icons.business_rounded,
-                  color: colorScheme.primary,
-                  size: 28,
-                ),
-              ),
-              const SizedBox(width: AppSpacing.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            firm.name,
-                            style: AppTextStyles.title.copyWith(
-                              color: colorScheme.onSurface,
-                              fontSize: 17,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        if (firm.verified) ...[
-                          const SizedBox(width: AppSpacing.xs),
-                          const Icon(
-                            Icons.verified_rounded,
-                            color: AppColors.success,
-                            size: 20,
-                          ),
-                        ],
-                      ],
-                    ),
-                    const SizedBox(height: AppSpacing.xs),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on_rounded,
-                          size: 16,
-                          color: colorScheme.onSurfaceVariant,
-                        ),
-                        const SizedBox(width: AppSpacing.xs),
-                        Expanded(
-                          child: Text(
-                            firm.location,
-                            style: AppTextStyles.caption.copyWith(
-                              color: colorScheme.onSurfaceVariant,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: AppSpacing.sm),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _isFavorite = !_isFavorite;
-                      });
-                    },
-                    tooltip: _isFavorite
-                        ? 'Remove from favorites'
-                        : 'Add to favorites',
-                    visualDensity: VisualDensity.compact,
-                    icon: Icon(
-                      _isFavorite
-                          ? Icons.favorite_rounded
-                          : Icons.favorite_border_rounded,
-                      color: _isFavorite
-                          ? Colors.red
-                          : colorScheme.onSurfaceVariant,
-                      size: 21,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: _shareFirm,
-                    tooltip: 'Share firm',
-                    visualDensity: VisualDensity.compact,
-                    icon: Icon(
-                      Icons.share_rounded,
-                      color: colorScheme.onSurfaceVariant,
-                      size: 20,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-
-          if (firm.hasActivePromotion) ...[
-            const SizedBox(height: AppSpacing.sm),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.sm,
-                vertical: AppSpacing.xs,
-              ),
-              decoration: BoxDecoration(
-                color: AppColors.accent.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(AppRadius.pill),
-                border: Border.all(
-                  color: AppColors.accent.withValues(alpha: 0.35),
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.star_rounded,
-                    color: AppColors.accent,
-                    size: 16,
-                  ),
-                  const SizedBox(width: AppSpacing.xs),
-                  Text(
-                    'Featured',
-                    style: AppTextStyles.caption.copyWith(
-                      color: colorScheme.onSurface,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-
-          const SizedBox(height: AppSpacing.md),
-
-          Text(
-            specialization,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: AppTextStyles.bodySmall.copyWith(
-              color: colorScheme.onSurfaceVariant,
-              height: 1.45,
-            ),
-          ),
-
-          const SizedBox(height: AppSpacing.md),
-
-          Wrap(
-            spacing: AppSpacing.xs,
-            runSpacing: AppSpacing.xs,
-            children: firm.practiceAreas.take(3).map((area) {
-              return Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.sm,
-                  vertical: AppSpacing.xs,
-                ),
-                decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerHighest.withValues(
-                    alpha: 0.65,
-                  ),
-                  borderRadius: BorderRadius.circular(AppRadius.pill),
-                ),
-                child: Text(
-                  area,
-                  style: AppTextStyles.caption.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-
-          const SizedBox(height: AppSpacing.md),
-
-          Divider(
-            color: colorScheme.outline.withValues(alpha: 0.45),
-            height: 1,
-          ),
-
-          const SizedBox(height: AppSpacing.md),
-
-          Row(
-            children: [
-              const Icon(Icons.star_rounded, color: AppColors.accent, size: 20),
-              const SizedBox(width: AppSpacing.xs),
-              Text(
-                firm.rating.toStringAsFixed(1),
-                style: AppTextStyles.body.copyWith(
-                  color: colorScheme.onSurface,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(width: AppSpacing.md),
-              Icon(
-                Icons.people_alt_rounded,
-                color: colorScheme.onSurfaceVariant,
-                size: 18,
-              ),
-              const SizedBox(width: AppSpacing.xs),
-              Expanded(
-                child: Text(
-                  '${firm.lawyersCount} Lawyers',
-                  style: AppTextStyles.caption.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: AppSpacing.sm),
-
-          Row(
-            children: [
-              Icon(
-                Icons.payments_rounded,
-                color: colorScheme.onSurfaceVariant,
-                size: 18,
-              ),
-              const SizedBox(width: AppSpacing.xs),
-              Text(
-                'PKR ${firm.consultationFee.toStringAsFixed(0)} consultation',
-                style: AppTextStyles.caption.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const Spacer(),
-              Icon(
-                firm.isOnline ? Icons.circle : Icons.schedule_rounded,
-                color: firm.isOnline
-                    ? AppColors.success
-                    : colorScheme.onSurfaceVariant,
-                size: firm.isOnline ? 10 : 17,
-              ),
-              const SizedBox(width: AppSpacing.xs),
-              Text(
-                firm.isOnline ? 'Available online' : 'Currently unavailable',
-                style: AppTextStyles.caption.copyWith(
-                  color: firm.isOnline
-                      ? AppColors.success
-                      : colorScheme.onSurfaceVariant,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: AppSpacing.lg),
-
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: _openFirmProfile,
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: colorScheme.primary,
-                    side: BorderSide(
-                      color: colorScheme.primary.withValues(alpha: 0.45),
-                    ),
-                    minimumSize: const Size.fromHeight(44),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppRadius.md),
-                    ),
-                  ),
-                  child: const Text('View Firm'),
-                ),
-              ),
-              const SizedBox(width: AppSpacing.sm),
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: _openChat,
-                  icon: const Icon(Icons.chat_bubble_outline_rounded, size: 18),
-                  label: const Text('Chat'),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: colorScheme.primary,
-                    side: BorderSide(
-                      color: colorScheme.primary.withValues(alpha: 0.45),
-                    ),
-                    minimumSize: const Size.fromHeight(44),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppRadius.md),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: AppSpacing.md),
-
-          SizedBox(
-            width: double.infinity,
-            height: AppSpacing.buttonHeight,
-            child: ElevatedButton.icon(
-              onPressed: _bookAppointment,
-              icon: const Icon(Icons.calendar_month_rounded),
-              label: const Text('Book Appointment'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: colorScheme.primary,
-                foregroundColor: colorScheme.onPrimary,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppRadius.md),
-                ),
-              ),
-            ),
-          ),
-        ],
+      child: Text(
+        'View All',
+        style: AppTextStyles.caption.copyWith(
+          color: colorScheme.primary,
+          fontWeight: FontWeight.w700,
+        ),
       ),
     );
   }
@@ -1297,6 +1190,44 @@ class _RecentlyViewedEmptyState extends StatelessWidget {
           Expanded(
             child: Text(
               'Lawyers you view will appear here for quick access.',
+              style: AppTextStyles.bodySmall.copyWith(
+                color: colorScheme.onSurfaceVariant,
+                height: 1.45,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _RecentlyViewedFirmsEmptyState extends StatelessWidget {
+  const _RecentlyViewedFirmsEmptyState();
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(AppSpacing.lg),
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.45),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.30)),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            Icons.business_outlined,
+            color: colorScheme.onSurfaceVariant,
+            size: 24,
+          ),
+          const SizedBox(width: AppSpacing.md),
+          Expanded(
+            child: Text(
+              'Law firms you view will appear here for quick access.',
               style: AppTextStyles.bodySmall.copyWith(
                 color: colorScheme.onSurfaceVariant,
                 height: 1.45,

@@ -87,6 +87,73 @@ class LawyerSearchNotifier extends Notifier<LawyerSearchState> {
     'Alternative Dispute Resolution (ADR)',
   ];
 
+  /// Curated list of major Pakistani cities used by the Find Lawyer
+  /// city filter during the UI/polish phase.
+  ///
+  /// The internal sentinel for "no city filter" remains `'All'`
+  /// (see [LawyerSearchState.selectedLocation]). This list is the
+  /// user-facing picker content only.
+  static const List<String> cities = [
+    'Lahore',
+    'Faisalabad',
+    'Rawalpindi',
+    'Gujranwala',
+    'Multan',
+    'Sialkot',
+    'Bahawalpur',
+    'Sargodha',
+    'Gujrat',
+    'Sheikhupura',
+    'Jhelum',
+    'Rahim Yar Khan',
+    'Sahiwal',
+    'Okara',
+    'Kasur',
+    'Dera Ghazi Khan',
+    'Muzaffargarh',
+    'Bahawalnagar',
+    'Attock',
+    'Chakwal',
+    'Mianwali',
+    'Khanewal',
+    'Vehari',
+    'Jhang',
+    'Karachi',
+    'Hyderabad',
+    'Sukkur',
+    'Larkana',
+    'Nawabshah (Shaheed Benazirabad)',
+    'Mirpur Khas',
+    'Jacobabad',
+    'Shikarpur',
+    'Khairpur',
+    'Thatta',
+    'Peshawar',
+    'Abbottabad',
+    'Mardan',
+    'Mingora',
+    'Swat',
+    'Kohat',
+    'Dera Ismail Khan',
+    'Bannu',
+    'Nowshera',
+    'Mansehra',
+    'Charsadda',
+    'Swabi',
+    'Quetta',
+    'Gwadar',
+    'Turbat',
+    'Khuzdar',
+    'Chaman',
+    'Sibi',
+    'Islamabad',
+    'Muzaffarabad',
+    'Mirpur',
+    'Rawalakot',
+    'Gilgit',
+    'Skardu',
+  ];
+
   @override
   LawyerSearchState build() {
     return const LawyerSearchState();

@@ -17,6 +17,7 @@ class DocumentMetadata {
     this.linkedClientId,
     this.linkedLawyerId,
     this.linkedMatterId,
+    this.folderId,
   });
 
   final String id;
@@ -31,6 +32,10 @@ class DocumentMetadata {
   final String? linkedClientId;
   final String? linkedLawyerId;
   final String? linkedMatterId;
+
+  /// The id of the containing ScannerFolder, or null when the
+  /// document is at the root.
+  final String? folderId;
 
   DocumentMetadata copyWith({
     String? id,
@@ -49,6 +54,8 @@ class DocumentMetadata {
     bool clearLinkedLawyerId = false,
     String? linkedMatterId,
     bool clearLinkedMatterId = false,
+    String? folderId,
+    bool clearFolderId = false,
   }) {
     return DocumentMetadata(
       id: id ?? this.id,
@@ -70,6 +77,7 @@ class DocumentMetadata {
       linkedMatterId: clearLinkedMatterId
           ? null
           : (linkedMatterId ?? this.linkedMatterId),
+      folderId: clearFolderId ? null : (folderId ?? this.folderId),
     );
   }
 
@@ -87,6 +95,7 @@ class DocumentMetadata {
       'linkedClientId': linkedClientId,
       'linkedLawyerId': linkedLawyerId,
       'linkedMatterId': linkedMatterId,
+      'folderId': folderId,
     };
   }
 
@@ -107,6 +116,7 @@ class DocumentMetadata {
       linkedClientId: map['linkedClientId'] as String?,
       linkedLawyerId: map['linkedLawyerId'] as String?,
       linkedMatterId: map['linkedMatterId'] as String?,
+      folderId: map['folderId'] as String?,
     );
   }
 
@@ -125,7 +135,8 @@ class DocumentMetadata {
         other.linkedCaseId == linkedCaseId &&
         other.linkedClientId == linkedClientId &&
         other.linkedLawyerId == linkedLawyerId &&
-        other.linkedMatterId == linkedMatterId;
+        other.linkedMatterId == linkedMatterId &&
+        other.folderId == folderId;
   }
 
   @override
@@ -142,6 +153,7 @@ class DocumentMetadata {
         linkedClientId,
         linkedLawyerId,
         linkedMatterId,
+        folderId,
       );
 }
 

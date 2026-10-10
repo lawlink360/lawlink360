@@ -8,6 +8,7 @@ import '../../models/document_category.dart';
 import '../../screens/application_category_screen.dart';
 import '../../services/document_data_service.dart';
 import 'application_category_card.dart';
+import '../../services/document_json_service.dart';
 
 class ApplicationCategoryGrid extends StatelessWidget {
   const ApplicationCategoryGrid({super.key});
@@ -15,8 +16,9 @@ class ApplicationCategoryGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final List<DocumentCategory> categories =
-        DocumentDataService.categories;
+    final List<DocumentCategory> categories = DocumentJsonService.loaded
+        ? DocumentJsonService.getCategories()
+        : DocumentDataService.categories;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -45,7 +47,7 @@ class ApplicationCategoryGrid extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: AppSpacing.sm,
               mainAxisSpacing: AppSpacing.sm,
-              childAspectRatio: 0.76,
+              childAspectRatio: 1.0,
             ),
             itemBuilder: (context, index) {
               final category = categories[index];
@@ -55,9 +57,9 @@ class ApplicationCategoryGrid extends StatelessWidget {
                 description: category.description,
                 icon: category.icon,
                 color: category.color,
-                templateCount: DocumentDataService
-                    .getSubCategories(category.id)
-                    .length,
+                subcategoryCount: DocumentJsonService.loaded
+                    ? DocumentJsonService.getSubCategories(category.id).length
+                    : DocumentDataService.getSubCategories(category.id).length,
                 onTap: () {
                   Navigator.push(
                     context,

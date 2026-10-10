@@ -125,10 +125,10 @@ class ProcedureDetailScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.xl),
           LegalNavigator(
-            contentType: ContentType.procedure,
-            contentId: procedure.title,
+          contentType: ContentType.procedure,
+          contentId: procedure.id,
           ),
-          const SizedBox(height: AppSpacing.xl),
+         const SizedBox(height: AppSpacing.xl),
         ],
       ),
     );

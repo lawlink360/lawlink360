@@ -1,0 +1,1346 @@
+[
+    {
+        "id": "subcat_civil_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Civil Court Applications",
+        "description": "Applications filed in civil courts relating to civil suits, proceedings, and related civil matters.",
+        "order": 1,
+        "isActive": true
+    },
+    {
+        "id": "subcat_cpc_applications",
+        "categoryId": "cat_court_applications",
+        "name": "CPC Applications",
+        "description": "Applications made under the Code of Civil Procedure and related procedural civil applications.",
+        "order": 2,
+        "isActive": true
+    },
+    {
+        "id": "subcat_family_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Family Court Applications",
+        "description": "Applications filed before family courts relating to family law matters.",
+        "order": 3,
+        "isActive": true
+    },
+    {
+        "id": "subcat_guardian_custody_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Guardian & Custody Applications",
+        "description": "Applications relating to guardianship and custody of minors or persons before courts.",
+        "order": 4,
+        "isActive": true
+    },
+    {
+        "id": "subcat_rent_tenancy_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Rent & Tenancy Court Applications",
+        "description": "Applications filed before rent and tenancy courts or tribunals relating to landlord-tenant matters.",
+        "order": 5,
+        "isActive": true
+    },
+    {
+        "id": "subcat_execution_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Execution Applications",
+        "description": "Applications relating to execution of decrees, orders, and judgments of courts.",
+        "order": 6,
+        "isActive": true
+    },
+    {
+        "id": "subcat_injunction_interim_relief_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Injunction & Interim Relief Applications",
+        "description": "Applications seeking injunctions, interim relief, or temporary orders from courts.",
+        "order": 7,
+        "isActive": true
+    },
+    {
+        "id": "subcat_property_land_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Property & Land Applications",
+        "description": "Court applications relating to property and land disputes or matters.",
+        "order": 8,
+        "isActive": true
+    },
+    {
+        "id": "subcat_succession_probate_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Succession & Probate Applications",
+        "description": "Applications relating to succession certificates, probate, and inheritance matters before courts.",
+        "order": 9,
+        "isActive": true
+    },
+    {
+        "id": "subcat_criminal_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Criminal Court Applications",
+        "description": "Applications filed in criminal courts relating to criminal proceedings and matters.",
+        "order": 10,
+        "isActive": true
+    },
+    {
+        "id": "subcat_high_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "High Court Applications",
+        "description": "Applications filed before High Courts in various matters.",
+        "order": 13,
+        "isActive": true
+    },
+    {
+        "id": "subcat_constitutional_writ_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Constitutional & Writ Applications",
+        "description": "Applications relating to constitutional petitions and writ matters before courts.",
+        "order": 14,
+        "isActive": true
+    },
+    {
+        "id": "subcat_service_employment_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Service & Employment Court Applications",
+        "description": "Applications before service tribunals and courts relating to employment and service matters.",
+        "order": 15,
+        "isActive": true
+    },
+    {
+        "id": "subcat_election_tribunal_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Election & Election Tribunal Applications",
+        "description": "Applications relating to election matters and election tribunal proceedings.",
+        "order": 16,
+        "isActive": true
+    },
+    {
+        "id": "subcat_consumer_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Consumer Court Applications",
+        "description": "Applications filed before consumer courts relating to consumer disputes.",
+        "order": 17,
+        "isActive": true
+    },
+    {
+        "id": "subcat_banking_commercial_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Banking & Commercial Court Applications",
+        "description": "Applications relating to banking and commercial court matters.",
+        "order": 18,
+        "isActive": true
+    },
+    {
+        "id": "subcat_labour_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Labour Court Applications",
+        "description": "Applications filed before labour courts relating to labour and employment disputes.",
+        "order": 19,
+        "isActive": true
+    },
+    {
+        "id": "subcat_tribunal_special_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Tribunal & Special Court Applications",
+        "description": "Applications filed before tribunals and special courts in various matters.",
+        "order": 20,
+        "isActive": true
+    },
+    {
+        "id": "subcat_miscellaneous_court_applications",
+        "categoryId": "cat_court_applications",
+        "name": "Miscellaneous Court Applications",
+        "description": "Court applications that do not fall under any other specific court application subcategory.",
+        "order": 21,
+        "isActive": true
+    },
+    {
+        "id": "subcat_nadra_department_applications",
+        "categoryId": "cat_government_applications",
+        "name": "NADRA Department Applications",
+        "description": "Applications to NADRA relating to identity documents, national records, and related matters.",
+        "order": 1,
+        "isActive": true
+    },
+    {
+        "id": "subcat_birth_death_record_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Birth & Death Record Applications",
+        "description": "Applications to government authorities relating to birth and death records.",
+        "order": 2,
+        "isActive": true
+    },
+    {
+        "id": "subcat_marriage_family_record_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Marriage & Family Record Applications",
+        "description": "Applications to government authorities relating to marriage and family records.",
+        "order": 3,
+        "isActive": true
+    },
+    {
+        "id": "subcat_domicile_residence_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Domicile & Residence Applications",
+        "description": "Applications to government authorities relating to domicile and residence certificates or records.",
+        "order": 4,
+        "isActive": true
+    },
+    {
+        "id": "subcat_police_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Police Applications",
+        "description": "Applications submitted to police authorities relating to police matters.",
+        "order": 5,
+        "isActive": true
+    },
+    {
+        "id": "subcat_land_revenue_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Land & Revenue Applications",
+        "description": "Applications to land and revenue authorities relating to land and revenue matters.",
+        "order": 7,
+        "isActive": true
+    },
+    {
+        "id": "subcat_property_registration_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Property & Registration Applications",
+        "description": "Applications to authorities relating to property and registration matters.",
+        "order": 8,
+        "isActive": true
+    },
+    {
+        "id": "subcat_municipal_local_government_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Municipal & Local Government Applications",
+        "description": "Applications submitted to municipal and local government authorities.",
+        "order": 9,
+        "isActive": true
+    },
+    {
+        "id": "subcat_building_construction_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Development Authority Applications",
+        "description": "Applications to authorities relating to building and construction permissions or matters.",
+        "order": 10,
+        "isActive": true
+    },
+    {
+        "id": "subcat_excise_motor_vehicle_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Excise & Motor Vehicle Applications",
+        "description": "Applications to excise and motor vehicle authorities relating to vehicle and excise matters.",
+        "order": 12,
+        "isActive": true
+    },
+    {
+        "id": "subcat_licensing_permit_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Licensing & Permit Applications",
+        "description": "Applications to authorities relating to licences, permits, and related permissions.",
+        "order": 13,
+        "isActive": true
+    },
+    {
+        "id": "subcat_business_commercial_authority_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Business & Commercial Authority Applications",
+        "description": "Applications to business and commercial regulatory authorities.",
+        "order": 14,
+        "isActive": true
+    },
+    {
+        "id": "subcat_education_department_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Education Department Applications",
+        "description": "Applications to education departments and authorities relating to education matters.",
+        "order": 15,
+        "isActive": true
+    },
+    {
+        "id": "subcat_employment_government_service_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Employment & Government Service Applications",
+        "description": "Applications to government authorities relating to employment and government service matters.",
+        "order": 16,
+        "isActive": true
+    },
+    {
+        "id": "subcat_health_department_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Health Department Applications",
+        "description": "Applications to health departments and authorities relating to health matters.",
+        "order": 17,
+        "isActive": true
+    },
+    {
+        "id": "subcat_labour_workers_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Labour & Workers Applications",
+        "description": "Applications to labour authorities relating to labour and worker matters.",
+        "order": 19,
+        "isActive": true
+    },
+    {
+        "id": "subcat_immigration_passport_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Immigration & Passport Applications",
+        "description": "Applications to immigration and passport authorities relating to immigration and passport matters.",
+        "order": 20,
+        "isActive": true
+    },
+    {
+        "id": "subcat_overseas_pakistanis_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Overseas Pakistanis Applications",
+        "description": "Applications submitted to authorities relating to overseas Pakistanis matters.",
+        "order": 21,
+        "isActive": true
+    },
+    {
+        "id": "subcat_electricity_utility_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Electricity & Utility Applications",
+        "description": "Applications to electricity and utility authorities relating to utility services.",
+        "order": 22,
+        "isActive": true
+    },
+    {
+        "id": "subcat_water_gas_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Water & Gas Applications",
+        "description": "Applications to water and gas authorities relating to water and gas services.",
+        "order": 23,
+        "isActive": true
+    },
+    {
+        "id": "subcat_public_information_records_applications",
+        "categoryId": "cat_government_applications",
+        "name": "Public Information & Records Applications",
+        "description": "Applications to authorities seeking public information or access to records.",
+        "order": 25,
+        "isActive": true
+    },
+    {
+        "id": "subcat_complaints_grievances_government_authorities",
+        "categoryId": "cat_government_applications",
+        "name": "Complaints & Grievances to Government Authorities",
+        "description": "Complaints and grievances submitted to government authorities.",
+        "order": 26,
+        "isActive": true
+    },
+    {
+        "id": "subcat_appeals_reviews_reconsideration_authorities",
+        "categoryId": "cat_government_applications",
+        "name": "Appeals, Reviews & Reconsideration to Authorities",
+        "description": "Applications to authorities seeking appeals, reviews, or reconsideration of decisions.",
+        "order": 27,
+        "isActive": true
+    },
+    {
+        "id": "subcat_general_government_applications",
+        "categoryId": "cat_government_applications",
+        "name": "General Government Applications",
+        "description": "Government applications that do not fall under any other specific government application subcategory.",
+        "order": 28,
+        "isActive": true
+    },
+    {
+        "id": "subcat_civil_general_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Civil & General Legal Notices",
+        "description": "General and civil legal notices not specific to any other notice subcategory.",
+        "order": 1,
+        "isActive": true
+    },
+    {
+        "id": "subcat_government_public_authority_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Government & Public Authority Notices",
+        "description": "Legal notices relating to government and public authority matters.",
+        "order": 2,
+        "isActive": true
+    },
+    {
+        "id": "subcat_money_recovery_debt_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Money Recovery & Debt Notices",
+        "description": "Legal notices relating to money recovery and debt.",
+        "order": 3,
+        "isActive": true
+    },
+    {
+        "id": "subcat_cheque_negotiable_instruments_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Cheque & Negotiable Instruments Notices",
+        "description": "Legal notices relating to cheque and negotiable instruments.",
+        "order": 4,
+        "isActive": true
+    },
+    {
+        "id": "subcat_contract_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Contract Notices",
+        "description": "Legal notices relating to contractual matters.",
+        "order": 5,
+        "isActive": true
+    },
+    {
+        "id": "subcat_property_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Property Notices",
+        "description": "Legal notices relating to property matters.",
+        "order": 6,
+        "isActive": true
+    },
+    {
+        "id": "subcat_rent_tenancy_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Rent & Tenancy Notices",
+        "description": "Legal notices relating to rent and tenancy matters.",
+        "order": 7,
+        "isActive": true
+    },
+    {
+        "id": "subcat_family_law_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Family Law Notices",
+        "description": "Legal notices relating to family law matters.",
+        "order": 8,
+        "isActive": true
+    },
+    {
+        "id": "subcat_defamation_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Defamation Notices",
+        "description": "Legal notices relating to defamation matters.",
+        "order": 9,
+        "isActive": true
+    },
+    {
+        "id": "subcat_employment_labour_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Employment & Labour Notices",
+        "description": "Legal notices relating to employment and labour matters.",
+        "order": 10,
+        "isActive": true
+    },
+    {
+        "id": "subcat_commercial_business_notices",
+        "categoryId": "cat_legal_notices",
+        "name": "Commercial & Business Notices",
+        "description": "Legal notices relating to commercial and business matters.",
+        "order": 11,
+        "isActive": true
+    },
+    {
+        "id": "subcat_general_commercial_agreements",
+        "categoryId": "cat_contracts_agreements",
+        "name": "General & Commercial Agreements",
+        "description": "General and commercial agreements not specific to any other agreement subcategory.",
+        "order": 1,
+        "isActive": true
+    },
+    {
+        "id": "subcat_sale_purchase_commercial_transactions",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Sale, Purchase & Commercial Transactions",
+        "description": "Agreements relating to sale, purchase, and commercial transactions.",
+        "order": 2,
+        "isActive": true
+    },
+    {
+        "id": "subcat_real_estate_property",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Real Estate & Property Agreements",
+        "description": "Agreements relating to real estate and property matters.",
+        "order": 3,
+        "isActive": true
+    },
+    {
+        "id": "subcat_lease_rent_tenancy",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Lease, Rent & Tenancy Agreements",
+        "description": "Agreements relating to lease, rent, and tenancy of property or assets.",
+        "order": 4,
+        "isActive": true
+    },
+    {
+        "id": "subcat_employment_human_resources",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Employment & Human Resources Agreements",
+        "description": "Agreements relating to employment and human resources matters.",
+        "order": 5,
+        "isActive": true
+    },
+    {
+        "id": "subcat_business_partnership_joint_venture",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Business, Partnership & Joint Venture Agreements",
+        "description": "Agreements relating to business partnerships and joint ventures.",
+        "order": 6,
+        "isActive": true
+    },
+    {
+        "id": "subcat_corporate_share_transactions",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Corporate & Share Transactions",
+        "description": "Agreements relating to corporate and share transactions.",
+        "order": 7,
+        "isActive": true
+    },
+    {
+        "id": "subcat_loans_debt_financing",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Loans, Debt & Financing Agreements",
+        "description": "Agreements relating to loans, debt, and financing arrangements.",
+        "order": 8,
+        "isActive": true
+    },
+    {
+        "id": "subcat_islamic_finance",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Islamic Finance Agreements",
+        "description": "Agreements relating to Islamic finance arrangements.",
+        "order": 9,
+        "isActive": true
+    },
+    {
+        "id": "subcat_agency_representation_commission",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Agency, Representation & Commission Agreements",
+        "description": "Agreements relating to agency, representation, and commission arrangements.",
+        "order": 10,
+        "isActive": true
+    },
+    {
+        "id": "subcat_supply_procurement_manufacturing",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Supply, Procurement & Manufacturing Agreements",
+        "description": "Agreements relating to supply, procurement, and manufacturing.",
+        "order": 11,
+        "isActive": true
+    },
+    {
+        "id": "subcat_distribution_dealership_franchise",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Distribution, Dealership & Franchise Agreements",
+        "description": "Agreements relating to distribution, dealership, and franchise arrangements.",
+        "order": 12,
+        "isActive": true
+    },
+    {
+        "id": "subcat_services_consultancy",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Services & Consultancy Agreements",
+        "description": "Agreements relating to services and consultancy.",
+        "order": 13,
+        "isActive": true
+    },
+    {
+        "id": "subcat_construction_engineering",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Construction & Engineering Agreements",
+        "description": "Agreements relating to construction and engineering works.",
+        "order": 14,
+        "isActive": true
+    },
+    {
+        "id": "subcat_technology_software_digital_services",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Technology, Software & Digital Services Agreements",
+        "description": "Agreements relating to technology, software, and digital services.",
+        "order": 15,
+        "isActive": true
+    },
+    {
+        "id": "subcat_intellectual_property",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Intellectual Property Agreements",
+        "description": "Agreements relating to intellectual property matters.",
+        "order": 16,
+        "isActive": true
+    },
+    {
+        "id": "subcat_confidentiality_non_disclosure",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Confidentiality & Non-Disclosure Agreements",
+        "description": "Agreements relating to confidentiality and non-disclosure obligations.",
+        "order": 17,
+        "isActive": true
+    },
+    {
+        "id": "subcat_bailment_custody_security_goods",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Bailment, Custody & Security of Goods",
+        "description": "Agreements relating to bailment, custody, and security of goods.",
+        "order": 18,
+        "isActive": true
+    },
+    {
+        "id": "subcat_transport_logistics_warehousing",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Transport, Logistics & Warehousing Agreements",
+        "description": "Agreements relating to transport, logistics, and warehousing.",
+        "order": 19,
+        "isActive": true
+    },
+    {
+        "id": "subcat_vehicles_automotive",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Vehicle & Automotive Agreements",
+        "description": "Agreements relating to vehicles and automotive matters.",
+        "order": 20,
+        "isActive": true
+    },
+    {
+        "id": "subcat_agriculture_farming",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Agriculture & Farming Agreements",
+        "description": "Agreements relating to agriculture and farming.",
+        "order": 21,
+        "isActive": true
+    },
+    {
+        "id": "subcat_marketing_advertising_promotion",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Marketing, Advertising & Promotion Agreements",
+        "description": "Agreements relating to marketing, advertising, and promotion.",
+        "order": 22,
+        "isActive": true
+    },
+    {
+        "id": "subcat_ecommerce_online_business",
+        "categoryId": "cat_contracts_agreements",
+        "name": "E-Commerce & Online Business Agreements",
+        "description": "Agreements relating to e-commerce and online business.",
+        "order": 23,
+        "isActive": true
+    },
+    {
+        "id": "subcat_banking_insurance_financial_services",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Banking, Insurance & Financial Services Agreements",
+        "description": "Agreements relating to banking, insurance, and financial services.",
+        "order": 24,
+        "isActive": true
+    },
+    {
+        "id": "subcat_family_matrimonial_personal_settlements",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Family, Matrimonial & Personal Settlements",
+        "description": "Agreements relating to family, matrimonial, and personal settlements.",
+        "order": 25,
+        "isActive": true
+    },
+    {
+        "id": "subcat_dispute_resolution_settlement",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Dispute Resolution & Settlement Agreements",
+        "description": "Agreements relating to dispute resolution and settlement.",
+        "order": 26,
+        "isActive": true
+    },
+    {
+        "id": "subcat_government_public_sector_contracts",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Government & Public Sector Contracts",
+        "description": "Contracts relating to government and public sector matters.",
+        "order": 27,
+        "isActive": true
+    },
+    {
+        "id": "subcat_international_cross_border",
+        "categoryId": "cat_contracts_agreements",
+        "name": "International & Cross-Border Agreements",
+        "description": "Agreements relating to international and cross-border matters.",
+        "order": 28,
+        "isActive": true
+    },
+    {
+        "id": "subcat_media_entertainment_creative_work",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Media, Entertainment & Creative Work Agreements",
+        "description": "Agreements relating to media, entertainment, and creative work.",
+        "order": 29,
+        "isActive": true
+    },
+    {
+        "id": "subcat_healthcare_medical",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Healthcare & Medical Agreements",
+        "description": "Agreements relating to healthcare and medical matters.",
+        "order": 30,
+        "isActive": true
+    },
+    {
+        "id": "subcat_education_training_internships",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Education, Training & Internship Agreements",
+        "description": "Agreements relating to education, training, and internships.",
+        "order": 31,
+        "isActive": true
+    },
+    {
+        "id": "subcat_hospitality_food_events",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Hospitality, Food & Event Agreements",
+        "description": "Agreements relating to hospitality, food, and events.",
+        "order": 32,
+        "isActive": true
+    },
+    {
+        "id": "subcat_documentary_security_formal_instruments",
+        "categoryId": "cat_contracts_agreements",
+        "name": "Documentary, Security & Formal Instruments",
+        "description": "Documentary, security, and formal instruments.",
+        "order": 33,
+        "isActive": true
+    },
+  {
+    "id": "subcat_business_formation_and_partnership",
+    "categoryId": "cat_business_documents",
+    "name": "Business Formation & Partnership",
+    "description": "Documents for forming, registering, and structuring businesses and partnerships.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "subcat_company_and_corporate",
+    "categoryId": "cat_business_documents",
+    "name": "Company & Corporate",
+    "description": "Corporate governance, board, shareholder, and company secretarial documents.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "subcat_commercial_agreements",
+    "categoryId": "cat_business_documents",
+    "name": "Commercial Agreements",
+    "description": "Business-to-business commercial agreements and related instruments.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "subcat_employment_and_business_hr",
+    "categoryId": "cat_business_documents",
+    "name": "Employment & Business HR",
+    "description": "Employment, HR, and workplace-related business documents.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "subcat_business_property",
+    "categoryId": "cat_business_documents",
+    "name": "Business Property",
+    "description": "Documents relating to business premises, leases, and property used for business.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "subcat_business_finance",
+    "categoryId": "cat_business_documents",
+    "name": "Business Finance",
+    "description": "Documents concerning business loans, financing, and financial arrangements.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "subcat_customer_vendor_and_e_commerce",
+    "categoryId": "cat_business_documents",
+    "name": "Customer, Vendor & E-Commerce",
+    "description": "Documents for customer, vendor, and online commerce relationships and transactions.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "subcat_business_confidentiality_and_ip",
+    "categoryId": "cat_business_documents",
+    "name": "Business Confidentiality & IP",
+    "description": "Confidentiality, non-disclosure, and intellectual property documents for businesses.",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "subcat_business_notes",
+    "categoryId": "cat_business_documents",
+    "name": "Business Notes",
+    "description": "Promissory notes and other business-related notes and acknowledgements.",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "subcat_business_closure",
+    "categoryId": "cat_business_documents",
+    "name": "Business Closure",
+    "description": "Documents for closing, dissolving, or winding up a business.",
+    "order": 10,
+    "isActive": true
+  },
+  {
+    "id": "subcat_personal_and_identity_documents",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Personal & Identity Documents",
+    "description": "Documents relating to personal identity and individual status.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "subcat_authorization_and_noc_documents",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Authorization & NOC Documents",
+    "description": "Authorization letters, no-objection certificates, and similar consent documents.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "subcat_property_and_financial_documents",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Property & Financial Documents",
+    "description": "Personal documents concerning property and financial matters.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "subcat_family_and_personal_affairs",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Family & Personal Affairs",
+    "description": "Documents relating to family and personal affairs.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "subcat_travel_and_education_documents",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Travel & Education Documents",
+    "description": "Documents concerning travel and educational matters.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "subcat_employment_and_career_documents",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Employment & Career Documents",
+    "description": "Documents relating to employment and career development.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "subcat_freelance_and_professional_services",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Freelance & Professional Services",
+    "description": "Documents for freelance and professional service engagements.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "subcat_professional_correspondence",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Professional Correspondence",
+    "description": "Formal professional letters and correspondence.",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "subcat_professional_compliance",
+    "categoryId": "cat_personal_professional_documents",
+    "name": "Professional Compliance",
+    "description": "Documents for professional compliance and regulatory obligations.",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "subcat_general_and_personal_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "General & Personal Affidavits",
+    "description": "Affidavits covering general and personal matters.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "subcat_property_and_land_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Property & Land Affidavits",
+    "description": "Affidavits relating to property and land matters.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "subcat_inheritance_and_succession_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Inheritance & Succession Affidavits",
+    "description": "Affidavits concerning inheritance and succession matters.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "subcat_family_matter_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Family Matter Affidavits",
+    "description": "Affidavits relating to family matters.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "subcat_court_and_litigation_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Court & Litigation Affidavits",
+    "description": "Affidavits for court and litigation purposes.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "subcat_police_and_lost_document_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Police & Lost Document Affidavits",
+    "description": "Affidavits for police matters and lost documents.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "subcat_nadra_and_identity_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "NADRA & Identity Affidavits",
+    "description": "Affidavits relating to NADRA and identity matters.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "subcat_passport_and_immigration_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Passport & Immigration Affidavits",
+    "description": "Affidavits concerning passport and immigration matters.",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "subcat_education_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Education Affidavits",
+    "description": "Affidavits relating to educational matters.",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "subcat_employment_and_service_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Employment & Service Affidavits",
+    "description": "Affidavits concerning employment and service matters.",
+    "order": 10,
+    "isActive": true
+  },
+  {
+    "id": "subcat_business_and_commercial_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Business & Commercial Affidavits",
+    "description": "Affidavits relating to business and commercial matters.",
+    "order": 11,
+    "isActive": true
+  },
+  {
+    "id": "subcat_banking_and_financial_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Banking & Financial Affidavits",
+    "description": "Affidavits concerning banking and financial matters.",
+    "order": 12,
+    "isActive": true
+  },
+  {
+    "id": "subcat_vehicle_and_excise_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Vehicle & Excise Affidavits",
+    "description": "Affidavits relating to vehicles and excise matters.",
+    "order": 13,
+    "isActive": true
+  },
+  {
+    "id": "subcat_government_and_administrative_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Government & Administrative Affidavits",
+    "description": "Affidavits for government and administrative purposes.",
+    "order": 14,
+    "isActive": true
+  },
+  {
+    "id": "subcat_pension_and_deceased_benefits_affidavits",
+    "categoryId": "cat_affidavits",
+    "name": "Pension & Deceased Benefits Affidavits",
+    "description": "Affidavits concerning pension and deceased benefits matters.",
+    "order": 15,
+    "isActive": true
+  },
+    {
+        "id": "subcat_nadra_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "NADRA Forms",
+        "description": "Prescribed forms issued by NADRA.",
+        "order": 1,
+        "isActive": true
+    },
+    {
+        "id": "subcat_passport_immigration_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Passport & Immigration Forms",
+        "description": "Prescribed forms relating to passport and immigration matters.",
+        "order": 2,
+        "isActive": true
+    },
+    {
+        "id": "subcat_police_department_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Police Department Forms",
+        "description": "Prescribed forms issued by police departments.",
+        "order": 3,
+        "isActive": true
+    },
+    {
+        "id": "subcat_punjab_land_records_authority_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Punjab Land Records Authority Forms",
+        "description": "Prescribed forms issued by the Punjab Land Records Authority.",
+        "order": 4,
+        "isActive": true
+    },
+    {
+        "id": "subcat_board_of_revenue_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Board of Revenue Forms",
+        "description": "Prescribed forms issued by the Board of Revenue.",
+        "order": 5,
+        "isActive": true
+    },
+    {
+        "id": "subcat_revenue_department_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Revenue Department Forms",
+        "description": "Prescribed forms issued by revenue departments.",
+        "order": 6,
+        "isActive": true
+    },
+    {
+        "id": "subcat_excise_taxation_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Excise & Taxation Forms",
+        "description": "Prescribed forms relating to excise and taxation matters.",
+        "order": 7,
+        "isActive": true
+    },
+    {
+        "id": "subcat_federal_board_of_revenue_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Federal Board of Revenue Forms",
+        "description": "Prescribed forms issued by the Federal Board of Revenue.",
+        "order": 8,
+        "isActive": true
+    },
+    {
+        "id": "subcat_punjab_revenue_authority_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Punjab Revenue Authority Forms",
+        "description": "Prescribed forms issued by the Punjab Revenue Authority.",
+        "order": 9,
+        "isActive": true
+    },
+    {
+        "id": "subcat_securities_exchange_commission_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Securities & Exchange Commission Forms",
+        "description": "Prescribed forms issued by the Securities and Exchange Commission.",
+        "order": 10,
+        "isActive": true
+    },
+    {
+        "id": "subcat_companies_corporate_regulatory_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Companies / Corporate Regulatory Forms",
+        "description": "Prescribed forms relating to companies and corporate regulation.",
+        "order": 11,
+        "isActive": true
+    },
+    {
+        "id": "subcat_registrar_business_registration_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Registrar / Business Registration Forms",
+        "description": "Prescribed forms issued by registrars and business registration authorities.",
+        "order": 12,
+        "isActive": true
+    },
+    {
+        "id": "subcat_local_government_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Local Government Forms",
+        "description": "Prescribed forms issued by local government authorities.",
+        "order": 13,
+        "isActive": true
+    },
+    {
+        "id": "subcat_development_authority_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Development Authority Forms",
+        "description": "Prescribed forms issued by development authorities.",
+        "order": 14,
+        "isActive": true
+    },
+    {
+        "id": "subcat_municipal_corporation_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Municipal Corporation Forms",
+        "description": "Prescribed forms issued by municipal corporations.",
+        "order": 15,
+        "isActive": true
+    },
+    {
+        "id": "subcat_education_department_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Education Department Forms",
+        "description": "Prescribed forms issued by education departments.",
+        "order": 16,
+        "isActive": true
+    },
+    {
+        "id": "subcat_board_university_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Board / University Forms",
+        "description": "Prescribed forms issued by boards and universities.",
+        "order": 17,
+        "isActive": true
+    },
+    {
+        "id": "subcat_higher_education_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Higher Education Forms",
+        "description": "Prescribed forms relating to higher education.",
+        "order": 18,
+        "isActive": true
+    },
+    {
+        "id": "subcat_health_department_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Health Department Forms",
+        "description": "Prescribed forms issued by health departments.",
+        "order": 19,
+        "isActive": true
+    },
+    {
+        "id": "subcat_social_welfare_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Social Welfare Forms",
+        "description": "Prescribed forms relating to social welfare.",
+        "order": 20,
+        "isActive": true
+    },
+    {
+        "id": "subcat_labour_department_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Labour Department Forms",
+        "description": "Prescribed forms issued by labour departments.",
+        "order": 21,
+        "isActive": true
+    },
+    {
+        "id": "subcat_employees_social_security_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Employees / Social Security Forms",
+        "description": "Prescribed forms relating to employees and social security.",
+        "order": 22,
+        "isActive": true
+    },
+    {
+        "id": "subcat_workers_welfare_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Workers Welfare Forms",
+        "description": "Prescribed forms relating to workers welfare.",
+        "order": 23,
+        "isActive": true
+    },
+    {
+        "id": "subcat_environmental_protection_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Environmental Protection Forms",
+        "description": "Prescribed forms relating to environmental protection.",
+        "order": 24,
+        "isActive": true
+    },
+    {
+        "id": "subcat_electricity_power_authority_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Electricity / Power Authority Forms",
+        "description": "Prescribed forms issued by electricity and power authorities.",
+        "order": 25,
+        "isActive": true
+    },
+    {
+        "id": "subcat_gas_utility_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Gas / Utility Forms",
+        "description": "Prescribed forms relating to gas and utility services.",
+        "order": 26,
+        "isActive": true
+    },
+    {
+        "id": "subcat_banking_financial_regulatory_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Banking & Financial Regulatory Forms",
+        "description": "Prescribed forms relating to banking and financial regulation.",
+        "order": 27,
+        "isActive": true
+    },
+    {
+        "id": "subcat_insurance_regulatory_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Insurance Regulatory Forms",
+        "description": "Prescribed forms relating to insurance regulation.",
+        "order": 28,
+        "isActive": true
+    },
+    {
+        "id": "subcat_intellectual_property_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Intellectual Property Forms",
+        "description": "Prescribed forms relating to intellectual property.",
+        "order": 29,
+        "isActive": true
+    },
+    {
+        "id": "subcat_intellectual_property_office_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Intellectual Property Office Forms",
+        "description": "Prescribed forms issued by intellectual property offices.",
+        "order": 30,
+        "isActive": true
+    },
+    {
+        "id": "subcat_customs_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Customs Forms",
+        "description": "Prescribed forms relating to customs.",
+        "order": 31,
+        "isActive": true
+    },
+    {
+        "id": "subcat_trade_commerce_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Trade & Commerce Forms",
+        "description": "Prescribed forms relating to trade and commerce.",
+        "order": 32,
+        "isActive": true
+    },
+    {
+        "id": "subcat_investment_authority_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Investment Authority Forms",
+        "description": "Prescribed forms issued by investment authorities.",
+        "order": 33,
+        "isActive": true
+    },
+    {
+        "id": "subcat_overseas_pakistanis_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Overseas Pakistanis Forms",
+        "description": "Prescribed forms relating to overseas Pakistanis.",
+        "order": 34,
+        "isActive": true
+    },
+    {
+        "id": "subcat_immigration_related_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Immigration Related Forms",
+        "description": "Prescribed forms relating to immigration matters.",
+        "order": 35,
+        "isActive": true
+    },
+    {
+        "id": "subcat_human_rights_public_complaint_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Human Rights / Public Complaint Forms",
+        "description": "Prescribed forms relating to human rights and public complaints.",
+        "order": 36,
+        "isActive": true
+    },
+    {
+        "id": "subcat_information_rti_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Information / RTI Forms",
+        "description": "Prescribed forms relating to information and right to information matters.",
+        "order": 37,
+        "isActive": true
+    },
+    {
+        "id": "subcat_consumer_protection_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Consumer Protection Forms",
+        "description": "Prescribed forms relating to consumer protection.",
+        "order": 38,
+        "isActive": true
+    },
+    {
+        "id": "subcat_professional_regulatory_body_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Professional Regulatory Body Forms",
+        "description": "Prescribed forms issued by professional regulatory bodies.",
+        "order": 39,
+        "isActive": true
+    },
+    {
+        "id": "subcat_bar_legal_regulatory_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Bar / Legal Regulatory Forms",
+        "description": "Prescribed forms relating to bar and legal regulatory matters.",
+        "order": 40,
+        "isActive": true
+    },
+    {
+        "id": "subcat_government_employment_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Government Employment Forms",
+        "description": "Prescribed forms relating to government employment.",
+        "order": 41,
+        "isActive": true
+    },
+    {
+        "id": "subcat_pension_retirement_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Pension & Retirement Forms",
+        "description": "Prescribed forms relating to pension and retirement.",
+        "order": 42,
+        "isActive": true
+    },
+    {
+        "id": "subcat_public_procurement_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Public Procurement Forms",
+        "description": "Prescribed forms relating to public procurement.",
+        "order": 43,
+        "isActive": true
+    },
+    {
+        "id": "subcat_other_statutory_authority_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Other Statutory Authority Forms",
+        "description": "Prescribed forms issued by other statutory authorities.",
+        "order": 44,
+        "isActive": true
+    },
+    {
+        "id": "subcat_other_government_portal_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Other Government Portal Forms",
+        "description": "Prescribed forms available on other government portals.",
+        "order": 45,
+        "isActive": true
+    },
+    {
+        "id": "subcat_court_related_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Court-Related Forms",
+        "description": "Prescribed forms relating to court-related matters.",
+        "order": 46,
+        "isActive": true
+    },
+    {
+        "id": "subcat_miscellaneous_prescribed_forms",
+        "categoryId": "cat_government_prescribed_forms",
+        "name": "Miscellaneous Prescribed Forms",
+        "description": "Prescribed forms that do not fall under any other specific prescribed forms subcategory.",
+        "order": 47,
+        "isActive": true
+    }
+]

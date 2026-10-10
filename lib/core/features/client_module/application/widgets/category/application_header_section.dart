@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:lawlink360/core/features/client_module/notification/providers/notification_provider.dart';
+import 'package:lawlink360/core/features/client_module/notification/screens/notification_screen.dart';
+import 'package:lawlink360/core/features/client_module/user_profile/screens/profile_screen.dart';
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
-class ApplicationHeaderSection extends StatelessWidget {
+class ApplicationHeaderSection extends ConsumerWidget {
   const ApplicationHeaderSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
+    final unreadCount = ref.watch(unreadNotificationCountProvider);
 
     return Container(
       width: double.infinity,
@@ -46,50 +51,55 @@ class ApplicationHeaderSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            Stack(
+              alignment: Alignment.center,
               children: [
                 Image.asset(
                   'assets/logos/lawlink360_transparent_logo.png',
                   height: 40,
                 ),
-
-                const Spacer(),
-
-                Material(
-                  color: Colors.white.withValues(alpha: 0.10),
-                  shape: const CircleBorder(),
-                  child: InkWell(
-                    onTap: () {},
-                    customBorder: const CircleBorder(),
-                    child: const Padding(
-                      padding: EdgeInsets.all(AppSpacing.sm),
-                      child: Icon(
-                        Icons.notifications_none_rounded,
-                        color: Colors.white,
-                        size: 22,
+                Row(
+                  children: [
+                    _NotificationButton(
+                      unreadCount: unreadCount,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const NotificationsScreen(),
+                          ),
+                        );
+                      },
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const ProfileScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 44,
+                        height: 44,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.96),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: AppColors.accent.withValues(alpha: 0.65),
+                            width: 1.2,
+                          ),
+                        ),
+                        child: Icon(
+                          Icons.person_rounded,
+                          color: colorScheme.primary,
+                          size: 23,
+                        ),
                       ),
                     ),
-                  ),
-                ),
-
-                const SizedBox(width: AppSpacing.sm),
-
-                Container(
-                  width: 44,
-                  height: 44,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.96),
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: AppColors.accent.withValues(alpha: 0.65),
-                      width: 1.2,
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.person_rounded,
-                    color: colorScheme.primary,
-                    size: 23,
-                  ),
+                  ],
                 ),
               ],
             ),
@@ -120,7 +130,7 @@ class ApplicationHeaderSection extends StatelessWidget {
 
                 Expanded(
                   child: Text(
-                    'Document Assistant',
+                    'Prepared Legal Document Assistant',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.headline.copyWith(
@@ -136,7 +146,7 @@ class ApplicationHeaderSection extends StatelessWidget {
             const SizedBox(height: AppSpacing.sm),
 
             Text(
-              'Create applications, notices, contracts, affidavits and professional documents instantly.',
+              'Access prepared legal applications, notices, contracts, affidavits and other legal document specimens.',
               style: AppTextStyles.bodySmall.copyWith(
                 color: Colors.white.withValues(alpha: 0.78),
                 height: 1.5,
@@ -160,12 +170,12 @@ class ApplicationHeaderSection extends StatelessWidget {
                   Container(
                     width: 30,
                     height: 30,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.success,
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
-                      Icons.auto_awesome_rounded,
+                      Icons.library_books_rounded,
                       color: Colors.white,
                       size: 17,
                     ),
@@ -178,7 +188,7 @@ class ApplicationHeaderSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'AI Powered Document Generator',
+                          'Prepared Legal Documents',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.bodySmall.copyWith(
@@ -205,6 +215,88 @@ class ApplicationHeaderSection extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NotificationButton extends StatelessWidget {
+  final int unreadCount;
+  final VoidCallback onTap;
+
+  const _NotificationButton({
+    required this.unreadCount,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        child: SizedBox(
+          width: 44,
+          height: 44,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.10),
+                  borderRadius: BorderRadius.circular(AppRadius.md),
+                  border: Border.all(
+                    color: AppColors.accent.withValues(alpha: 0.35),
+                  ),
+                ),
+                child: const Center(
+                  child: Icon(
+                    Icons.notifications_none_rounded,
+                    size: 22,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+
+              if (unreadCount > 0)
+                Positioned(
+                  top: 1,
+                  right: 1,
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      minWidth: 17,
+                      minHeight: 17,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.xs,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.accent,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.primary,
+                        width: 2,
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        unreadCount > 9 ? '9+' : '$unreadCount',
+                        style: AppTextStyles.caption.copyWith(
+                          fontSize: 8,
+                          height: 1,
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.primary,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

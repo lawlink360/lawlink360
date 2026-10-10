@@ -7,6 +7,7 @@ import 'package:lawlink360/core/features/client_module/splash/splash_screen.dart
 import 'package:lawlink360/core/providers/theme_provider.dart';
 import 'package:lawlink360/core/services/notification_service.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_drafting/navigation/drafting_navigation.dart';
+import 'package:lawlink360/core/features/client_module/application/services/document_json_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,9 @@ Future<void> main() async {
   await NotificationService.instance.initialize();
 
   await NotificationService.instance.requestPermission();
+  
+  WidgetsFlutterBinding.ensureInitialized();
+  await DocumentJsonService.init();
 
   runApp(const ProviderScope(child: MyApp()));
 }

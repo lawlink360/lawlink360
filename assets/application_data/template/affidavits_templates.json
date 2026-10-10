@@ -1,0 +1,1312 @@
+[
+  {
+    "id": "tpl_general_affidavit",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "General Affidavit",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A general affidavit for swearing matters of fact.",
+    "order": 1,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_undertaking",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording an undertaking given on oath.",
+    "order": 2,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_declaration",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording a declaration made on oath.",
+    "order": 3,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_verification",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Verification",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit verifying the contents of a document or statement.",
+    "order": 4,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_one_and_the_same_person",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of One and the Same Person",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring that different names refer to one and the same person.",
+    "order": 5,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_name_difference",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Name Difference",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a difference in the name of a person.",
+    "order": 6,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_change_correction_of_name",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit for Change/Correction of Name",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit seeking change or correction of a person's name.",
+    "order": 7,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_difference_in_fathers_name",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit for Difference in Father's Name",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a difference in the father's name in documents.",
+    "order": 8,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_date_of_birth_correction",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit for Date-of-Birth Correction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit seeking correction of a person's date of birth.",
+    "order": 9,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_residence",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Residence",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring a person's place of residence.",
+    "order": 10,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_relationship",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Relationship",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring a relationship between persons.",
+    "order": 11,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_dependency",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Dependency",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring that a person is dependent on another.",
+    "order": 12,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_no_objection",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of No Objection",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring no objection to a matter.",
+    "order": 13,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_consent",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Consent",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording consent to a matter.",
+    "order": 14,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_non_claim",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Non-Claim",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring that no claim is made in respect of a matter.",
+    "order": 15,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_indemnity",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Indemnity",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit undertaking to indemnify a party against losses.",
+    "order": 16,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_solvency",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_general_and_personal_affidavits",
+    "name": "Affidavit of Solvency",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring a person's solvency.",
+    "order": 17,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_ownership",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit of Ownership",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring ownership of property.",
+    "order": 18,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_possession",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit of Possession",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring possession of property.",
+    "order": 19,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_sale_of_property",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Sale of Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning the sale of property.",
+    "order": 20,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_purchase_of_property",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Purchase of Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning the purchase of property.",
+    "order": 21,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_agreement_to_sell",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Agreement to Sell",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning an agreement to sell property.",
+    "order": 22,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_bayana",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Bayana",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning bayana paid for a property transaction.",
+    "order": 23,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_payment_of_sale_consideration",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit of Payment of Sale Consideration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring payment of sale consideration for property.",
+    "order": 24,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_no_objection_to_transfer",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit of No Objection to Transfer",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring no objection to transfer of property.",
+    "order": 25,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_mutation",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit for Mutation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting mutation of property records.",
+    "order": 26,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_inheritance_mutation",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit for Inheritance Mutation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting mutation of inherited property.",
+    "order": 27,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_joint_ownership",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Joint Ownership",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning joint ownership of property.",
+    "order": 28,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_relinquishment_of_property_rights",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Relinquishment of Property Rights",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit relinquishing rights in property.",
+    "order": 29,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_family_settlement",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Family Settlement",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a family settlement of property.",
+    "order": 30,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_property_documents",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Lost Property Documents",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of property documents.",
+    "order": 31,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_property_possession",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_property_and_land_affidavits",
+    "name": "Affidavit Regarding Property Possession",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning possession of property.",
+    "order": 32,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_legal_heirs",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit of Legal Heirs",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring the legal heirs of a deceased person.",
+    "order": 33,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_heirship",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit of Heirship",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit establishing heirship of a deceased person.",
+    "order": 34,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_family_members",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit of Family Members",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit setting out the family members of a deceased person.",
+    "order": 35,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_no_other_legal_heirs",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit of No Other Legal Heirs",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring that there are no other legal heirs.",
+    "order": 36,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_no_objection_by_legal_heirs",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit of No Objection by Legal Heirs",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording no objection by the legal heirs.",
+    "order": 37,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_succession_certificate",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit for Succession Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting an application for a succession certificate.",
+    "order": 38,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_letter_of_administration",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit for Letter of Administration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting an application for a letter of administration.",
+    "order": 39,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_estate_of_deceased",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit Regarding Estate of Deceased",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning the estate of a deceased person.",
+    "order": 40,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_deceaseds_bank_account",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit Regarding Deceased's Bank Account",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning the bank account of a deceased person.",
+    "order": 41,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_relinquishment_of_inheritance",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_inheritance_and_succession_affidavits",
+    "name": "Affidavit Regarding Relinquishment of Inheritance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit relinquishing a share in inheritance.",
+    "order": 42,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_marriage",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Marriage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a marriage.",
+    "order": 43,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_nikahnama",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Nikahnama",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a nikahnama.",
+    "order": 44,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_free_consent_to_marriage",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit of Free Consent to Marriage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring free consent to marriage.",
+    "order": 45,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_single_unmarried_status",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit of Single/Unmarried Status",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring single or unmarried status.",
+    "order": 46,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_divorce",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Divorce",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a divorce.",
+    "order": 47,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_khula",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Khula",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning khula.",
+    "order": 48,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_haq_mehr",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Haq Mehr",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning haq mehr.",
+    "order": 49,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_dowry_articles",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Dowry Articles",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning dowry articles.",
+    "order": 50,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_child_custody",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Child Custody",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning custody of a child.",
+    "order": 51,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_guardianship",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Guardianship",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning guardianship of a person.",
+    "order": 52,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_child_maintenance",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit Regarding Child Maintenance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning maintenance of a child.",
+    "order": 53,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_parental_consent",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_family_matter_affidavits",
+    "name": "Affidavit of Parental Consent",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording parental consent to a matter.",
+    "order": 54,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_in_support_of_application",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit in Support of Application",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit filed in support of an application.",
+    "order": 55,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_in_support_of_petition",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit in Support of Petition",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit filed in support of a petition.",
+    "order": 56,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_in_support_of_plaint",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit in Support of Plaint",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit filed in support of a plaint.",
+    "order": 57,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_in_evidence",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit-in-Evidence",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit tendered as evidence in legal proceedings.",
+    "order": 58,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_witness",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit of Witness",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit of a witness in a matter.",
+    "order": 59,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_documents",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit Regarding Documents",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning documents in a matter.",
+    "order": 60,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_service",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit Regarding Service",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning service of process or notices.",
+    "order": 61,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_compliance_with_court_order",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit Regarding Compliance with Court Order",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning compliance with a court order.",
+    "order": 62,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_compromise",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit of Compromise",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording a compromise between parties.",
+    "order": 63,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_withdrawal",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit of Withdrawal",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording withdrawal of a matter.",
+    "order": 64,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_surety",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_court_and_litigation_affidavits",
+    "name": "Affidavit of Surety",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit given by a surety in a legal matter.",
+    "order": 65,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_cnic",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost CNIC",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a CNIC.",
+    "order": 66,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_passport",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Passport",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a passport.",
+    "order": 67,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_driving_licence",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Driving Licence",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a driving licence.",
+    "order": 68,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_vehicle_documents",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Vehicle Documents",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of vehicle documents.",
+    "order": 69,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_mobile_phone",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Mobile Phone",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a mobile phone.",
+    "order": 70,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_educational_certificate",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Educational Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of an educational certificate.",
+    "order": 71,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_degree",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Degree",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a degree.",
+    "order": 72,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_cheque",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Cheque",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a cheque.",
+    "order": 73,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_cheque_book",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "Affidavit Regarding Lost Cheque Book",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a cheque book.",
+    "order": 74,
+    "isActive": true
+  },
+  {
+    "id": "tpl_general_lost_document_affidavit",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_police_and_lost_document_affidavits",
+    "name": "General Lost Document Affidavit",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "A general affidavit concerning loss of a document.",
+    "order": 75,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_cnic_correction",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_nadra_and_identity_affidavits",
+    "name": "Affidavit for CNIC Correction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting correction in a CNIC.",
+    "order": 76,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_name_correction",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_nadra_and_identity_affidavits",
+    "name": "Affidavit for Name Correction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting correction of a name.",
+    "order": 77,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_fathers_name_correction",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_nadra_and_identity_affidavits",
+    "name": "Affidavit for Father's Name Correction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting correction of a father's name.",
+    "order": 78,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_date_of_birth_correction",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_nadra_and_identity_affidavits",
+    "name": "Affidavit for Date-of-Birth Correction",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting correction of a date of birth.",
+    "order": 79,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_family_tree",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_nadra_and_identity_affidavits",
+    "name": "Affidavit Regarding Family Tree",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a family tree.",
+    "order": 80,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_parentage",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_nadra_and_identity_affidavits",
+    "name": "Affidavit Regarding Parentage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning parentage of a person.",
+    "order": 81,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_passport",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_passport_and_immigration_affidavits",
+    "name": "Affidavit Regarding Passport",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a passport.",
+    "order": 82,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_sponsorship",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_passport_and_immigration_affidavits",
+    "name": "Affidavit of Sponsorship",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit undertaking sponsorship of a person.",
+    "order": 83,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_financial_support",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_passport_and_immigration_affidavits",
+    "name": "Affidavit of Financial Support",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit undertaking financial support for a person.",
+    "order": 84,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_parental_consent_for_minor",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_passport_and_immigration_affidavits",
+    "name": "Affidavit of Parental Consent for Minor",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording parental consent for a minor.",
+    "order": 85,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_visa_immigration_purpose",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_passport_and_immigration_affidavits",
+    "name": "Affidavit for Visa/Immigration Purpose",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit for visa or immigration purposes.",
+    "order": 86,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_certificate",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit Regarding Lost Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a certificate.",
+    "order": 87,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_dmc",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit Regarding Lost DMC",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a DMC.",
+    "order": 88,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_duplicate_certificate",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit for Duplicate Certificate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting issuance of a duplicate certificate.",
+    "order": 89,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_name_difference_in_educational_documents",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit Regarding Name Difference in Educational Documents",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a name difference in educational documents.",
+    "order": 90,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_fathers_name_difference",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit Regarding Father's Name Difference",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a difference in the father's name in documents.",
+    "order": 91,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_date_of_birth_difference",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit Regarding Date-of-Birth Difference",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a difference in date of birth in documents.",
+    "order": 92,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_educational_gap",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit Regarding Educational Gap",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a gap in education.",
+    "order": 93,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_scholarship_student_undertaking",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_education_affidavits",
+    "name": "Affidavit Regarding Scholarship/Student Undertaking",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a scholarship or student undertaking.",
+    "order": 94,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_employment",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_employment_and_service_affidavits",
+    "name": "Affidavit of Employment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring employment of a person.",
+    "order": 95,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_experience",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_employment_and_service_affidavits",
+    "name": "Affidavit of Experience",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring experience of a person.",
+    "order": 96,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_income",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_employment_and_service_affidavits",
+    "name": "Affidavit of Income",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring income of a person.",
+    "order": 97,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_no_government_employment",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_employment_and_service_affidavits",
+    "name": "Affidavit of No Government Employment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring that a person holds no government employment.",
+    "order": 98,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_dual_employment",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_employment_and_service_affidavits",
+    "name": "Affidavit Regarding Dual Employment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning dual employment of a person.",
+    "order": 99,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_undertaking_by_employee",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_employment_and_service_affidavits",
+    "name": "Affidavit of Undertaking by Employee",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit recording an undertaking given by an employee.",
+    "order": 100,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_loss_of_employer_property",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_employment_and_service_affidavits",
+    "name": "Affidavit Regarding Loss of Employer Property",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of an employer's property.",
+    "order": 101,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_sole_proprietorship",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit of Sole Proprietorship",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring sole proprietorship of a business.",
+    "order": 102,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_business_ownership",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit Regarding Business Ownership",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning ownership of a business.",
+    "order": 103,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_partnership",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit Regarding Partnership",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a partnership.",
+    "order": 104,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_partner",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit of Partner",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit given by a partner in a partnership.",
+    "order": 105,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_change_of_business_address",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit Regarding Change of Business Address",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a change of business address.",
+    "order": 106,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_source_of_funds",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit Regarding Source of Funds",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning the source of funds.",
+    "order": 107,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_source_of_income",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit Regarding Source of Income",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning the source of income.",
+    "order": 108,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_beneficial_ownership",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_business_and_commercial_affidavits",
+    "name": "Affidavit of Beneficial Ownership",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring beneficial ownership of an asset or entity.",
+    "order": 109,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_for_bank_account",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_banking_and_financial_affidavits",
+    "name": "Affidavit for Bank Account",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit supporting matters relating to a bank account.",
+    "order": 110,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_name_difference_in_bank_account",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_banking_and_financial_affidavits",
+    "name": "Affidavit Regarding Name Difference in Bank Account",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a name difference in a bank account.",
+    "order": 111,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_signature_difference",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_banking_and_financial_affidavits",
+    "name": "Affidavit Regarding Signature Difference",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit explaining a difference in signatures.",
+    "order": 112,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_atm_debit_card",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_banking_and_financial_affidavits",
+    "name": "Affidavit Regarding Lost ATM/Debit Card",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of an ATM or debit card.",
+    "order": 113,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_deceased_account_holder",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_banking_and_financial_affidavits",
+    "name": "Affidavit Regarding Deceased Account Holder",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a deceased bank account holder.",
+    "order": 114,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_legal_heirs_for_bank_account",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_banking_and_financial_affidavits",
+    "name": "Affidavit Regarding Legal Heirs for Bank Account",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning legal heirs for a bank account.",
+    "order": 115,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_vehicle_ownership",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_vehicle_and_excise_affidavits",
+    "name": "Affidavit Regarding Vehicle Ownership",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning ownership of a vehicle.",
+    "order": 116,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_vehicle_sale",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_vehicle_and_excise_affidavits",
+    "name": "Affidavit Regarding Vehicle Sale",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning sale of a vehicle.",
+    "order": 117,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_vehicle_transfer",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_vehicle_and_excise_affidavits",
+    "name": "Affidavit Regarding Vehicle Transfer",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning transfer of a vehicle.",
+    "order": 118,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_registration_book",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_vehicle_and_excise_affidavits",
+    "name": "Affidavit Regarding Lost Registration Book",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a vehicle registration book.",
+    "order": 119,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_lost_number_plate",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_vehicle_and_excise_affidavits",
+    "name": "Affidavit Regarding Lost Number Plate",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning loss of a vehicle number plate.",
+    "order": 120,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_vehicle_inheritance",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_vehicle_and_excise_affidavits",
+    "name": "Affidavit Regarding Vehicle Inheritance",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning inheritance of a vehicle.",
+    "order": 121,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_engine_chassis_number",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_vehicle_and_excise_affidavits",
+    "name": "Affidavit Regarding Engine/Chassis Number",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning a vehicle's engine or chassis number.",
+    "order": 122,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_domicile_related_declaration",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_government_and_administrative_affidavits",
+    "name": "Affidavit of Domicile-related Declaration",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit containing a domicile-related declaration.",
+    "order": 123,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_government_employment",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_government_and_administrative_affidavits",
+    "name": "Affidavit Regarding Government Employment",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning government employment.",
+    "order": 124,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_pension",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_government_and_administrative_affidavits",
+    "name": "Affidavit Regarding Pension",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning pension matters.",
+    "order": 125,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_family_pension",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_government_and_administrative_affidavits",
+    "name": "Affidavit Regarding Family Pension",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning family pension matters.",
+    "order": 126,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_government_accommodation",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_government_and_administrative_affidavits",
+    "name": "Affidavit Regarding Government Accommodation",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning government accommodation.",
+    "order": 127,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_life",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_pension_and_deceased_benefits_affidavits",
+    "name": "Affidavit of Life",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring that a person is alive.",
+    "order": 128,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_of_non_remarriage",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_pension_and_deceased_benefits_affidavits",
+    "name": "Affidavit of Non-Remarriage",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit declaring that a person has not remarried.",
+    "order": 129,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_legal_heirs_for_pension",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_pension_and_deceased_benefits_affidavits",
+    "name": "Affidavit Regarding Legal Heirs for Pension",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning legal heirs for pension benefits.",
+    "order": 130,
+    "isActive": true
+  },
+  {
+    "id": "tpl_affidavit_regarding_death_of_pensioner",
+    "categoryId": "cat_affidavits",
+    "subCategoryId": "subcat_pension_and_deceased_benefits_affidavits",
+    "name": "Affidavit Regarding Death of Pensioner",
+    "legalBasis": { "act": null, "section": null, "order": null, "rule": null, "text": null },
+    "description": "An affidavit concerning the death of a pensioner.",
+    "order": 131,
+    "isActive": true
+  }
+]
