@@ -4,8 +4,10 @@ import 'package:lawlink360/core/features/client_module/application/screens/appli
 import 'package:lawlink360/core/features/client_module/find_lawyer/screens/find_lawyer_screen.dart';
 import 'package:lawlink360/core/features/client_module/help_support/screens/help_support_screen.dart';
 import 'package:lawlink360/core/features/client_module/procedure_guide/screens/guider_home_screen.dart';
+import 'package:lawlink360/core/features/client_module/procedure_guide/screens/procedure_detail_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_judgments/screens/judgment_home_screen.dart';
 import 'package:lawlink360/core/features/lawyer_module/lawyer_law/screens/law_dashboard_screen.dart';
+import 'package:lawlink360/core/repositories/procedure_repository.dart';
 
 import '../screens/create_draft_screen.dart';
 import '../screens/draft_categories_screen.dart';
@@ -32,8 +34,8 @@ class DraftingNavigation {
   static const String laws = '/laws';
   static const String judgments = '/judgments';
   static const String procedures = '/procedure-guide';
+  static const String procedureDetail = '/procedure-guide/detail';
   static const String applications = '/applications';
-  // Required Documents is routed to the Procedure Guide workflow.
   static const String documents = '/documents';
   static const String findLawyer = '/find-lawyer';
   static const String faqs = '/faqs';
@@ -104,6 +106,9 @@ class DraftingNavigation {
           settings: settings,
         );
 
+      case procedureDetail:
+        return _buildProcedureDetailRoute(settings);
+
       case applications:
         return MaterialPageRoute(
           builder: (_) => const ApplicationHomeScreen(),
@@ -140,6 +145,45 @@ class DraftingNavigation {
       default:
         return null;
     }
+  }
+
+  // ============================================================
+  // PROCEDURE DETAIL ROUTE
+  // ============================================================
+
+  /// Builds the procedure-detail route for [procedureDetail].
+  ///
+  /// Expects `settings.arguments` to be a non-empty `String` that is
+  /// the procedure id. If the argument is missing, invalid, or not
+  /// found in `ProcedureData.procedures`, the route falls back to
+  /// `GuiderHomeScreen` so the user can still browse procedures.
+  /// It does not throw and does not force-unwrap.
+  static Route<dynamic> _buildProcedureDetailRoute(RouteSettings settings) {
+    final Object? arguments = settings.arguments;
+
+    if (arguments is! String || arguments.isEmpty) {
+      // Missing or invalid argument: fall back to the procedure home.
+      return MaterialPageRoute(
+        builder: (_) => const GuiderHomeScreen(),
+        settings: settings,
+      );
+    }
+
+    final repository = const ProcedureRepository();
+    final procedure = repository.getProcedureById(arguments);
+
+    if (procedure == null) {
+      // Id not found: fall back to the procedure home.
+      return MaterialPageRoute(
+        builder: (_) => const GuiderHomeScreen(),
+        settings: settings,
+      );
+    }
+
+    return MaterialPageRoute(
+      builder: (_) => ProcedureDetailScreen(procedure: procedure),
+      settings: settings,
+    );
   }
 
   // ============================================================

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/theme/app_colors.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
@@ -6,6 +7,7 @@ import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 import '../models/procedure_model.dart';
+import '../providers/recent_procedures_provider.dart';
 import '../widgets/estimated_time_card.dart';
 import '../widgets/legal_notice_card.dart';
 import '../widgets/related_laws_card.dart';
@@ -15,7 +17,7 @@ import 'procedure_steps_screen.dart';
 import 'package:lawlink360/features/legal_navigator/enums/content_type.dart';
 import 'package:lawlink360/features/legal_navigator/views/legal_navigator.dart';
 
-class ProcedureDetailScreen extends StatelessWidget {
+class ProcedureDetailScreen extends ConsumerStatefulWidget {
   final ProcedureModel procedure;
 
   const ProcedureDetailScreen({
@@ -24,7 +26,28 @@ class ProcedureDetailScreen extends StatelessWidget {
   });
 
   @override
+  ConsumerState<ProcedureDetailScreen> createState() =>
+      _ProcedureDetailScreenState();
+}
+
+class _ProcedureDetailScreenState
+    extends ConsumerState<ProcedureDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      ref
+          .read(recentProceduresProvider.notifier)
+          .recordVisit(widget.procedure.id);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final procedure = widget.procedure;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -125,10 +148,10 @@ class ProcedureDetailScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.xl),
           LegalNavigator(
-          contentType: ContentType.procedure,
-          contentId: procedure.id,
+            contentType: ContentType.procedure,
+            contentId: procedure.id,
           ),
-         const SizedBox(height: AppSpacing.xl),
+          const SizedBox(height: AppSpacing.xl),
         ],
       ),
     );

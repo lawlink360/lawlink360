@@ -6,7 +6,16 @@ import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
 class EmptyWidget extends StatelessWidget {
-  const EmptyWidget({super.key});
+  /// Message displayed to the user.
+  ///
+  /// Defaults to the previous fixed message so that existing call
+  /// sites keep their current appearance without change.
+  final String message;
+
+  const EmptyWidget({
+    super.key,
+    this.message = 'No related resources available.',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +50,7 @@ class EmptyWidget extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.md),
               Text(
-                'No related resources available.',
+                message,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.body.copyWith(
                   color: AppColors.lightTextSecondary,

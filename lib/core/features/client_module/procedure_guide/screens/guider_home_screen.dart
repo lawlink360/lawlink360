@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lawlink360/core/theme/app_colors.dart';
+import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 
@@ -11,6 +12,8 @@ import '../widgets/guider_header.dart';
 import '../widgets/guider_search_bar.dart';
 import '../widgets/procedure_card.dart';
 import '../widgets/procedure_category_card.dart';
+import '../widgets/procedure_statistics_cards.dart';
+import '../widgets/recently_viewed_procedures.dart';
 import 'procedure_category_screen.dart';
 import 'procedure_detail_screen.dart';
 
@@ -63,6 +66,7 @@ class _GuiderHomeScreenState extends ConsumerState<GuiderHomeScreen> {
         ),
         children: [
           const GuiderHeader(),
+          const ProcedureStatisticsCards(),
           GuiderSearchBar(
             controller: _searchController,
             onChanged: _onSearchChanged,
@@ -75,37 +79,48 @@ class _GuiderHomeScreenState extends ConsumerState<GuiderHomeScreen> {
                 ? _buildSearchResults(filtered)
                 : _buildCategories(categories),
           ),
+          if (!isSearching) const RecentlyViewedProcedures(),
+          const _FindLawyerPromoSection(),
         ],
       ),
     );
   }
 
   Widget _buildCategories(List<dynamic> categories) {
-    return Column(
-      children: categories.map((category) {
-        return Padding(
-          padding: const EdgeInsets.only(
-            bottom: AppSpacing.sm,
-          ),
-          child: ProcedureCategoryCard(
-            icon: category.icon,
-            color: category.color,
-            title: category.title,
-            description: category.description,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => ProcedureCategoryScreen(
-                    categoryId: category.id,
-                    title: category.title,
-                  ),
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: categories.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: AppSpacing.sm,
+        mainAxisSpacing: AppSpacing.sm,
+        childAspectRatio: 1.0,
+      ),
+      itemBuilder: (context, index) {
+        final category = categories[index];
+        final procedureCount = ProcedureData.procedures
+            .where((p) => p.categoryId == category.id)
+            .length;
+
+        return ProcedureCategoryCard(
+          icon: category.icon,
+          color: category.color,
+          title: category.title,
+          procedureCount: procedureCount,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ProcedureCategoryScreen(
+                  categoryId: category.id,
+                  title: category.title,
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         );
-      }).toList(),
+      },
     );
   }
 
@@ -157,6 +172,87 @@ class _GuiderHomeScreenState extends ConsumerState<GuiderHomeScreen> {
           ),
         );
       }).toList(),
+    );
+  }
+}
+
+class _FindLawyerPromoSection extends StatelessWidget {
+  const _FindLawyerPromoSection();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.xl,
+        AppSpacing.md,
+        AppSpacing.sm,
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(AppSpacing.lg),
+        decoration: BoxDecoration(
+          color: AppColors.primary,
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.primary.withValues(alpha: 0.18),
+              blurRadius: 16,
+              offset: const Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(
+              Icons.support_agent_rounded,
+              color: AppColors.accent,
+              size: 30,
+            ),
+            const SizedBox(height: AppSpacing.md),
+            Text(
+              'Need Legal Assistance?',
+              style: AppTextStyles.title.copyWith(
+                color: AppColors.textLight,
+                fontSize: 20,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              'Connect with experienced lawyers through LawLink360.',
+              style: AppTextStyles.bodySmall.copyWith(
+                color: AppColors.textLight.withValues(alpha: 0.82),
+                height: 1.5,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            SizedBox(
+              width: double.infinity,
+              height: AppSpacing.buttonHeight,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/find-lawyer');
+                },
+                icon: const Icon(Icons.gavel_rounded, size: 20),
+                label: Text(
+                  'Find a Lawyer',
+                  style: AppTextStyles.button.copyWith(
+                    color: AppColors.primary,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.accent,
+                  foregroundColor: AppColors.primary,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppRadius.md),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

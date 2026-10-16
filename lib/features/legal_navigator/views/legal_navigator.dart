@@ -12,8 +12,10 @@ import '../components/navigator_header.dart';
 import '../components/show_more_button.dart';
 import '../data/default_navigator_items.dart';
 import '../enums/content_type.dart';
+import '../enums/navigator_item_type.dart';
 import '../models/navigator_item_model.dart';
 import '../providers/related_resource_provider.dart';
+import '../screens/resource_results_screen.dart';
 import '../utils/navigator_helper.dart';
 import '../utils/route_helper.dart';
 
@@ -38,9 +40,6 @@ class _LegalNavigatorState extends ConsumerState<LegalNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    // Single source of truth for current-content filtering.
-    // Uses typed enum-based filtering via NavigatorHelper so that
-    // title strings are not used as the filtering key.
     final visibleByVisibility = defaultNavigatorItems
         .where((item) => item.isVisible)
         .toList();
@@ -50,9 +49,6 @@ class _LegalNavigatorState extends ConsumerState<LegalNavigator> {
       items: visibleByVisibility,
     );
 
-    // Resolve related resources for the current context.
-    // Currently returns an empty list because the underlying
-    // datasets do not exist yet in this phase.
     final related = ref.watch(
       relatedResourcesProvider(
         (contentType: widget.contentType, contentId: widget.contentId),
@@ -104,16 +100,82 @@ class _LegalNavigatorState extends ConsumerState<LegalNavigator> {
     );
   }
 
-    void _onItemTap(
+  void _onItemTap(
     NavigatorItemModel item,
     List<dynamic> related,
   ) {
-    // Resolve a destination route for this navigator item type.
+    // ----------------------------------------------------------
+    // Procedure-aware results path for the Related Procedures tile.
+    // ----------------------------------------------------------
+    if (item.type == NavigatorItemType.relatedProcedures) {
+      final procedureId = widget.contentId.trim();
+
+      if (procedureId.isNotEmpty) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => ResourceResultsScreen(
+              title: 'Related Procedures',
+              procedureId: procedureId,
+              type: ResourceResultsType.relatedProcedures,
+            ),
+          ),
+        );
+        return;
+      }
+
+      // Fall through to the named-route flow when the widget was
+      // not given a procedure id.
+    }
+
+    // ----------------------------------------------------------
+    // Procedure-aware results path for the Relevant Applications
+    // tile. The resolver returns `unavailable` today because no
+    // reliable procedure-to-template mapping exists. The tile
+    // does not fall back to the general Application home screen.
+    // ----------------------------------------------------------
+    if (item.type == NavigatorItemType.relatedApplications) {
+      final procedureId = widget.contentId.trim();
+
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => ResourceResultsScreen(
+            title: 'Relevant Applications',
+            procedureId: procedureId,
+            type: ResourceResultsType.relatedApplications,
+          ),
+        ),
+      );
+      return;
+    }
+
+    // ----------------------------------------------------------
+    // Procedure-aware results path for the Required Documents tile.
+    // Uses the current procedure's `requiredDocuments` list via
+    // the shared results screen. Does not fall through to the
+    // `/documents` route.
+    // ----------------------------------------------------------
+    if (item.type == NavigatorItemType.requiredDocuments) {
+      final procedureId = widget.contentId.trim();
+
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => ResourceResultsScreen(
+            title: 'Required Documents',
+            procedureId: procedureId,
+            type: ResourceResultsType.requiredDocuments,
+          ),
+        ),
+      );
+      return;
+    }
+
+    // ----------------------------------------------------------
+    // Existing named-route flow for every other tile.
+    // ----------------------------------------------------------
     const routeHelper = RouteHelper();
     final route = routeHelper.resolve(item.type);
 
     if (route == null) {
-      // Destination not implemented yet. Fail gracefully.
       ScaffoldMessenger.maybeOf(context)?.showSnackBar(
         const SnackBar(
           content: Text('This section is not available yet.'),
@@ -122,9 +184,6 @@ class _LegalNavigatorState extends ConsumerState<LegalNavigator> {
       return;
     }
 
-    // Attempt to navigate to the named route. If the app has not
-    // registered this route in its MaterialApp routes table, fall
-    // back to a graceful message instead of crashing.
     try {
       Navigator.of(context).pushNamed(route);
     } on FlutterError {

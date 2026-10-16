@@ -9,7 +9,7 @@ class ProcedureCategoryCard extends StatelessWidget {
   final IconData icon;
   final Color color;
   final String title;
-  final String description;
+  final int procedureCount;
   final VoidCallback? onTap;
 
   const ProcedureCategoryCard({
@@ -17,7 +17,7 @@ class ProcedureCategoryCard extends StatelessWidget {
     required this.icon,
     required this.color,
     required this.title,
-    required this.description,
+    required this.procedureCount,
     this.onTap,
   });
 
@@ -39,53 +39,75 @@ class ProcedureCategoryCard extends StatelessWidget {
               color: AppColors.border,
             ),
           ),
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.10),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icon,
-                  color: color,
-                  size: 25,
-                ),
-              ),
-              const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.body.copyWith(
-                        color: AppColors.textPrimary,
-                        fontWeight: FontWeight.w600,
+                    Center(
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: color.withValues(alpha: 0.11),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: color.withValues(alpha: 0.16),
+                          ),
+                        ),
+                        child: Icon(
+                          icon,
+                          color: color,
+                          size: 25,
+                        ),
                       ),
                     ),
                     const SizedBox(height: AppSpacing.xs),
                     Text(
-                      description,
-                      maxLines: 3,
+                      title,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.bodySmall.copyWith(
-                        color: AppColors.textSecondary,
-                        height: 1.45,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.body.copyWith(
+                        color: AppColors.textPrimary,
+                        fontWeight: FontWeight.w700,
+                        height: 1.2,
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(width: AppSpacing.sm),
-              const Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: AppColors.textSecondary,
+              const SizedBox(height: AppSpacing.xs),
+              Row(
+                children: [
+                  Icon(
+                    Icons.description_outlined,
+                    size: 17,
+                    color: color,
+                  ),
+                  const SizedBox(width: AppSpacing.xs),
+                  Expanded(
+                    child: Text(
+                      '$procedureCount '
+                      '${procedureCount == 1 ? 'Procedure' : 'Procedures'}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.caption.copyWith(
+                        color: color,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: AppSpacing.xs),
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 14,
+                    color: AppColors.textSecondary.withValues(alpha: 0.42),
+                  ),
+                ],
               ),
             ],
           ),

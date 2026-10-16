@@ -27,6 +27,19 @@ class GuiderHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            width: double.infinity,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(
+                  'assets/logos/lawlink360_transparent_logo.png',
+                  height: 40,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: AppSpacing.lg),
           Text(
             'Procedure Guider',
             style: AppTextStyles.displayLarge.copyWith(
