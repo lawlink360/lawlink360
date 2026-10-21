@@ -5,7 +5,6 @@ import 'package:lawlink360/core/features/client_module/cases/my_cases_section.da
 import 'package:lawlink360/core/features/client_module/client_dashboard/widgets/upcoming_appointments_card.dart';
 import 'package:lawlink360/core/features/client_module/widgets/app_drawer.dart';
 import 'package:lawlink360/core/features/client_module/find_lawyer/widgets/popular_services_section.dart';
-import 'package:lawlink360/core/features/client_module/copy_house/screens/copy_house_landing_screen.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
 import 'package:lawlink360/widgets/appbar/ai_search_bar.dart' as ai_search;
@@ -88,29 +87,6 @@ class ClientDashboardScreen extends StatelessWidget {
 
               const MyCasesSection(),
 
-              // ------------------------------------------------------------
-              // COPY HOUSE
-              // ------------------------------------------------------------
-              const SizedBox(height: AppSpacing.lg),
-
-              _SectionTitle(
-                title: 'Copy House',
-                color: colorScheme.onSurface,
-              ),
-
-              const SizedBox(height: AppSpacing.md),
-
-              _CopyHouseEntry(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const CopyHouseLandingScreen(),
-                    ),
-                  );
-                },
-              ),
-
 
               // ------------------------------------------------------------
               // POPULAR SERVICES
@@ -143,10 +119,6 @@ class ClientDashboardScreen extends StatelessWidget {
   }
 }
 
-// ============================================================================
-// SECTION TITLE
-// ============================================================================
-
 class _SectionTitle extends StatelessWidget {
   final String title;
   final Color color;
@@ -162,79 +134,6 @@ class _SectionTitle extends StatelessWidget {
         child: Text(
           title,
           style: AppTextStyles.headline.copyWith(color: color, fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-
-// ============================================================================
-// COPY HOUSE ENTRY
-// ============================================================================
-
-class _CopyHouseEntry extends StatelessWidget {
-  final VoidCallback onTap;
-
-  const _CopyHouseEntry({required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(16),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: onTap,
-          child: Ink(
-            padding: const EdgeInsets.all(AppSpacing.md),
-            decoration: BoxDecoration(
-              color: colorScheme.surface,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: colorScheme.outlineVariant.withValues(alpha: 0.55),
-              ),
-            ),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.business_center_outlined,
-                  color: colorScheme.primary,
-                  size: 24,
-                ),
-                const SizedBox(width: AppSpacing.sm),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Copy House by LawLink360',
-                        style: AppTextStyles.body.copyWith(
-                          color: colorScheme.onSurface,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        'Certified Copies • Official Records • Registered Documents',
-                        style: AppTextStyles.caption.copyWith(
-                          color: colorScheme.onSurfaceVariant,
-                          height: 1.35,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right_rounded,
-                  color: colorScheme.onSurface.withValues(alpha: 0.42),
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );

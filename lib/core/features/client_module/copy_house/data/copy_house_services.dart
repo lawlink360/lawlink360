@@ -31,12 +31,11 @@ class CopyHouseService {
 const List<CopyHouseService> copyHouseServices = [
   CopyHouseService(
     id: 'district_court_certified_copies',
-    title: 'District Court Certified Copies',
-    summary: 'Certified copies of records held by District Courts.',
+    title: 'Court Certified Copies',
+    summary: 'Certified copies of records held by courts.',
     description:
-        'Facilitates requests for certified copies of District Court '
-        'records and proceedings. Online requests will be available in '
-        'a later phase.',
+        'Facilitates requests for certified copies of court records '
+        'and proceedings. Choose the relevant court on the next screen.',
     icon: Icons.account_balance_outlined,
     color: AppColors.primary,
   ),

@@ -6,6 +6,7 @@ import 'package:lawlink360/core/features/client_module/procedure_guide/screens/g
 import 'package:lawlink360/core/features/client_module/translation/screens/translation_screen.dart';
 import 'package:lawlink360/core/features/client_module/verification/screens/verification_screen.dart';
 import 'package:lawlink360/core/features/client_module/scanner_360/screens/scanner_home_screen.dart';
+import 'package:lawlink360/core/features/client_module/copy_house/screens/copy_house_entry_screen.dart';
 import '../cards/quick_action_card.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 
@@ -52,6 +53,21 @@ class QuickActionsGrid extends StatelessWidget {
               );
             },
           ),
+
+          QuickActionCard(
+            icon: Icons.business_center_rounded,
+            title: 'Copy House',
+            subtitle: 'Certified copies & official records',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const CopyHouseEntryScreen(),
+                ),
+              );
+            },
+          ),
+
           QuickActionCard(
             icon: Icons.translate_rounded,
             title: 'Translation',

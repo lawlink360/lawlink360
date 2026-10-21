@@ -1,0 +1,270 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function validUserCreation(userId) {
+      return request.resource.data.keys().hasAll([
+        'uid',
+        'fullName',
+        'email',
+        'phone',
+        'role',
+        'profileCompleted',
+        'createdAt'
+      ])
+      && request.resource.data.keys().hasOnly([
+        'uid',
+        'fullName',
+        'email',
+        'phone',
+        'role',
+        'profileCompleted',
+        'createdAt'
+      ])
+      && request.resource.data.uid == userId
+      && request.resource.data.fullName is string
+      && request.resource.data.email is string
+      && request.resource.data.phone is string
+      && request.resource.data.role == ''
+      && request.resource.data.profileCompleted == false
+      && request.resource.data.createdAt == request.time;
+    }
+
+    function validRoleUpdate() {
+      return request.resource.data.diff(resource.data)
+          .affectedKeys().hasOnly(['role'])
+        && resource.data.role == ''
+        && request.resource.data.role in ['client', 'lawyer'];
+    }
+
+    function validCopyHouseFields() {
+      return request.resource.data.keys().hasAll([
+        'serviceId',
+        'serviceSubtype',
+        'serviceDetails',
+        'submittedBy',
+        'status',
+        'caseType',
+        'caseStatus',
+        'firstParty',
+        'secondParty',
+        'caseTitle',
+        'caseNumber',
+        'firNumber',
+        'firYear',
+        'policeStation',
+        'offence',
+        'dated',
+        'courtOrJurisdiction',
+        'judge',
+        'caseDecidedOn',
+        'nextHearingDate',
+        'recordRequested',
+        'recordRequestedList',
+        'purpose',
+        'additionalInformation',
+        'createdAt',
+        'updatedAt'
+      ])
+      && request.resource.data.keys().hasOnly([
+        'serviceId',
+        'serviceSubtype',
+        'serviceDetails',
+        'submittedBy',
+        'status',
+        'caseType',
+        'caseStatus',
+        'firstParty',
+        'secondParty',
+        'caseTitle',
+        'caseNumber',
+        'firNumber',
+        'firYear',
+        'policeStation',
+        'offence',
+        'dated',
+        'courtOrJurisdiction',
+        'judge',
+        'caseDecidedOn',
+        'nextHearingDate',
+        'recordRequested',
+        'recordRequestedList',
+        'purpose',
+        'additionalInformation',
+        'createdAt',
+        'updatedAt'
+      ])
+      && request.resource.data.serviceId is string
+      && request.resource.data.serviceSubtype is string
+      && request.resource.data.serviceDetails is map
+      && request.resource.data.submittedBy is string
+      && request.resource.data.status == 'submitted'
+      && request.resource.data.caseType is string
+      && request.resource.data.caseStatus is string
+      && request.resource.data.firstParty is string
+      && request.resource.data.secondParty is string
+      && request.resource.data.caseTitle is string
+      && request.resource.data.caseNumber is string
+      && request.resource.data.firNumber is string
+      && request.resource.data.firYear is string
+      && request.resource.data.policeStation is string
+      && request.resource.data.offence is string
+      && request.resource.data.dated is string
+      && request.resource.data.courtOrJurisdiction is string
+      && request.resource.data.judge is string
+      && request.resource.data.caseDecidedOn is string
+      && request.resource.data.nextHearingDate is string
+      && request.resource.data.recordRequested is string
+      && request.resource.data.recordRequestedList is list
+      && request.resource.data.purpose is string
+      && request.resource.data.additionalInformation is string
+      && request.resource.data.createdAt == request.time
+      && request.resource.data.updatedAt == request.time;
+    }
+
+    function validDistrictCourtDetails(details) {
+      return details.keys().hasOnly([]);
+    }
+
+    function validHighCourtDetails(details) {
+      return details.keys().hasAll([
+        'caseNumber',
+        'caseYear',
+        'firstParty',
+        'secondParty',
+        'peshiType',
+        'peshiDate',
+        'justices',
+        'district',
+        'requestedCopyDetails'
+      ])
+      && details.keys().hasOnly([
+        'caseNumber',
+        'caseYear',
+        'firstParty',
+        'secondParty',
+        'peshiType',
+        'peshiDate',
+        'justices',
+        'district',
+        'requestedCopyDetails'
+      ])
+      && details.caseNumber is string
+      && details.caseYear is string
+      && details.firstParty is string
+      && details.secondParty is string
+      && details.peshiType in ['pucca', 'kuccha']
+      && details.peshiDate is string
+      && details.justices is list
+      && details.district is string
+      && details.requestedCopyDetails is list;
+    }
+
+    function validMutationDetails(details) {
+      return details.keys().hasAll([
+        'mutationNumber',
+        'transactionDate',
+        'subRegistrarTown',
+        'district',
+        'tehsil',
+        'villageMouza'
+      ])
+      && details.keys().hasOnly([
+        'mutationNumber',
+        'transactionDate',
+        'subRegistrarTown',
+        'district',
+        'tehsil',
+        'villageMouza'
+      ])
+      && details.mutationNumber is string
+      && details.transactionDate is string
+      && details.subRegistrarTown is string
+      && details.district is string
+      && details.tehsil is string
+      && details.villageMouza is string;
+    }
+
+    function validRegisteredDocumentDetails(details) {
+      return details.keys().hasAll([
+        'bookNumber',
+        'volumeNumber',
+        'documentNumber',
+        'dated'
+      ])
+      && details.keys().hasOnly([
+        'bookNumber',
+        'volumeNumber',
+        'documentNumber',
+        'dated'
+      ])
+      && details.bookNumber is string
+      && details.volumeNumber is string
+      && details.documentNumber is string
+      && details.dated is string;
+    }
+
+    function validCopyHouseServiceDetails(data) {
+      return (
+        data.serviceId == 'district_court_certified_copies'
+        && data.serviceSubtype == ''
+        && validDistrictCourtDetails(data.serviceDetails)
+      ) || (
+        data.serviceId == 'high_court_certified_copies'
+        && data.serviceSubtype == ''
+        && validHighCourtDetails(data.serviceDetails)
+      ) || (
+        data.serviceId == 'mutation_copies'
+        && data.serviceSubtype == ''
+        && validMutationDetails(data.serviceDetails)
+      ) || (
+        data.serviceId == 'registered_document_copies'
+        && data.serviceSubtype in [
+          'registered_sale_deed',
+          'registered_gift_deed',
+          'registered_general_power_of_attorney',
+          'registered_special_power_of_attorney'
+        ]
+        && validRegisteredDocumentDetails(data.serviceDetails)
+      );
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+
+      allow create: if isOwner(userId)
+        && validUserCreation(userId);
+
+      allow update: if isOwner(userId)
+        && validRoleUpdate();
+
+      allow delete: if false;
+    }
+
+    match /copyHouseRequests/{requestId} {
+      allow create: if isSignedIn()
+        && request.resource.data.submittedBy == request.auth.uid
+        && validCopyHouseFields()
+        && validCopyHouseServiceDetails(request.resource.data);
+
+      allow get, list: if isSignedIn()
+        && resource.data.submittedBy == request.auth.uid;
+
+      allow update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

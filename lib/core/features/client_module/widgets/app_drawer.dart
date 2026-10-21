@@ -14,7 +14,7 @@ import 'package:lawlink360/core/features/client_module/appointments/screens/appo
 import 'package:lawlink360/core/features/client_module/client_messages/screens/messages_screen.dart';
 import 'package:lawlink360/core/features/client_module/documents/screens/documents_screen.dart';
 import 'package:lawlink360/core/features/client_module/client_dashboard/screens/dashboard_screen.dart';
-import 'package:lawlink360/core/features/client_module/copy_house/screens/copy_house_landing_screen.dart';
+import 'package:lawlink360/core/features/client_module/copy_house/screens/copy_house_entry_screen.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -193,9 +193,9 @@ class AppDrawer extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
+                          MaterialPageRoute(
                           builder: (context) =>
-                              const CopyHouseLandingScreen(),
+                          const CopyHouseEntryScreen(),
                         ),
                       );
                     },

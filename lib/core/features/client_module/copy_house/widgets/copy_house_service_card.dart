@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:lawlink360/core/features/client_module/copy_house/data/copy_house_request_constants.dart';
+import 'package:lawlink360/core/features/client_module/copy_house/screens/mutation_copy_form_screen.dart';
+import 'package:lawlink360/core/features/client_module/copy_house/screens/registered_document_copy_form_screen.dart';
+import 'package:lawlink360/core/features/client_module/copy_house/screens/court_certified_copies_selection_screen.dart';
 import 'package:lawlink360/core/theme/app_radius.dart';
 import 'package:lawlink360/core/theme/app_spacing.dart';
 import 'package:lawlink360/core/theme/app_text_styles.dart';
@@ -23,7 +27,7 @@ class CopyHouseServiceCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppRadius.lg),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppRadius.lg),
-        onTap: () => _showServiceInfo(context),
+        onTap: () => _handleTap(context),
         child: Ink(
           padding: const EdgeInsets.all(AppSpacing.md),
           decoration: BoxDecoration(
@@ -97,12 +101,29 @@ class CopyHouseServiceCard extends StatelessWidget {
     );
   }
 
+  /// The Court Certified Copies card opens the intermediate selection
+  /// screen directly. All other services keep the informational bottom
+  /// sheet whose "Submit a Request" button opens the corresponding
+  /// form.
+  void _handleTap(BuildContext context) {
+    if (service.id == districtCourtCertifiedCopiesServiceId) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => const CourtCertifiedCopiesSelectionScreen(),
+        ),
+      );
+      return;
+    }
+    _showServiceInfo(context);
+  }
+
   void _showServiceInfo(BuildContext context) {
     showModalBottomSheet<void>(
       context: context,
       showDragHandle: true,
       builder: (context) {
         final colorScheme = Theme.of(context).colorScheme;
+        final hasForm = _hasFormFor(service.id);
 
         return Padding(
           padding: const EdgeInsets.fromLTRB(
@@ -178,7 +199,11 @@ class CopyHouseServiceCard extends StatelessWidget {
                     const SizedBox(width: AppSpacing.xs),
                     Expanded(
                       child: Text(
-                        'Online requests for this service are coming soon.',
+                        hasForm
+                            ? 'Submit a request and our team will '
+                              'contact you regarding next steps.'
+                            : 'Online requests for this service are '
+                              'coming soon.',
                         style: AppTextStyles.caption.copyWith(
                           color: colorScheme.onSurface,
                           fontWeight: FontWeight.w600,
@@ -189,11 +214,47 @@ class CopyHouseServiceCard extends StatelessWidget {
                 ),
               ),
 
+              if (hasForm) ...[
+                const SizedBox(height: AppSpacing.md),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.icon(
+                    onPressed: () {
+                      final builder = _formBuilderFor(service.id);
+                      if (builder == null) return;
+                      Navigator.of(context).pop();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: builder),
+                      );
+                    },
+                    icon: const Icon(Icons.edit_document),
+                    label: const Text('Submit a Request'),
+                  ),
+                ),
+              ],
+
               const SizedBox(height: AppSpacing.sm),
             ],
           ),
         );
       },
     );
+  }
+
+  bool _hasFormFor(String serviceId) {
+    return _formBuilderFor(serviceId) != null;
+  }
+
+  WidgetBuilder? _formBuilderFor(String serviceId) {
+    switch (serviceId) {
+      case districtCourtCertifiedCopiesServiceId:
+        return (_) => const CourtCertifiedCopiesSelectionScreen();
+      case mutationCopiesServiceId:
+        return (_) => const MutationCopyFormScreen();
+      case registeredDocumentCopiesServiceId:
+        return (_) => const RegisteredDocumentCopyFormScreen();
+      default:
+        return null;
+    }
   }
 }

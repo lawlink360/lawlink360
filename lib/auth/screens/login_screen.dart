@@ -19,7 +19,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lawlink360/auth/providers/auth_state_provider.dart';
+import 'package:lawlink360/auth/providers/auth_provider.dart';
 import 'package:lawlink360/auth/models/auth_state.dart';
+import 'package:lawlink360/core/features/client_module/navigation/client_navigation_controller.dart';
+import 'package:lawlink360/core/features/lawyer_module/home/navigation/lawyer_navigation_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -40,6 +43,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
   bool _isGoogleLoading = false;
   bool _rememberMe = false;
   bool _showBiometricButton = false;
+
+  // Guards against overlapping authentication flows. Set at the entry
+  // of login(), googleLogin(), and biometricLogin(); released in the
+  // finally block of each.
+  bool _authInProgress = false;
 
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
@@ -121,23 +129,121 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
 
     if (!mounted) return;
 
-    await biometricLogin();
+    try {
+      await biometricLogin();
+    } catch (e, st) {
+      debugPrint('Auto biometric flow threw: $e');
+      debugPrintStack(stackTrace: st);
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Post-login role routing.
+  //
+  // Called from login(), googleLogin(), and biometricLogin() AFTER
+  // authentication has already been confirmed and AFTER the caller has
+  // acquired the _authInProgress guard.
+  //
+  // Lookup failures are handled HERE as a distinct retryable error. That
+  // catch wraps ONLY getUserRole — not navigation and not dialogs — so a
+  // navigation error or a dialog error cannot be mislabelled as a
+  // role-lookup failure.
+  // ---------------------------------------------------------------------------
+  Future<void> _routeBySavedRole() async {
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+
+    if (firebaseUser == null) {
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+      );
+      return;
+    }
+
+    String? role;
+    try {
+      role = await ref
+          .read(authRepositoryProvider)
+          .getUserRole(firebaseUser.uid);
+    } catch (_) {
+      if (!mounted) return;
+      await DialogService.showError(
+        context: context,
+        title: "Unable to determine your account type",
+        message:
+            "You are signed in, but we could not verify your saved role. "
+            "Please check your internet connection and try again.",
+      );
+      return;
+    }
+
+    if (!mounted) return;
+
+    if (role == null || role.isEmpty) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
+      );
+      return;
+    }
+
+    if (role == 'client') {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const ClientNavigationController(),
+        ),
+      );
+      return;
+    }
+
+    if (role == 'lawyer') {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const LawyerNavigationController(),
+        ),
+      );
+      return;
+    }
+
+    await DialogService.showError(
+      context: context,
+      title: "Unsupported account role",
+      message:
+          "Your account has a role that this app version does not "
+          "recognize. Please contact LawLink360 support so your account "
+          "can be reviewed before signing in again.",
+    );
   }
 
   Future<void> login() async {
-    try {
-      await ref
-          .read(authStateProvider.notifier)
-          .login(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
-          );
+    if (_authInProgress) return;
+    _authInProgress = true;
 
+    try {
+      // ---- Auth-only scope ----
+      try {
+        await ref
+            .read(authStateProvider.notifier)
+            .login(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+            );
+      } catch (e) {
+        if (!mounted) return;
+        await DialogService.showError(
+          context: context,
+          title: "Login Failed",
+          message: _getFriendlyErrorMessage(e.toString()),
+        );
+        return;
+      }
+
+      // ---- Non-authenticated branch (outside the auth catch) ----
       if (!mounted) return;
 
-      // IMPORTANT:
-      // AuthNotifier catches Firebase errors internally.
-      // Therefore we must check the authentication state here.
       final authState = ref.read(authStateProvider);
 
       if (authState.status != AuthStatus.authenticated) {
@@ -151,142 +257,228 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
         return;
       }
 
-      // Firebase login was successful.
-      final prefs = await SharedPreferences.getInstance();
+      // ---- Post-auth side effects (non-fatal, log-only) ----
+      try {
+        final prefs = await SharedPreferences.getInstance();
 
-      await prefs.setBool('remember_me', _rememberMe);
+        await prefs.setBool('remember_me', _rememberMe);
 
-      if (_rememberMe) {
-        await prefs.setString('saved_email', emailController.text.trim());
-      } else {
-        await prefs.remove('saved_email');
+        if (_rememberMe) {
+          await prefs.setString('saved_email', emailController.text.trim());
+        } else {
+          await prefs.remove('saved_email');
+        }
+
+        final biometricEnabled = await _secureStorage.read(
+          key: "biometric_enabled",
+        );
+
+        if (_rememberMe && biometricEnabled != "true") {
+          await _askEnableBiometric();
+        }
+      } catch (e, st) {
+        debugPrint('Post-login preference step failed: $e');
+        debugPrintStack(stackTrace: st);
       }
 
-      // Ask for biometric ONLY after successful Firebase login.
-      final biometricEnabled = await _secureStorage.read(
-        key: "biometric_enabled",
-      );
-
-      if (_rememberMe && biometricEnabled != "true") {
-        await _askEnableBiometric();
+      // ---- Role routing scope ----
+      if (!mounted) return;
+      try {
+        await _routeBySavedRole();
+      } catch (e, st) {
+        debugPrint('Role routing failed after login: $e');
+        debugPrintStack(stackTrace: st);
       }
-
-      if (!mounted) return;
-
-      // Go to Role Selection ONLY after successful authentication.
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
-      );
-    } catch (e) {
-      if (!mounted) return;
-
-      await DialogService.showError(
-        context: context,
-        title: "Login Failed",
-        message: _getFriendlyErrorMessage(e.toString()),
-      );
+    } finally {
+      _authInProgress = false;
     }
   }
 
   Future<void> googleLogin() async {
+    if (_authInProgress) return;
+    _authInProgress = true;
+
     try {
+      // ---- UI state before auth ----
+      if (!mounted) return;
       setState(() => _isGoogleLoading = true);
 
-      await ref.read(authStateProvider.notifier).signInWithGoogle();
+      // ---- Auth-only scope ----
+      try {
+        await ref.read(authStateProvider.notifier).signInWithGoogle();
+      } catch (e) {
+        if (!mounted) return;
+        setState(() => _isGoogleLoading = false);
+        await DialogService.showError(
+          context: context,
+          title: "Google Sign-In Failed",
+          message: _getFriendlyErrorMessage(e.toString()),
+        );
+        return;
+      }
 
+      // ---- UI state after auth ----
       if (!mounted) return;
-
       setState(() => _isGoogleLoading = false);
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
-      );
-    } catch (e) {
+      // ---- Role routing scope ----
       if (!mounted) return;
-
-      setState(() => _isGoogleLoading = false);
-
-      await DialogService.showError(
-        context: context,
-        title: "Google Sign-In Failed",
-        message: _getFriendlyErrorMessage(e.toString()),
-      );
+      try {
+        await _routeBySavedRole();
+      } catch (e, st) {
+        debugPrint('Role routing failed after Google sign-in: $e');
+        debugPrintStack(stackTrace: st);
+      }
+    } finally {
+      _authInProgress = false;
     }
   }
 
   Future<void> biometricLogin() async {
-    final available = await _biometricService.isBiometricAvailable();
+    if (_authInProgress) return;
+    _authInProgress = true;
 
-    if (!mounted) return;
+    try {
+      bool available;
+      try {
+        available = await _biometricService.isBiometricAvailable();
+      } catch (_) {
+        if (!mounted) return;
+        await DialogService.showError(
+          context: context,
+          title: "Biometric Unavailable",
+          message:
+              "We could not check your device's biometric capability. "
+              "Please try again, or log in with your email and password.",
+        );
+        return;
+      }
 
-    if (!available) {
+      if (!mounted) return;
+
+      if (!available) {
+        await DialogService.showError(
+          context: context,
+          title: "Biometric Authentication",
+          message:
+              "Your device does not support fingerprint or face "
+              "authentication.",
+        );
+        return;
+      }
+
+      bool authenticated;
+      try {
+        authenticated = await _biometricService.authenticate();
+      } catch (_) {
+        if (!mounted) return;
+        await DialogService.showError(
+          context: context,
+          title: "Biometric Verification Failed",
+          message:
+              "We could not complete biometric verification. "
+              "Please try again, or log in with your email and password.",
+        );
+        return;
+      }
+
+      if (!mounted) return;
+
+      if (!authenticated) {
+        await DialogService.showError(
+          context: context,
+          title: "Authentication Failed",
+          message: "Fingerprint authentication was cancelled or failed.",
+        );
+        return;
+      }
+
+      final firebaseUser = FirebaseAuth.instance.currentUser;
+
+      debugPrint("BIOMETRIC: Firebase user = ${firebaseUser?.uid}");
+
+      if (firebaseUser != null) {
+        String? role;
+        try {
+          role = await ref
+              .read(authRepositoryProvider)
+              .getUserRole(firebaseUser.uid);
+        } catch (_) {
+          if (!mounted) return;
+          await DialogService.showError(
+            context: context,
+            title: "Unable to determine your account type",
+            message:
+                "We could not verify your saved role. Please check your "
+                "internet connection and try again.",
+          );
+          return;
+        }
+
+        if (!mounted) return;
+
+        // Not wrapped: if context is invalid, showDialog rejects and the
+        // exception propagates to the outer finally (releases guard), then
+        // to the caller (Change G logs it).
+        await DialogService.showSuccess(
+          context: context,
+          title: "Authentication Successful",
+          message: "Welcome back!",
+        );
+
+        if (!mounted) return;
+
+        if (role == null || role.isEmpty) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
+          );
+        } else if (role == 'client') {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const ClientNavigationController(),
+            ),
+          );
+        } else if (role == 'lawyer') {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const LawyerNavigationController(),
+            ),
+          );
+        } else {
+          await DialogService.showError(
+            context: context,
+            title: "Unsupported account role",
+            message:
+                "Your account has a role that this app version does not "
+                "recognize. Please contact LawLink360 support so your "
+                "account can be reviewed before signing in again.",
+          );
+        }
+
+        return;
+      }
+
       await DialogService.showError(
         context: context,
-        title: "Biometric Authentication",
+        title: "Session Expired",
         message:
-            "Your device does not support fingerprint or face authentication.",
-      );
-      return;
-    }
-
-    final authenticated = await _biometricService.authenticate();
-
-    if (!mounted) return;
-
-    if (!authenticated) {
-      await DialogService.showError(
-        context: context,
-        title: "Authentication Failed",
-        message: "Fingerprint authentication was cancelled or failed.",
-      );
-      return;
-    }
-
-    // -----------------------------------------
-    // BIOMETRIC SUCCESSFUL
-    // -----------------------------------------
-
-    final firebaseUser = FirebaseAuth.instance.currentUser;
-
-    debugPrint("BIOMETRIC: Firebase user = ${firebaseUser?.uid}");
-
-    // Firebase session still exists
-    if (firebaseUser != null) {
-      await DialogService.showSuccess(
-        context: context,
-        title: "Authentication Successful",
-        message: "Welcome back!",
+            "Your fingerprint was verified, but your Firebase login "
+            "session has expired. Please log in with your email and "
+            "password again.",
       );
 
       if (!mounted) return;
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const RoleSelectionScreen()),
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
       );
-
-      return;
+    } finally {
+      _authInProgress = false;
     }
-
-    // -----------------------------------------
-    // BIOMETRIC SUCCESSFUL BUT FIREBASE NULL
-    // -----------------------------------------
-
-    await DialogService.showError(
-      context: context,
-      title: "Session Expired",
-      message:
-          "Your fingerprint was verified, but your Firebase login session has expired. Please log in with your email and password again.",
-    );
-
-    if (!mounted) return;
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (_) => const LoginScreen()),
-    );
   }
 
   Future<void> _askEnableBiometric() async {
@@ -376,8 +568,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           Positioned.fill(
             child: Container(
               color: isDark
-                  ? Colors.black.withValues(alpha:0.45)
-                  : Colors.white.withValues(alpha:0.3),
+                  ? Colors.black.withValues(alpha: 0.45)
+                  : Colors.white.withValues(alpha: 0.3),
             ),
           ),
           SafeArea(
@@ -494,7 +686,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                               Positioned(
                                 bottom: -30,
                                 child: BiometricButton(
-                                  onPressed: biometricLogin,
+                                  onPressed: () async {
+                                    try {
+                                      await biometricLogin();
+                                    } catch (e, st) {
+                                      debugPrint(
+                                        'Biometric button flow threw: $e',
+                                      );
+                                      debugPrintStack(stackTrace: st);
+                                    }
+                                  },
                                 ),
                               ),
                           ],
@@ -520,7 +721,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                             "Forgot Password?",
                             style: TextStyle(
                               color: isDark
-                                  ? colors.onSurface.withValues(alpha:0.70)
+                                  ? colors.onSurface.withValues(alpha: 0.70)
                                   : Colors.black87,
                             ),
                           ),
